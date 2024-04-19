@@ -6,19 +6,19 @@
       version="2.0">
 <channel>
 <title>Beneath the surface 🌊</title>
-<link>https://LuisLauM.github.io/blog.html</link>
-<atom:link href="https://LuisLauM.github.io/blog.xml" rel="self" type="application/rss+xml"/>
+<link>https://luislaum.github.io/blog.html</link>
+<atom:link href="https://luislaum.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description></description>
 <image>
-<url>https://LuisLauM.github.io/blog-photo.jpg</url>
+<url>https://luislaum.github.io/blog-photo.jpg</url>
 <title>Beneath the surface 🌊</title>
-<link>https://LuisLauM.github.io/blog.html</link>
+<link>https://luislaum.github.io/blog.html</link>
 </image>
 <generator>quarto-1.4.553</generator>
 <lastBuildDate>Fri, 19 Apr 2024 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Developing Beneath the surface</title>
-  <link>https://LuisLauM.github.io/blog/about-this-website/</link>
+  <link>https://luislaum.github.io/blog/about-this-website/</link>
   <description><![CDATA[ 
 
 <section id="en-developing-beneath-the-surface" class="level1">
@@ -114,9 +114,9 @@
 </section>
 </section>
  ]]></description>
-  <guid>https://LuisLauM.github.io/blog/about-this-website/</guid>
+  <guid>https://luislaum.github.io/blog/about-this-website/</guid>
   <pubDate>Fri, 19 Apr 2024 00:00:00 GMT</pubDate>
-  <media:content url="https://LuisLauM.github.io/blog/about-this-website/banner.png" medium="image" type="image/png" height="77" width="144"/>
+  <media:content url="https://luislaum.github.io/blog/about-this-website/banner.png" medium="image" type="image/png" height="77" width="144"/>
 </item>
 </channel>
 </rss>
