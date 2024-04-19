@@ -2,14 +2,20 @@ project:
   type: website
 
 website:
+  site-url: https://luislaum.github.io/
+  favicon: favicon-wave.png
   title: "Beneath the surface 🌊"
   navbar:
-    left:
+    right:
       - href: index.qmd
         text: Home
       - about.qmd
       - href: blog.qmd
         text: Blog
+  page-footer:
+    left: © Copyright 2024, Wencheng Lau-Medrano
+    right: This website is built with [{{< fa brands github title="GitHub octocat logo" >}}](https://github.com/LuisLauM/LuisLauM.github.io){target=_blank}, [{{< fa brands r-project title="R Project" >}}](https://www.r-project.org/about.html){target=_blank} and [Quarto](https://quarto.org/){target=_blank}
+
 
 format:
   html:
