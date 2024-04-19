@@ -1,29 +1,25 @@
 ---
 title: "Blog"
-# subtitle: "A little bit of everything / Un poco de todo"
+subtitle: "A little bit of everything | Un poco de todo"
+image: blog-photo.jpg
+about: 
+  template: marquee
+  image-shape: rectangle
 listing:
   contents: blog
   feed: true
   sort: "date desc"
   type: grid
-title-block-banner: true
-about: 
-  links:
-    - text: LinkedIn
-      href: https://www.linkedin.com/in/wencheng-lau-medrano/
-      icon: linkedin
-    - text: GitHub
-      href: https://github.com/LuisLauM
-      icon: github
-    - text: Email
-      href: mailto:luis.lau-medrano@ird.fr
-      icon: envelope
+  date-format: medium
 ---
 
 ::: {.callout-note}
 **Around the surface** 
 
-**EN:** Here I will be depositing several articles of very diverse topics (VERY diverse, believe me).
+**EN:** Here I will be depositing several articles of very diverse topics (VERY diverse).
 
-**ES:** Aquí iré depositando diversos artículos de temas muy diversos (MUY diversos, créeme).
+**ES:** Aquí iré depositando contenido sobre temas muy diversos (MUY diversos).
 :::
+
+Image credits: Lanju Fotografie at [Unplash](https://unsplash.com/es/fotos/textil-floral-amarillo-y-rojo-HZFyFTRiWIo)
+

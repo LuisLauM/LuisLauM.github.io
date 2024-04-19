@@ -1,20 +1,77 @@
 ---
 title: "Developing Beneath the surface"
 description: |
-  About the developing of this website.
+  Cómo fui desarrollando esta página
 date: 2024-04-19
+image: banner.png
+about: 
+  template: marquee
+  image-shape: rectangle
 draft: false
 ---
 
-### EN
 
-### ES
+# [EN] Developing 'Beneath the surface 🌊'
 
-# Desarrollando 'Beneath the surface 🌊'
+## The idea
+
+The first thing that came to mind was "how can I develop a page that I can leave as a reference for those who want to contact me in a professional setting?" and "through what medium can I share those ideas, small works or personal experiences that I believe could be useful for other professionals in my field?". Well, there are many options around (social media, podcasts, TikTok, etc.). This first decision was not difficult, as I am not particularly characterized by my charisma on social networks, so I decided to opt for writing a blog. However, here the decision-making process did get a bit complicated, as there are many platforms available: [Wordpress](https://wordpress.com/), [Netlify](https://www.netlify.com/), [Gitlab pages](https://docs.gitlab.com/ee/user/project/pages/), [Medium](https://medium.com/), among [others](https://stackshare.io/github-pages/alternatives). Each one offers different advantages and potential, but my decision was based above all on the familiarity of use of the Github and Quarto platforms. I decided on Github pages.
+
+## Github pages
+
+Github Pages is a free static website hosting service that allows you to publish HTML content directly from a GitHub repository. This platform offers multiple advantages:
+
+* **It's free!**: You don't need to pay for a web hosting service, just have a (free) GitHub account.
+
+* **Easy to use**: Uploading your HTML, CSS, and JavaScript files to GitHub is very simple.
+
+* **Direct integration with GitHub**: This becomes VERY important if you already use GitHub (as was my case) for your code projects.
+
+* **Versioning**: GitHub Pages keeps a history of all the changes you make to your website, so if something goes wrong you can always go back to a previous version of your repository (page).
+
+* **Secure**: GitHub Pages uses HTTPS to protect your website.
+
+* **Fast**: For a few years now, Microsoft has bought GitHub and therefore its services use an extensive global network of servers to deliver your website to users around the world.
+
+* **Scalable**: GitHub Pages can handle any amount of traffic, so your website can grow smoothly. Although a personal/professional blog is not expected to have very high traffic peaks, it is always good to know that this support exists.
+
+* **SEO optimized**: GitHub Pages is optimized for search engines, which will help your website appear in the results of major web search engines.
+
+In the end, Github pages was the hosting option that I found most attractive. However, there are multiple ways to upload content, from different development platforms that involve the use of programming languages (e.g. Javascript) or markup, such as markdown or Quarto. Once again, my historical experience weighed more and I decided to use Quarto.
+
+## Quarto
+
+Quarto is an open-source scientific document publishing platform developed by the POSIT (formerly RStudio) team. It is based on the R Markdown format and extends it with new features and functionalities to create richer and more interactive documents. It implements a more powerful preprocessing system than R Markdown and supports additional programming languages such as Python and Julia, expanding the possibilities for analysis and visualization.
+
+For the past few years, I have been using Quarto not only for writing simple R reports, but also for the complete composition of scientific articles (one of them with a format submitted directly from the .docx output obtained in Quarto), as well as the development of interactive websites through the [Quarto-Shiny](https://quarto.org/docs/interactive/shiny/) duo.
+
+## The content
+
+I Didn't Have to Start from Scratch. Fortunately, there are many resources available online, but I will briefly summarize the main links I used:
+
+* *Create the website hosted on Github pages, prepare it for content management with Quarto and to work from RStudio*: The first steps to follow are very well explained in the video by Melissa Van Bussel [(link)](https://youtu.be/arzBRW5XIkg?feature=shared). Highly recommended, although it assumes that we know how to handle Git-bash and that we have a token well configured for our PC. I will put these last details at the end of this article.
+
+{{< video https://youtu.be/arzBRW5XIkg?feature=shared >}}
+
+* *Establish an outline of what we are going to publish*: Once we have successfully configured our website, it is time to take pen and paper and outline what content we want to share and what the logic will be for organizing that content into sections. While this part is very personal, since it will not be the same to diagram a page that only aims to serve as a professional reference (that is, an interactive resume) to that of a freelancer who wants to show their main projects and/or services offered, you don't need to start from scratch either. You can review examples of pages from other creators (researchers, reporters, bloggers, graphic artists, etc.) and be inspired by their designs. Also, you can review examples of page structures that use Github pages [(link)](https://jekyllthemes.io/free). Remember, everything must ALWAYS start with the type of content you plan to place.
+
+* *Start writing*: OK, this is not a scientific article and there is much more freedom to fill in the different sections; however, always remember to take into account the basic writing criteria (from general to specific), be clear and careful when choosing the type of language (based on the type of audience you expect to read you) and, once again, review examples. Of course, these days AI text generation platforms can be of great help, but we should not delegate the entire burden (i.e. no copy-paste) to them without first reading and corroborating the information they return to us. At this point, the following articles were very useful to me:
+
+  * Create your website with Quarto: complete tutorial and template link: https://www.marvinschmitt.com/blog/website-tutorial-quarto/.
+  
+  * Creating your personal website with Quarto link: https://ucsb-meds.github.io/creating-quarto-websites/.
+  
+  * Creating a website link: https://quarto.org/docs/websites/.
+
+* *Establish an order*: Once we have finished and published a first article, everything will be simpler in technical terms since you will discover that there are multiple reference sources available.
+
+
+
+# [ES] Desarrollando 'Beneath the surface 🌊'
 
 ## La idea
 
-Lo primero que llegó a mi mente fue «¿de qué manera puedo desarrollar una página en que pueda dejar como referencia para aquellos que quisieran contactar conmigo en un ambiente profesional?» y «¿desde qué medio puedo compartir aquellas ideas, pequeños trabajos o experiencias personales que creo que podrían resultar de utilidad para otros profesionales en mi rubro?». Bueno, existen muchas opciones alrededor (redes sociales, podcast, TikTok, etc.). Esta primera decisión no fue difícil, pues no me caracterizo particularmente por mi carisma en redes, así que decidí optar por escribir un blog. Sin embargo, aquí la toma de decisiones sí se complicó un poco, pues existen muchas plataformas disponibles: [Wordpress](https://wordpress.com/), [Netlify](https://www.netlify.com/), [Gitlab pages](https://docs.gitlab.com/ee/user/project/pages/), [Medium](https://medium.com/), among [others](https://stackshare.io/github-pages/alternatives). Cada una plantea ventajas y potencialidades distintas, pero mi decisión se basó sobre todo en la familiaridad de uso de las plataformas [Github](https://github.com/) y [Quarto](https://quarto.org/). Me decidí por [Github pages](https://pages.github.com/).
+Lo primero que llegó a mi mente fue «¿de qué manera puedo desarrollar una página en que pueda dejar como referencia para aquellos que quisieran contactar conmigo en un ambiente profesional?» y «¿desde qué medio puedo compartir aquellas ideas, pequeños trabajos o experiencias personales que creo que podrían resultar de utilidad para otros profesionales en mi rubro?». Bueno, existen muchas opciones alrededor (redes sociales, podcast, TikTok, etc.). Esta primera decisión no fue difícil, pues no me caracterizo particularmente por mi carisma en redes, así que decidí optar por escribir un blog. Sin embargo, aquí la toma de decisiones sí se complicó un poco, pues existen muchas plataformas disponibles: [Wordpress](https://wordpress.com/), [Netlify](https://www.netlify.com/), [Gitlab pages](https://docs.gitlab.com/ee/user/project/pages/), [Medium](https://medium.com/), entre [others](https://stackshare.io/github-pages/alternatives). Cada una plantea ventajas y potencialidades distintas, pero mi decisión se basó sobre todo en la familiaridad de uso de las plataformas [Github](https://github.com/) y [Quarto](https://quarto.org/). Me decidí por [Github pages](https://pages.github.com/).
 
 ## Github pages
 
@@ -44,11 +101,13 @@ Quarto es una plataforma de publicación de documentos científicos de código a
 
 Desde hace unos pocos años, he venido utilizando Quarto no solo para la redacción de reportes sencillos en R, sino inclusive para la composición completa de artículos científicos (uno de ellos con formato sometido directamente desde la salida en .docx obtenida en Quarto), así como el desarrollo de webs interactivas a través de la dupla [Quarto-Shiny](https://quarto.org/docs/interactive/shiny/).
 
-## Creando la página
+## El contenido
 
 No tuve que empezar desde cero. Afortunadamente, hay mucho material allá afuera, pero resumiré brevemente los principales links que utilicé:
 
-* Crear la website alojada en Github pages, preparada para el manejo de contenido con Quarto y trabajando desde RStudio: Los primeros pasos a seguir están muy bien explicados en el vídeo de Melissa Van Bussel [(link)](https://quarto.org/docs/interactive/shiny/). Muy recomendable, aunque parte bajo el supuesto de que conocemos cómo manejar Git-bash y de que tenemos bien configurado un token para nuestra PC. Estos últimos detalles los colocaré al final de este artículo.
+* Crear la website alojada en Github pages, preparaela para el manejo de contenido con Quarto y para trabajar desde RStudio: Los primeros pasos a seguir están muy bien explicados en el vídeo de Melissa Van Bussel [(link)](https://youtu.be/arzBRW5XIkg?feature=shared). Muy recomendable, aunque parte bajo el supuesto de que conocemos cómo manejar Git-bash y de que tenemos bien configurado un token para nuestra PC. Estos últimos detalles los colocaré al final de este artículo.
+
+{{< video https://youtu.be/arzBRW5XIkg?feature=shared >}}
 
 * Establecer un esquema de lo que vamos a publicar. Una vez que hayamos logrado configurar correctamente nuestra web, sigue el turno de tomar lápiz y papel y esquematizar qué contenido deseamos compartir y cuál será la lógica para ordenar dicho contenido en secciones. Si bien esta parte es muy personal, ya que no será lo mismo diagramar una página que solo tiene como objetivo servir de referencia profesional (es decir, un CV interactivo) a la de un **freelancer** que desea mostrar sus principales proyectos y/o servicios ofrecidos, no necesitas ir desde cero tampoco. Puedes revisar ejemplos de páginas de otros creadores (investigadores, reporteros, bloggers, artistas gráficos, etc.) e inspirarte en sus diseños. Así también, puedes revisar ejemplos de estructuras de páginas que usan Github pages [(link)](https://jekyllthemes.io/free). Recuerda, todo debe partir SIEMPRE del tipo de contenido que planeas colocar. 
 
