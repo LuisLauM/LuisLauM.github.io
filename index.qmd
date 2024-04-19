@@ -1,11 +1,44 @@
 ---
-title: "LuisLauM.github.io"
+title: "Wencheng Lau-Medrano"
+image: head-photo.jpg
+toc: true
+about: 
+  template: marquee
+  image-shape: rectangle
+  links:
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/wencheng-lau-medrano/
+      icon: linkedin
+    - text: GitHub
+      href: https://github.com/LuisLauM
+      icon: github
+    - text: Email
+      href: mailto:luis.lau-medrano@ird.fr
+      icon: envelope
 ---
 
-This is a Quarto website.
+# Beneath the surface | Bajo la superficie 🌊
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+::: {.callout-note}
+**One surface, dos idiomas.** 
 
-```{r}
-1 + 1
-```
+Here you will find content in two languages: **English (EN) and Spanish (ES)**. Each piece of content will be available in both languages.
+
+En esta página encontrarás contenido en dos idiomas: **inglés (EN) y español (ES)**. Cada sección estará disponible en ambos idiomas.
+:::
+
+### EN
+
+**Hi there!** I'm (Luis) Wencheng Lau-Medrano, a passionate enthusiast of technology, marine biology, data analysis, Legos, and travel. Here I will share some of what I know, have learned, and experienced in those fields. You will find everything from practical tips to improve your programming and data analysis skills to recommendations for tourist destinations and guides for administrative procedures. Thank you for being a part of this journey of learning and discovery.
+
+Below are my main networks and ways to contact me. Feel free to send me a message about any of the contents.
+
+Image credits: Dan Grinwis at [Unplash](https://unsplash.com/es/fotos/foto-aerea-del-agua-de-mar-y-la-orilla-del-mar-9KQSI7fkuhk)
+
+### ES
+
+**¡Hola, qué tal!** Soy (Luis) Wencheng Lau-Medrano, un apasionado de la tecnología, la biología marina, el análisis de datos, los Legos y los viajes. Aquí compartiré un poco de lo que sé, aprendí y experimenté en esos campos. Encontrarás desde consejos prácticos para mejorar tus habilidades en programación y análisis de datos, hasta recomendaciones de destinos turísticos y guías para realizar trámites administrativos. Gracias por ser ahora parte de ese viaje de aprendizaje y descubrimiento.
+
+Abajo están mis principales redes y formas de contacto. No dudes en enviarme un mensaje acerca de cualquiera de los contenidos.
+
+Créditos de la imagen: Dan Grinwis en [Unplash](https://unsplash.com/es/fotos/foto-aerea-del-agua-de-mar-y-la-orilla-del-mar-9KQSI7fkuhk)

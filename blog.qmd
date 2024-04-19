@@ -1,0 +1,29 @@
+---
+title: "Blog"
+# subtitle: "A little bit of everything / Un poco de todo"
+listing:
+  contents: blog
+  feed: true
+  sort: "date desc"
+  type: grid
+title-block-banner: true
+about: 
+  links:
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/wencheng-lau-medrano/
+      icon: linkedin
+    - text: GitHub
+      href: https://github.com/LuisLauM
+      icon: github
+    - text: Email
+      href: mailto:luis.lau-medrano@ird.fr
+      icon: envelope
+---
+
+::: {.callout-note}
+**Around the surface** 
+
+**EN:** Here I will be depositing several articles of very diverse topics (VERY diverse, believe me).
+
+**ES:** Aquí iré depositando diversos artículos de temas muy diversos (MUY diversos, créeme).
+:::

@@ -1,9 +1,42 @@
 ---
-title: "About"
+title: "About me"
+image: aboutme-photo.jpeg
+toc: true
+about: 
+  template: marquee
+  image-shape: rectangle
+  links:
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/wencheng-lau-medrano/
+      icon: linkedin
+    - text: GitHub
+      href: https://github.com/LuisLauM
+      icon: github
+    - text: Email
+      href: mailto:luis.lau-medrano@ird.fr
+      icon: envelope
 ---
 
-About this site
+### EN
 
-```{r}
-1 + 1
-```
+My full name is Luis Wencheng Lau-Medrano, **I am** Peruvian by birth and a passionate (geek) about technology, marine biology, data analysis, Legos and travel. Since I was a child, I have been fascinated by the digital world and biology, so when I became an adult, I decided to combine both passions to solve problems and improve people's lives (and my own, which I am working on).
+
+**In my professional career**, I complete my bachelor as biologist with a specialization in Hydrobiology at the [UNMSM](https://www.unmsm.edu.pe/) (Lima-Peru), then I continued with a Master's degree in Marine Sciences at the [UPCH](https://cayetano.edu.pe/) (Lima-Peru). Currently, I am finishing a doctorate in ecology at the University of Montpellier-[UM](https://www.umontpellier.fr/en/) (France) with an [IRD](https://umr-marbec.fr/membre/luis-lau-medrano/) scholarship.
+
+**I have worked as** a researcher at the Instituto del Mar del Perú-[IMARPE](https://www.gob.pe/imarpe), in the General Directorate of Pelagic Resources Research and in the General Directorate of Demersal and Littoral Resources Research. My main tasks were the statistical analysis of fishery information and research cruises for decision-making and management of the anchovy (*Engraulis ringens*), jack mackerel (*Trachurus murphyi*), mackerel (*Scomber japonicus*), hake (*Merluccius gayi peruanus*) and giant squid (*Dosidicus gigas*). Additionally, I have done two internships: one at the University of Washington-[UW](https://www.washington.edu/) for the standardization of the CPUE of two shark species using the VAST tool, and another at the UM supporting the calibration of the OSMOSE model for the Peruvian Upwelling Ecosystem. I have experience as a speaker at international congresses held in Lima-Peru, La Paz-Mexico, Victoria-Canada and Palma de Mallorca-Spain.
+
+**I have also experience** teaching programming and data management courses and I am the creator and developer of the packages in CRAN [imagine](https://cran.r-project.org/package=imagine) and [grec](https://cran.r-project.org/package=grec).
+
+**Hobbies**? Of course! Video games, building Legos, biking, traveling, taking pictures of natural and urban landscapes and programming (yes, also as a hobbie).
+
+### ES
+
+Mi nombre completo es Luis Wencheng Lau-Medrano, **soy** peruano de nacimiento y un apasionado de la tecnología (un *geek* quizás), la biología marina, el análisis de datos, los Legos y los viajes. Desde siempre me ha fascinado el mundo digital y la biología, por lo que llegado el momento de ser adulto decidí combinar ambas pasiones para resolver problemas y mejorar la vida de las personas (y la mía propia, en ello trabajo).
+
+**Mi formación profesional** inicial es de biólogo con mención en Hidrobiología en la [UNMSM](https://www.unmsm.edu.pe/) (Lima-Perú), luego continué con una Maestría en Ciencias del Mar en la [UPCH](https://cayetano.edu.pe/) (Lima-Perú). Actualmente, vengo finalizando un doctorado en ecología en la Universidad de Montpellier-[UM](https://www.umontpellier.fr/en/) (Francia) con el apoyo de una beca [IRD](https://umr-marbec.fr/membre/luis-lau-medrano/).
+
+**He trabajado como** investigador en el Instituto del Mar del Perú-[IMARPE](https://www.gob.pe/imarpe), en la Dirección General de Investigaciones de Recursos Pelágicos y en la Dirección General de Investigaciones de Recursos Demersales y Litorales. Mis labores principales fueron el análisis estadístico de información de pesquería y cruceros de investigación para la toma de decisiones y manejo de los recursos anchoveta (*Engraulis ringens*), jurel (*Trachurus murphyi*), caballa (*Scomber japonicus*), merluza (*Merluccius gayi peruanus*) y pota (*Dosidicus gigas*). Adicionalmente, he realizado dos pasantías: una en la Universidad de Washington-[UW](https://www.washington.edu/) para la estandarización de la CPUE de dos especies de tiburones usando la herramienta VAST, y otra en la UM apoyando con la calibración del modelo OSMOSE para el Ecosistema de Afloramiento Peruano. Tengo experiencia como expositor en congresos internacionales realizados en Lima-Perú, La Paz-México, Victoria-Canadá y Palma de Mayorca-España.
+
+**También tengo experiencia** docente cursos de programación y manejo de datos y soy creador y desarrollador de los paquetes en CRAN [imagine](https://cran.r-project.org/package=imagine) y [grec](https://cran.r-project.org/package=grec).
+
+¿*Hobbies*? ¡Por supuesto! Juegos de video, armar Legos, pasear en bicicleta, viajar, tomar fotos de paisajes naturales y urbanos y programar (sí, también como *hobbie*).
