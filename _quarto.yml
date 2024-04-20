@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  site-url: https://luislaum.github.io/
+  site-url: https://luislaum.github.io/home/
   favicon: favicon-wave.png
   title: "Beneath the surface 🌊"
   navbar:

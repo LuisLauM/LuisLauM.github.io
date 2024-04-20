@@ -17,8 +17,6 @@ about:
       icon: envelope
 ---
 
-# Beneath the surface | Bajo la superficie 🌊
-
 ::: {.callout-note}
 **One surface, dos idiomas.** 
 
@@ -27,7 +25,7 @@ Here you will find content in two languages: **English (EN) and Spanish (ES)**. 
 En esta página encontrarás contenido en dos idiomas: **inglés (EN) y español (ES)**. Cada sección estará disponible en ambos idiomas.
 :::
 
-### EN
+# [EN] Beneath the surface 🌊
 
 **Hi there!** I'm (Luis) Wencheng Lau-Medrano, a passionate enthusiast of technology, marine biology, data analysis, Legos, and travel. Here I will share some of what I know, have learned, and experienced in those fields. You will find everything from practical tips to improve your programming and data analysis skills to recommendations for tourist destinations and guides for administrative procedures. Thank you for being a part of this journey of learning and discovery.
 
@@ -35,7 +33,7 @@ Below are my main networks and ways to contact me. Feel free to send me a messag
 
 Image credits: Dan Grinwis at [Unplash](https://unsplash.com/es/fotos/foto-aerea-del-agua-de-mar-y-la-orilla-del-mar-9KQSI7fkuhk)
 
-### ES
+# [ES] Bajo la superficie 🌊
 
 **¡Hola, qué tal!** Soy (Luis) Wencheng Lau-Medrano, un apasionado de la tecnología, la biología marina, el análisis de datos, los Legos y los viajes. Aquí compartiré un poco de lo que sé, aprendí y experimenté en esos campos. Encontrarás desde consejos prácticos para mejorar tus habilidades en programación y análisis de datos, hasta recomendaciones de destinos turísticos y guías para realizar trámites administrativos. Gracias por ser ahora parte de ese viaje de aprendizaje y descubrimiento.
 
