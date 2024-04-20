@@ -7,7 +7,7 @@ website:
   title: "Beneath the surface 🌊"
   navbar:
     right:
-      - href: home.qmd
+      - href: index.qmd
         text: Home
       - about.qmd
       - href: blog.qmd
