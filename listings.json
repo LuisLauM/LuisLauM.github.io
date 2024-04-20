@@ -2,7 +2,8 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/blog/about-this-website/index.html"
+      "/blog/elnino-app/elnino-app.html",
+      "/blog/about-this-website/about-this-website.html"
     ]
   }
 ]
