@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://luislaum.github.io/home.html</loc>
-    <lastmod>2024-04-20T08:09:14.752Z</lastmod>
+    <loc>https://luislaum.github.io/home/home.html</loc>
+    <lastmod>2024-04-20T08:21:21.891Z</lastmod>
   </url>
   <url>
-    <loc>https://luislaum.github.io/about.html</loc>
-    <lastmod>2024-04-20T08:09:14.688Z</lastmod>
+    <loc>https://luislaum.github.io/home/about.html</loc>
+    <lastmod>2024-04-20T08:21:21.827Z</lastmod>
   </url>
   <url>
-    <loc>https://luislaum.github.io/blog/elnino-app/elnino-app.html</loc>
-    <lastmod>2024-04-20T08:09:14.712Z</lastmod>
+    <loc>https://luislaum.github.io/home/blog/elnino-app/elnino-app.html</loc>
+    <lastmod>2024-04-20T08:21:21.851Z</lastmod>
   </url>
   <url>
-    <loc>https://luislaum.github.io/blog/about-this-website/about-this-website.html</loc>
-    <lastmod>2024-04-20T08:09:14.704Z</lastmod>
+    <loc>https://luislaum.github.io/home/blog/about-this-website/about-this-website.html</loc>
+    <lastmod>2024-04-20T08:21:21.843Z</lastmod>
   </url>
   <url>
-    <loc>https://luislaum.github.io/blog.html</loc>
-    <lastmod>2024-04-20T08:09:14.704Z</lastmod>
+    <loc>https://luislaum.github.io/home/blog.html</loc>
+    <lastmod>2024-04-20T08:21:21.843Z</lastmod>
   </url>
 </urlset>
