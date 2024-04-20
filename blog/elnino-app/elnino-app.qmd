@@ -1,0 +1,385 @@
+---
+title: "El Niño"
+description: |
+  Current conditions for the Peruvian coast. | Condiciones actuales para la costa peruana.
+date: 2024-04-20
+image: elnino-explain1.png
+format: dashboard
+draft: false
+---
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+require(readxl)
+require(dplyr)
+require(tidyr)
+
+
+eventBrkLabs <- list(nina = list(brks = paste0("nina_", 
+                                               c(#"ex", 
+                                                 "fu", "mo", "de")),
+                                 labs = paste("Niña", 
+                                              c(#"extraordinaria",
+                                                "fuerte",
+                                                "moderada",
+                                                "débil"), sep = "\n")),
+                     neutro = list(brks = "neutro",
+                                   labs = "Neutro"),
+                     nino = list(brks = paste0("nino_", c("de", "mo", "fu", "ex")),
+                                 labs = paste("Niño", 
+                                              c("débil",
+                                                "moderado",
+                                                "fuerte",
+                                                "extraordinario"), sep = "\n")))
+
+refICEN <- list(breaks = c(-Inf, -1.4, -1.2, -1, 0.4, 1, 1.7, 3, Inf),
+                labels = c(paste("La Ni\u00f1a", c("Fuerte", "Moderada", "Débil")), 
+                           "Neutro", 
+                           paste("El Ni\u00f1o", c("Débil", "Moderado", "Fuerte", "Muy fuerte"))))
+
+indexVals <- read_excel(path = "prob_vals.xlsx", sheet = 1, 
+                        skip = 1, .name_repair = "minimal")
+
+indexVals <- lapply(X = list(reg_34 = c(1, 3:10), reg_12 = c(1, 12:19)), 
+                    FUN = \(x, df) df |> select(x), df = indexVals) |> 
+  
+  bind_rows(.id = "region") |> 
+  
+  pivot_longer(cols = nina_fu:nino_ex, 
+               names_to = "event", values_to = "probability") |> 
+  
+  mutate(date = as.Date(date),
+         region = factor(x = region, 
+                         levels = paste0("reg_", c(34, 12)), 
+                         labels = paste("Región", c("3+4", "1+2"))),
+         event = factor(x = event,
+                        levels = unlist(lapply(eventBrkLabs, "[[", "brks")), 
+                        labels = unlist(lapply(eventBrkLabs, "[[", "labs"))),
+         probability = replace(x = probability, 
+                               list = is.na(probability), 
+                               values = 0))
+```
+
+
+# ¿Qué es El Niño? {scrolling="true"}
+
+## Row
+
+::: {.card}
+
+### ¿Qué es el ENSO?
+
+ENSO (por las siglas de **E**l **N**iño **S**outhern **O**scillation) es un patrón climático natural que se produce en el Pacífico ecuatorial. Se caracteriza por cambios en la temperatura de la superficie del mar, la presión atmosférica y los vientos en la región y su dinámica puede tener un impacto significativo en el clima mundial. Puede provocar sequías, inundaciones, olas de calor y otros fenómenos meteorológicos extremos.
+
+![Fuente: bom.gov.au/climate/](elnino-explain1.png)
+:::
+
+::: {.card}
+
+El ENSO tiene dos fases principales:
+
+-   El Niño es la **fase cálida**, en la que la temperatura de la superficie del mar en el Pacífico ecuatorial oriental y central es anormalmente alta. Esto provoca cambios en la presión atmosférica y los vientos, que afectan a las precipitaciones y las temperaturas en todo el mundo.
+
+-   La Niña es una **fase fría**, en la que la temperatura de la superficie del mar en el Pacífico ecuatorial oriental y central es anormalmente baja. Esto también provoca cambios en la presión atmosférica y los vientos, que afectan a las precipitaciones y las temperaturas en todo el mundo.
+
+![Fuente: climate.gov/enso](elnino-explain2.png)
+:::
+
+# Condiciones actuales {scrolling="false"}
+
+```{r}
+#| echo: false
+
+probs <- indexVals |> 
+  
+  filter(date == max(date),
+         region == "Región 1+2") %>% 
+  
+  pull(probability) |> 
+  
+  setNames(nm = c(#"na_e", 
+                  "na_f", "na_m", "na_d", 
+                  "neutro", 
+                  "no_d", "no_m", "no_f", "no_e")) |> 
+  
+  lapply(sprintf, fmt = "%2.0f %%")
+
+cols <- list(#na_e   = "#1a4368",
+             na_f   = "#2e75b5",
+             na_m   = "#9bc2e6",
+             na_d   = "#ddebf7",
+             neutro = "#ffffff",
+             no_d   = "#ffe2dd",
+             no_m   = "#fdcece",
+             no_f   = "#ff5d5d",
+             no_e   = "#e60000")
+```
+
+## Row {height="10%"}
+
+### Column {width="70%"}
+
+::: {.card expandable="false"}
+**Probabilidades estimadas de las magnitudes de El Niño y La Niña costeros (región Niño 1+2, frente a la costa norte y centro del Perú)**
+:::
+
+### Column {width="15%"}
+
+::: {.card expandable="false" scrolling="false"}
+```{r}
+#| echo: false
+
+month.name_sp <- c("Enero", "Febrero", "Marzo", "Abril", 
+                   "Mayo", "Junio", "Julio", "Agosto", 
+                   "Setiembre", "Octubre", "Noviembre", "Diciembre")
+
+maxDate <- max(indexVals$date)
+
+maxDate <- format(x = maxDate, format = "%d de %%s de %Y") |> 
+    
+    sprintf(month.name_sp[as.numeric(format(x = maxDate, format = "%m"))])
+```
+Actualizado al `r maxDate`.
+:::
+
+### Column {width="15%"}
+
+::: {.card expandable="false" scrolling="false"}
+Fuentes: [ENFEN-Imarpe](https://enfen.imarpe.gob.pe/), [SENAMHI](https://www.gob.pe/institucion/senamhi/colecciones/1308-comunicados-enfen)
+:::
+
+## Row {height="90%"}
+
+### Column {width="70%"}
+
+```{r}
+#| expandable: true
+#| echo: false
+#| message: false
+#| warning: false
+
+require(readxl)
+require(dplyr)
+require(tidyr)
+require(ggplot2)
+require(plotly)
+require(ggnewscale)
+
+
+xlim <- indexVals$date |> 
+  
+  range() |> 
+  
+  format(format = "%Y-%m-01") |> 
+  
+  as.Date()
+
+xlim[2] <- seq(from = xlim[2], by = "month", length.out = 2)[2]
+
+colBars <- unlist(cols) |> 
+  
+  setNames(nm = unlist(lapply(eventBrkLabs, "[[", "labs")))
+
+labBars <- unlist(lapply(eventBrkLabs, "[[", "labs")) |> 
+  
+  setNames(nm = unlist(lapply(eventBrkLabs, "[[", "labs")))
+
+indexVals |> 
+  
+  ggplot(mapping = aes(x = date, y = probability)) +
+  
+  geom_col(mapping = aes(fill = event), color = "gray80") +
+  
+  scale_fill_manual(aesthetics = "fill",
+                    values = colBars, 
+                    breaks = unlist(lapply(eventBrkLabs, "[[", "labs"))[1:3],
+                    labels = labBars[1:3],
+                    guide = guide_legend(title.position = "top", order = 1),
+                    name = "La Niña") +
+  
+  new_scale_fill() +
+  
+  geom_col(mapping = aes(fill = event), color = "gray80") +
+  
+  scale_fill_manual(aesthetics = "fill",
+                    values = colBars, 
+                    breaks = unlist(lapply(eventBrkLabs, "[[", "labs"))[4],
+                    labels = labBars[4],
+                    guide = guide_legend(title.position = "top", order = 2),
+                    name = NULL) +
+  
+  new_scale_fill() +
+  
+  geom_col(mapping = aes(fill = event), color = "gray80") +
+  
+  scale_fill_manual(aesthetics = "fill",
+                    values = colBars, 
+                    breaks = unlist(lapply(eventBrkLabs, "[[", "labs"))[5:8],
+                    labels = labBars[5:8],
+                    guide = guide_legend(title.position = "top", order = 3),
+                    name = "El Niño") +
+  
+  facet_grid(rows = vars(region)) +
+  
+  theme_bw() +
+  
+  scale_y_continuous(name = "Probabilidad (%)",
+                     breaks = \(x) seq(x[1], x[2], 20),
+                     minor_breaks = NULL, expand = c(0, 0)) +
+  
+  scale_x_date(name = NULL, date_breaks = "4 months", date_labels = "%b\n%Y",
+               minor_breaks = NULL, limits = xlim, expand = c(0, 0)) +
+  
+  theme(legend.position = "top")
+```
+
+### Column {width="15%"}
+
+### Row
+
+```{r}
+#| content: valuebox
+#| title: "La Niña Fuerte"
+#| icon: "exclamation-diamond-fill"
+
+list(
+  color = cols$na_f,
+  value = probs$na_f
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "La Niña Moderada"
+#| icon: "exclamation-square-fill"
+
+list(
+  color = cols$na_m,
+  value = probs$na_m
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "La Niña Débil"
+#| icon: "exclamation-triangle-fill"
+
+list(
+  color = cols$na_d,
+  value = probs$na_d
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Neutro"
+#| icon: "water"
+
+list(
+  color = cols$neutro,
+  value = probs$neutro
+)
+```
+
+### Column {width="15%"}
+
+### Row
+
+```{r}
+#| content: valuebox
+#| title: "El Niño Débil"
+#| icon: "exclamation-triangle"
+
+list(
+  color = cols$no_d,
+  value = probs$no_d
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "El Niño Moderado"
+#| icon: "exclamation-square"
+
+list(
+  color = cols$no_m,
+  value = probs$no_m
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "El Niño Fuerte"
+#| icon: "exclamation-diamond"
+
+list(
+  color = cols$no_f,
+  value = probs$no_f
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "El Niño Extraordinario"
+#| icon: "exclamation-octagon"
+
+list(
+  color = cols$no_e,
+  value = probs$no_e
+)
+```
+
+
+# Valores del ICEN {scrolling="false"}
+
+## Row
+
+::: {.card}
+
+### ¿Qué es el ICEN?
+
+El Índice Costero El Niño (ICEN) es un índice oficial utilizado por el ENFEN para monitorear El Niño y La Niña frente a la costa del Perú. Se calcula como la media corrida de tres meses de la anomalía de la temperatura superficial del mar en la región Niño 1+2. Este índice se diferencia de otros usados internacionalmente en que refleja mejor las condiciones de la costa peruana.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+read.table(file = "http://met.igp.gob.pe/datos/icen.txt", 
+                       header = FALSE, skip = 17) |> 
+  
+  transmute(date = as.Date(sprintf("%s-%s-1", V1, V2)),
+            icen = V3,
+            cat = cut(x = icen, 
+                      breaks = refICEN$breaks, 
+                      labels = refICEN$labels)) |> 
+  
+  plot_ly(type = "scatter", mode = "lines",
+          colors = as.character(cols), 
+          marker = list(line = list(color = "gray60", width = 1))) |> 
+  
+  add_lines(x = ~date, y = ~icen, name = "ICEN",
+            color = I("gray80"), width = 1, 
+            hovermode = FALSE) |> 
+  
+  add_markers(x = ~date, y = ~icen, name = "ICEN", 
+              text = ~sprintf("%s\nICEN: %s\nCategor\u00eda: %s",
+                              format(x = date, format = "%b %Y"),
+                              icen, cat),
+              color = ~cat) |> 
+  
+  layout(showlegend = FALSE, 
+         xaxis = list(title = "",
+                      range = c(as.Date("1950-1-1"), Sys.Date())),
+         yaxis = list(title = "ICEN",
+                      fixedrange = TRUE))
+```
+
+Fuente: [IGP-Perú](http://met.igp.gob.pe/variabclim/indices.html) 
+
+:::
+
