@@ -118,48 +118,122 @@ cols <- list(#na_e   = "#1a4368",
              no_e   = "#e60000")
 ```
 
-## Row {height="10%"}
+## Row {height="33%"}
 
-### Column {width="70%"}
+### Column {width="12.5%"}
 
-::: {.card expandable="false"}
-**Probabilidades estimadas de las magnitudes de El Niño y La Niña costeros (región Niño 1+2, frente a la costa norte y centro del Perú)**
-:::
-
-### Column {width="15%"}
-
-::: {.card expandable="false" scrolling="false"}
 ```{r}
-#| echo: false
+#| content: valuebox
+#| title: "La Niña Fuerte"
+#| icon: "exclamation-diamond-fill"
 
-month.name_sp <- c("Enero", "Febrero", "Marzo", "Abril", 
-                   "Mayo", "Junio", "Julio", "Agosto", 
-                   "Setiembre", "Octubre", "Noviembre", "Diciembre")
-
-maxDate <- max(indexVals$date)
-
-maxDate <- format(x = maxDate, format = "%d de %%s de %Y") |> 
-    
-    sprintf(month.name_sp[as.numeric(format(x = maxDate, format = "%m"))])
+list(
+  color = cols$na_f,
+  value = probs$na_f
+)
 ```
-Actualizado al `r maxDate`.
-:::
 
-### Column {width="15%"}
+### Column {width="12.5%"}
 
-::: {.card expandable="false" scrolling="false"}
-Fuentes: [ENFEN-Imarpe](https://enfen.imarpe.gob.pe/), [SENAMHI](https://www.gob.pe/institucion/senamhi/colecciones/1308-comunicados-enfen)
-:::
+```{r}
+#| content: valuebox
+#| title: "La Niña Moderada"
+#| icon: "exclamation-square-fill"
 
-## Row {height="90%"}
+list(
+  color = cols$na_m,
+  value = probs$na_m
+)
+```
 
-### Column {width="70%"}
+### Column {width="12.5%"}
+
+```{r}
+#| content: valuebox
+#| title: "La Niña Débil"
+#| icon: "exclamation-triangle-fill"
+
+list(
+  color = cols$na_d,
+  value = probs$na_d
+)
+```
+
+### Column {width="12.5%"}
+
+```{r}
+#| content: valuebox
+#| title: "Neutro"
+#| icon: "water"
+
+list(
+  color = cols$neutro,
+  value = probs$neutro
+)
+```
+
+### Column {width="12.5%"}
+
+```{r}
+#| content: valuebox
+#| title: "El Niño Débil"
+#| icon: "exclamation-triangle"
+
+list(
+  color = cols$no_d,
+  value = probs$no_d
+)
+```
+
+### Column {width="12.5%"}
+
+```{r}
+#| content: valuebox
+#| title: "El Niño Moderado"
+#| icon: "exclamation-square"
+
+list(
+  color = cols$no_m,
+  value = probs$no_m
+)
+```
+
+### Column {width="12.5%"}
+
+```{r}
+#| content: valuebox
+#| title: "El Niño Fuerte"
+#| icon: "exclamation-diamond"
+
+list(
+  color = cols$no_f,
+  value = probs$no_f
+)
+```
+
+### Column {width="12.5%"}
+
+```{r}
+#| content: valuebox
+#| title: "El Niño Extraordinario"
+#| icon: "exclamation-octagon"
+
+list(
+  color = cols$no_e,
+  value = probs$no_e
+)
+```
+
+## Row {height="67%"}
+
+### Column {width="75%"}
 
 ```{r}
 #| expandable: true
 #| echo: false
 #| message: false
 #| warning: false
+#| fig-width: 17
 
 require(readxl)
 require(dplyr)
@@ -233,104 +307,34 @@ indexVals |>
   scale_x_date(name = NULL, date_breaks = "4 months", date_labels = "%b\n%Y",
                minor_breaks = NULL, limits = xlim, expand = c(0, 0)) +
   
-  theme(legend.position = "top")
+  theme(legend.position = "top",
+        text = element_text(size = 17))
 ```
 
-### Column {width="15%"}
+### Column {width="25%"}
 
-### Row
+::: {.card expandable="false"}
+**Probabilidades estimadas de las magnitudes de El Niño y La Niña costeros (región Niño 1+2, frente a la costa norte y centro del Perú)**
+:::
 
+::: {.card expandable="false" scrolling="false"}
 ```{r}
-#| content: valuebox
-#| title: "La Niña Fuerte"
-#| icon: "exclamation-diamond-fill"
+#| echo: false
 
-list(
-  color = cols$na_f,
-  value = probs$na_f
-)
+month.name_sp <- c("Enero", "Febrero", "Marzo", "Abril", 
+                   "Mayo", "Junio", "Julio", "Agosto", 
+                   "Setiembre", "Octubre", "Noviembre", "Diciembre")
+
+maxDate <- max(indexVals$date)
+
+maxDate <- format(x = maxDate, format = "%d de %%s de %Y") |> 
+    
+    sprintf(month.name_sp[as.numeric(format(x = maxDate, format = "%m"))])
 ```
+Actualizado al `r maxDate`.
 
-```{r}
-#| content: valuebox
-#| title: "La Niña Moderada"
-#| icon: "exclamation-square-fill"
-
-list(
-  color = cols$na_m,
-  value = probs$na_m
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "La Niña Débil"
-#| icon: "exclamation-triangle-fill"
-
-list(
-  color = cols$na_d,
-  value = probs$na_d
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "Neutro"
-#| icon: "water"
-
-list(
-  color = cols$neutro,
-  value = probs$neutro
-)
-```
-
-### Column {width="15%"}
-
-### Row
-
-```{r}
-#| content: valuebox
-#| title: "El Niño Débil"
-#| icon: "exclamation-triangle"
-
-list(
-  color = cols$no_d,
-  value = probs$no_d
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "El Niño Moderado"
-#| icon: "exclamation-square"
-
-list(
-  color = cols$no_m,
-  value = probs$no_m
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "El Niño Fuerte"
-#| icon: "exclamation-diamond"
-
-list(
-  color = cols$no_f,
-  value = probs$no_f
-)
-```
-
-```{r}
-#| content: valuebox
-#| title: "El Niño Extraordinario"
-#| icon: "exclamation-octagon"
-
-list(
-  color = cols$no_e,
-  value = probs$no_e
-)
-```
+Fuentes: [ENFEN-Imarpe](https://enfen.imarpe.gob.pe/), [SENAMHI](https://www.gob.pe/institucion/senamhi/colecciones/1308-comunicados-enfen)
+:::
 
 
 # Valores del ICEN {scrolling="false"}
