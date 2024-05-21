@@ -13,13 +13,10 @@ listing:
   date-format: medium
 ---
 
-::: {.callout-note}
-**Around the surface** 
 
-**EN:** Here I will be depositing several articles of very diverse topics (VERY diverse).
+**EN:** Here I will be depositing several articles of very diverse topics.
 
-**ES:** Aquí iré depositando contenido sobre temas muy diversos (MUY diversos).
-:::
+**ES:** Aquí iré depositando contenido sobre temas muy diversos.
 
-Image credits: Lanju Fotografie at [Unplash](https://unsplash.com/es/fotos/textil-floral-amarillo-y-rojo-HZFyFTRiWIo)
+Image credits: Siora Photography at [Unplash](https://unsplash.com/es/fotos/vista-aerea-de-botones-multicolores-L06-OsgvNoM)
 
