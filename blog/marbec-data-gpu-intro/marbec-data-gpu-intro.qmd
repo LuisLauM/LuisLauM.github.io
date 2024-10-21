@@ -2,12 +2,12 @@
 title: "Introduction to `marbec-data` and `marbec-gpu`"
 description: |
   What they are and how to access? | ¿Qué son y cómo acceder a ellos?
-date: 2024-04-19
+date: 2024-10-21
 image: banner.jpg
 about: 
   template: marquee
   image-shape: rectangle
-draft: true
+draft: false
 ---
 
 Image credits: Diego Fernandez at [Unplash](https://unsplash.com/photos/mixing-console-yRNJAcdpDAo?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash)

@@ -1,8 +1,8 @@
 ---
 title: "Managing files within `marbec-data`"
 description: |
-  How to manage files and folders to and from `marbec-data`? | ¿Cómo gestionar archivos y carpetas dese y hacia `marbec-data`?
-date: 2024-04-19
+  How to manage files and folders to and from `marbec-data`? | Comment gérer les fichiers et les dossiers de et vers `marbec-data` ? | ¿Cómo gestionar archivos y carpetas dese y hacia `marbec-data`?
+date: 2024-10-21
 image: banner.jpg
 about: 
   template: marquee
