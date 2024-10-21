@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/blog/marbec-data-gpu-intro/marbec-data-gpu-intro.html",
       "/blog/elnino-app/elnino-app.html",
       "/blog/about-this-website/about-this-website.html"
     ]
