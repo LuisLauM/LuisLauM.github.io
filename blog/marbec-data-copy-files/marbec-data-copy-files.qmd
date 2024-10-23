@@ -1,8 +1,8 @@
 ---
 title: "Managing files within `marbec-data`"
 description: |
-  How to manage files and folders to and from `marbec-data`? | Comment gérer les fichiers et les dossiers de et vers `marbec-data` ? | ¿Cómo gestionar archivos y carpetas dese y hacia `marbec-data`?
-date: 2024-10-21
+  How to manage files and folders to and from `marbec-data`? | ¿Cómo gestionar archivos y carpetas dese y hacia `marbec-data`?
+date: 2024-10-23
 image: banner.jpg
 about: 
   template: marquee
@@ -22,16 +22,6 @@ Image credits: Declan Sun at [Unplash](https://unsplash.com/photos/a-shelf-fille
 
 ## Manage files between `marbec-data` and your PC
 
-
-# [FR] Gérer les fichiers de/vers `marbec-data`
-
-## Créer un dossier de travail partagé
-
-## Attacher un dossier de travail à `marbec-gpu`.
-
-## Gérer les fichiers dans `marbec-data`.
-
-## Gérer les fichiers entre `marbec-data` et votre PC
 
 
 # [ES] Moviendo archivos desde/hacia `marbec-data`
