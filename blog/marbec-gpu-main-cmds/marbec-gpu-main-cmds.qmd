@@ -1,0 +1,55 @@
+---
+title: "Main commands in `marbec-gpu`"
+description: |
+  A quick list of the main commands to use within the `marbec-gpu` Terminal. | Un listado rápido de los principales comandos para usar dentro de la Terminal de `marbec-gpu`.
+date: 2024-10-22
+image: banner.jpg
+about: 
+  template: marquee
+  image-shape: rectangle
+draft: true
+engine: knitr
+---
+
+Image credits: Kajetan Sumila at [Unplash](https://unsplash.com/photos/black-metal-tools-on-brown-wooden-shelf-sXPR9JV270c?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash)
+
+# \[EN\] Main commands in `marbec-gpu`
+
+# \[ES\] Principales comandos en `marbec-gpu`
+
+Lo primero que debemos tener en cuenta es que `marbec-gpu` lleva instalado Ubuntu, por lo que los comandos listados a continuación serán los mismos que se usan en dicho SO. En este artículo se mostrará una descripción de los principales modos de uso para cada comando, pero si usted tiene algún requerimiento adicional, siempre puede buscar en foros como Stackoverflow o revisar la ayuda de cada comando, que consiste en colocar el nombre del comando seguido de `--help`. Por ejemplo, si deseo conocer la ayuda del comando `ls`, bastará con ejecutar `ls --help` en la Terminal.
+
+::: {.callout-note title="Mayúsculas y minúsculas"}
+Al igual que en R o Python, el uso de mayúsculas o minúsculas al momento de indicar una opción sí importa. Por ejemplo, `ls -D` no equivale a `ls -d`, por lo que se debe tener cuidado.
+:::
+
+### Generar un listado de archivos
+
+* Comando: `ls`
+* Modo de uso: `ls ruta/archivo-folder.csv`
+
+Principales opciones:
+
+* `--all` (o `-a`): Muestra todos los archivos y subcarpetas, incluyendo aquellos protegidos (ocultos) por el sistema.
+
+### Generar un listado de archivos/carpetas mostrando el tamaño de cada elemento
+
+* Comando: `du`
+* Modo de uso: `du ruta/archivo-folder.csv`
+
+Principales opciones:
+
+* `--human-readable` (o `-h`): cambia las unidades dinámicamente para evitar mostrar todo Kb. Esto es especialmente útil cuando se tiene objetos (subcarpetas o archivos) de gran tamaño.
+
+* `--summary` (o `-s`): muestra una tabla resumida, i.e. solo incluye las subcarpetas y archivos presentes en el primer nivel de búsqueda. Esto es útil cuando solo queremos echar un vistazo rápido y evitar que muestre un listado completo de TODAS las subcarpetas internas. 
+
+Si deseo obtener un listado de todos los archivos y carpetas dentro de un folder con sus respectivos tamaños (las tres opciones son equivalentes):
+
+```{bash, eval=FALSE}
+du ruta/de/folder/* --human-readable --summarize
+du ruta/de/folder/* -h -s
+du ruta/de/folder/* -hs
+```
+
+
+
