@@ -1,20 +1,213 @@
 ---
 title: "Let's working with `marbec-gpu`"
 description: |
-  How to manage files and folders to and from `marbec-data`? | Comment gérer les fichiers et les dossiers de et vers `marbec-data` ? | ¿Cómo gestionar archivos y carpetas dese y hacia `marbec-data`?
-date: 2024-10-21
+  Running R scripts in `marbec-gpu`. | Ejecutar scripts de R usando `marbec-gpu`.
+date: 2024-10-25
 image: banner.jpg
 about: 
   template: marquee
   image-shape: rectangle
 draft: true
+engine: knitr
 ---
 
 Image credits: Андрей Сизов at [Unplash](https://unsplash.com/photos/a-book-with-a-diagram-on-it-nuz3rK5iiKg?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash)
 
-# \[EN\] Let's working with `marbec-gpu`
+# [EN] Let's working with `marbec-gpu`
 
-# \[ES\] Empezando a trabajar con `marbec-gpu`
+## Let's tidy up a bit
+
+### Creating a working directory
+
+As when working with RStudio locally (i.e. on our PC), it is recommended to clearly define our working directory. This is extremely important because any process we run (either from RStudio or Terminal) will use that directory as a reference to find input files, output files or even other scripts.
+
+For our case, we have created a folder called **mgpu-examples/** where there is a subfolder called **code/**. The creation of folders in `marbec-data` can be done directly from the web interface (by clicking on *File station* and then using the *Create folder* button), the command `mkdir`, but we can also copy-paste the elements already existing in our PC into the working folder.
+
+
+
+### Creating an RStudio project
+
+The following is NOT mandatory, but very useful, especially when working with RStudio and that is to create an RStudio project. To do this, we will go to *File* and then *New Project*.
+
+![](images/clipboard-334464964.png)
+
+Then, in the window that appears, click on *Existing directory*, then on *Browse* and click on the folder that we have defined as our working directory (in our case, *mgpu-examples/*). Then, *OK* and finally click on the *Create Project* button. Rstudio will flicker a little bit and then will show us the same window, but inside the set project. The easiest way to check that the project has been created in the correct folder (*mgpu-examples/* in our case) is to verify that right in the Console panel, to the right of the R version, appears only the path of our main folder (and not any of the subfolders, e.g. *mgpu-examples/code/* or *mgpu-examples/inputs/*).
+
+![](images/clipboard-3123546063.png)
+
+::: {.callout-caution title="Just before to say `hello`"}
+`marbec-gpu` incorporates the possibility of working with RStudio (Server); however, this interface should be used ONLY to PREPARE our scripts before being executed using all the power of our server. In other words, within the RStudio environment we will be able to load not so big files and perform basic operations, but at no time should we execute a complex (heavy) process from there, but from **Terminal**.
+:::
+
+## `Hello world!` (simple examples)
+
+### Example 1-1
+
+We will start with the simplest: create a script in R and print the (very famous) "Hello world!" message.
+
+* We will start by opening an RStudio session from the JupyterLab environment (if you want to know how to get there, check the [post](https://luislaum.github.io/blog/marbec-data-gpu-intro/marbec-data-gpu-intro.html) of Introduction to `marbec-gpu`).
+
+* Once inside the RStudio environment, we will create a new script (*File -> New file -> R script*) which will contain a single line:
+
+```{r}
+#| eval: false
+print("Hello world and hello marbec-gpu!")
+```
+
+* Then, we will save that script with the name *code/ex1-1.R* (*code/* refers to a subfolder created previously inside the *working directory* of our project in RStudio).
+
+* Now comes the interesting part, inside our browser, we must go back to the Launcher tab and open a **Terminal** window (clicking on the corresponding icon).
+
+* By default, Terminal will open a session in the local folder assigned to our user. From there, we must get to the folder we have set as *working directory*; that is, the folder that our script will recognize as working directory (whether we have decided to use RStudio or not to create it or create a project inside it). Assuming that our working directory is the `mgpu-examples/` folder, we must reach it using the `cd` command:
+
+```{bash, eval=FALSE}
+cd mgpu-examples/
+```
+
+::: {.callout-tip title="How do we know that we have arrived at the correct folder?"}
+First, the prompt will indicate the name of the folder in which it is located.
+
+![](images/clipboard-3123546064.png)
+
+In addition, we can run the `ls` command which will show the subfolders and files inside the folder we have reached. If everything matches, then we did well.
+
+![](images/clipboard-3123546065.png)
+:::
+
+* Next, we execute the following command in the Terminal: `Rscript code/ex1-1.R` and the result should be just what would be shown in a usual R session.
+
+![](images/clipboard-3123546066.png)
+
+
+
+### Example 1-2
+
+In this next example, we will show a script that generates and saves files in our *working directory* where previously, we will create two new folders (**figures/** and **outputs/**) through the `mkdir` command as follows:
+
+```{bash, eval=FALSE}
+mkdir figures/ outputs/
+```
+
+
+::: {.callout-note}
+Within the Terminal environment, it is not possible to observe graphics interactively (as in RStudio), so if you want to keep any figure, you must always include the code to save it within the script you execute. Depending on the graphical environment, we can use functions such as `png`, `bmp`, `jpeg`, `pdf` (for **graphics** environment), or `ggsave` (for **ggplot2** environment).
+:::
+
+* Now, let's go to RStudio to create the following script and save it in **code/ex1-2.R**:
+
+```{r, eval=FALSE}
+# Print mtcars
+print(mtcars)
+
+# Export mtcars as a csv
+write.csv(x = mtcars, file = "outputs/mtcars.csv")
+ 
+# Create and save a scatterplot
+png(filename = "figures/fig_1-1.png")
+
+plot(x = mtcars$mpg, y = mtcars$disp, 
+     xlab = "Miles per (US) gallon", ylab = "Displacement (cu.in.)")
+
+dev.off()
+```
+
+* Next, we go back to the Terminal environment and run our new script with the command `Rscript code/ex1-2.R`. Immediately, the `mtcars` table will be displayed as that is what the first line of our script commands. 
+
+![](images/clipboard-3123546067.png)
+
+* However, if we run the `ls` command in Terminal for the *figures/* and *outputs/* folders, we will see that the two files we ordered to be created inside our script appear.
+
+![](images/clipboard-3123546068.png)
+
+* If the files created are the ones we expect to collect from our analysis, we can download them through Filezilla (see the corresponding post).
+
+::: {.callout-tip title="Previewing figures"}
+While it is not possible to preview figures in Terminal or JupyterLab because they do not have an image viewer, it is possible to do so from the `marbec-data` web environment. However, this is a basic viewer and only available for the most common file types.
+:::
+
+
+## `Hello universe!` (parallel process)
+
+### Example 2-1: A loop in a single core
+
+* We will start by creating a script (which we will save as *code/ex2-1.R*) containing a simple loop that generates 20 100x100 arrays with random values and saves them in separate csv files inside the *outputs/ex2-rndmats/* folder (remember to create that folder beforehand using `mkdir`):
+
+```{r, eval=FALSE}
+# Setting number of rows and columns
+row_n <- 100
+col_n <- 100
+
+for(i in seq(20)){
+  # Create random matrix
+  rndMat <- matrix(data = runif(n = row_n*col_n), nrow = row_n, ncol = col_n)
+  
+  # Save matrix
+  write.csv(x = rndMat, 
+            file = sprintf(fmt = "outputs/ex2-rndmats/mat_%02d.csv", i), 
+            row.names = FALSE)
+  
+  # Print a message at the end of each step
+  cat(sprintf(fmt = "Matrix %02d finished!\n", i))
+}
+```
+
+* Now, we will run our script in Terminal (with the command `Rscript code/ex2-1.R`) and we will observe that everything went well if the messages at the end of each step of the loop are displayed correctly and also if when we run the command `ls` on the target folder we see the files created:
+
+![](images/clipboard-3123546069.png)
+
+::: {.callout-tip title="Run a small example first"}
+Being already in a real execution, it is highly recommended always to try with a small example that allows us to corroborate that our script goes well BEFORE to pull out all the stops trying to execute the heavy process. In addition, if our script returns figures or files, executing a small corroboration script allows us to quickly check if the generated files are consistent with what we expect to obtain. 
+:::
+
+
+### Example 2-2: A loop on multiple cores
+
+* Starting from the previous example, we will convert our script into one that executes the processes in parallel. For this we will take advantage of the tools of the packages [foreach](https://cran.r-project.org/package=foreach) and [doParallel](https://cran.r-project.org/package=doParallel). Note that the names of the files of this script will begin with the letters `mc_` to be able to recognize them with respect to those obtained in the previous example:
+
+
+```{r, eval=FALSE}
+# Setting number of rows and columns
+row_n <- 100
+col_n <- 100
+
+require(foreach)
+require(doParallel)
+
+# Registering cluster
+cl <- makeCluster(spec = 20)
+registerDoParallel(cl = cl)
+
+# Run multithread process
+out <- foreach(i = seq(20), .inorder = FALSE) %dopar% {
+# Create random matrix
+  rndMat <- matrix(data = runif(n = row_n*col_n), nrow = row_n, ncol = col_n)
+  
+  # Save matrix
+  write.csv(x = rndMat, 
+            file = sprintf(fmt = "outputs/ex2-rndmats/mc_mat_%02d.csv", i), 
+            row.names = FALSE)
+  
+  NULL
+}
+
+# Finish cluster
+stopCluster(cl)
+```
+
+
+* Now, we will run our script in Terminal (with the command `Rscript code/ex2-2.R`) and we will observe that everything has gone well if when executing the command `ls` on the target folder we see the created files:
+
+![](images/clipboard-3123546070.png)
+
+:::{.callout-note}
+A couple of things:
+
+* In the script of the second example, `foreach` is assigned to an object (`out`) which will receive the last object generated within each step of the loop. If you only want to get files to be exported (figures, tables, NetCDF, etc.), be sure to leave a `NULL` in the last line of the loop. On the other hand, if you want to get an object and it is placed in that position, `foreach` will compile it using the `list` function, i.e. the final object (`out`) will be a `list` that will have as many levels as there are steps in the loop. Also, it is important to note that internally `foreach` runs a separate small R session so it is necessary to indicate the additional packages required through the `.packages` argument (see the following example).
+
+* The argument `spec = 20` inside `makeCluster` refers to the amount of threads that will be used to execute the loop. Remember that one of the options when creating your server in `marbec-gpu` was to choose the amount of CPUs (2, 4, 8, 16, 32...)? Well, it is precisely with this argument where you will indicate that amount of logical cores. Remember that another important aspect is the RAM. At a given time each process running within each thread will have to load everything that a single simple process would need. In other words, if in a single core process, in each step of our loop we have to load 5 NetCDF files that occupy 5 GB in RAM, if we run that process in multicore and we define `spec = 40`, at a given moment we will have to load 5GBx40 (200 GB) in RAM simultaneously. So not only you must choose well the configuration of your server (regarding the script you plan to run), but also an approximate of what is consumed in each independent process, in order not to saturate your server. `marbec-gpu` is great, but it has its limits.
+:::
+
+# [ES] Empezando a trabajar con `marbec-gpu`
 
 ## Un poco de orden
 
@@ -30,7 +223,7 @@ Lo siguiente NO es obligatorio, pero sí muy útil, sobre todo cuando se trabaja
 
 ![](images/clipboard-334464964.png)
 
-Luego, en la ventana que nos aparece, daremos click a *Existing directory*, luego a *Browse* y daremos click a la carpeta que hemos definido como nuestro directorio de trabajo (en nuestro caso, *mgpu-examples/*). Luego, *Acpetar* y finalmente en el botón *Create Project*. Rstudio parpadeará un poco y luego nos mostrará la misma ventana, pero dentro del proyecto establecido. La manera más sencilla de comprobar que el proyecto se ha creado en la carpeta correcta (*mgpu-examples/* en nuestro caso) es verificando que justo en el panel de Console, a la derecha de la versión de R, aparezca únicamente la ruta de nuestra carpeta principal (y no alguna de las subcarpetas, e.g. *mgpu-examples/code/* o *mgpu-examples/inputs/*).
+Luego, en la ventana que nos aparece, daremos click a *Existing directory*, luego a *Browse* y daremos click a la carpeta que hemos definido como nuestro directorio de trabajo (en nuestro caso, *mgpu-examples/*). Luego, *Aceptar* y finalmente en el botón *Create Project*. Rstudio parpadeará un poco y luego nos mostrará la misma ventana, pero dentro del proyecto establecido. La manera más sencilla de comprobar que el proyecto se ha creado en la carpeta correcta (*mgpu-examples/* en nuestro caso) es verificando que justo en el panel de Console, a la derecha de la versión de R, aparezca únicamente la ruta de nuestra carpeta principal (y no alguna de las subcarpetas, e.g. *mgpu-examples/code/* o *mgpu-examples/inputs/*).
 
 ![](images/clipboard-3123546063.png)
 
@@ -40,31 +233,167 @@ Luego, en la ventana que nos aparece, daremos click a *Existing directory*, lueg
 
 ## `Hello world!` (ejemplos sencillos)
 
-### Ejemplo 1.1
+### Ejemplo 1-1
 
 Iniciaremos con lo más sencillo: crear un script en R e imprimir el (famosísimo) mensaje "Hello world!".
 
-* Una vez dentro de la pantalla de RStudio, crearemos un nuevo script el cual contendrá una única línea:
+* Empezaremos abriendo una sesión de RStudio a partir del entorno JupyterLab (si desseas conocer cómo llegar hasta ahí, revisa el [post](https://luislaum.github.io/blog/marbec-data-gpu-intro/marbec-data-gpu-intro.html) de Introducción a `marbec-gpu`).
+
+* Una vez dentro del entorno RStudio, crearemos un nuevo script (*File -> New file -> R script*) el cual contendrá una única línea:
 
 ```{r}
 #| eval: false
 print("Hello world and hello marbec-gpu!")
 ```
 
-* Luego, guardaremos ese script con el nombre *code/ex1-1.R* (*code/* hace referencia a que el script deberá guardarse dentro de la subcarpeta *code/* que hemos creado anteriormente).
+* Luego, guardaremos ese script con el nombre *code/ex1-1.R* (*code/* hace referencia a una subcarpeta creada anteriormente dentro del *working directory* de nuestro proyecto en RStudio).
 
 * Ahora viene lo interesante, dentro de nuestro navegador, debemos volver a la pestaña de Launcher y abrir una ventana de **Terminal** (dando click al ícono correspondiente).
 
-* Por defecto, el Terminal se abre en la carpeta local asignada a nuestro usuario. Desde ahí, debemos llegar a la carpeta que hemos establecido como directorio de trabajo; es decir, la carpeta que nuestro script reconocerá como directorio de trabajo (ya sea que hayamos decidido usar RStudio o no para crearla o crear un proyecto dentro de ella). Nuestro script deberá estar contenido en esa carpeta (o en alguna de sus subcarpetas).
+* Por defecto, Terminal abrirá una sesión en la carpeta local asignada a nuestro usuario. Desde ahí, debemos llegar a la carpeta que hemos establecido como *working directory*; es decir, la carpeta que nuestro script reconocerá como directorio de trabajo (ya sea que hayamos decidido usar RStudio o no para crearla o crear un proyecto dentro de ella). Asumiendo que nuestro working directory es la carpeta `mgpu-examples/`, debemos llegar a ella utilizando el comando `cd`:
 
-### Ejemplo 1.2
+```{bash, eval=FALSE}
+cd mgpu-examples/
+```
 
-### Ejemplo 1.3
+::: {.callout-tip title="¿cómo saber que hemos llegado a la carpeta correcta?"}
+En primer lugar, el prompt indicará el nombre de la carpeta en la que se encuentra.
+
+![](images/clipboard-3123546064.png)
+
+Además, podemos ejecutar el comando `ls` con el que se mostrará las subcarpetas y archivos dentro de la carpeta a donde hemos llegado. Si todo coincide, pues lo hicimos bien.
+
+![](images/clipboard-3123546065.png)
+:::
+
+* A continuación, ejecutaremos en la Terminal la siguiente orden: `Rscript code/ex1-1.R` y el resultado deberá ser que justo lo que se nos mostraría en una sesión habitual de R.
+
+![](images/clipboard-3123546066.png)
+
+
+
+### Ejemplo 1-2
+
+En este siguiente ejemplo, mostraremos un script que genera y guarda archivos en nuestro *working directory* en donde previamente, crearemos dos carpetas nuevas (**figures/** y **outputs/**) a través del comando `mkdir` del siguiente modo:
+
+```{bash, eval=FALSE}
+mkdir figures/ outputs/
+```
+
+
+::: {.callout-note}
+Dentro del entorno de Terminal, no es posible observar gráficos de forma interactiva (como en RStudio), por lo que si se desea conservar cualquier figura, se deberá incluir siempre el código para guardarla dentro del script que ejecutemos. Dependiendo del entorno gráfico, podemos usar funciones como `png`, `bmp`, `jpeg`, `pdf` (para entorno **graphics**), o `ggsave` (para entorno **ggplot2**).
+:::
+
+* Ahora, vamos a RStudio para crear el siguiente script y a guardarlo en **code/ex1-2.R**:
+
+```{r, eval=FALSE}
+# Print mtcars
+print(mtcars)
+
+# Export mtcars as a csv
+write.csv(x = mtcars, file = "outputs/mtcars.csv")
+ 
+# Create and save a scatterplot
+png(filename = "figures/fig_1-1.png")
+
+plot(x = mtcars$mpg, y = mtcars$disp, 
+     xlab = "Miles per (US) gallon", ylab = "Displacement (cu.in.)")
+
+dev.off()
+```
+
+* Seguidamente, volvemos al entorno de Terminal y ejecutaremos nuestro nuevo script con el comando `Rscript code/ex1-2.R`. Inmediatamente, se mostrará la tabla de `mtcars` ya que eso es lo que ordena la primera línea de nuestro script. 
+
+![](images/clipboard-3123546067.png)
+
+* Sin embargo, si ejecutamos en Terminal el comando `ls` para las carpetas *figures/* y *outputs/*, veremos que aparecen los dos archivos que ordenamos crear dentro de nuestro script.
+
+![](images/clipboard-3123546068.png)
+
+* Si los archivos creados son los que esperamos recolectar de nuestro análisis, podemos descargarlos a través de Filezilla (ver el post correspondiente).
+
+::: {.callout-tip title="Previsualizar figuras"}
+Si bien no es posible obtener una previsualización de figuras en Terminal o JupyterLab ya que estos no cuentan con un visor de imágenes, sí es posible hacerlo desde el entorno web de `marbec-data`. No obstante, se trata de un visor básico y solo disponible para los tipos de archivos más comunes.
+:::
+
 
 ## `Hello universe!` (procesos en paralelo)
 
-### Ejemplo 2.1
+### Ejemplo 2-1: Un bucle en un solo núcleo
 
-### Ejemplo 2.2
+* Empezaremos creando un script (que guardaremos como *code/ex2-1.R*) que contenga un bucle sencillo que genere 20 matrices de 100x100 con valores aleatorios y las guarde en archivos csv distintos dentro de la carpeta *outputs/ex2-rndmats/* (recuerda que debes crear previamente esa carpeta usando `mkdir`):
 
-### Ejemplo 2.3
+```{r, eval=FALSE}
+# Setting number of rows and columns
+row_n <- 100
+col_n <- 100
+
+for(i in seq(20)){
+  # Create random matrix
+  rndMat <- matrix(data = runif(n = row_n*col_n), nrow = row_n, ncol = col_n)
+  
+  # Save matrix
+  write.csv(x = rndMat, 
+            file = sprintf(fmt = "outputs/ex2-rndmats/mat_%02d.csv", i), 
+            row.names = FALSE)
+  
+  # Print a message at the end of each step
+  cat(sprintf(fmt = "Matrix %02d finished!\n", i))
+}
+```
+
+* Ahora, ejecutaremos nuestro script en Terminal (con el comando `Rscript code/ex2-1.R`) y observaremos que todo ha ido bien si los mensajes al final de cada paso del bucle se muestran correctamente y si además al ejecutar el comando `ls` sobre la carpeta objetivo vemos los archivos creados:
+
+![](images/clipboard-3123546069.png)
+
+::: {.callout-tip title="Siempre correr un ejemplo pequeño primero"}
+Ya en una ejecución real, lo recomendable es siempre intentar con un ejemplo pequeño que nos permita corroborar que nuestro script va bien ANTES de poner toda la carne en el asador tratando de ejecutar el proceso pesado. Además, si nuestro script devuelve figuras o archivos, ejecutar un script pequeño de corroboración nos permite revisar rápidamente si los archivos generados con coherentes con lo que esperamos obtener. 
+:::
+
+
+### Ejemplo 2-2: Un bucle en múltiples núcleos
+
+* Partiendo del ejemplo anterior, convertiremos nuestro script en uno que ejecute los procesos de forma paralela. Para ello aprovecharemos las herramientas de los paquetes [foreach](https://cran.r-project.org/package=foreach) y [doParallel](https://cran.r-project.org/package=doParallel). Nótese que los nombres de los archivos de este script empezarán con las letras `mc_` para poder reconocerlos respecto a los obtenidos en el ejemplo anterior:
+
+```{r, eval=FALSE}
+# Setting number of rows and columns
+row_n <- 100
+col_n <- 100
+
+require(foreach)
+require(doParallel)
+
+# Registering cluster
+cl <- makeCluster(spec = 20)
+registerDoParallel(cl = cl)
+
+# Run multithread process
+out <- foreach(i = seq(20), .inorder = FALSE) %dopar% {
+# Create random matrix
+  rndMat <- matrix(data = runif(n = row_n*col_n), nrow = row_n, ncol = col_n)
+  
+  # Save matrix
+  write.csv(x = rndMat, 
+            file = sprintf(fmt = "outputs/ex2-rndmats/mc_mat_%02d.csv", i), 
+            row.names = FALSE)
+  
+  NULL
+}
+
+# Finish cluster
+stopCluster(cl)
+```
+
+
+* Ahora, ejecutaremos nuestro script en Terminal (con el comando `Rscript code/ex2-2.R`) y observaremos que todo ha ido bien si al ejecutar el comando `ls` sobre la carpeta objetivo vemos los archivos creados:
+
+![](images/clipboard-3123546070.png)
+
+:::{.callout-note}
+Es importante notar un par de cosas:
+
+* En el script del segundo ejemplo, `foreach` se encuentra asignado a un objeto (`out`) el cual recibirá el último objeto generado dentro de cada paso del loop. Si lo que se desea es únicamente obtener archivos que se exportarán (figuras, tablas, NetCDF, etc.), hay que asegurarse de dejar un `NULL` en la última línea dentro del bucle. Por otro lado, si lo que se desea es obtener un objeto y éste se coloca en esa posición, `foreach` lo compilará utilizando la función `list`, i.e. el objeto final (`out`) será una lista que tendrá tantos niveles como pasos haya en el bucle. Así mismo, es importante tener en cuenta que internamente `foreach` ejecuta una pequeña sesión de R aparte por lo que es necesario indicar los paquetes adicionales requeridos a través del argumento `.packages` (ver el ejemplo siguiente).
+
+* El argumento `spec = 20` dentro de `makeCluster` hace referencia a la cantidad de hilos de proceso que se utilizarán para ejecutar el bucle, ¿recuerdas que una de las opciones al momento de crear tu server en `marbec-gpu` era elegir la cantidad de CPUs (2, 4, 8, 16, 32...)? Bueno, pues es justamente con este argumento en donde indicarás esa cantidad de nucleos lógicos. Recuerda que otro aspecto importante es la RAM. En un momento determinado cada proceso corriendo dentro de cada hilo tendrá que cargar todo lo que necesitaría un solo proceso simple. Dicho de otro modo, si en un proceso de núcleo simple, en cada paso de nuestro bucle se tiene que cargar 5 archivos NetCDF que ocupan 5 GB en RAM, si ejecutamos ese proceso en multinúcleo y definimos `spec = 40`, en un momento se tendrán que cargar 5GBx40 (200 GB) en RAM en simultáneo. Así que no solo debes elegir bien la configuración de tu servidor (respecto al script que planeas ejecutar), sino también un aproximado de lo que se consume en cada proceso independiente, con el fin de no saturar tu servidor. `marbec-gpu` es grande, pero tiene sus límites.
+:::
