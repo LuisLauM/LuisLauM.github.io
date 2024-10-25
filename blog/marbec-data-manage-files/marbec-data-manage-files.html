@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-10-23">
-<meta name="description" content="A quick list of the main commands to use within the marbec-gpu Terminal. | Un listado rápido de los principales comandos para usar dentro de la Terminal de marbec-gpu.">
+<meta name="dcterms.date" content="2024-10-24">
+<meta name="description" content="How to manage files and carpetas to and from marbec-data? | ¿Cómo gestionar archivos y carpetas desde y hacia marbec-data?">
 
-<title>Main commands in marbec-gpu Terminal – Beneath the surface 🌊</title>
+<title>Managing files within marbec-data – Beneath the surface 🌊</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -156,31 +122,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
   <ul>
-  <li><a href="#en-main-commands-in-marbec-gpu-terminal" id="toc-en-main-commands-in-marbec-gpu-terminal" class="nav-link active" data-scroll-target="#en-main-commands-in-marbec-gpu-terminal">[EN] Main commands in <code>marbec-gpu</code> Terminal</a>
+  <li><a href="#en-managing-files-fromto-marbec-data" id="toc-en-managing-files-fromto-marbec-data" class="nav-link active" data-scroll-target="#en-managing-files-fromto-marbec-data">[EN] Managing files from/to <code>marbec-data</code></a>
   <ul class="collapse">
-  <li><a href="#browsing-within-folders" id="toc-browsing-within-folders" class="nav-link" data-scroll-target="#browsing-within-folders">Browsing within folders</a></li>
-  <li><a href="#create-a-folder" id="toc-create-a-folder" class="nav-link" data-scroll-target="#create-a-folder">Create a folder</a></li>
-  <li><a href="#get-the-content-of-a-folder-as-a-list" id="toc-get-the-content-of-a-folder-as-a-list" class="nav-link" data-scroll-target="#get-the-content-of-a-folder-as-a-list">Get the content of a folder as a list</a></li>
-  <li><a href="#generate-a-list-of-filesfolders-and-display-the-size-of-each-item" id="toc-generate-a-list-of-filesfolders-and-display-the-size-of-each-item" class="nav-link" data-scroll-target="#generate-a-list-of-filesfolders-and-display-the-size-of-each-item">Generate a list of files/folders and display the size of each item</a></li>
+  <li><a href="#create-a-shared-work-folder" id="toc-create-a-shared-work-folder" class="nav-link" data-scroll-target="#create-a-shared-work-folder">Create a shared work folder</a></li>
+  <li><a href="#linking-a-working-folder-to-marbec-gpu." id="toc-linking-a-working-folder-to-marbec-gpu." class="nav-link" data-scroll-target="#linking-a-working-folder-to-marbec-gpu.">Linking a working folder to <code>marbec-gpu</code>.</a></li>
+  <li><a href="#managing-files-between-marbec-data-and-our-pc-filezilla" id="toc-managing-files-between-marbec-data-and-our-pc-filezilla" class="nav-link" data-scroll-target="#managing-files-between-marbec-data-and-our-pc-filezilla">Managing files between <code>marbec-data</code> and our PC (FileZilla)</a>
+  <ul class="collapse">
+  <li><a href="#installing-filezilla-and-connecting-to-marbec-data." id="toc-installing-filezilla-and-connecting-to-marbec-data." class="nav-link" data-scroll-target="#installing-filezilla-and-connecting-to-marbec-data.">Installing FileZilla and connecting to <code>marbec-data</code>.</a></li>
+  <li><a href="#copying-files-and-folders" id="toc-copying-files-and-folders" class="nav-link" data-scroll-target="#copying-files-and-folders">Copying files and folders</a></li>
+  </ul></li>
+  <li><a href="#manage-files-within-marbec-data." id="toc-manage-files-within-marbec-data." class="nav-link" data-scroll-target="#manage-files-within-marbec-data.">Manage files within <code>marbec-data</code>.</a>
+  <ul class="collapse">
   <li><a href="#copy-paste" id="toc-copy-paste" class="nav-link" data-scroll-target="#copy-paste">Copy-paste</a></li>
   <li><a href="#cut-paste-and-also-rename" id="toc-cut-paste-and-also-rename" class="nav-link" data-scroll-target="#cut-paste-and-also-rename">Cut-paste (and also rename)</a></li>
   <li><a href="#delete" id="toc-delete" class="nav-link" data-scroll-target="#delete">Delete</a></li>
-  <li><a href="#display-current-processes" id="toc-display-current-processes" class="nav-link" data-scroll-target="#display-current-processes">Display current processes</a></li>
-  <li><a href="#stop-a-process" id="toc-stop-a-process" class="nav-link" data-scroll-target="#stop-a-process">Stop a process</a></li>
-  <li><a href="#viewing-a-plain-text-file" id="toc-viewing-a-plain-text-file" class="nav-link" data-scroll-target="#viewing-a-plain-text-file">Viewing a plain text file</a></li>
   </ul></li>
-  <li><a href="#es-principales-comandos-en-terminal-de-marbec-gpu" id="toc-es-principales-comandos-en-terminal-de-marbec-gpu" class="nav-link" data-scroll-target="#es-principales-comandos-en-terminal-de-marbec-gpu">[ES] Principales comandos en Terminal de <code>marbec-gpu</code></a>
+  </ul></li>
+  <li><a href="#es-manejando-archivos-desdehacia-marbec-data" id="toc-es-manejando-archivos-desdehacia-marbec-data" class="nav-link" data-scroll-target="#es-manejando-archivos-desdehacia-marbec-data">[ES] Manejando archivos desde/hacia <code>marbec-data</code></a>
   <ul class="collapse">
-  <li><a href="#navegar-entre-carpetas" id="toc-navegar-entre-carpetas" class="nav-link" data-scroll-target="#navegar-entre-carpetas">Navegar entre carpetas</a></li>
-  <li><a href="#crear-una-carpeta" id="toc-crear-una-carpeta" class="nav-link" data-scroll-target="#crear-una-carpeta">Crear una carpeta</a></li>
-  <li><a href="#generar-un-listado-de-archivos" id="toc-generar-un-listado-de-archivos" class="nav-link" data-scroll-target="#generar-un-listado-de-archivos">Generar un listado de archivos</a></li>
-  <li><a href="#generar-un-listado-de-archivoscarpetas-mostrando-el-tamaño-de-cada-elemento" id="toc-generar-un-listado-de-archivoscarpetas-mostrando-el-tamaño-de-cada-elemento" class="nav-link" data-scroll-target="#generar-un-listado-de-archivoscarpetas-mostrando-el-tamaño-de-cada-elemento">Generar un listado de archivos/carpetas mostrando el tamaño de cada elemento</a></li>
+  <li><a href="#crear-una-carpeta-de-trabajo-compartida" id="toc-crear-una-carpeta-de-trabajo-compartida" class="nav-link" data-scroll-target="#crear-una-carpeta-de-trabajo-compartida">Crear una carpeta de trabajo compartida</a></li>
+  <li><a href="#enlazar-una-carpeta-de-trabajo-a-marbec-gpu" id="toc-enlazar-una-carpeta-de-trabajo-a-marbec-gpu" class="nav-link" data-scroll-target="#enlazar-una-carpeta-de-trabajo-a-marbec-gpu">Enlazar una carpeta de trabajo a <code>marbec-gpu</code></a></li>
+  <li><a href="#gestionar-archivos-entre-marbec-data-y-nuestra-pc-filezilla" id="toc-gestionar-archivos-entre-marbec-data-y-nuestra-pc-filezilla" class="nav-link" data-scroll-target="#gestionar-archivos-entre-marbec-data-y-nuestra-pc-filezilla">Gestionar archivos entre <code>marbec-data</code> y nuestra PC (FileZilla)</a>
+  <ul class="collapse">
+  <li><a href="#instalando-filezilla-y-conectándonos-a-marbec-data" id="toc-instalando-filezilla-y-conectándonos-a-marbec-data" class="nav-link" data-scroll-target="#instalando-filezilla-y-conectándonos-a-marbec-data">Instalando FileZilla y conectándonos a <code>marbec-data</code></a></li>
+  <li><a href="#copiar-archivos-y-carpetas" id="toc-copiar-archivos-y-carpetas" class="nav-link" data-scroll-target="#copiar-archivos-y-carpetas">Copiar archivos y carpetas</a></li>
+  </ul></li>
+  <li><a href="#gestionar-archivos-dentro-de-marbec-data" id="toc-gestionar-archivos-dentro-de-marbec-data" class="nav-link" data-scroll-target="#gestionar-archivos-dentro-de-marbec-data">Gestionar archivos dentro de <code>marbec-data</code></a>
+  <ul class="collapse">
   <li><a href="#copiar-pegar" id="toc-copiar-pegar" class="nav-link" data-scroll-target="#copiar-pegar">Copiar-pegar</a></li>
   <li><a href="#cortar-pegar-y-también-renombrar" id="toc-cortar-pegar-y-también-renombrar" class="nav-link" data-scroll-target="#cortar-pegar-y-también-renombrar">Cortar-pegar (y también renombrar)</a></li>
   <li><a href="#borrar" id="toc-borrar" class="nav-link" data-scroll-target="#borrar">Borrar</a></li>
-  <li><a href="#visualizar-procesos-en-curso" id="toc-visualizar-procesos-en-curso" class="nav-link" data-scroll-target="#visualizar-procesos-en-curso">Visualizar procesos en curso</a></li>
-  <li><a href="#detener-la-ejecución-de-un-proceso" id="toc-detener-la-ejecución-de-un-proceso" class="nav-link" data-scroll-target="#detener-la-ejecución-de-un-proceso">Detener la ejecución de un proceso</a></li>
-  <li><a href="#visualizar-un-archivo-de-texto-plano" id="toc-visualizar-un-archivo-de-texto-plano" class="nav-link" data-scroll-target="#visualizar-un-archivo-de-texto-plano">Visualizar un archivo de texto plano</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -194,87 +166,96 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="about-contents">
     <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Main commands in <code>marbec-gpu</code> Terminal</h1>
+<h1 class="title">Managing files within <code>marbec-data</code></h1>
 </div>
 <div>
   <div class="description">
-    <p>A quick list of the main commands to use within the <code>marbec-gpu</code> Terminal. | Un listado rápido de los principales comandos para usar dentro de la Terminal de <code>marbec-gpu</code>.</p>
+    <p>How to manage files and carpetas to and from <code>marbec-data</code>? | ¿Cómo gestionar archivos y carpetas desde y hacia <code>marbec-data</code>?</p>
   </div>
 </div>
 <div class="quarto-title-meta">
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 23, 2024</p>
+      <p class="date">October 24, 2024</p>
     </div>
   </div>
   </div>
 </header> <main class="content" id="quarto-document-content">
 
-<p>Image credits: Kajetan Sumila at <a href="https://unsplash.com/photos/black-metal-tools-on-brown-wooden-shelf-sXPR9JV270c?utm_content=creditShareLink&amp;utm_medium=referral&amp;utm_source=unsplash">Unplash</a></p>
-<section id="en-main-commands-in-marbec-gpu-terminal" class="level1">
-<h1>[EN] Main commands in <code>marbec-gpu</code> Terminal</h1>
-<p>The first thing to keep in mind is that <code>marbec-gpu</code> has Ubuntu installed, so the commands listed below will be the same as the ones used in that OS. This article will show a description of the main usage modes for each command, but if you have any additional requirements, you can always search in forums like <a href="https://stackoverflow.com/">Stackoverflow</a> or check the help for each command, which consists of placing the command name followed by <code>--help</code>. For example, if I want to know the help for the <code>ls</code> command, just run <code>ls --help</code> in the Terminal.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Upper and lower case">
+<p>Image credits: Declan Sun at <a href="https://unsplash.com/photos/a-shelf-filled-with-lots-of-white-boxes-8byGIDpCU1w?utm_content=creditShareLink&amp;utm_medium=referral&amp;utm_source=unsplash">Unplash</a></p>
+<section id="en-managing-files-fromto-marbec-data" class="level1">
+<h1>[EN] Managing files from/to <code>marbec-data</code></h1>
+<section id="create-a-shared-work-folder" class="level2">
+<h2 data-anchor-id="create-a-shared-work-folder">Create a shared work folder</h2>
+<p>[Content in preparation]</p>
+</section>
+<section id="linking-a-working-folder-to-marbec-gpu." class="level2">
+<h2 data-anchor-id="linking-a-working-folder-to-marbec-gpu.">Linking a working folder to <code>marbec-gpu</code>.</h2>
+<p>[Content in preparation]</p>
+</section>
+<section id="managing-files-between-marbec-data-and-our-pc-filezilla" class="level2">
+<h2 data-anchor-id="managing-files-between-marbec-data-and-our-pc-filezilla">Managing files between <code>marbec-data</code> and our PC (FileZilla)</h2>
+<section id="installing-filezilla-and-connecting-to-marbec-data." class="level3">
+<h3 data-anchor-id="installing-filezilla-and-connecting-to-marbec-data.">Installing FileZilla and connecting to <code>marbec-data</code>.</h3>
+<p>The easiest way to move (copy, cut and paste) files from our PC to one of our shared work folders or to our <code>marbec-gpu</code> user folder is through the (free) FileZilla software. To download the installer, just go to its official website <a href="https://filezilla-project.org/" class="uri">https://filezilla-project.org/</a> and select the <strong>Download FileZilla Client</strong> button.</p>
+<p><img src="images/clipboard-1730566289.png" class="img-fluid"></p>
+<p>Then, by default we will be offered to download the version corresponding to the operating system (OS) where we are running our browser, but we can always choose the most appropriate version in the section <em>More download options</em>.</p>
+<p><img src="images/clipboard-1730566290.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Operating systems and CPU architectures">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Upper and lower case
+Operating systems and CPU architectures
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>As in R or Python, the use of upper or lower case when indicating an option does matter. For example, <code>ls -D</code> is not equivalent to <code>ls -d</code>, so be carefull.</p>
+<p>In recent years, processors with ARM architecture have been incorporated into the PC market. The most recent and famous example is Apple’s Mx series (e.g.&nbsp;M1); however, in recent months laptops with ARM processors (from the Snapdragon brand, for instance) have also appeared. Software compiled for an ARM architecture will not work on an x86 architecture (which is the architecture manufactured by brands such as Intel or AMD) and vice versa, so it will always be important to know not only which OS our PC is running (Windows, MacOS or Linux), but also the architecture of our processor.</p>
 </div>
 </div>
-<section id="browsing-within-folders" class="level3">
-<h3 data-anchor-id="browsing-within-folders">Browsing within folders</h3>
+<p>Once the file has been downloaded, it will be enough to run it leaving most of the options by default (except those that offer us to install some additional program that we do not need, e.g.&nbsp;Chrome). After that, we will be able to run the program and we will obtain an environment that will look like this:</p>
+<p><img src="images/clipboard-1730566291.png" class="img-fluid"></p>
+<p>The next thing we will do is to establish a connection to <code>marbec-data</code>. To do this, at the top, we will fill in the following fields:</p>
 <ul>
-<li>Command: <code>cd</code></li>
-<li>Usage: <code>cd path/folder</code></li>
+<li>Server: marbec-data.ird.fr</li>
+<li>User: youruser</li>
+<li>Password: yourpassword</li>
+<li>Port: 22</li>
 </ul>
-<p>To indicate a previous position (folder), you will use the <em>statement</em> <code>..</code> as follows: <code>../path/folder1</code> (this indicates that there is a folder called <code>path</code> from the folder where you are, and that that has a folder called <code>folder1</code> as well).</p>
-</section>
-<section id="create-a-folder" class="level3">
-<h3 data-anchor-id="create-a-folder">Create a folder</h3>
-<ul>
-<li>Command: <code>mkdir</code></li>
-<li>Usage: <code>mkdir path/folder</code></li>
-</ul>
-</section>
-<section id="get-the-content-of-a-folder-as-a-list" class="level3">
-<h3 data-anchor-id="get-the-content-of-a-folder-as-a-list">Get the content of a folder as a list</h3>
-<ul>
-<li>Command: <code>ls</code></li>
-<li>Usage: <code>ls path/folder/</code></li>
-</ul>
-<p>Main options:</p>
-<ul>
-<li><code>--all</code> (o <code>-a</code>): Displays all files and subfolders, including those protected (hidden) by the system.</li>
-</ul>
-</section>
-<section id="generate-a-list-of-filesfolders-and-display-the-size-of-each-item" class="level3">
-<h3 data-anchor-id="generate-a-list-of-filesfolders-and-display-the-size-of-each-item">Generate a list of files/folders and display the size of each item</h3>
-<ul>
-<li>Command: <code>du</code></li>
-<li>Usage: <code>du path/to/file.csv</code> o <code>du path/to/folder</code></li>
-</ul>
-<p>Main options:</p>
-<ul>
-<li><p><code>--human-readable</code> (o <code>-h</code>): changes the units dynamically to avoid displaying all Kb. This is especially useful when you have large objects (subfolders or files).</p></li>
-<li><p><code>--summary</code> (o <code>-s</code>): displays a summary table, i.e.&nbsp;it only includes the subfolders and files present at the first search level. This is useful when we just want to take a quick look and avoid displaying a complete listing of ALL internal subfolders.</p></li>
-</ul>
-<p>If I want to get a list of all the files and folders inside a folder with their respective sizes (the three options are equivalent):</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">du</span> ruta/de/folder/<span class="pp">*</span> <span class="at">--human-readable</span> <span class="at">--summarize</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">du</span> ruta/de/folder/<span class="pp">*</span> <span class="at">-h</span> <span class="at">-s</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">du</span> ruta/de/folder/<span class="pp">*</span> <span class="at">-hs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If all goes well, a message indicating that the connection has been successful will be displayed in the panel immediately below. In addition, the next two lower panels to the right will show those folders already linked and available in our <code>marbec-data</code> account.</p>
+<p><img src="images/clipboard-1730566292.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is not necessary to log in every time we log back into FileZilla. We could save our login and skip the above steps by clicking the small arrow to the right of <strong>Quick Login</strong> and selecting our saved login. Of course, allowing our login credentials to be saved should ONLY occur on our personal PC.</p>
+<p><img src="images/clipboard-1730566293.png" class="img-fluid"></p>
+</div>
+</div>
+<p>And that is all! In the left panels, we will be able to navigate in the directories of our PC, while in the right panels we will be able to do it in the <code>marbec-gpu</code> and <code>marbec-data</code> ones.</p>
 </section>
+<section id="copying-files-and-folders" class="level3">
+<h3 data-anchor-id="copying-files-and-folders">Copying files and folders</h3>
+<p>It will be as simple as dragging the element between the left and right panels. The process will start and the bottom pane (the last one) will show the queued, completed and failed transfers.</p>
+<p><img src="images/clipboard-1730566294.png" class="img-fluid"></p>
+<p>Also, if at any time FileZilla detects that there are repeated items, it will show a small window with multiple options available (overwrite and skip, verify differences in sizes or names, apply the selected option to future cases in the transfer queue, etc.).</p>
+<p><img src="images/clipboard-1730566295.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="manage-files-within-marbec-data." class="level2">
+<h2 data-anchor-id="manage-files-within-marbec-data.">Manage files within <code>marbec-data</code>.</h2>
+<p>While the <code>marbec-data</code> web environment explorer offers the options to copy, paste, delete, etc., it is not an efficient method when our files are medium or large (&gt;10 MB). Here is how to perform these operations from <strong>Terminal</strong>.</p>
 <section id="copy-paste" class="level3">
 <h3 data-anchor-id="copy-paste">Copy-paste</h3>
-<p>For this, the simplest way is through the <code>cp</code> command and making use of the navigation commands cited in this post (e.g.&nbsp;<code>..</code> to indicate a previous folder). The basic syntax is the following: <code>cp path/origin /path/destination</code>, but there are different possible cases:</p>
+<p>For this, the simplest way is through the <code>cp</code> command and making use of the navigation commands cited in this <a href="https://luislaum.github.io/blog/marbec-gpu-main-cmds/marbec-gpu-main-cmds.html">post</a> (e.g.&nbsp;<code>..</code> to indicate a previous folder). The basic syntax is the following: <code>cp path/origin /path/destination</code>, but there are different possible cases:</p>
 <ul>
 <li><p>Copy a file into the same folder, but with a different name (create duplicate): <code>cp file1.csv file1-dup.csv</code>.</p></li>
 <li><p>Copy a file to another folder: <code>cp path/file1.csv path/destination</code>.</p></li>
@@ -326,85 +307,80 @@ No turning back
 </div>
 </div>
 </section>
-<section id="display-current-processes" class="level3">
-<h3 data-anchor-id="display-current-processes">Display current processes</h3>
-<ul>
-<li>Command: <code>top</code></li>
-</ul>
-<p>When you run it, it will show in interactive mode in Terminal the processes that are running, as well as the resources used by each of them (basically like a Task Manager). To exit this interactive mode, just press the <code>q</code> key.</p>
-</section>
-<section id="stop-a-process" class="level3">
-<h3 data-anchor-id="stop-a-process">Stop a process</h3>
-<p>If we want to force the closing or the cancellation of a process already started, we can use the shortcut <code>Ctrl+C</code> (or <code>Cmd+C</code> in MacOS). It is important to keep in mind that forcing the closing of a process that had in progress the handling of files or folders (creation, copy, etc.) can leave the generated files unusable.</p>
-</section>
-<section id="viewing-a-plain-text-file" class="level3">
-<h3 data-anchor-id="viewing-a-plain-text-file">Viewing a plain text file</h3>
-<p>By default, there are two tools available from Terminal: <code>vi</code> and <code>nano</code>. The syntax for their execution is as simple as <code>vi path/file1.txt</code> or <code>nano path/file1.txt</code>, where <code>file1.txt</code> can be any plain text file (e.g.&nbsp;an R or Python script). The navigation shortcuts within each of these environments are different, but documentation is abundant on the Internet. Choose the one you like best.</p>
 </section>
 </section>
-<section id="es-principales-comandos-en-terminal-de-marbec-gpu" class="level1">
-<h1>[ES] Principales comandos en Terminal de <code>marbec-gpu</code></h1>
-<p>Lo primero que debemos tener en cuenta es que <code>marbec-gpu</code> lleva instalado Ubuntu, por lo que los comandos listados a continuación serán los mismos que se usan en dicho SO. En este artículo se mostrará una descripción de los principales modos de uso para cada comando, pero si usted tiene algún requerimiento adicional, siempre puede buscar en foros como Stackoverflow o revisar la ayuda de cada comando, que consiste en colocar el nombre del comando seguido de <code>--help</code>. Por ejemplo, si deseo conocer la ayuda del comando <code>ls</code>, bastará con ejecutar <code>ls --help</code> en la Terminal.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Mayúsculas y minúsculas">
+<section id="es-manejando-archivos-desdehacia-marbec-data" class="level1">
+<h1>[ES] Manejando archivos desde/hacia <code>marbec-data</code></h1>
+<section id="crear-una-carpeta-de-trabajo-compartida" class="level2">
+<h2 data-anchor-id="crear-una-carpeta-de-trabajo-compartida">Crear una carpeta de trabajo compartida</h2>
+<p>[Contenido en preparación]</p>
+</section>
+<section id="enlazar-una-carpeta-de-trabajo-a-marbec-gpu" class="level2">
+<h2 data-anchor-id="enlazar-una-carpeta-de-trabajo-a-marbec-gpu">Enlazar una carpeta de trabajo a <code>marbec-gpu</code></h2>
+<p>[Contenido en preparación]</p>
+</section>
+<section id="gestionar-archivos-entre-marbec-data-y-nuestra-pc-filezilla" class="level2">
+<h2 data-anchor-id="gestionar-archivos-entre-marbec-data-y-nuestra-pc-filezilla">Gestionar archivos entre <code>marbec-data</code> y nuestra PC (FileZilla)</h2>
+<section id="instalando-filezilla-y-conectándonos-a-marbec-data" class="level3">
+<h3 data-anchor-id="instalando-filezilla-y-conectándonos-a-marbec-data">Instalando FileZilla y conectándonos a <code>marbec-data</code></h3>
+<p>La manera más sencilla de mover (copiar, cortar y pegar) archivos desde nuestra PC hacia alguna de nuestras carpetas de trabajos compartidas o hacia nuestra carpeta de usuario de <code>marbec-gpu</code> es a través del software (gratuito) FileZilla. Para descargar el instalador, basta con ir a su sitio web oficial <a href="https://filezilla-project.org/" class="uri">https://filezilla-project.org/</a> y seleccionar el botón <strong>Download FileZilla Client</strong>.</p>
+<p><img src="images/clipboard-1730566289.png" class="img-fluid"></p>
+<p>Luego, por defecto se nos ofrecerá descargar la versión correspondiente al sistema operativo (SO) en donde estemos ejecutando nuestro navegador, pero siempre podremo elegir la versión más adecuada en la sección <em>More download options</em>.</p>
+<p><img src="images/clipboard-1730566290.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Sistemas Operativos y arquitecturas de procesador">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Mayúsculas y minúsculas
+Sistemas Operativos y arquitecturas de procesador
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Al igual que en R o Python, el uso de mayúsculas o minúsculas al momento de indicar una opción sí importa. Por ejemplo, <code>ls -D</code> no equivale a <code>ls -d</code>, por lo que se debe tener cuidado.</p>
+<p>En los últimos años, se ha ido incorporando al mercado de PCs los procesadores con arquitectura ARM. El ejemplo más reciente y famoso es la serie Mx de Apple (e.g.&nbsp;M1); sin embargo, en los últimos meses también han aparecido laptops con procesadores ARM (de la marca Snapdragon, por ejemplo). Un software compilado para una arquitectura ARM no funcionará en una arquitectura x86 (que es la arquitectura fabricada por marcas como Intel o AMD) y viceversa, por lo que siempre será importante conocer no solamente qué SO lleva nuestra PC (Windows, MacOS o Linux), sino también la arquitectura de nuestro procesador.</p>
 </div>
 </div>
-<section id="navegar-entre-carpetas" class="level3">
-<h3 data-anchor-id="navegar-entre-carpetas">Navegar entre carpetas</h3>
+<p>Una vez descargado el archivo, bastará con ejecutarlo dejando la mayor parte de opciones por defecto (salvo aquellas que nos ofrezcan instalar algún programa adicional que no necesitemos, e.g.&nbsp;Chrome). Luego de ello, podremos ejecutar el programa y obtendremos un entorno que lucirá así:</p>
+<p><img src="images/clipboard-1730566291.png" class="img-fluid"></p>
+<p>Lo siguiente que haremos será establecer una conexión a <code>marbec-data</code>. Para ello, en la parte superior, completaremos los siguientes campos:</p>
 <ul>
-<li>Comando: <code>cd</code></li>
-<li>Modo de uso: <code>cd ruta/carpeta</code></li>
+<li>Servidor: marbec-data.ird.fr</li>
+<li>Usuario: nuestrousuario</li>
+<li>Contraseña: nuestracontraseña</li>
+<li>Puerto: 22</li>
 </ul>
-<p>Para indicar que se desea ir a una posición (carpeta) anterior, se utilizará el <em>statement</em> <code>..</code> de la siguiente manera: <code>../ruta/carpeta1</code> (esto indica que a partir de la carpeta en donde nos encontramos, en la carpeta anterior hay una carpeta llamada <code>ruta</code> que a su vez tiene una llamada <code>carpeta1</code>).</p>
-</section>
-<section id="crear-una-carpeta" class="level3">
-<h3 data-anchor-id="crear-una-carpeta">Crear una carpeta</h3>
-<ul>
-<li>Comando: <code>mkdir</code></li>
-<li>Modo de uso: <code>mkdir ruta/carpeta</code></li>
-</ul>
-</section>
-<section id="generar-un-listado-de-archivos" class="level3">
-<h3 data-anchor-id="generar-un-listado-de-archivos">Generar un listado de archivos</h3>
-<ul>
-<li>Comando: <code>ls</code></li>
-<li>Modo de uso: <code>ls ruta/folder</code></li>
-</ul>
-<p>Principales opciones:</p>
-<ul>
-<li><code>--all</code> (o <code>-a</code>): Muestra todos los archivos y subcarpetas, incluyendo aquellos protegidos (ocultos) por el sistema.</li>
-</ul>
-</section>
-<section id="generar-un-listado-de-archivoscarpetas-mostrando-el-tamaño-de-cada-elemento" class="level3">
-<h3 data-anchor-id="generar-un-listado-de-archivoscarpetas-mostrando-el-tamaño-de-cada-elemento">Generar un listado de archivos/carpetas mostrando el tamaño de cada elemento</h3>
-<ul>
-<li>Comando: <code>du</code></li>
-<li>Modo de uso: <code>du ruta/archivo-folder.csv</code></li>
-</ul>
-<p>Principales opciones:</p>
-<ul>
-<li><p><code>--human-readable</code> (o <code>-h</code>): cambia las unidades dinámicamente para evitar mostrar todo Kb. Esto es especialmente útil cuando se tiene objetos (subcarpetas o archivos) de gran tamaño.</p></li>
-<li><p><code>--summary</code> (o <code>-s</code>): muestra una tabla resumida, i.e.&nbsp;solo incluye las subcarpetas y archivos presentes en el primer nivel de búsqueda. Esto es útil cuando solo queremos echar un vistazo rápido y evitar que muestre un listado completo de TODAS las subcarpetas internas.</p></li>
-</ul>
-<p>Si deseo obtener un listado de todos los archivos y carpetas dentro de un folder con sus respectivos tamaños (las tres opciones son equivalentes):</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">du</span> ruta/de/folder/<span class="pp">*</span> <span class="at">--human-readable</span> <span class="at">--summarize</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">du</span> ruta/de/folder/<span class="pp">*</span> <span class="at">-h</span> <span class="at">-s</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">du</span> ruta/de/folder/<span class="pp">*</span> <span class="at">-hs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Si todo va bien, en el panel inmediato inferior se mostrará un mensaje indicado que la conexión ha sido exitosa. Además, en los dos paneles inferiores siguientes a la derecha se mostrará aquellas carpetas ya enlazadas y disponibles en nuestra cuenta de <code>marbec-data</code>.</p>
+<p><img src="images/clipboard-1730566292.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No es necesario iniciar sesión cada vez que ingresemos nuevamente a FileZilla. Si decidimos que deseamos que guarde nuestro inicio de sesión, podremos obviar los pasos anteriores dando click a la pequeña flecha a la derecha de <strong>Conexión rápida</strong> y seleccionando nuestro inició de sesión guardado. Por supuesto, el permitir que se guarden nuestras credenciales de inicio de sesión SOLO debe ocurrir en nuestra PC de uso personal.</p>
+<p><img src="images/clipboard-1730566293.png" class="img-fluid"></p>
+</div>
+</div>
+<p>¡Y eso es todo! En los paneles de la izquierda, podremos navegar en los directorios de nuestra PC, mientras que en los paneles de la derecha podremos hacerlo en los de <code>marbec-gpu</code> y <code>marbec-data</code>.</p>
 </section>
+<section id="copiar-archivos-y-carpetas" class="level3">
+<h3 data-anchor-id="copiar-archivos-y-carpetas">Copiar archivos y carpetas</h3>
+<p>Será tan sencillo como arrastrar el elemento entre los paneles izquierdo y derecho. El proceso iniciará y en el panel inferior (el último) se mostrará las transferencias en cola, las completadas y las fallidas.</p>
+<p><img src="images/clipboard-1730566294.png" class="img-fluid"></p>
+<p>Así mismo, si en algún momento FileZilla detecta que hay elementos repetidos, nos mostrará una ventana pequeña con múltiples opciones disponibles (sobreescribir y omitir, verificar diferenencias en tamaños o nombres, aplicar la opción seleccionada a futuros casos en la cola de transferencia, etc.).</p>
+<p><img src="images/clipboard-1730566295.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="gestionar-archivos-dentro-de-marbec-data" class="level2">
+<h2 data-anchor-id="gestionar-archivos-dentro-de-marbec-data">Gestionar archivos dentro de <code>marbec-data</code></h2>
+<p>Si bien el explorador del entorno web de <code>marbec-data</code> ofrece las opciones de copiar, pegar, eliminar, etc., no es un método eficiente cuando nuestros archivos son medianos o grandes (&gt;10 MB). A continuación, se mostrará cómo realizar estas operaciones desde <strong>Terminal</strong>.</p>
 <section id="copiar-pegar" class="level3">
 <h3 data-anchor-id="copiar-pegar">Copiar-pegar</h3>
-<p>Para esto, la manera más sencilla es a través del comando <code>cp</code> y haciendo uso de los comandos de navegación citados en este post (e.g.&nbsp;<code>..</code> para indicar una carpeta anterior). La sintaxis básica es la siguiente: <code>cp ruta/de/origen ruta/de/destino</code>, pero existen diferentes casos posibles:</p>
+<p>Para esto, la manera más sencilla es a través del comando <code>cp</code> y haciendo uso de los comandos de navegación citados en este <a href="https://luislaum.github.io/blog/marbec-gpu-main-cmds/marbec-gpu-main-cmds.html">post</a> (e.g.&nbsp;<code>..</code> para indicar una carpeta anterior). La sintaxis básica es la siguiente: <code>cp ruta/de/origen ruta/de/destino</code>, pero existen diferentes casos posibles:</p>
 <ul>
 <li><p>Copiar un archivo dentro de la misma carpeta, pero con un nombre distinto (crear duplicado): <code>cp archivo1.csv archivo1-dup.csv</code></p></li>
 <li><p>Copiar un archivo hacia otra carpeta: <code>cp ruta/de/archivo1.csv carpeta/de/destino</code></p></li>
@@ -455,23 +431,9 @@ No hay vuelta atrás
 <p>Si bien dentro de Terminal siempre es posible cancelar una orden usando el atajo <code>Ctrl+C</code> (o <code>Cmd+C</code> en MacOS), una vez que se ejecuta el comando <code>rm</code> y éste culmina su trabajo, <strong>no hay manera de revertir lo borrado</strong> ni recuperarlo desde alguna papelera de reciclaje, así que ten mucho cuidado al usarlo.</p>
 </div>
 </div>
-</section>
-<section id="visualizar-procesos-en-curso" class="level3">
-<h3 data-anchor-id="visualizar-procesos-en-curso">Visualizar procesos en curso</h3>
-<ul>
-<li>Comando: <code>top</code></li>
-</ul>
-<p>Al ejecutarlo, se mostrará en modo interactivo en Terminal los procesos que se están ejecutando, así como los recursos utilizados por cada uno de ellos (básicamente como un Administrador de tareas). Para salir de este modo interactivo, basta con pulsar la tecla <code>q</code>.</p>
-</section>
-<section id="detener-la-ejecución-de-un-proceso" class="level3">
-<h3 data-anchor-id="detener-la-ejecución-de-un-proceso">Detener la ejecución de un proceso</h3>
-<p>Si queremos forzar el cierre o la cancelación de un proceso ya iniciado, podemos utilizar el atajo <code>Ctrl+C</code> (o <code>Cmd+C</code> en MacOS). Es importante tener en cuenta que forzar el cierre de un proceso que tenía en marcha el manejo de archivos o carpetas (creación, copia, etc.) puede dejar inutilizables los archivos generados.</p>
-</section>
-<section id="visualizar-un-archivo-de-texto-plano" class="level3">
-<h3 data-anchor-id="visualizar-un-archivo-de-texto-plano">Visualizar un archivo de texto plano</h3>
-<p>Por defecto, desde Terminal existen dos herramientas disponibles: <code>vi</code> y <code>nano</code>. La sintaxis para su ejecución es tan sencilla como <code>vi ruta/archivo1.txt</code> o <code>nano ruta/archivo1.txt</code>, en donde <code>archivo1.txt</code> puede ser cualquier archivo de texto plano (e.g.&nbsp;un script en R o Python). Los atajos de navegación dentro de cada uno de esos entornos sí son distintos, pero la documentación es muy abundante en Internet. Elige el que te agrade más.</p>
 
 
+</section>
 </section>
 </section>
 </main> 
