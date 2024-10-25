@@ -1,0 +1,223 @@
+---
+title: "Managing files within `marbec-data`"
+description: |
+  How to manage files and carpetas to and from `marbec-data`? | ¿Cómo gestionar archivos y carpetas desde y hacia `marbec-data`?
+date: 2024-10-24
+image: banner.jpg
+about: 
+  template: marquee
+  image-shape: rectangle
+draft: false
+---
+
+Image credits: Declan Sun at [Unplash](https://unsplash.com/photos/a-shelf-filled-with-lots-of-white-boxes-8byGIDpCU1w?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash)
+
+# [EN] Managing files from/to `marbec-data`
+
+## Create a shared work folder
+
+\[Content in preparation]
+
+## Linking a working folder to `marbec-gpu`.
+
+\[Content in preparation]
+
+## Managing files between `marbec-data` and our PC (FileZilla)
+
+### Installing FileZilla and connecting to `marbec-data`.
+
+The easiest way to move (copy, cut and paste) files from our PC to one of our shared work folders or to our `marbec-gpu` user folder is through the (free) FileZilla software. To download the installer, just go to its official website <https://filezilla-project.org/> and select the **Download FileZilla Client** button.
+
+![](images/clipboard-1730566289.png)
+
+Then, by default we will be offered to download the version corresponding to the operating system (OS) where we are running our browser, but we can always choose the most appropriate version in the section *More download options*.
+
+![](images/clipboard-1730566290.png)
+
+::: {.callout-caution title="Operating systems and CPU architectures"}
+In recent years, processors with ARM architecture have been incorporated into the PC market. The most recent and famous example is Apple's Mx series (e.g. M1); however, in recent months laptops with ARM processors (from the Snapdragon brand, for instance) have also appeared. Software compiled for an ARM architecture will not work on an x86 architecture (which is the architecture manufactured by brands such as Intel or AMD) and vice versa, so it will always be important to know not only which OS our PC is running (Windows, MacOS or Linux), but also the architecture of our processor.
+:::
+
+Once the file has been downloaded, it will be enough to run it leaving most of the options by default (except those that offer us to install some additional program that we do not need, e.g. Chrome). After that, we will be able to run the program and we will obtain an environment that will look like this:
+
+![](images/clipboard-1730566291.png)
+
+
+The next thing we will do is to establish a connection to `marbec-data`. To do this, at the top, we will fill in the following fields:
+
+* Server: marbec-data.ird.fr
+* User: youruser
+* Password: yourpassword
+* Port: 22
+
+If all goes well, a message indicating that the connection has been successful will be displayed in the panel immediately below. In addition, the next two lower panels to the right will show those folders already linked and available in our `marbec-data` account. 
+
+![](images/clipboard-1730566292.png)
+
+:::{.callout-note}
+It is not necessary to log in every time we log back into FileZilla. We could save our login and skip the above steps by clicking the small arrow to the right of **Quick Login** and selecting our saved login. Of course, allowing our login credentials to be saved should ONLY occur on our personal PC.
+
+![](images/clipboard-1730566293.png)
+:::
+
+And that is all! In the left panels, we will be able to navigate in the directories of our PC, while in the right panels we will be able to do it in the `marbec-gpu` and `marbec-data` ones. 
+
+### Copying files and folders
+
+It will be as simple as dragging the element between the left and right panels. The process will start and the bottom pane (the last one) will show the queued, completed and failed transfers. 
+
+![](images/clipboard-1730566294.png)
+
+Also, if at any time FileZilla detects that there are repeated items, it will show a small window with multiple options available (overwrite and skip, verify differences in sizes or names, apply the selected option to future cases in the transfer queue, etc.). 
+
+![](images/clipboard-1730566295.png)
+
+## Manage files within `marbec-data`.
+
+While the `marbec-data` web environment explorer offers the options to copy, paste, delete, etc., it is not an efficient method when our files are medium or large (>10 MB). Here is how to perform these operations from **Terminal**.
+
+### Copy-paste
+
+For this, the simplest way is through the `cp` command and making use of the navigation commands cited in this [post](https://luislaum.github.io/blog/marbec-gpu-main-cmds/marbec-gpu-main-cmds.html) (e.g. `..` to indicate a previous folder). The basic syntax is the following: `cp path/origin /path/destination`, but there are different possible cases:
+
+* Copy a file into the same folder, but with a different name (create duplicate): `cp file1.csv file1-dup.csv`.
+
+* Copy a file to another folder: `cp path/file1.csv path/destination`.
+
+* Copy more than one file to another folder: `cp path/file1.csv path/file2.csv folder/destination` 
+
+* Copy a folder to another folder: `cp path/folder1 path/folder2 --recursive` or `cp path/folder1 path/folder2 -r`.
+
+:::{.callout-note}
+By default, `cp` will overwrite any file with the same name. To avoid this, it is possible to add the `-n` option as follows: `cp path/from/file1.csv path/destination -n`.
+:::
+
+### Cut-paste (and also rename)
+
+It will be very similar to the above, but through the `mv` command:
+
+* Rename a file (within the same folder): `mv file1.csv file2.csv`
+
+* Move a file to another folder: `mv path/file1.csv path/to/destination`
+
+* Move one file to another folder: `mv path/file1.csv path/file2.csv path/destination`
+
+* Move one folder to another folder: `mv path/old/folder path/new/folder`
+
+
+### Delete
+
+For this, we will use the `rm` command as follows:
+
+* Delete a file: `rm path/to/file.csv` 
+
+* Delete a folder (and all its contents): `rm path/to/folder -r`
+
+:::{.callout-caution title="No turning back"}
+While inside Terminal it is always possible to cancel a command using the shortcut `Ctrl+C` (or `Cmd+C` on MacOS), once the `rm` command completes its work, **there is no way to revert the deletion** or recover it from a recycle garbage can, so be very careful when using it.
+:::
+
+# [ES] Manejando archivos desde/hacia `marbec-data`
+
+## Crear una carpeta de trabajo compartida
+
+\[Contenido en preparación\]
+
+## Enlazar una carpeta de trabajo a `marbec-gpu`
+
+\[Contenido en preparación\]
+
+## Gestionar archivos entre `marbec-data` y nuestra PC (FileZilla)
+
+### Instalando FileZilla y conectándonos a `marbec-data`
+
+La manera más sencilla de mover (copiar, cortar y pegar) archivos desde nuestra PC hacia alguna de nuestras carpetas de trabajos compartidas o hacia nuestra carpeta de usuario de `marbec-gpu` es a través del software (gratuito) FileZilla. Para descargar el instalador, basta con ir a su sitio web oficial <https://filezilla-project.org/> y seleccionar el botón **Download FileZilla Client**.
+
+![](images/clipboard-1730566289.png)
+
+Luego, por defecto se nos ofrecerá descargar la versión correspondiente al sistema operativo (SO) en donde estemos ejecutando nuestro navegador, pero siempre podremo elegir la versión más adecuada en la sección *More download options*.
+
+![](images/clipboard-1730566290.png)
+
+::: {.callout-caution title="Sistemas Operativos y arquitecturas de procesador"}
+En los últimos años, se ha ido incorporando al mercado de PCs los procesadores con arquitectura ARM. El ejemplo más reciente y famoso es la serie Mx de Apple (e.g. M1); sin embargo, en los últimos meses también han aparecido laptops con procesadores ARM (de la marca Snapdragon, por ejemplo). Un software compilado para una arquitectura ARM no funcionará en una arquitectura x86 (que es la arquitectura fabricada por marcas como Intel o AMD) y viceversa, por lo que siempre será importante conocer no solamente qué SO lleva nuestra PC (Windows, MacOS o Linux), sino también la arquitectura de nuestro procesador.
+:::
+
+Una vez descargado el archivo, bastará con ejecutarlo dejando la mayor parte de opciones por defecto (salvo aquellas que nos ofrezcan instalar algún programa adicional que no necesitemos, e.g. Chrome). Luego de ello, podremos ejecutar el programa y obtendremos un entorno que lucirá así:
+
+![](images/clipboard-1730566291.png)
+
+
+Lo siguiente que haremos será establecer una conexión a `marbec-data`. Para ello, en la parte superior, completaremos los siguientes campos:
+
+* Servidor: marbec-data.ird.fr
+* Usuario: nuestrousuario
+* Contraseña: nuestracontraseña
+* Puerto: 22
+
+Si todo va bien, en el panel inmediato inferior se mostrará un mensaje indicado que la conexión ha sido exitosa. Además, en los dos paneles inferiores siguientes a la derecha se mostrará aquellas carpetas ya enlazadas y disponibles en nuestra cuenta de `marbec-data`. 
+
+![](images/clipboard-1730566292.png)
+
+:::{.callout-note}
+No es necesario iniciar sesión cada vez que ingresemos nuevamente a FileZilla. Si decidimos que deseamos que guarde nuestro inicio de sesión, podremos obviar los pasos anteriores dando click a la pequeña flecha a la derecha de **Conexión rápida** y seleccionando nuestro inició de sesión guardado. Por supuesto, el permitir que se guarden nuestras credenciales de inicio de sesión SOLO debe ocurrir en nuestra PC de uso personal.
+
+![](images/clipboard-1730566293.png)
+:::
+
+¡Y eso es todo! En los paneles de la izquierda, podremos navegar en los directorios de nuestra PC, mientras que en los paneles de la derecha podremos hacerlo en los de `marbec-gpu` y `marbec-data`. 
+
+### Copiar archivos y carpetas
+
+Será tan sencillo como arrastrar el elemento entre los paneles izquierdo y derecho. El proceso iniciará y en el panel inferior (el último) se mostrará las transferencias en cola, las completadas y las fallidas. 
+
+![](images/clipboard-1730566294.png)
+
+Así mismo, si en algún momento FileZilla detecta que hay elementos repetidos, nos mostrará una ventana pequeña con múltiples opciones disponibles (sobreescribir y omitir, verificar diferenencias en tamaños o nombres, aplicar la opción seleccionada a futuros casos en la cola de transferencia, etc.). 
+
+![](images/clipboard-1730566295.png)
+
+## Gestionar archivos dentro de `marbec-data`
+
+Si bien el explorador del entorno web de `marbec-data` ofrece las opciones de copiar, pegar, eliminar, etc., no es un método eficiente cuando nuestros archivos son medianos o grandes (>10 MB). A continuación, se mostrará cómo realizar estas operaciones desde **Terminal**.
+
+### Copiar-pegar
+
+Para esto, la manera más sencilla es a través del comando `cp` y haciendo uso de los comandos de navegación citados en este [post](https://luislaum.github.io/blog/marbec-gpu-main-cmds/marbec-gpu-main-cmds.html) (e.g. `..` para indicar una carpeta anterior). La sintaxis básica es la siguiente: `cp ruta/de/origen ruta/de/destino`, pero existen diferentes casos posibles:
+
+* Copiar un archivo dentro de la misma carpeta, pero con un nombre distinto (crear duplicado): `cp archivo1.csv archivo1-dup.csv`
+
+* Copiar un archivo hacia otra carpeta: `cp ruta/de/archivo1.csv carpeta/de/destino`
+
+* Copiar más de un archivo hacia otra carpeta: `cp ruta/de/archivo1.csv ruta/de/archivo2.csv carpeta/de/destino`
+
+* Copiar una carpeta en otra carpeta: `cp ruta/de/carpeta1 ruta/de/carpeta2 --recursive` o `cp ruta/de/carpeta1 ruta/de/carpeta2 -r`
+
+:::{.callout-note}
+Por defecto, `cp` sobreescribirá cualquier archivo con el mismo nombre. Para evitarlo, es posible añadir la opción `-n` del siguiente modo: `cp ruta/de/archivo1.csv ruta/de/destino -n`
+:::
+
+### Cortar-pegar (y también renombrar)
+
+Será muy similar a lo anterior, pero a través del comando `mv`:
+
+* Renombrar un archivo (dentro de la misma carpeta): `mv archivo1.csv archivo2.csv`
+
+* Mover un archivo hacia otra carpeta: `mv ruta/de/archivo1.csv carpeta/de/destino`
+
+* Mover más de un archivo hacia otra carpeta: `mv ruta/de/archivo1.csv ruta/de/archivo2.csv carpeta/de/destino`
+
+* Mover una carpeta hacia otra carpeta: `mv ruta/antigua/carpeta ruta/nueva/carpeta` 
+
+
+### Borrar
+
+Para esto, utilizaremos el comando `rm` de la siguiente manera:
+
+* Borrar un archivo: `rm ruta/de/archivo.csv`
+
+* Borrar una carpeta (y todo su contenido): `rm ruta/de/carpeta -r`
+
+:::{.callout-caution title="No hay vuelta atrás"}
+Si bien dentro de Terminal siempre es posible cancelar una orden usando el atajo `Ctrl+C` (o `Cmd+C` en MacOS), una vez que se ejecuta el comando `rm` y éste culmina su trabajo, **no hay manera de revertir lo borrado** ni recuperarlo desde alguna papelera de reciclaje, así que ten mucho cuidado al usarlo.
+:::
