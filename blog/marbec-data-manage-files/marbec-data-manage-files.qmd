@@ -3,7 +3,7 @@ title: "Managing files within `marbec-data`"
 description: |
   How to manage files and carpetas to and from `marbec-data`? | ¿Cómo gestionar archivos y carpetas desde y hacia `marbec-data`?
 date: 2024-10-24
-image: banner.jpg
+image: banner.png
 about: 
   template: marquee
   image-shape: rectangle
