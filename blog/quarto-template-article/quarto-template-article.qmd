@@ -1,0 +1,64 @@
+---
+title: "Quarto template for a scientific article draft"
+description: |
+  A simple template in Quarto for writing a scientific article. | Una plantilla simple en Quarto para redactar un artículo científico.
+date: 2024-10-29
+image: banner.jpg
+about: 
+  template: marquee
+  image-shape: rectangle
+draft: true
+engine: knitr
+---
+
+Image credits: Daria Glakteeva at [Unplash](https://unsplash.com/photos/a-person-typing-on-a-laptop-on-a-desk-2w0IdiEI-hg?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash)
+
+# [EN] Let's working with `marbec-gpu`
+
+
+
+# [ES] Empezando a trabajar con `marbec-gpu`
+
+## Requerimientos
+
+* RStudio: <https://posit.co/downloads/>
+* Quarto: Si bien la propia instalación de RStudio ya incluye una versión de Quarto, es posible instalar versiones beta o anteriores desde <https://quarto.org/docs/download/index.html>.
+* Lenguajes de programación: En mi experiencia, he podido probar esta plantilla usando código en R, pero eso no limita su uso con otros lenguajes de programación (espero).
+* Repositorio de referencia: <https://github.com/LuisLauM/quarto-template-scientific-article>. Ahí se encuentran los archivos necesarios para ejecutar lo mostrado en este post: script principal en formato Quarto (archivos `article_v1.qmd` y `letter_editor.qmd`), referencias bibliográficas en formato BibTeX (archivo `bibliography.bib`), formato de citación (para este ejemplo, archivo `ices-journal-of-marine-science.csl`) y plantilla en MS Word (archivo `custom-reference-doc.docx`). Los archivos podrán ir variando conforme este post se actualice.
+* Experiencia en la escritura de documentos usando Quarto (o R markdown). La mejor manera de aprender a usar Quarto es usándolo e ir hallando lo necesario para obtener lo que necesitamos a partir de manuales en línea (e.g. desde la propia web de [Quarto](https://quarto.org/)), [vídeos en YT](https://youtu.be/_f3latmOhew?feature=shared) o preguntas en diversos foros (e.g. [Stackoverflow](https://stackoverflow.com/questions/tagged/quarto)).
+
+## Pasos previos y algunos consejos
+
+### Archivos, orden y modo de trabajo
+
+Si bien cada investigador (persona) tiene una manera distinta de ordenar los archivos de un proyecto, una de las primeras recomendaciones que puedo hacer es la de definir un proyecto en RStudio en donde al menos haya una carpeta diferenciada en donde se almacenará el contenido del artículo que vamos a escribir. Para nuestro ejemplo, utilizaremos el esquema del propio repositorio en donde está almacenada la plantilla. Es decir, se asumirá que partimos desde una carpeta general en donde están almacenado nuestros datos, figuras, código, resultados y demás, y en donde una de las subcarpetas (llamada `article`) es en donde se almacenará todo lo necesario para generar el artículo. 
+
+### *Quarto extensions*
+
+Las extensiones de Quarto son básicamente scripts que añaden funcionalidades adicionales y que son soportadas por la comunidad. Quarto maneja una filosofía de entornos independientes, por lo que, a diferencia de R, la instalación de las extensiones de hacerse de manera local en cada proyecto en que vayamos a ejecutar nuestro script de Quarto. Para efectos del presente post, vamos a utilizar una extensión llamada **kapsner/authors-block**, la cual **ya viene incluidas** en el repositorio de referencia (dentro de la carpeta `/article/_extensions`). Sin embargo, las necesidades de cada usuario son distintas y es posible que alguna característica particular requiera el uso de alguna extensión adicional. El listado oficial de extensiones se encuentra disponible en <https://quarto.org/docs/extensions/> y los pasos para su instalación en <https://quarto.org/docs/extensions/managing.html>. Adicionalmente, diferentes usuarios de la comunidad de Quarto desarrollan extensiones y las comparten en distintos repositorios como Github, Gitlab, etc., pero siempre su instalación deberá hacerse dentro de la carpeta `_extensions/` de nuestro proyecto.
+
+## Plantilla principal (de artículo científico)
+
+### Header
+
+La parte inicial del script de esta plantilla se compone un `header` (en formato YAML) en donde se mostrará las opciones generales de nuestro documento:
+
+* `title` (entre comillas)
+* `authors`, en donde podremos incluir datos como nombre, código ORCID, URL de referencia y afiliación. 
+* `affiliations` en donde se requiere que indiquemos un identificador (que usaremos como referencia para los autores) y el nombre (`name`) completo de la afiliación, tal como querramos que aparezca en el documento. 
+* `filters`, en donde listaremos las *Quarto extensions* que deseamos que se carguen al inicio del documento (y que se buscarán en la carpeta `/_extensions`).
+* `link-citations`, en donde podremos definir (true/false) si deseamos que las citas bibliográficas en el documento final se enlacen a la referencia correspondiente en la sección final de Bibliografía.
+* `bibliography`, en donde indicaremos el archivo en donde se hallan nuestras referencias bibliográficas en formato BibTeX.
+* `csl`, en donde indicaremos el archivo que utilizará Quarto para establecer el formato de citación de referencias bibliográficas.
+* `format`, en donde se indicará parámetros específicos del archivo de salida. Para este ejemplo, todo está configurado para obtener un archivo en MS Word (`.docx`).
+
+
+### First *chunk*
+
+Un *chunk* es una sección dentro del documento que se haya escrita en algún formato particular asociado a código (bash, R, Python, SQL, etc.). La sintaxis general dentro de un archivo de Quarto es la siguiente:
+
+
+
+
+
+## Plantilla adicional (de carta al editor)
