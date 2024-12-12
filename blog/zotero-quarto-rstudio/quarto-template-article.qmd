@@ -1,0 +1,55 @@
+---
+title: "How to insert bibliographic references from Zotero in Quarto files?"
+description: |
+  Automatically insert bibliographic citations from Zotero into Quarto files through RStudio. | Insertar citas bibliográficas automáticamente desde Zotero en archivos Quarto a través de RStudio.
+date: 2024-11-12
+image: banner.png
+about: 
+  template: marquee
+  image-shape: rectangle
+draft: true
+engine: knitr
+---
+
+Image credits: RetroSupply at [Unplash](https://unsplash.com/photos/vintage-teal-typewriter-beside-book-jLwVAUtLOAQ?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash)
+
+# \[EN\] Let's working with `marbec-gpu`
+
+# \[ES\] Zotero + Quarto + RStudio + \[extras\]
+
+Quarto se está volviendo cada vez más una poderosa alternativa para la generación de diversos tipos de documentos y reportes. Por su parte, Zotero es uno de los administradores de citas bibliográficas más extendido y utilizado, no solo por ser software libre, sino también porque la comunidad a su alrededor ha ido desarrollando muchos *pluggins* que permiten incrementar sus capacidades fuera de lo ofrecido por sus propios desarrolladores. Finalmente, RStudio es uno de los IDE preferidos en la comunidad de programadores en R, R markdown y Quarto, por su simplicidad y potencia, pero también por permitir la incorporación de *addins* (la analogía de *pluggings*) a través de paquetes de R.
+
+En el presente artículo, veremos cómo a través de un paquete de R es posible añadir la posibilidad en RStudio de insertar citas bibliográficas desde Zotero en archivos Quarto (y también en R markdown) de manera muy sencilla (aprendiendo uno o dos atajos de teclado).
+
+## Software necesario
+
+Como ya imaginarán, es necesario tener instalados: R, RStudio, Zotero (de preferencia, con una cuenta logueada y con algunas referencias que podamos usar como ejemplo) y Quarto (este último viene junto a la instalación de **las últimas versiones de RStudio**).
+
+## Instalando el *addin*
+
+Como mencioné, en RStudio es posible añadir capacidades extra al IDE a través de addins. Para nuestro caso, utilizaremos un paquete que contiene los addins necesarios para interconectar nuestra interfaz de RStudio con Zotero. El paquete referido se llama **rbbt** y, si bien NO es un paquete oficial de CRAN, podemos descargarlo directamente desde su [repositorio en Github](https://github.com/paleolimbot/rbbt).
+
+Ahora bien, usted puede decidir descargar y utilizar la versión oficial del paquete; sin embargo, al día en que escribo este artículo, yo he tomado la versión oficial de **rbbt** y he creado la mía propia en donde corrijo ciertos problemas y añado ciertas funcionalidades (e.g., el poder citar paquetes de R). El presente tutorial muestra cómo instalar y usar la versión (*forked*) [disponible en mi perfil de Github](https://github.com/LuisLauM/rbbt), pero usted esto es código libre, por lo que usted decide (hasta incluso puede crear su propia versión y añadir funcionalidades más interesantes).
+
+Para instalar el paquete, bastará con ejecutar las siguiente línea en R:
+
+```{r}
+#| eval: false
+
+# Para esto, debe instalar previamente el paquete 'remotes'
+remotes::install_github(repo = "LuisLauM/rbbt")
+```
+
+Una vez que haya culminado la instalación, podremos revisar que se haya añadido correctamente a nuestro menú de Addins, que se encuentra justo al final de la barra de accesos rápidos de RStudio:
+
+![Al hacer click en el menú desplegable de Addins, podremos buscar que se encuentre ahora los comandos de Insertar citas y Añadir bibliografía:](images/clipboard-4171540842.png)
+
+![](images/clipboard-1339714737.png)
+
+A partir de este punto, ya es posible realizar esas acciones a través de dar click a esos botones, pero esto resulta MUY incómodo de hacer durante la redacción de un artículo o reporte, por lo que a continuación les mostraré cómo añadir un atajo de teclado para esos dos principales comandos.
+
+## Atajos de teclado para los comandos de **rbbt**
+
+Añadir atajos de teclado en RStudio es muy sencillo, basta con ir al menú **Tools** --\> **Modify keyboard shortcuts** y, en la ventana que aparecerá, utilizar el pequeño buscador arriba a la derecha para hallar aquellos comandos relacionados con Zotero. Aparecerán 3, de los cuales, por experiencia propia, solo les he asignado un atajo a los de *Insertar cita* y *Actualizar bibliografía*. Para asignar una combinación de teclas, bastará con dar click al espacio a la derecha del nombre de cada comando (en la columna *Shortcut*) y presionar la combinación deseada: en mi caso, utilizo las combinaciones de *Ctrl + K* y *Ctrl + U* respectivamente, pero eso dependerá dese su sistema operativo hasta el hecho de que no haya otros comandos asignados a esa combinación.
+
+![](images/clipboard-1989719168.png)
