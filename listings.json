@@ -2,10 +2,6 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/blog/marbec-gpu-run-process/marbec-gpu-run-process.html",
-      "/blog/marbec-data-manage-files/marbec-data-manage-files.html",
-      "/blog/marbec-gpu-main-cmds/marbec-gpu-main-cmds.html",
-      "/blog/marbec-data-gpu-intro/marbec-data-gpu-intro.html",
       "/blog/elnino-app/elnino-app.html",
       "/blog/about-this-website/about-this-website.html"
     ]
