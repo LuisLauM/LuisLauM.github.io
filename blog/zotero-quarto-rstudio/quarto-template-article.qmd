@@ -23,9 +23,37 @@ En el presente artículo, veremos cómo a través de un paquete de R es posible 
 
 ## Software necesario
 
-Como ya imaginarán, es necesario tener instalados: R, RStudio, Zotero (de preferencia, con una cuenta logueada y con algunas referencias que podamos usar como ejemplo) y Quarto (este último viene junto a la instalación de **las últimas versiones de RStudio**).
+Como ya imaginarán, es necesario tener instalados: [R](https://cran.r-project.org/), [RStudio](https://posit.co/downloads/), [Zotero](https://www.zotero.org/) (de preferencia, con una cuenta logueada y con algunas referencias que podamos usar como ejemplo) y [Quarto](https://quarto.org/docs/download/) (este último viene junto a la instalación de **las últimas versiones de RStudio**).
 
-## Instalando el *addin*
+## Instalando el *pluggin* de **RBB** en Zotero
+
+Citando las propias palabras de la [web oficial](https://retorque.re/zotero-better-bibtex/index.html) de este pluggin: *Better BibTeX (BBT) es un complemento para Zotero y Juris-M que facilita la gestión de los datos bibliográficos, especialmente para los autores de documentos que utilizan cadenas de herramientas basadas en texto (por ejemplo, LaTeX / Markdown)*.
+
+Su instalación está detallada en la propia web, pero haremos un resumen aquí:
+
+1.  Ir a la sección (pestaña) de Instalación:
+
+2.  Justamente en la primera frase de las instrucciones, las palabras *latest release* están de un color ligeramente distinto ya que contienen el link al repositorio de la última versión disponible del pluggin:
+
+    ![](images/clipboard-3846744947.png)
+
+3.  Al hacer click sobre ese link, se abrirá una ventana de repositorio en Github, desde donde deberemos descargar el archivo con extensión **.xpi**:
+
+    ![](images/clipboard-155659256.png)
+
+4.  Seguidamente, abriremos una ventana de Zotero e iremos al menú de *Tools –\> Pluggins*:
+
+    ![](images/clipboard-523717840.png)
+
+5.  Se abrirá una ventana que nos mostrará todos los pluggins instalados. Para instalar un pluggin nuevo, bastará con dar click al ícono de engranaje (arriba a la derecha) y dar click a la opción *Install Pluggins From File*:
+
+    ![](images/clipboard-4204702406.png)
+
+6.  Desde aquí, seleccionaremos el archivo xpi que descargamos en el paso \[3\] y, después de unos segundos, ya deberíamos observar nuestro nuevo pluggin BBT instalado y activo (porque sí, es posible desactivar pluggins):
+
+    ![](images/clipboard-3431742116.png)
+
+## Instalando el *addin* de **rbbt** en RStudio
 
 Como mencioné, en RStudio es posible añadir capacidades extra al IDE a través de addins. Para nuestro caso, utilizaremos un paquete que contiene los addins necesarios para interconectar nuestra interfaz de RStudio con Zotero. El paquete referido se llama **rbbt** y, si bien NO es un paquete oficial de CRAN, podemos descargarlo directamente desde su [repositorio en Github](https://github.com/paleolimbot/rbbt).
 
@@ -50,6 +78,36 @@ A partir de este punto, ya es posible realizar esas acciones a través de dar cl
 
 ## Atajos de teclado para los comandos de **rbbt**
 
-Añadir atajos de teclado en RStudio es muy sencillo, basta con ir al menú **Tools** --\> **Modify keyboard shortcuts** y, en la ventana que aparecerá, utilizar el pequeño buscador arriba a la derecha para hallar aquellos comandos relacionados con Zotero. Aparecerán 3, de los cuales, por experiencia propia, solo les he asignado un atajo a los de *Insertar cita* y *Actualizar bibliografía*. Para asignar una combinación de teclas, bastará con dar click al espacio a la derecha del nombre de cada comando (en la columna *Shortcut*) y presionar la combinación deseada: en mi caso, utilizo las combinaciones de *Ctrl + K* y *Ctrl + U* respectivamente, pero eso dependerá dese su sistema operativo hasta el hecho de que no haya otros comandos asignados a esa combinación.
+Añadir atajos de teclado en RStudio es muy sencillo, basta con ir al menú **Tools** --\> **Modify keyboard shortcuts** y, en la ventana que aparecerá, utilizar el pequeño buscador arriba a la derecha para hallar aquellos comandos relacionados con Zotero. Aparecerán 3, de los cuales, por experiencia propia, solo les he asignado un atajo a los de *Insertar cita* y *Actualizar bibliografía*. Para asignar una combinación de teclas, bastará con dar click al espacio a la derecha del nombre de cada comando (en la columna *Shortcut*) y presionar la combinación deseada: en mi caso, utilizo las combinaciones de *Ctrl + K* y *Ctrl + U* respectivamente, pero eso dependerá desde su sistema operativo (e.g. en MacOS no existe la tecla *Ctrl*), hasta el hecho de asegurarnos que no haya otros comandos previamente asignados a alguna de esas combinaciones de teclas.
 
 ![](images/clipboard-1989719168.png)
+
+¡Genial, ya tenemos todo listo! Ahora es momento de poner a prueba el *addin*.
+
+## Poner a prueba todo
+
+1.  Empezaremos por abrir un archivo en Quarto. Para ello iremos al menú de crear nuevo documento (arriba a la izquierda) y seleccionaremos el ícono correspondiente.
+
+    ![](images/clipboard-2662065352.png)
+
+2.  Seguidamente, en la ventana que se abrirá, seleccionaremos la opción de formato de salida en Word (esto es meramente ilustrativo, los comandos funcionará independientemente del formato de salida seleccionado). Importante: para este ejemplo, sugiero asegurarnos que la opción **Use visual markdown editor** esté deseleccionada.
+
+    ![](images/clipboard-4093841681.png)
+
+3.  Ahora, abriremos una ventana de Zotero. Esto es importante porque el *addin* de **rbbt** funciona únicamente si hay una sesión (ventana) de Zotero activa. Así mismo, para poder ejecutar con éxito los ejemplos de este tutorial, es necesario tener disponibles algunas entradas en nuestra biblioteca de referencias bibliográficas. A la fecha, en entorno Windows, una ventana de Zotero luce así:
+
+    ![](images/clipboard-4081344136.png)
+
+4.  A continuación, volveremos a nuestra ventana de RStudio en donde digitaremos algo de texto y seguidamente presionaremos la combinación de teclas asignada al comando de insertar cita (en este ejemplo, *Ctrl + K*). Lo que ocurrirá es que se abrirá una ventana muy delgada que nos servirá como interface con Zotero. En ella, podremos escribir todas las citas que deseamos incluir en nuestro texto:
+
+    ![](images/clipboard-1603275557.png)
+
+5.  El pluggin permite navegar utilizando únicamente el teclado, las teclas direccionales y la tecla Enter, así que no hay necesidad de tocar nuestro mouse. Así mismo, es posible insertar más de una cita en cada llamada:
+
+    ![](images/clipboard-4257070944.png)
+
+6.  Las citas pueden hacerse de forma libre o entre paréntesis; sin embargo, para el segundo caso, deberán colocarse las citas entre corchetes (y no entre los símbolos de paréntesis):
+
+    ![](images/clipboard-4173160137.png)
+
+7.  \
