@@ -1,0 +1,270 @@
+---
+title: "How to insert bibliographic references from Zotero in Quarto files?"
+description: |
+  Automatically insert bibliographic citations from Zotero into Quarto files through RStudio. | Insertar citas bibliográficas automáticamente desde Zotero en archivos Quarto a través de RStudio.
+date: 2024-12-16
+image: banner.png
+about: 
+  template: marquee
+  image-shape: rectangle
+draft: false
+engine: knitr
+---
+
+Image credits: RetroSupply at [Unplash](https://unsplash.com/photos/vintage-teal-typewriter-beside-book-jLwVAUtLOAQ?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash)
+
+# \[EN\] Zotero + Quarto + RStudio and extras
+
+Quarto is becoming more and more a powerful alternative for the generation of various types of documents and reports. Zotero is one of the most widespread and widely used bibliographic citation managers, not only because it is free software, but also because the community around it has been developing many *plug-ins* that allow to increase its capabilities beyond what is offered by its own developers. Finally, RStudio is one of the preferred IDE in the community of programmers in R, R markdown and Quarto, for its simplicity and power, but also for allowing the incorporation of *addins* (the analogy of plug-ins) through R packages.
+
+In this article, we will see how through an R package it is possible to add the possibility in RStudio to insert bibliographic citations from Zotero in Quarto files (and also in R markdown) in a very simple way (learning one or two keyboard shortcuts).
+
+## Required software
+
+As you can suppose, it is necessary to have installed: [R](https://cran.r-project.org/), [RStudio](https://posit.co/downloads/), [Zotero](https://www.zotero.org/) (preferably with a logged in account and with some references that we can use as an example) and [Quarto](https://quarto.org/docs/download/) (this last one comes with the installation of **the latest versions of RStudio**).
+
+## Installing **RBB** *plug-in* in Zotero
+
+To quote the words of the [official website](https://retorque.re/zotero-better-bibtex/index.html) of this plug-in: *Better BibTeX (BBT) is a plugin for Zotero and Juris-M that makes it easier to manage bibliographic data, especially for people authoring documents using text-based toolchains (e.g. based on LaTeX / Markdown)*.
+
+The installation is detailed in the web site itself, but we will make quick wrap-up:
+
+1. Go to the [Installation section (tab)](https://retorque.re/zotero-better-bibtex/installation/index.html):
+
+2. Right in the first sentence of the instructions, the words *latest release* are in a slightly different color as they contain the link to the repository of the latest available version of the plug-in:
+
+    ![](images/clipboard-3846744947.png)
+
+3.  Clicking on this link will open a repository window in Github, from where we must download the file with extension **.xpi**:
+
+    ![](images/clipboard-155659256.png)
+
+4.  Next, we will open a Zotero window and go to the **Tools → plug-ins** menu:
+
+    ![](images/clipboard-523717840.png)
+
+5.  A window will open showing all installed plug-ins. To install a new plug-in, just click on the gear icon (top right) and click on the *Install Pluggins From File* option:
+
+    ![](images/clipboard-4204702406.png)
+
+6.  From here, we will select the xpi file we downloaded in step [3] and, after a few seconds, we should see our new BBT plug-in installed and active (because yes, it is possible to deactivate plug-ins):
+
+    ![](images/clipboard-3431742116.png)
+
+## Installing the **rbbt** ~~package and~~ *addin* in RStudio
+
+As I mentioned, in RStudio it is possible to add extra capabilities to the IDE through addins. For our case, we will use a package that contains the addins needed to interface our RStudio interface with Zotero. The package referred to is called **rbbt** and, while it is NOT an official CRAN package, we can download it directly from their [repository on Github](https://github.com/paleolimbot/rbbt).
+
+Now, you may decide to download and use the official version of the package; however, as of this writing, I have taken the official version of **rbbt** and created my own version where I have corrected certain problems and added certain features (e.g., the ability to quote R packages). This tutorial shows how to install and use the (*forked*) version [available on my Github profile](https://github.com/LuisLauM/rbbt), but this is open source, so you decide (you can even create your own version and add more interesting features).
+
+To install the package, just run the following line in R:
+
+```{r}
+#| eval: false
+
+# To run this, you must first install the 'remotes' package
+remotes::install_github(repo = "LuisLauM/rbbt")
+```
+
+Once the installation is complete, we can check that it has been correctly added to our Addins menu, which is located right at the end of the RStudio shortcut bar:
+
+![](images/clipboard-4171540842.png)
+
+By clicking on the *Addins* drop-down menu, we can look for the *Insert Citation* command to be found now:
+
+![](images/clipboard-1339714737.png)
+
+From this point on, it is possible to perform those actions by clicking on those buttons, but this is VERY uncomfortable to do while writing an article or report, so we will now see how to add keyboard shortcuts for those commands.
+
+## Configuring **rbbt** shortcuts
+
+Adding keyboard shortcuts in RStudio is very simple, just go to the menu **Tools → Modify keyboard shortcuts** and, in the window that will appear, use the small search engine at the top right to find those commands related to Zotero. Three will appear, of which, from my own experience, I have only assigned a shortcut to *Insert citation*. To assign a key combination, just click on the space to the right of the name of each command (in the *Shortcut* column) and press the desired combination: in my case, I use the combinations of *Ctrl + K*, but this will depend on your operating system (e.g. in MacOS there is no *Ctrl* key), to make sure that there are no other commands previously assigned to any of those key combinations.
+
+![](images/clipboard-1989719168.png)
+
+Great, we're all set! It's time to test our changes.
+
+## Testing everything
+
+1.  We will start by opening a file in Quarto in HTML output format (this is merely illustrative, the commands will work regardless of the output format selected). **Important:** for this example, I suggest making sure that the **Use visual markdown editor** option is unchecked, since we will be working in *Source* mode.
+
+    ![](images/clipboard-1949640663.png)
+
+2.  Next, we will create an empty file where our bibliographic citations will be stored (for our example, we will name it **references.bib**). Then, in the header of our Quarto file (also called the YAML section), we will add a line where we will indicate the path to this created file:
+
+````{md}
+---
+title: "test_rbbt"
+format: html
+bibliography: references.bib
+---
+````
+
+3.  Also, to ensure that **rbbt** does NOT attempt to include references to figures, tables, equations, or other non-bibliographic elements, we will include the following code within a chunk at the beginning of our document:
+
+````{md}
+#| echo: false
+
+# Get current filepath
+currentFilePath <- this.path::this.path()
+
+# Get citation keys
+prefix2rm <- c("fig-", "tbl-", "eq-", "sec-", "lst-", "thm-")
+keys <- rbbt::bbt_detect_citations(path = currentFilePath)
+index2rm <- sapply(X = paste0("^", prefix2rm), FUN = grep, x = keys) |> 
+  
+  do.call(what = c)
+
+# Updating bib file
+rbbt::bbt_update_bib(path_rmd = currentFilePath, ignore = keys[index2rm], quiet = TRUE)
+````
+
+4.  Next, we will type some text and then press the key combination assigned to the insert quote command (remember the *Ctrl + K* shorcut?). What will happen is that a very thin window will open that will serve as an interface to Zotero. We will be able to type all the quotes we want to include in our text. The navigation between the suggested quotations is done with the arrow keys and the Enter key. It is also possible to add multiple quotes in each call of this small but powerful interface:
+
+    ![](images/clipboard-4257070944.png)
+    
+::: callout-note
+Quotations may be made freely or in parentheses; however, for the latter case, quotations should be placed in square brackets `[ ]` (and not between the parenthesis symbols).
+:::
+
+5.  Now yes, we render the document and we should get: 
+
+![](images/clipboard-3442020781.png)
+
+::: {.callout-note title="Render on Save"}
+It is highly recommended to enable the *Render on Save* option (located at the top next to the Save button), which allows us to Render and visualize our work just pressing *Ctrl + S* (Save shortcut).
+
+![](images/clipboard-1949640663.png)
+:::
+
+::: callout-note
+All the material needed to run this tutorial can be found in my repository, following this link [link](https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt).
+:::
+
+# \[ES\] Zotero + Quarto + RStudio y algo más
+
+Quarto se está volviendo cada vez más una poderosa alternativa para la generación de diversos tipos de documentos y reportes. Por su parte, Zotero es uno de los administradores de citas bibliográficas más extendido y utilizado, no solo por ser software libre, sino también porque la comunidad a su alrededor ha ido desarrollando muchos *plug-ins* que permiten incrementar sus capacidades fuera de lo ofrecido por sus propios desarrolladores. Finalmente, RStudio es uno de los IDE preferidos en la comunidad de programadores en R, R markdown y Quarto, por su simplicidad y potencia, pero también por permitir la incorporación de *addins* (la analogía de *plug-ings*) a través de paquetes de R.
+
+En el presente artículo, veremos cómo a través de un paquete de R es posible añadir la posibilidad en RStudio de insertar citas bibliográficas desde Zotero en archivos Quarto (y también en R markdown) de manera muy sencilla (aprendiendo uno o dos atajos de teclado).
+
+## Software necesario
+
+Como ya imaginarán, es necesario tener instalados: [R](https://cran.r-project.org/), [RStudio](https://posit.co/downloads/), [Zotero](https://www.zotero.org/) (de preferencia, con una cuenta logueada y con algunas referencias que podamos usar como ejemplo) y [Quarto](https://quarto.org/docs/download/) (este último viene junto a la instalación de **las últimas versiones de RStudio**).
+
+## Instalando el *plug-in* de **RBB** en Zotero
+
+Citando las propias palabras de la [web oficial](https://retorque.re/zotero-better-bibtex/index.html) de este plug-in: *Better BibTeX (BBT) es un complemento para Zotero y Juris-M que facilita la gestión de los datos bibliográficos, especialmente para los autores de documentos que utilizan cadenas de herramientas basadas en texto (por ejemplo, LaTeX / Markdown)*.
+
+Su instalación está detallada en la propia web, pero haremos un resumen aquí:
+
+1.  Ir a la [sección (pestaña) de Instalación](https://retorque.re/zotero-better-bibtex/installation/index.html):
+
+2.  Justamente en la primera frase de las instrucciones, las palabras *latest release* están de un color ligeramente distinto ya que contienen el link al repositorio de la última versión disponible del plug-in:
+
+    ![](images/clipboard-3846744947.png)
+
+3.  Al hacer click sobre ese link, se abrirá una ventana de repositorio en Github, desde donde deberemos descargar el archivo con extensión **.xpi**:
+
+    ![](images/clipboard-155659256.png)
+
+4.  Seguidamente, abriremos una ventana de Zotero e iremos al menú de **Tools → Plugins**:
+
+    ![](images/clipboard-523717840.png)
+
+5.  Se abrirá una ventana que nos mostrará todos los plug-ins instalados. Para instalar un plug-in nuevo, bastará con dar click al ícono de engranaje (arriba a la derecha) y dar click a la opción *Install Pluggins From File*:
+
+    ![](images/clipboard-4204702406.png)
+
+6.  Desde aquí, seleccionaremos el archivo xpi que descargamos en el paso \[3\] y, después de unos segundos, ya deberíamos observar nuestro nuevo plug-in BBT instalado y activo (porque sí, es posible desactivar plug-ins):
+
+    ![](images/clipboard-3431742116.png)
+
+## Instalando el *addin* de **rbbt** en RStudio
+
+Como mencioné, en RStudio es posible añadir capacidades extra al IDE a través de addins. Para nuestro caso, utilizaremos un paquete que contiene los addins necesarios para interconectar nuestra interfaz de RStudio con Zotero. El paquete referido se llama **rbbt** y, si bien NO es un paquete oficial de CRAN, podemos descargarlo directamente desde su [repositorio en Github](https://github.com/paleolimbot/rbbt).
+
+Ahora bien, usted puede decidir descargar y utilizar la versión oficial del paquete; sin embargo, al día en que escribo este artículo, yo he tomado la versión oficial de **rbbt** y he creado la mía propia en donde corrijo ciertos problemas y añado ciertas funcionalidades (e.g., el poder citar paquetes de R). El presente tutorial muestra cómo instalar y usar la versión (*forked*) [disponible en mi perfil de Github](https://github.com/LuisLauM/rbbt), pero esto es código libre, por lo que usted decide (hasta incluso puede crear su propia versión y añadir funcionalidades más interesantes).
+
+Para instalar el paquete, bastará con ejecutar las siguiente línea en R:
+
+```{r}
+#| eval: false
+
+# Para esto, debe instalar previamente el paquete 'remotes'
+remotes::install_github(repo = "LuisLauM/rbbt")
+```
+
+Una vez que haya culminado la instalación, podremos revisar que se haya añadido correctamente a nuestro menú de Addins, que se encuentra justo al final de la barra de accesos rápidos de RStudio:
+
+![](images/clipboard-4171540842.png)
+
+Al hacer click en el menú desplegable de Addins, podremos buscar que se encuentre ahora los comandos de Insertar citas y Añadir bibliografía:
+
+![](images/clipboard-1339714737.png)
+
+A partir de este punto, ya es posible realizar esas acciones a través de dar click a esos botones, pero esto resulta MUY incómodo de hacer durante la redacción de un artículo o reporte, por lo que a continuación veremos cómo añadir atajos de teclado para dichos comandos.
+
+## Atajos de teclado para los comandos de **rbbt**
+
+Añadir atajos de teclado en RStudio es muy sencillo, basta con ir al menú **Tools → Modify keyboard shortcuts** y, en la ventana que aparecerá, utilizar el pequeño buscador arriba a la derecha para hallar aquellos comandos relacionados con Zotero. Aparecerán 3, de los cuales bastará con asignar un atajo a *Insertar cita*. Para asignar una combinación de teclas, daremos click al espacio a la derecha del nombre del comando de interés (en la columna *Shortcut*) y presionar la combinación deseada: en mi caso, utilizo las combinación *Ctrl + K*, pero eso dependerá desde su sistema operativo (e.g. en MacOS no existe la tecla *Ctrl*), hasta el hecho de asegurarnos que no haya otros comandos previamente asignados a alguna de esas combinaciones de teclas.
+
+![](images/clipboard-1989719168.png)
+
+¡Genial, ya tenemos todo listo! Es momento de probar nuestros cambios.
+
+## Poner a prueba todo
+
+1.  Empezaremos por abrir un archivo en Quarto en formato de salida en HTML (esto es meramente ilustrativo, los comandos funcionará independientemente del formato de salida seleccionado). **Importante:** para este ejemplo, sugiero asegurarnos que la opción **Use visual markdown editor** esté deseleccionada, ya que trabajaremos en el modo *Source*.
+
+    ![](images/clipboard-1949640663.png)
+
+2.  Seguidamente, crearemos un archivo vacío en donde se guardarán nuestras citas bibliográficas (para nuestro ejemplo, le pondremos el nombre **references.bib**). Luego, en la cabecera de nuestro archivo de Quarto (llamada también la sección YAML), añadiremos una línea en donde indicaremos la ruta a este archivo creado:
+
+````{md}
+---
+title: "test_rbbt"
+format: html
+bibliography: references.bib
+---
+````
+
+3.  Así mismo, para asegurarnos de que **rbbt** NO intente incluir las referencias a figuras, tablas, ecuaciones, u otros elementos no bibliográficos, incluiremos el siguiente código dentro de un chunk al inicio de nuestro documento:
+
+````{md}
+#| echo: false
+
+# Get current filepath
+currentFilePath <- this.path::this.path()
+
+# Get citation keys
+prefix2rm <- c("fig-", "tbl-", "eq-", "sec-", "lst-", "thm-")
+keys <- rbbt::bbt_detect_citations(path = currentFilePath)
+index2rm <- sapply(X = paste0("^", prefix2rm), FUN = grep, x = keys) |> 
+  
+  do.call(what = c)
+
+# Updating bib file
+rbbt::bbt_update_bib(path_rmd = currentFilePath, ignore = keys[index2rm], quiet = TRUE)
+````
+
+4.  A continuación, digitaremos algo de texto y seguidamente presionaremos la combinación de teclas asignada al comando de insertar cita (en este ejemplo, *Ctrl + K*). Lo que ocurrirá es que se abrirá una ventana muy delgada que nos servirá como interface con Zotero. En ella, podremos escribir todas las citas que deseamos incluir en nuestro texto. La navegación entre las citas sugeridas la haremos con las teclas direccionales y la tecla Enter. Así mismo, es posible añadir múltiples citas en cada llamada de esta pequeña pero poderosa interfaz:
+
+    ![](images/clipboard-4257070944.png)
+    
+::: callout-note
+Las citas pueden hacerse de forma libre o entre paréntesis; sin embargo, para el segundo caso, deberán colocarse las citas entre corchetes `[ ]` (y no entre los símbolos de paréntesis).
+:::
+
+5.  Ahora sí, renderizamos el documento y deberíamos obtener: 
+
+![](images/clipboard-3442020781.png)
+
+::: {.callout-note title="Render on Save"}
+Es muy recomendable habilitar la opción de *Render on Save* (situada arriba al costado del botón de Guardar) que, como su nombre lo indica, permite Redenrizar al Guardar, lo que permite que solo presiones *Ctrl + S* para visualizar nuestro trabajo en Quarto.
+
+![](images/clipboard-1949640663.png)
+:::
+
+::: callout-note
+Todo el material necesario para ejecutar este tutorial se puede encontrar en mi repositorio, siguiendo este [link](https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt).
+:::

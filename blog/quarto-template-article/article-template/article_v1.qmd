@@ -1,0 +1,90 @@
+---
+title: "First look at the distribution of deactivated dFADs used by the French Indian Ocean tropical tuna purse-seine fishery"
+authors: 
+  - name: Wencheng Lau-Medrano
+    orcid: 0000-0002-7979-9710
+    url: https://umr-marbec.fr/membre/luis-lau-medrano/
+    affiliations:
+      - ref: marbec
+      - ref: ird
+    email: luis.laum@gmail.com
+    corresponding: true
+  - name: Daniel Gaertner
+    orcid: 0000-0002-1194-4432
+    affiliations:
+      - ref: marbec
+      - ref: ird
+  - name: Francis Marsac
+    orcid: 0000-0002-3295-594X
+    affiliations:
+      - ref: marbec
+      - ref: ird
+  - name: Loreleï Guéry
+    orcid: 0000-0003-3004-8462
+    affiliations:
+      - ref: cirad
+      - ref: phim
+  - name: David M. Kaplan
+    orcid: 0000-0001-6087-359X
+    affiliations:
+      - ref: marbec
+      - ref: ird
+    url: https://umr-marbec.fr/membre/david-kaplan/ 
+affiliations:
+  - id: marbec
+    name: MARBEC, University of Montpellier, CNRS, Ifremer, IRD, Sète, France
+  - id: ird
+    name: Institut de Recherche pour le Développement (IRD), Av. Jean Monnet, 34203 Sète, France
+  - id: cirad
+    name: CIRAD, UMR PHIM, Montpellier, France
+  - id: phim
+    name: PHIM, University of Montpellier, CIRAD, INRAE, Institut Agro, IRD, Montpellier, France
+filters:
+  - authors-block
+link-citations: true
+bibliography: bibliography.bib
+csl: ices-journal-of-marine-science.csl
+format:
+  docx:
+    toc: false
+    number-sections: false
+    reference-doc: custom-reference-doc.docx
+editor: source
+---
+
+```{r setup, include=FALSE}
+# This options will be applied to all chunks
+knitr::opts_chunk$set(echo = FALSE, 
+                      verbose = FALSE,
+                      dev = "ragg_png",
+                      out.width = "100%", 
+                      message = FALSE, 
+                      warning = FALSE,
+                      dpi = 1500)
+```
+
+## Abstract
+
+
+# Introduction
+
+# Methods
+
+# Results
+
+# Discussion
+
+# Acknowledgements
+
+# Author contribution
+
+# Data availability statement
+
+# Code availability
+
+# Funding
+
+# Competing interests
+
+
+# References {-}

@@ -1,0 +1,38 @@
+---
+title: "test_rbbt"
+format: html
+bibliography: references.bib
+---
+
+```{r}
+#| echo: false
+
+# Get current filepath
+currentFilePath <- this.path::this.path()
+
+# Get citation keys
+prefix2rm <- c("fig-", "tbl-", "eq-", "sec-", "lst-", "thm-")
+keys <- rbbt::bbt_detect_citations(path = currentFilePath)
+index2rm <- sapply(X = paste0("^", prefix2rm), FUN = grep, x = keys) |> 
+  
+  do.call(what = c)
+
+# Updating bib file
+rbbt::bbt_update_bib(path_rmd = currentFilePath, ignore = keys[index2rm], quiet = TRUE)
+```
+
+-   Test 1: @lau-medranoFirstLookDistribution2024; @ponsBenefitsConcernsSolutions2023
+-   Test 2: @lau-medranoFirstLookDistribution2024; @ponsBenefitsConcernsSolutions2023; @dupaixChallengeAssessingEffects2024
+-   Test 1: [@ponsBenefitsConcernsSolutions2023; @dagornItGoodBad2013; @wainQuantifyingIncreaseFishing2021]
+-   Test 3: @rpkg_terra, [@rpkg_ggplot2]
+-   Test 4: @fig-test1
+
+```{r}
+#| label: fig-test1
+#| fig-cap: "Example figure."
+#| echo: false
+
+plot(mtcars$mpg, mtcars$drat)
+```
+
+## References
