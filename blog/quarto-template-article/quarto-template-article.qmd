@@ -27,7 +27,7 @@ Image credits: Daria Glakteeva at [Unplash](https://unsplash.com/photos/a-person
 
 * Lenguajes de programación: En mi experiencia, he podido probar esta plantilla usando código en R, pero eso no limita su uso con otros lenguajes de programación (espero).
 
-* Repositorio de referencia: <https://github.com/LuisLauM/quarto-template-scientific-article/article-template>. Ahí se encuentran los archivos necesarios para ejecutar lo mostrado en este post: script principal en formato Quarto (archivos `article_v1.qmd` y `letter_editor.qmd`), referencias bibliográficas en formato BibTeX (archivo `bibliography.bib`), formato de citación (para este ejemplo, archivo `ices-journal-of-marine-science.csl`) y plantilla en MS Word (archivo `custom-reference-doc.docx`). Los archivos podrán ir variando conforme este post se actualice.
+* Repositorio de referencia: <https://github.com/LuisLauM/quarto-template-scientific-article/article-template.zip>. Ahí se encuentran los archivos necesarios para ejecutar lo mostrado en este post: script principal en formato Quarto (archivos `article_v1.qmd` y `letter_editor.qmd`), referencias bibliográficas en formato BibTeX (archivo `bibliography.bib`), formato de citación (para este ejemplo, archivo `ices-journal-of-marine-science.csl`) y plantilla en MS Word (archivo `custom-reference-doc.docx`). Los archivos podrán ir variando conforme este post se actualice.
 
 * Experiencia en la escritura de documentos usando Quarto (o R markdown). La mejor manera de aprender a usar Quarto es usándolo e ir hallando lo necesario para obtener lo que necesitamos a partir de manuales en línea (e.g. desde la propia web de [Quarto](https://quarto.org/)), [vídeos en YT](https://youtu.be/_f3latmOhew?feature=shared) o preguntas en diversos foros (e.g. [Stackoverflow](https://stackoverflow.com/questions/tagged/quarto)).
 
@@ -41,7 +41,7 @@ Si bien cada investigador (persona) tiene una manera distinta de ordenar los arc
 
 ### *Quarto extensions*
 
-Las extensiones de Quarto son básicamente scripts que añaden funcionalidades adicionales y que son soportadas por la comunidad. Quarto maneja una filosofía de entornos independientes, por lo que, a diferencia de R, la instalación de las extensiones de hacerse de manera local en cada proyecto en que vayamos a ejecutar nuestro script de Quarto. Para efectos del presente post, vamos a utilizar una extensión llamada **kapsner/authors-block**, la cual **ya viene incluidas** en el [repositorio de referencia](https://github.com/LuisLauM/quarto-template-scientific-article/article-template) (dentro de la carpeta `/_extensions`). 
+Las extensiones de Quarto son básicamente scripts que añaden funcionalidades adicionales y que son soportadas por la comunidad. Quarto maneja una filosofía de entornos independientes, por lo que, a diferencia de R, la instalación de las extensiones de hacerse de manera local en cada proyecto en que vayamos a ejecutar nuestro script de Quarto. Para efectos del presente post, vamos a utilizar una extensión llamada **kapsner/authors-block**, la cual **ya viene incluidas** en el [repositorio de referencia](https://github.com/LuisLauM/quarto-template-scientific-article/article-template.zip) (dentro de la carpeta `/_extensions`). 
 
 ## Plantilla principal (de artículo científico)
 
