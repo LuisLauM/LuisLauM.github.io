@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2024-12-16">
+<meta name="description" content="Automatically insert bibliographic citations from Zotero into Quarto files through RStudio. | Insertar citas bibliográficas automáticamente desde Zotero en archivos Quarto a través de RStudio.">
+
+<title>How to insert bibliographic references from Zotero in Quarto files? – Beneath the surface 🌊</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon-wave.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-d89fc942f684c7f97fb3c2cf2bc0f3e1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-a040cd6abc73b98b2f4c673569425434.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Beneath the surface 🌊</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+  <ul>
+  <li><a href="#en-zotero-quarto-rstudio-and-extras" id="toc-en-zotero-quarto-rstudio-and-extras" class="nav-link active" data-scroll-target="#en-zotero-quarto-rstudio-and-extras">[EN] Zotero + Quarto + RStudio and extras</a>
+  <ul class="collapse">
+  <li><a href="#required-software" id="toc-required-software" class="nav-link" data-scroll-target="#required-software">Required software</a></li>
+  <li><a href="#installing-rbb-plug-in-in-zotero" id="toc-installing-rbb-plug-in-in-zotero" class="nav-link" data-scroll-target="#installing-rbb-plug-in-in-zotero">Installing <strong>RBB</strong> <em>plug-in</em> in Zotero</a></li>
+  <li><a href="#installing-the-rbbt-package-and-addin-in-rstudio" id="toc-installing-the-rbbt-package-and-addin-in-rstudio" class="nav-link" data-scroll-target="#installing-the-rbbt-package-and-addin-in-rstudio">Installing the <strong>rbbt</strong> <del>package and</del> <em>addin</em> in RStudio</a></li>
+  <li><a href="#configuring-rbbt-shortcuts" id="toc-configuring-rbbt-shortcuts" class="nav-link" data-scroll-target="#configuring-rbbt-shortcuts">Configuring <strong>rbbt</strong> shortcuts</a></li>
+  <li><a href="#testing-everything" id="toc-testing-everything" class="nav-link" data-scroll-target="#testing-everything">Testing everything</a></li>
+  </ul></li>
+  <li><a href="#es-zotero-quarto-rstudio-y-algo-más" id="toc-es-zotero-quarto-rstudio-y-algo-más" class="nav-link" data-scroll-target="#es-zotero-quarto-rstudio-y-algo-más">[ES] Zotero + Quarto + RStudio y algo más</a>
+  <ul class="collapse">
+  <li><a href="#software-necesario" id="toc-software-necesario" class="nav-link" data-scroll-target="#software-necesario">Software necesario</a></li>
+  <li><a href="#instalando-el-plug-in-de-rbb-en-zotero" id="toc-instalando-el-plug-in-de-rbb-en-zotero" class="nav-link" data-scroll-target="#instalando-el-plug-in-de-rbb-en-zotero">Instalando el <em>plug-in</em> de <strong>RBB</strong> en Zotero</a></li>
+  <li><a href="#instalando-el-addin-de-rbbt-en-rstudio" id="toc-instalando-el-addin-de-rbbt-en-rstudio" class="nav-link" data-scroll-target="#instalando-el-addin-de-rbbt-en-rstudio">Instalando el <em>addin</em> de <strong>rbbt</strong> en RStudio</a></li>
+  <li><a href="#atajos-de-teclado-para-los-comandos-de-rbbt" id="toc-atajos-de-teclado-para-los-comandos-de-rbbt" class="nav-link" data-scroll-target="#atajos-de-teclado-para-los-comandos-de-rbbt">Atajos de teclado para los comandos de <strong>rbbt</strong></a></li>
+  <li><a href="#poner-a-prueba-todo" id="toc-poner-a-prueba-todo" class="nav-link" data-scroll-target="#poner-a-prueba-todo">Poner a prueba todo</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<div class="quarto-about-marquee">
+  <div class="about-image-container">
+    <img src="banner.png" class="about-image
+  rectangle " style="width: 100%;">
+  </div>
+  <div class="about-contents">
+    <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">How to insert bibliographic references from Zotero in Quarto files?</h1>
+</div>
+<div>
+  <div class="description">
+    <p>Automatically insert bibliographic citations from Zotero into Quarto files through RStudio. | Insertar citas bibliográficas automáticamente desde Zotero en archivos Quarto a través de RStudio.</p>
+  </div>
+</div>
+<div class="quarto-title-meta">
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 16, 2024</p>
+    </div>
+  </div>
+  </div>
+</header> <main class="content" id="quarto-document-content">
+
+<p>Image credits: RetroSupply at <a href="https://unsplash.com/photos/vintage-teal-typewriter-beside-book-jLwVAUtLOAQ?utm_content=creditShareLink&amp;utm_medium=referral&amp;utm_source=unsplash">Unplash</a></p>
+<section id="en-zotero-quarto-rstudio-and-extras" class="level1">
+<h1>[EN] Zotero + Quarto + RStudio and extras</h1>
+<p>Quarto is becoming more and more a powerful alternative for the generation of various types of documents and reports. Zotero is one of the most widespread and widely used bibliographic citation managers, not only because it is free software, but also because the community around it has been developing many <em>plug-ins</em> that allow to increase its capabilities beyond what is offered by its own developers. Finally, RStudio is one of the preferred IDE in the community of programmers in R, R markdown and Quarto, for its simplicity and power, but also for allowing the incorporation of <em>addins</em> (the analogy of plug-ins) through R packages.</p>
+<p>In this article, we will see how through an R package it is possible to add the possibility in RStudio to insert bibliographic citations from Zotero in Quarto files (and also in R markdown) in a very simple way (learning one or two keyboard shortcuts).</p>
+<section id="required-software" class="level2">
+<h2 data-anchor-id="required-software">Required software</h2>
+<p>As you can suppose, it is necessary to have installed: <a href="https://cran.r-project.org/">R</a>, <a href="https://posit.co/downloads/">RStudio</a>, <a href="https://www.zotero.org/">Zotero</a> (preferably with a logged in account and with some references that we can use as an example) and <a href="https://quarto.org/docs/download/">Quarto</a> (this last one comes with the installation of <strong>the latest versions of RStudio</strong>).</p>
+</section>
+<section id="installing-rbb-plug-in-in-zotero" class="level2">
+<h2 data-anchor-id="installing-rbb-plug-in-in-zotero">Installing <strong>RBB</strong> <em>plug-in</em> in Zotero</h2>
+<p>To quote the words of the <a href="https://retorque.re/zotero-better-bibtex/index.html">official website</a> of this plug-in: <em>Better BibTeX (BBT) is a plugin for Zotero and Juris-M that makes it easier to manage bibliographic data, especially for people authoring documents using text-based toolchains (e.g.&nbsp;based on LaTeX / Markdown)</em>.</p>
+<p>The installation is detailed in the web site itself, but we will make quick wrap-up:</p>
+<ol type="1">
+<li><p>Go to the <a href="https://retorque.re/zotero-better-bibtex/installation/index.html">Installation section (tab)</a>:</p></li>
+<li><p>Right in the first sentence of the instructions, the words <em>latest release</em> are in a slightly different color as they contain the link to the repository of the latest available version of the plug-in:</p>
+<p><img src="images/clipboard-3846744947.png" class="img-fluid"></p></li>
+<li><p>Clicking on this link will open a repository window in Github, from where we must download the file with extension <strong>.xpi</strong>:</p>
+<p><img src="images/clipboard-155659256.png" class="img-fluid"></p></li>
+<li><p>Next, we will open a Zotero window and go to the <strong>Tools → plug-ins</strong> menu:</p>
+<p><img src="images/clipboard-523717840.png" class="img-fluid"></p></li>
+<li><p>A window will open showing all installed plug-ins. To install a new plug-in, just click on the gear icon (top right) and click on the <em>Install Pluggins From File</em> option:</p>
+<p><img src="images/clipboard-4204702406.png" class="img-fluid"></p></li>
+<li><p>From here, we will select the xpi file we downloaded in step [3] and, after a few seconds, we should see our new BBT plug-in installed and active (because yes, it is possible to deactivate plug-ins):</p>
+<p><img src="images/clipboard-3431742116.png" class="img-fluid"></p></li>
+</ol>
+</section>
+<section id="installing-the-rbbt-package-and-addin-in-rstudio" class="level2">
+<h2 data-anchor-id="installing-the-rbbt-package-and-addin-in-rstudio">Installing the <strong>rbbt</strong> <del>package and</del> <em>addin</em> in RStudio</h2>
+<p>As I mentioned, in RStudio it is possible to add extra capabilities to the IDE through addins. For our case, we will use a package that contains the addins needed to interface our RStudio interface with Zotero. The package referred to is called <strong>rbbt</strong> and, while it is NOT an official CRAN package, we can download it directly from their <a href="https://github.com/paleolimbot/rbbt">repository on Github</a>.</p>
+<p>Now, you may decide to download and use the official version of the package; however, as of this writing, I have taken the official version of <strong>rbbt</strong> and created my own version where I have corrected certain problems and added certain features (e.g., the ability to quote R packages). This tutorial shows how to install and use the (<em>forked</em>) version <a href="https://github.com/LuisLauM/rbbt">available on my Github profile</a>, but this is open source, so you decide (you can even create your own version and add more interesting features).</p>
+<p>To install the package, just run the following line in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To run this, you must first install the 'remotes' package</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="at">repo =</span> <span class="st">"LuisLauM/rbbt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Once the installation is complete, we can check that it has been correctly added to our Addins menu, which is located right at the end of the RStudio shortcut bar:</p>
+<p><img src="images/clipboard-4171540842.png" class="img-fluid"></p>
+<p>By clicking on the <em>Addins</em> drop-down menu, we can look for the <em>Insert Citation</em> command to be found now:</p>
+<p><img src="images/clipboard-1339714737.png" class="img-fluid"></p>
+<p>From this point on, it is possible to perform those actions by clicking on those buttons, but this is VERY uncomfortable to do while writing an article or report, so we will now see how to add keyboard shortcuts for those commands.</p>
+</section>
+<section id="configuring-rbbt-shortcuts" class="level2">
+<h2 data-anchor-id="configuring-rbbt-shortcuts">Configuring <strong>rbbt</strong> shortcuts</h2>
+<p>Adding keyboard shortcuts in RStudio is very simple, just go to the menu <strong>Tools → Modify keyboard shortcuts</strong> and, in the window that will appear, use the small search engine at the top right to find those commands related to Zotero. Three will appear, of which, from my own experience, I have only assigned a shortcut to <em>Insert citation</em>. To assign a key combination, just click on the space to the right of the name of each command (in the <em>Shortcut</em> column) and press the desired combination: in my case, I use the combinations of <em>Ctrl + K</em>, but this will depend on your operating system (e.g.&nbsp;in MacOS there is no <em>Ctrl</em> key), to make sure that there are no other commands previously assigned to any of those key combinations.</p>
+<p><img src="images/clipboard-1989719168.png" class="img-fluid"></p>
+<p>Great, we’re all set! It’s time to test our changes.</p>
+</section>
+<section id="testing-everything" class="level2">
+<h2 data-anchor-id="testing-everything">Testing everything</h2>
+<ol type="1">
+<li><p>We will start by opening a file in Quarto in HTML output format (this is merely illustrative, the commands will work regardless of the output format selected). <strong>Important:</strong> for this example, I suggest making sure that the <strong>Use visual markdown editor</strong> option is unchecked, since we will be working in <em>Source</em> mode.</p>
+<p><img src="images/clipboard-1949640663.png" class="img-fluid"></p></li>
+<li><p>Next, we will create an empty file where our bibliographic citations will be stored (for our example, we will name it <strong>references.bib</strong>). Then, in the header of our Quarto file (also called the YAML section), we will add a line where we will indicate the path to this created file:</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "test_rbbt"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>Also, to ensure that <strong>rbbt</strong> does NOT attempt to include references to figures, tables, equations, or other non-bibliographic elements, we will include the following code within a chunk at the beginning of our document:</li>
+</ol>
+<ol start="4" type="1">
+<li><p>Next, we will type some text and then press the key combination assigned to the insert quote command (remember the <em>Ctrl + K</em> shorcut?). What will happen is that a very thin window will open that will serve as an interface to Zotero. We will be able to type all the quotes we want to include in our text. The navigation between the suggested quotations is done with the arrow keys and the Enter key. It is also possible to add multiple quotes in each call of this small but powerful interface:</p>
+<p><img src="images/clipboard-4257070944.png" class="img-fluid"></p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quotations may be made freely or in parentheses; however, for the latter case, quotations should be placed in square brackets <code>[ ]</code> (and not between the parenthesis symbols).</p>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Now yes, we render the document and we should get:</li>
+</ol>
+<p><img src="images/clipboard-3442020781.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Render on Save">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Render on Save
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is highly recommended to enable the <em>Render on Save</em> option (located at the top next to the Save button), which allows us to Render and visualize our work just pressing <em>Ctrl + S</em> (Save shortcut).</p>
+<p><img src="images/clipboard-1949640663.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All the material needed to run this tutorial can be found in my repository, following this link <a href="https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt.zip">link</a>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="es-zotero-quarto-rstudio-y-algo-más" class="level1">
+<h1>[ES] Zotero + Quarto + RStudio y algo más</h1>
+<p>Quarto se está volviendo cada vez más una poderosa alternativa para la generación de diversos tipos de documentos y reportes. Por su parte, Zotero es uno de los administradores de citas bibliográficas más extendido y utilizado, no solo por ser software libre, sino también porque la comunidad a su alrededor ha ido desarrollando muchos <em>plug-ins</em> que permiten incrementar sus capacidades fuera de lo ofrecido por sus propios desarrolladores. Finalmente, RStudio es uno de los IDE preferidos en la comunidad de programadores en R, R markdown y Quarto, por su simplicidad y potencia, pero también por permitir la incorporación de <em>addins</em> (la analogía de <em>plug-ings</em>) a través de paquetes de R.</p>
+<p>En el presente artículo, veremos cómo a través de un paquete de R es posible añadir la posibilidad en RStudio de insertar citas bibliográficas desde Zotero en archivos Quarto (y también en R markdown) de manera muy sencilla (aprendiendo uno o dos atajos de teclado).</p>
+<section id="software-necesario" class="level2">
+<h2 data-anchor-id="software-necesario">Software necesario</h2>
+<p>Como ya imaginarán, es necesario tener instalados: <a href="https://cran.r-project.org/">R</a>, <a href="https://posit.co/downloads/">RStudio</a>, <a href="https://www.zotero.org/">Zotero</a> (de preferencia, con una cuenta logueada y con algunas referencias que podamos usar como ejemplo) y <a href="https://quarto.org/docs/download/">Quarto</a> (este último viene junto a la instalación de <strong>las últimas versiones de RStudio</strong>).</p>
+</section>
+<section id="instalando-el-plug-in-de-rbb-en-zotero" class="level2">
+<h2 data-anchor-id="instalando-el-plug-in-de-rbb-en-zotero">Instalando el <em>plug-in</em> de <strong>RBB</strong> en Zotero</h2>
+<p>Citando las propias palabras de la <a href="https://retorque.re/zotero-better-bibtex/index.html">web oficial</a> de este plug-in: <em>Better BibTeX (BBT) es un complemento para Zotero y Juris-M que facilita la gestión de los datos bibliográficos, especialmente para los autores de documentos que utilizan cadenas de herramientas basadas en texto (por ejemplo, LaTeX / Markdown)</em>.</p>
+<p>Su instalación está detallada en la propia web, pero haremos un resumen aquí:</p>
+<ol type="1">
+<li><p>Ir a la <a href="https://retorque.re/zotero-better-bibtex/installation/index.html">sección (pestaña) de Instalación</a>:</p></li>
+<li><p>Justamente en la primera frase de las instrucciones, las palabras <em>latest release</em> están de un color ligeramente distinto ya que contienen el link al repositorio de la última versión disponible del plug-in:</p>
+<p><img src="images/clipboard-3846744947.png" class="img-fluid"></p></li>
+<li><p>Al hacer click sobre ese link, se abrirá una ventana de repositorio en Github, desde donde deberemos descargar el archivo con extensión <strong>.xpi</strong>:</p>
+<p><img src="images/clipboard-155659256.png" class="img-fluid"></p></li>
+<li><p>Seguidamente, abriremos una ventana de Zotero e iremos al menú de <strong>Tools → Plugins</strong>:</p>
+<p><img src="images/clipboard-523717840.png" class="img-fluid"></p></li>
+<li><p>Se abrirá una ventana que nos mostrará todos los plug-ins instalados. Para instalar un plug-in nuevo, bastará con dar click al ícono de engranaje (arriba a la derecha) y dar click a la opción <em>Install Pluggins From File</em>:</p>
+<p><img src="images/clipboard-4204702406.png" class="img-fluid"></p></li>
+<li><p>Desde aquí, seleccionaremos el archivo xpi que descargamos en el paso [3] y, después de unos segundos, ya deberíamos observar nuestro nuevo plug-in BBT instalado y activo (porque sí, es posible desactivar plug-ins):</p>
+<p><img src="images/clipboard-3431742116.png" class="img-fluid"></p></li>
+</ol>
+</section>
+<section id="instalando-el-addin-de-rbbt-en-rstudio" class="level2">
+<h2 data-anchor-id="instalando-el-addin-de-rbbt-en-rstudio">Instalando el <em>addin</em> de <strong>rbbt</strong> en RStudio</h2>
+<p>Como mencioné, en RStudio es posible añadir capacidades extra al IDE a través de addins. Para nuestro caso, utilizaremos un paquete que contiene los addins necesarios para interconectar nuestra interfaz de RStudio con Zotero. El paquete referido se llama <strong>rbbt</strong> y, si bien NO es un paquete oficial de CRAN, podemos descargarlo directamente desde su <a href="https://github.com/paleolimbot/rbbt">repositorio en Github</a>.</p>
+<p>Ahora bien, usted puede decidir descargar y utilizar la versión oficial del paquete; sin embargo, al día en que escribo este artículo, yo he tomado la versión oficial de <strong>rbbt</strong> y he creado la mía propia en donde corrijo ciertos problemas y añado ciertas funcionalidades (e.g., el poder citar paquetes de R). El presente tutorial muestra cómo instalar y usar la versión (<em>forked</em>) <a href="https://github.com/LuisLauM/rbbt">disponible en mi perfil de Github</a>, pero esto es código libre, por lo que usted decide (hasta incluso puede crear su propia versión y añadir funcionalidades más interesantes).</p>
+<p>Para instalar el paquete, bastará con ejecutar las siguiente línea en R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Para esto, debe instalar previamente el paquete 'remotes'</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="at">repo =</span> <span class="st">"LuisLauM/rbbt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Una vez que haya culminado la instalación, podremos revisar que se haya añadido correctamente a nuestro menú de Addins, que se encuentra justo al final de la barra de accesos rápidos de RStudio:</p>
+<p><img src="images/clipboard-4171540842.png" class="img-fluid"></p>
+<p>Al hacer click en el menú desplegable de Addins, podremos buscar que se encuentre ahora los comandos de Insertar citas y Añadir bibliografía:</p>
+<p><img src="images/clipboard-1339714737.png" class="img-fluid"></p>
+<p>A partir de este punto, ya es posible realizar esas acciones a través de dar click a esos botones, pero esto resulta MUY incómodo de hacer durante la redacción de un artículo o reporte, por lo que a continuación veremos cómo añadir atajos de teclado para dichos comandos.</p>
+</section>
+<section id="atajos-de-teclado-para-los-comandos-de-rbbt" class="level2">
+<h2 data-anchor-id="atajos-de-teclado-para-los-comandos-de-rbbt">Atajos de teclado para los comandos de <strong>rbbt</strong></h2>
+<p>Añadir atajos de teclado en RStudio es muy sencillo, basta con ir al menú <strong>Tools → Modify keyboard shortcuts</strong> y, en la ventana que aparecerá, utilizar el pequeño buscador arriba a la derecha para hallar aquellos comandos relacionados con Zotero. Aparecerán 3, de los cuales bastará con asignar un atajo a <em>Insertar cita</em>. Para asignar una combinación de teclas, daremos click al espacio a la derecha del nombre del comando de interés (en la columna <em>Shortcut</em>) y presionar la combinación deseada: en mi caso, utilizo las combinación <em>Ctrl + K</em>, pero eso dependerá desde su sistema operativo (e.g.&nbsp;en MacOS no existe la tecla <em>Ctrl</em>), hasta el hecho de asegurarnos que no haya otros comandos previamente asignados a alguna de esas combinaciones de teclas.</p>
+<p><img src="images/clipboard-1989719168.png" class="img-fluid"></p>
+<p>¡Genial, ya tenemos todo listo! Es momento de probar nuestros cambios.</p>
+</section>
+<section id="poner-a-prueba-todo" class="level2">
+<h2 data-anchor-id="poner-a-prueba-todo">Poner a prueba todo</h2>
+<ol type="1">
+<li><p>Empezaremos por abrir un archivo en Quarto en formato de salida en HTML (esto es meramente ilustrativo, los comandos funcionará independientemente del formato de salida seleccionado). <strong>Importante:</strong> para este ejemplo, sugiero asegurarnos que la opción <strong>Use visual markdown editor</strong> esté deseleccionada, ya que trabajaremos en el modo <em>Source</em>.</p>
+<p><img src="images/clipboard-1949640663.png" class="img-fluid"></p></li>
+<li><p>Seguidamente, crearemos un archivo vacío en donde se guardarán nuestras citas bibliográficas (para nuestro ejemplo, le pondremos el nombre <strong>references.bib</strong>). Luego, en la cabecera de nuestro archivo de Quarto (llamada también la sección YAML), añadiremos una línea en donde indicaremos la ruta a este archivo creado:</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "test_rbbt"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>Así mismo, para asegurarnos de que <strong>rbbt</strong> NO intente incluir las referencias a figuras, tablas, ecuaciones, u otros elementos no bibliográficos, incluiremos el siguiente código dentro de un chunk al inicio de nuestro documento:</li>
+</ol>
+<ol start="4" type="1">
+<li><p>A continuación, digitaremos algo de texto y seguidamente presionaremos la combinación de teclas asignada al comando de insertar cita (en este ejemplo, <em>Ctrl + K</em>). Lo que ocurrirá es que se abrirá una ventana muy delgada que nos servirá como interface con Zotero. En ella, podremos escribir todas las citas que deseamos incluir en nuestro texto. La navegación entre las citas sugeridas la haremos con las teclas direccionales y la tecla Enter. Así mismo, es posible añadir múltiples citas en cada llamada de esta pequeña pero poderosa interfaz:</p>
+<p><img src="images/clipboard-4257070944.png" class="img-fluid"></p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Las citas pueden hacerse de forma libre o entre paréntesis; sin embargo, para el segundo caso, deberán colocarse las citas entre corchetes <code>[ ]</code> (y no entre los símbolos de paréntesis).</p>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Ahora sí, renderizamos el documento y deberíamos obtener:</li>
+</ol>
+<p><img src="images/clipboard-3442020781.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Render on Save">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Render on Save
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Es muy recomendable habilitar la opción de <em>Render on Save</em> (situada arriba al costado del botón de Guardar) que, como su nombre lo indica, permite Redenrizar al Guardar, lo que permite que solo presiones <em>Ctrl + S</em> para visualizar nuestro trabajo en Quarto.</p>
+<p><img src="images/clipboard-1949640663.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Todo el material necesario para ejecutar este tutorial se puede encontrar en mi repositorio, siguiendo este <a href="https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt.zip">link</a>.</p>
+</div>
+</div>
+
+
+</section>
+</section>
+</main> 
+  </div>
+</div>
+ <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/luislaum\.github\.io\/home\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2024, Wencheng Lau-Medrano</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This website is built with <a href="https://github.com/LuisLauM/LuisLauM.github.io" target="_blank"><i class="fa-brands fa-github" title="GitHub octocat logo" aria-hidden="true"></i></a>, <a href="https://www.r-project.org/about.html" target="_blank"><i class="fa-brands fa-r-project" title="R Project" aria-hidden="true"></i></a> and <a href="https://quarto.org/" target="_blank">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

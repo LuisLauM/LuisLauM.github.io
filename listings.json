@@ -2,6 +2,8 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/blog/quarto-template-article/article-template/article_v1.docx",
+      "/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html",
       "/blog/elnino-app/elnino-app.html",
       "/blog/about-this-website/about-this-website.html"
     ]

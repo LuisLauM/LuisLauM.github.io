@@ -15,7 +15,300 @@
 <link>https://luislaum.github.io/home/blog.html</link>
 </image>
 <generator>quarto-1.6.39</generator>
-<lastBuildDate>Sat, 20 Apr 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 16 Dec 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>How to insert bibliographic references from Zotero in Quarto files?</title>
+  <link>https://luislaum.github.io/home/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html</link>
+  <description><![CDATA[ 
+
+<p>Image credits: RetroSupply at <a href="https://unsplash.com/photos/vintage-teal-typewriter-beside-book-jLwVAUtLOAQ?utm_content=creditShareLink&amp;utm_medium=referral&amp;utm_source=unsplash">Unplash</a></p>
+<section id="en-zotero-quarto-rstudio-and-extras" class="level1">
+<h1>[EN] Zotero + Quarto + RStudio and extras</h1>
+<p>Quarto is becoming more and more a powerful alternative for the generation of various types of documents and reports. Zotero is one of the most widespread and widely used bibliographic citation managers, not only because it is free software, but also because the community around it has been developing many <em>plug-ins</em> that allow to increase its capabilities beyond what is offered by its own developers. Finally, RStudio is one of the preferred IDE in the community of programmers in R, R markdown and Quarto, for its simplicity and power, but also for allowing the incorporation of <em>addins</em> (the analogy of plug-ins) through R packages.</p>
+<p>In this article, we will see how through an R package it is possible to add the possibility in RStudio to insert bibliographic citations from Zotero in Quarto files (and also in R markdown) in a very simple way (learning one or two keyboard shortcuts).</p>
+<section id="required-software" class="level2">
+<h2 data-anchor-id="required-software">Required software</h2>
+<p>As you can suppose, it is necessary to have installed: <a href="https://cran.r-project.org/">R</a>, <a href="https://posit.co/downloads/">RStudio</a>, <a href="https://www.zotero.org/">Zotero</a> (preferably with a logged in account and with some references that we can use as an example) and <a href="https://quarto.org/docs/download/">Quarto</a> (this last one comes with the installation of <strong>the latest versions of RStudio</strong>).</p>
+</section>
+<section id="installing-rbb-plug-in-in-zotero" class="level2">
+<h2 data-anchor-id="installing-rbb-plug-in-in-zotero">Installing <strong>RBB</strong> <em>plug-in</em> in Zotero</h2>
+<p>To quote the words of the <a href="https://retorque.re/zotero-better-bibtex/index.html">official website</a> of this plug-in: <em>Better BibTeX (BBT) is a plugin for Zotero and Juris-M that makes it easier to manage bibliographic data, especially for people authoring documents using text-based toolchains (e.g.&nbsp;based on LaTeX / Markdown)</em>.</p>
+<p>The installation is detailed in the web site itself, but we will make quick wrap-up:</p>
+<ol type="1">
+<li><p>Go to the <a href="https://retorque.re/zotero-better-bibtex/installation/index.html">Installation section (tab)</a>:</p></li>
+<li><p>Right in the first sentence of the instructions, the words <em>latest release</em> are in a slightly different color as they contain the link to the repository of the latest available version of the plug-in:</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-3846744947.png" class="img-fluid"></p></li>
+<li><p>Clicking on this link will open a repository window in Github, from where we must download the file with extension <strong>.xpi</strong>:</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-155659256.png" class="img-fluid"></p></li>
+<li><p>Next, we will open a Zotero window and go to the <strong>Tools → plug-ins</strong> menu:</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-523717840.png" class="img-fluid"></p></li>
+<li><p>A window will open showing all installed plug-ins. To install a new plug-in, just click on the gear icon (top right) and click on the <em>Install Pluggins From File</em> option:</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-4204702406.png" class="img-fluid"></p></li>
+<li><p>From here, we will select the xpi file we downloaded in step [3] and, after a few seconds, we should see our new BBT plug-in installed and active (because yes, it is possible to deactivate plug-ins):</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-3431742116.png" class="img-fluid"></p></li>
+</ol>
+</section>
+<section id="installing-the-rbbt-package-and-addin-in-rstudio" class="level2">
+<h2 data-anchor-id="installing-the-rbbt-package-and-addin-in-rstudio">Installing the <strong>rbbt</strong> <del>package and</del> <em>addin</em> in RStudio</h2>
+<p>As I mentioned, in RStudio it is possible to add extra capabilities to the IDE through addins. For our case, we will use a package that contains the addins needed to interface our RStudio interface with Zotero. The package referred to is called <strong>rbbt</strong> and, while it is NOT an official CRAN package, we can download it directly from their <a href="https://github.com/paleolimbot/rbbt">repository on Github</a>.</p>
+<p>Now, you may decide to download and use the official version of the package; however, as of this writing, I have taken the official version of <strong>rbbt</strong> and created my own version where I have corrected certain problems and added certain features (e.g., the ability to quote R packages). This tutorial shows how to install and use the (<em>forked</em>) version <a href="https://github.com/LuisLauM/rbbt">available on my Github profile</a>, but this is open source, so you decide (you can even create your own version and add more interesting features).</p>
+<p>To install the package, just run the following line in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># To run this, you must first install the 'remotes' package</span></span>
+<span id="cb1-2">remotes<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install_github</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">repo =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"LuisLauM/rbbt"</span>)</span></code></pre></div>
+</div>
+<p>Once the installation is complete, we can check that it has been correctly added to our Addins menu, which is located right at the end of the RStudio shortcut bar:</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-4171540842.png" class="img-fluid"></p>
+<p>By clicking on the <em>Addins</em> drop-down menu, we can look for the <em>Insert Citation</em> command to be found now:</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-1339714737.png" class="img-fluid"></p>
+<p>From this point on, it is possible to perform those actions by clicking on those buttons, but this is VERY uncomfortable to do while writing an article or report, so we will now see how to add keyboard shortcuts for those commands.</p>
+</section>
+<section id="configuring-rbbt-shortcuts" class="level2">
+<h2 data-anchor-id="configuring-rbbt-shortcuts">Configuring <strong>rbbt</strong> shortcuts</h2>
+<p>Adding keyboard shortcuts in RStudio is very simple, just go to the menu <strong>Tools → Modify keyboard shortcuts</strong> and, in the window that will appear, use the small search engine at the top right to find those commands related to Zotero. Three will appear, of which, from my own experience, I have only assigned a shortcut to <em>Insert citation</em>. To assign a key combination, just click on the space to the right of the name of each command (in the <em>Shortcut</em> column) and press the desired combination: in my case, I use the combinations of <em>Ctrl + K</em>, but this will depend on your operating system (e.g.&nbsp;in MacOS there is no <em>Ctrl</em> key), to make sure that there are no other commands previously assigned to any of those key combinations.</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-1989719168.png" class="img-fluid"></p>
+<p>Great, we’re all set! It’s time to test our changes.</p>
+</section>
+<section id="testing-everything" class="level2">
+<h2 data-anchor-id="testing-everything">Testing everything</h2>
+<ol type="1">
+<li><p>We will start by opening a file in Quarto in HTML output format (this is merely illustrative, the commands will work regardless of the output format selected). <strong>Important:</strong> for this example, I suggest making sure that the <strong>Use visual markdown editor</strong> option is unchecked, since we will be working in <em>Source</em> mode.</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-1949640663.png" class="img-fluid"></p></li>
+<li><p>Next, we will create an empty file where our bibliographic citations will be stored (for our example, we will name it <strong>references.bib</strong>). Then, in the header of our Quarto file (also called the YAML section), we will add a line where we will indicate the path to this created file:</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb2-2"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">title:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> "test_rbbt"</span></span>
+<span id="cb2-3"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">format:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> html</span></span>
+<span id="cb2-4"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">bibliography:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> references.bib</span></span>
+<span id="cb2-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">---</span></span></code></pre></div>
+</div>
+<ol start="3" type="1">
+<li>Also, to ensure that <strong>rbbt</strong> does NOT attempt to include references to figures, tables, equations, or other non-bibliographic elements, we will include the following code within a chunk at the beginning of our document:</li>
+</ol>
+<ol start="4" type="1">
+<li><p>Next, we will type some text and then press the key combination assigned to the insert quote command (remember the <em>Ctrl + K</em> shorcut?). What will happen is that a very thin window will open that will serve as an interface to Zotero. We will be able to type all the quotes we want to include in our text. The navigation between the suggested quotations is done with the arrow keys and the Enter key. It is also possible to add multiple quotes in each call of this small but powerful interface:</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-4257070944.png" class="img-fluid"></p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quotations may be made freely or in parentheses; however, for the latter case, quotations should be placed in square brackets <code>[ ]</code> (and not between the parenthesis symbols).</p>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Now yes, we render the document and we should get:</li>
+</ol>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-3442020781.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Render on Save">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Render on Save
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is highly recommended to enable the <em>Render on Save</em> option (located at the top next to the Save button), which allows us to Render and visualize our work just pressing <em>Ctrl + S</em> (Save shortcut).</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-1949640663.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All the material needed to run this tutorial can be found in my repository, following this link <a href="https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt.zip">link</a>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="es-zotero-quarto-rstudio-y-algo-más" class="level1">
+<h1>[ES] Zotero + Quarto + RStudio y algo más</h1>
+<p>Quarto se está volviendo cada vez más una poderosa alternativa para la generación de diversos tipos de documentos y reportes. Por su parte, Zotero es uno de los administradores de citas bibliográficas más extendido y utilizado, no solo por ser software libre, sino también porque la comunidad a su alrededor ha ido desarrollando muchos <em>plug-ins</em> que permiten incrementar sus capacidades fuera de lo ofrecido por sus propios desarrolladores. Finalmente, RStudio es uno de los IDE preferidos en la comunidad de programadores en R, R markdown y Quarto, por su simplicidad y potencia, pero también por permitir la incorporación de <em>addins</em> (la analogía de <em>plug-ings</em>) a través de paquetes de R.</p>
+<p>En el presente artículo, veremos cómo a través de un paquete de R es posible añadir la posibilidad en RStudio de insertar citas bibliográficas desde Zotero en archivos Quarto (y también en R markdown) de manera muy sencilla (aprendiendo uno o dos atajos de teclado).</p>
+<section id="software-necesario" class="level2">
+<h2 data-anchor-id="software-necesario">Software necesario</h2>
+<p>Como ya imaginarán, es necesario tener instalados: <a href="https://cran.r-project.org/">R</a>, <a href="https://posit.co/downloads/">RStudio</a>, <a href="https://www.zotero.org/">Zotero</a> (de preferencia, con una cuenta logueada y con algunas referencias que podamos usar como ejemplo) y <a href="https://quarto.org/docs/download/">Quarto</a> (este último viene junto a la instalación de <strong>las últimas versiones de RStudio</strong>).</p>
+</section>
+<section id="instalando-el-plug-in-de-rbb-en-zotero" class="level2">
+<h2 data-anchor-id="instalando-el-plug-in-de-rbb-en-zotero">Instalando el <em>plug-in</em> de <strong>RBB</strong> en Zotero</h2>
+<p>Citando las propias palabras de la <a href="https://retorque.re/zotero-better-bibtex/index.html">web oficial</a> de este plug-in: <em>Better BibTeX (BBT) es un complemento para Zotero y Juris-M que facilita la gestión de los datos bibliográficos, especialmente para los autores de documentos que utilizan cadenas de herramientas basadas en texto (por ejemplo, LaTeX / Markdown)</em>.</p>
+<p>Su instalación está detallada en la propia web, pero haremos un resumen aquí:</p>
+<ol type="1">
+<li><p>Ir a la <a href="https://retorque.re/zotero-better-bibtex/installation/index.html">sección (pestaña) de Instalación</a>:</p></li>
+<li><p>Justamente en la primera frase de las instrucciones, las palabras <em>latest release</em> están de un color ligeramente distinto ya que contienen el link al repositorio de la última versión disponible del plug-in:</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-3846744947.png" class="img-fluid"></p></li>
+<li><p>Al hacer click sobre ese link, se abrirá una ventana de repositorio en Github, desde donde deberemos descargar el archivo con extensión <strong>.xpi</strong>:</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-155659256.png" class="img-fluid"></p></li>
+<li><p>Seguidamente, abriremos una ventana de Zotero e iremos al menú de <strong>Tools → Plugins</strong>:</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-523717840.png" class="img-fluid"></p></li>
+<li><p>Se abrirá una ventana que nos mostrará todos los plug-ins instalados. Para instalar un plug-in nuevo, bastará con dar click al ícono de engranaje (arriba a la derecha) y dar click a la opción <em>Install Pluggins From File</em>:</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-4204702406.png" class="img-fluid"></p></li>
+<li><p>Desde aquí, seleccionaremos el archivo xpi que descargamos en el paso [3] y, después de unos segundos, ya deberíamos observar nuestro nuevo plug-in BBT instalado y activo (porque sí, es posible desactivar plug-ins):</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-3431742116.png" class="img-fluid"></p></li>
+</ol>
+</section>
+<section id="instalando-el-addin-de-rbbt-en-rstudio" class="level2">
+<h2 data-anchor-id="instalando-el-addin-de-rbbt-en-rstudio">Instalando el <em>addin</em> de <strong>rbbt</strong> en RStudio</h2>
+<p>Como mencioné, en RStudio es posible añadir capacidades extra al IDE a través de addins. Para nuestro caso, utilizaremos un paquete que contiene los addins necesarios para interconectar nuestra interfaz de RStudio con Zotero. El paquete referido se llama <strong>rbbt</strong> y, si bien NO es un paquete oficial de CRAN, podemos descargarlo directamente desde su <a href="https://github.com/paleolimbot/rbbt">repositorio en Github</a>.</p>
+<p>Ahora bien, usted puede decidir descargar y utilizar la versión oficial del paquete; sin embargo, al día en que escribo este artículo, yo he tomado la versión oficial de <strong>rbbt</strong> y he creado la mía propia en donde corrijo ciertos problemas y añado ciertas funcionalidades (e.g., el poder citar paquetes de R). El presente tutorial muestra cómo instalar y usar la versión (<em>forked</em>) <a href="https://github.com/LuisLauM/rbbt">disponible en mi perfil de Github</a>, pero esto es código libre, por lo que usted decide (hasta incluso puede crear su propia versión y añadir funcionalidades más interesantes).</p>
+<p>Para instalar el paquete, bastará con ejecutar las siguiente línea en R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Para esto, debe instalar previamente el paquete 'remotes'</span></span>
+<span id="cb3-2">remotes<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">install_github</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">repo =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"LuisLauM/rbbt"</span>)</span></code></pre></div>
+</div>
+<p>Una vez que haya culminado la instalación, podremos revisar que se haya añadido correctamente a nuestro menú de Addins, que se encuentra justo al final de la barra de accesos rápidos de RStudio:</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-4171540842.png" class="img-fluid"></p>
+<p>Al hacer click en el menú desplegable de Addins, podremos buscar que se encuentre ahora los comandos de Insertar citas y Añadir bibliografía:</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-1339714737.png" class="img-fluid"></p>
+<p>A partir de este punto, ya es posible realizar esas acciones a través de dar click a esos botones, pero esto resulta MUY incómodo de hacer durante la redacción de un artículo o reporte, por lo que a continuación veremos cómo añadir atajos de teclado para dichos comandos.</p>
+</section>
+<section id="atajos-de-teclado-para-los-comandos-de-rbbt" class="level2">
+<h2 data-anchor-id="atajos-de-teclado-para-los-comandos-de-rbbt">Atajos de teclado para los comandos de <strong>rbbt</strong></h2>
+<p>Añadir atajos de teclado en RStudio es muy sencillo, basta con ir al menú <strong>Tools → Modify keyboard shortcuts</strong> y, en la ventana que aparecerá, utilizar el pequeño buscador arriba a la derecha para hallar aquellos comandos relacionados con Zotero. Aparecerán 3, de los cuales bastará con asignar un atajo a <em>Insertar cita</em>. Para asignar una combinación de teclas, daremos click al espacio a la derecha del nombre del comando de interés (en la columna <em>Shortcut</em>) y presionar la combinación deseada: en mi caso, utilizo las combinación <em>Ctrl + K</em>, pero eso dependerá desde su sistema operativo (e.g.&nbsp;en MacOS no existe la tecla <em>Ctrl</em>), hasta el hecho de asegurarnos que no haya otros comandos previamente asignados a alguna de esas combinaciones de teclas.</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-1989719168.png" class="img-fluid"></p>
+<p>¡Genial, ya tenemos todo listo! Es momento de probar nuestros cambios.</p>
+</section>
+<section id="poner-a-prueba-todo" class="level2">
+<h2 data-anchor-id="poner-a-prueba-todo">Poner a prueba todo</h2>
+<ol type="1">
+<li><p>Empezaremos por abrir un archivo en Quarto en formato de salida en HTML (esto es meramente ilustrativo, los comandos funcionará independientemente del formato de salida seleccionado). <strong>Importante:</strong> para este ejemplo, sugiero asegurarnos que la opción <strong>Use visual markdown editor</strong> esté deseleccionada, ya que trabajaremos en el modo <em>Source</em>.</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-1949640663.png" class="img-fluid"></p></li>
+<li><p>Seguidamente, crearemos un archivo vacío en donde se guardarán nuestras citas bibliográficas (para nuestro ejemplo, le pondremos el nombre <strong>references.bib</strong>). Luego, en la cabecera de nuestro archivo de Quarto (llamada también la sección YAML), añadiremos una línea en donde indicaremos la ruta a este archivo creado:</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb4-2"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">title:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> "test_rbbt"</span></span>
+<span id="cb4-3"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">format:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> html</span></span>
+<span id="cb4-4"><span class="an" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">bibliography:</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"> references.bib</span></span>
+<span id="cb4-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">---</span></span></code></pre></div>
+</div>
+<ol start="3" type="1">
+<li>Así mismo, para asegurarnos de que <strong>rbbt</strong> NO intente incluir las referencias a figuras, tablas, ecuaciones, u otros elementos no bibliográficos, incluiremos el siguiente código dentro de un chunk al inicio de nuestro documento:</li>
+</ol>
+<ol start="4" type="1">
+<li><p>A continuación, digitaremos algo de texto y seguidamente presionaremos la combinación de teclas asignada al comando de insertar cita (en este ejemplo, <em>Ctrl + K</em>). Lo que ocurrirá es que se abrirá una ventana muy delgada que nos servirá como interface con Zotero. En ella, podremos escribir todas las citas que deseamos incluir en nuestro texto. La navegación entre las citas sugeridas la haremos con las teclas direccionales y la tecla Enter. Así mismo, es posible añadir múltiples citas en cada llamada de esta pequeña pero poderosa interfaz:</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-4257070944.png" class="img-fluid"></p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Las citas pueden hacerse de forma libre o entre paréntesis; sin embargo, para el segundo caso, deberán colocarse las citas entre corchetes <code>[ ]</code> (y no entre los símbolos de paréntesis).</p>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Ahora sí, renderizamos el documento y deberíamos obtener:</li>
+</ol>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-3442020781.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Render on Save">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Render on Save
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Es muy recomendable habilitar la opción de <em>Render on Save</em> (situada arriba al costado del botón de Guardar) que, como su nombre lo indica, permite Redenrizar al Guardar, lo que permite que solo presiones <em>Ctrl + S</em> para visualizar nuestro trabajo en Quarto.</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-1949640663.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Todo el material necesario para ejecutar este tutorial se puede encontrar en mi repositorio, siguiendo este <a href="https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt.zip">link</a>.</p>
+</div>
+</div>
+
+
+</section>
+</section>
+ ]]></description>
+  <guid>https://luislaum.github.io/home/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html</guid>
+  <pubDate>Mon, 16 Dec 2024 00:00:00 GMT</pubDate>
+  <media:content url="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/banner.png" medium="image" type="image/png" height="96" width="144"/>
+</item>
 <item>
   <title></title>
   <link>https://luislaum.github.io/home/blog/elnino-app/elnino-app.html</link>
@@ -125,6 +418,13 @@
   <guid>https://luislaum.github.io/home/blog/about-this-website/about-this-website.html</guid>
   <pubDate>Fri, 19 Apr 2024 00:00:00 GMT</pubDate>
   <media:content url="https://luislaum.github.io/home/blog/about-this-website/banner.png" medium="image" type="image/png" height="77" width="144"/>
+</item>
+<item>
+  <title></title>
+  <link>https://luislaum.github.io/home/blog/quarto-template-article/article-template/article_v1.docx</link>
+  <description><![CDATA[ undefined ]]></description>
+  <guid>https://luislaum.github.io/home/blog/quarto-template-article/article-template/article_v1.docx</guid>
+  <pubDate>Mon, 16 Dec 2024 17:52:05 GMT</pubDate>
 </item>
 </channel>
 </rss>

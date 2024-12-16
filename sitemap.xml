@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://luislaum.github.io/home/blog.html</loc>
-    <lastmod>2024-12-15T20:20:29.902Z</lastmod>
+    <lastmod>2024-12-16T17:50:45.061Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/about.html</loc>
-    <lastmod>2024-12-15T20:20:29.882Z</lastmod>
+    <lastmod>2024-12-16T17:50:45.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html</loc>
+    <lastmod>2024-12-16T17:50:45.125Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/about-this-website/about-this-website.html</loc>
-    <lastmod>2024-12-15T20:20:29.902Z</lastmod>
+    <lastmod>2024-12-16T17:50:45.061Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/elnino-app/elnino-app.html</loc>
-    <lastmod>2024-12-15T20:20:29.914Z</lastmod>
+    <lastmod>2024-12-16T17:50:45.073Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/index.html</loc>
-    <lastmod>2024-12-15T20:20:30.022Z</lastmod>
+    <lastmod>2024-12-16T17:50:45.161Z</lastmod>
   </url>
 </urlset>
