@@ -138,7 +138,7 @@ It is highly recommended to enable the *Render on Save* option (located at the t
 :::
 
 ::: callout-note
-All the material needed to run this tutorial can be found in my repository, following this link [link](https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt).
+All the material needed to run this tutorial can be found in my repository, following this link [link](https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt.zip).
 :::
 
 # \[ES\] Zotero + Quarto + RStudio y algo más
@@ -266,5 +266,5 @@ Es muy recomendable habilitar la opción de *Render on Save* (situada arriba al 
 :::
 
 ::: callout-note
-Todo el material necesario para ejecutar este tutorial se puede encontrar en mi repositorio, siguiendo este [link](https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt).
+Todo el material necesario para ejecutar este tutorial se puede encontrar en mi repositorio, siguiendo este [link](https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt.zip).
 :::
