@@ -336,6 +336,10 @@ Important
 </section>
 </section>
  ]]></description>
+  <category>quarto</category>
+  <category>template</category>
+  <category>writing tips</category>
+  <category>plantilla</category>
   <guid>https://luislaum.github.io/home/blog/quarto-template-article/quarto-template-article.html</guid>
   <pubDate>Tue, 17 Dec 2024 00:00:00 GMT</pubDate>
   <media:content url="https://luislaum.github.io/home/blog/quarto-template-article/banner.png" medium="image" type="image/png" height="96" width="144"/>
@@ -758,6 +762,14 @@ Note
 </section>
 </section>
  ]]></description>
+  <category>quarto</category>
+  <category>zotero</category>
+  <category>rstudio</category>
+  <category>citations</category>
+  <category>bibliography</category>
+  <category>references</category>
+  <category>citacion</category>
+  <category>bibliografia</category>
   <guid>https://luislaum.github.io/home/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html</guid>
   <pubDate>Mon, 16 Dec 2024 00:00:00 GMT</pubDate>
   <media:content url="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/banner.png" medium="image" type="image/png" height="96" width="144"/>
@@ -766,6 +778,9 @@ Note
   <title></title>
   <link>https://luislaum.github.io/home/blog/elnino-app/elnino-app.html</link>
   <description><![CDATA[ undefined ]]></description>
+  <category>enso</category>
+  <category>peru</category>
+  <category>el nino</category>
   <guid>https://luislaum.github.io/home/blog/elnino-app/elnino-app.html</guid>
   <pubDate>Sat, 20 Apr 2024 00:00:00 GMT</pubDate>
   <media:content url="https://luislaum.github.io/home/blog/elnino-app/elnino-explain1.png" medium="image" type="image/png" height="288" width="144"/>
@@ -869,6 +884,10 @@ Note
 </section>
 </section>
  ]]></description>
+  <category>quarto</category>
+  <category>github pages</category>
+  <category>blog</category>
+  <category>writing</category>
   <guid>https://luislaum.github.io/home/blog/about-this-website/about-this-website.html</guid>
   <pubDate>Fri, 19 Apr 2024 00:00:00 GMT</pubDate>
   <media:content url="https://luislaum.github.io/home/blog/about-this-website/banner.png" medium="image" type="image/png" height="77" width="144"/>
