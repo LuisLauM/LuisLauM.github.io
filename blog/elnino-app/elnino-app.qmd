@@ -6,6 +6,9 @@ date: 2024-04-20
 image: elnino-explain1.png
 format: dashboard
 draft: false
+keywords: ["enso", "peru", "el nino"]
+tags: ["enso", "peru", "el nino"]
+categories: ["enso", "peru", "el nino"]
 ---
 
 ```{r}

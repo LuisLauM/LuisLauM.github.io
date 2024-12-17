@@ -8,6 +8,9 @@ about:
   template: marquee
   image-shape: rectangle
 draft: false
+keywords: ["quarto", "github pages", "blog", "writing"]
+tags: ["quarto", "github pages", "blog", "writing"]
+categories: ["quarto", "github pages", "blog", "writing"]
 ---
 
 

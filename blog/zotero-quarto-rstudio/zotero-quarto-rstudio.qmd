@@ -7,6 +7,9 @@ image: banner.png
 about: 
   template: marquee
   image-shape: rectangle
+keywords: ["quarto", "zotero", "rstudio", "writing scientific article", "citations", "bibliography", "references", "articulo cientifico", "citacion", "bibliografia"]
+tags: ["quarto", "zotero", "rstudio", "writing scientific article", "citations", "bibliography", "references", "articulo cientifico", "citacion", "bibliografia"]
+categories: ["quarto", "zotero", "rstudio", "citations", "bibliography", "references", "citacion", "bibliografia"]
 draft: false
 engine: knitr
 ---

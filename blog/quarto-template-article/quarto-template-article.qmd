@@ -7,6 +7,9 @@ image: banner.png
 about: 
   template: marquee
   image-shape: rectangle
+keywords: ["quarto", "template", "writing scientific article", "plantilla", "articulo cientifico", "writing tips"]
+tags: ["quarto", "template", "writing scientific article", "plantilla", "articulo cientifico"]
+categories: ["quarto", "template", "writing tips", "plantilla"]
 draft: false
 engine: knitr
 ---
