@@ -2,26 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://luislaum.github.io/home/blog.html</loc>
-    <lastmod>2024-12-16T20:25:07.790Z</lastmod>
+    <lastmod>2024-12-17T15:45:19.726Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/about.html</loc>
-    <lastmod>2024-12-16T20:25:07.770Z</lastmod>
+    <lastmod>2024-12-17T15:45:19.706Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html</loc>
-    <lastmod>2024-12-16T20:25:07.854Z</lastmod>
+    <lastmod>2024-12-17T15:45:19.798Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/about-this-website/about-this-website.html</loc>
-    <lastmod>2024-12-16T20:25:07.790Z</lastmod>
+    <lastmod>2024-12-17T15:45:19.730Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/quarto-template-article/quarto-template-article.html</loc>
+    <lastmod>2024-12-17T15:45:19.742Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/elnino-app/elnino-app.html</loc>
-    <lastmod>2024-12-16T20:25:07.802Z</lastmod>
+    <lastmod>2024-12-17T15:45:19.738Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/index.html</loc>
-    <lastmod>2024-12-16T20:25:07.890Z</lastmod>
+    <lastmod>2024-12-17T15:45:19.834Z</lastmod>
   </url>
 </urlset>

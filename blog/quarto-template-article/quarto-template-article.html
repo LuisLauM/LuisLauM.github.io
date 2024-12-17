@@ -1,2 +1,1038 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"></html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2024-12-17">
+<meta name="description" content="A simple template in Quarto for writing a scientific article. | Una plantilla simple en Quarto para redactar un artículo científico.">
+
+<title>Quarto template for a scientific article draft – Beneath the surface 🌊</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon-wave.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-d89fc942f684c7f97fb3c2cf2bc0f3e1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-a040cd6abc73b98b2f4c673569425434.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Beneath the surface 🌊</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+  <ul>
+  <li><a href="#en-writing-a-manuscript-just-with-quarto-and-zotero-and-r" id="toc-en-writing-a-manuscript-just-with-quarto-and-zotero-and-r" class="nav-link active" data-scroll-target="#en-writing-a-manuscript-just-with-quarto-and-zotero-and-r">[EN] Writing a manuscript just with Quarto and Zotero (and R)</a>
+  <ul class="collapse">
+  <li><a href="#pre-requisites" id="toc-pre-requisites" class="nav-link" data-scroll-target="#pre-requisites">Pre-requisites</a></li>
+  <li><a href="#extensions-folder" id="toc-extensions-folder" class="nav-link" data-scroll-target="#extensions-folder"><code>_extensions</code> folder</a></li>
+  <li><a href="#bibliography.bib-file" id="toc-bibliography.bib-file" class="nav-link" data-scroll-target="#bibliography.bib-file"><code>bibliography.bib</code> file</a></li>
+  <li><a href="#ices-journal-of-marine-science.csl-file" id="toc-ices-journal-of-marine-science.csl-file" class="nav-link" data-scroll-target="#ices-journal-of-marine-science.csl-file"><code>ices-journal-of-marine-science.csl</code> file</a></li>
+  <li><a href="#custom-reference-doc.docx-file" id="toc-custom-reference-doc.docx-file" class="nav-link" data-scroll-target="#custom-reference-doc.docx-file"><code>custom-reference-doc.docx</code> file</a></li>
+  <li><a href="#the-main-file-article_v1.qmd" id="toc-the-main-file-article_v1.qmd" class="nav-link" data-scroll-target="#the-main-file-article_v1.qmd">The main file: <code>article_v1.qmd</code></a>
+  <ul class="collapse">
+  <li><a href="#setup-chunk" id="toc-setup-chunk" class="nav-link" data-scroll-target="#setup-chunk"><em>Setup chunk</em></a></li>
+  <li><a href="#writing-in-quarto" id="toc-writing-in-quarto" class="nav-link" data-scroll-target="#writing-in-quarto">Writing in Quarto</a></li>
+  </ul></li>
+  <li><a href="#extra-file-letter_editor.rmd" id="toc-extra-file-letter_editor.rmd" class="nav-link" data-scroll-target="#extra-file-letter_editor.rmd">Extra file: <code>letter_editor.Rmd</code></a></li>
+  </ul></li>
+  <li><a href="#es-escribiendo-un-artículo-solo-con-quarto-y-zotero-y-r" id="toc-es-escribiendo-un-artículo-solo-con-quarto-y-zotero-y-r" class="nav-link" data-scroll-target="#es-escribiendo-un-artículo-solo-con-quarto-y-zotero-y-r">[ES] Escribiendo un artículo solo con Quarto y Zotero (y R)</a>
+  <ul class="collapse">
+  <li><a href="#requerimientos" id="toc-requerimientos" class="nav-link" data-scroll-target="#requerimientos">Requerimientos</a></li>
+  <li><a href="#carpeta-_extensions" id="toc-carpeta-_extensions" class="nav-link" data-scroll-target="#carpeta-_extensions">Carpeta <code>_extensions</code></a></li>
+  <li><a href="#archivo-bibliography.bib" id="toc-archivo-bibliography.bib" class="nav-link" data-scroll-target="#archivo-bibliography.bib">Archivo <code>bibliography.bib</code></a></li>
+  <li><a href="#archivo-ices-journal-of-marine-science.csl" id="toc-archivo-ices-journal-of-marine-science.csl" class="nav-link" data-scroll-target="#archivo-ices-journal-of-marine-science.csl">Archivo <code>ices-journal-of-marine-science.csl</code></a></li>
+  <li><a href="#archivo-custom-reference-doc.docx" id="toc-archivo-custom-reference-doc.docx" class="nav-link" data-scroll-target="#archivo-custom-reference-doc.docx">Archivo <code>custom-reference-doc.docx</code></a></li>
+  <li><a href="#archivo-principal-article_v1.qmd" id="toc-archivo-principal-article_v1.qmd" class="nav-link" data-scroll-target="#archivo-principal-article_v1.qmd">Archivo principal <code>article_v1.qmd</code></a>
+  <ul class="collapse">
+  <li><a href="#setup-chunk-1" id="toc-setup-chunk-1" class="nav-link" data-scroll-target="#setup-chunk-1"><em>Setup chunk</em></a></li>
+  <li><a href="#redactar-en-quarto" id="toc-redactar-en-quarto" class="nav-link" data-scroll-target="#redactar-en-quarto">Redactar en Quarto</a></li>
+  </ul></li>
+  <li><a href="#archivo-adicional-letter_editor.rmd" id="toc-archivo-adicional-letter_editor.rmd" class="nav-link" data-scroll-target="#archivo-adicional-letter_editor.rmd">Archivo adicional <code>letter_editor.Rmd</code></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<div class="quarto-about-marquee">
+  <div class="about-image-container">
+    <img src="banner.png" class="about-image
+  rectangle " style="width: 100%;">
+  </div>
+  <div class="about-contents">
+    <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Quarto template for a scientific article draft</h1>
+</div>
+<div>
+  <div class="description">
+    <p>A simple template in Quarto for writing a scientific article. | Una plantilla simple en Quarto para redactar un artículo científico.</p>
+  </div>
+</div>
+<div class="quarto-title-meta">
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 17, 2024</p>
+    </div>
+  </div>
+  </div>
+</header> <main class="content" id="quarto-document-content">
+
+<p>Image credits: Daria Glakteeva at <a href="https://unsplash.com/photos/a-person-typing-on-a-laptop-on-a-desk-2w0IdiEI-hg?utm_content=creditShareLink&amp;utm_medium=referral&amp;utm_source=unsplash">Unplash</a></p>
+<section id="en-writing-a-manuscript-just-with-quarto-and-zotero-and-r" class="level1">
+<h1>[EN] Writing a manuscript just with Quarto and Zotero (and R)</h1>
+<p>This tutorial starts from a folder-template containing the files needed to write the complete manuscript for a scientific article (applicable to almost any journal) using only Quarto, RStudio, Zotero and R tools. In this example, the output will always be a file in MS Word format, which is widely accepted by several scientific journals. In the following, I will indicate the list of required software (which you should already have installed) and then I will explain the use and handling of each file contained in the template.</p>
+<p><img src="images/clipboard-1818852471.png" class="img-fluid"></p>
+<section id="pre-requisites" class="level2">
+<h2 data-anchor-id="pre-requisites">Pre-requisites</h2>
+<ul>
+<li><p>Reference template: <a href="https://github.com/LuisLauM/quarto-template-scientific-article/article-template.zip" class="uri">https://github.com/LuisLauM/quarto-template-scientific-article/article-template.zip</a>. There you will find the files needed to execute what is shown in this post, which may change as this post is updated.</p></li>
+<li><p>R, RStudio y Zotero: <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a> / <a href="https://posit.co/downloads/" class="uri">https://posit.co/downloads/</a> / <a href="https://www.zotero.org/" class="uri">https://www.zotero.org/</a></p></li>
+<li><p>Quarto: In recent years, RStudio already includes a recent version of Quarto, but if you do not have the software or want to try versions other than the default, you can download them from <a href="https://quarto.org/docs/download/index.html" class="uri">https://quarto.org/docs/download/index.html</a>.</p></li>
+<li><p>Zotero-Quarto-RStudio integration: Citation management will make use of the tools explained in <a href="https://luislaum.github.io/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html">my previous post</a>, so <strong>I recommend you to read and do what is explained there</strong>.</p></li>
+<li><p>Some experience in writing documents using Quarto (or R markdown). The best way to learn how to use Quarto is using it and find what you need to get what you need from online manuals (e.g.&nbsp;from <a href="https://quarto.org/">Quarto</a>), <a href="https://youtu.be/_f3latmOhew?feature=shared">videos on YT</a> or questions on several forums (e.g.&nbsp;<a href="https://stackoverflow.com/questions/tagged/quarto">Stackoverflow</a>) and blogs.</p></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Files and way of working">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Files and way of working
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Although each researcher has a different way of organizing the files of their projects, it is HIGHLY recommended to work each one within the same folder (where we have configured an RStudio project), where there are separate folders for raw data, preprocessed data, output data, figures, code, external documents (reports, permissions, etc.), presentations, among others. For our example, it will be assumed that we are working in the root directory of our project itself, but ideally we should have a subfolder in dedicated to contain only the files related to the article (or articles) coming out of a project. This will be quite useful later on when revisions start coming in and not end up with dozens of confusingly named files scattered around our directory.</p>
+<p><img src="images/clipboard-2838852447.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="extensions-folder" class="level2">
+<h2 data-anchor-id="extensions-folder"><code>_extensions</code> folder</h2>
+<p>Quarto extensions are basically scripts that add additional functionality and are developed and supported by the community. Quarto has a standalone environment philosophy, so, unlike R, the installation of the extensions must be done <strong>local</strong> in each project where we are going to run our Quarto script. For the purposes of this post, we are going to use an extension called <a href="https://github.com/kapsner/authors-block"><strong>kapsner/authors-block</strong></a>, which <strong>is already included</strong> in the reference repository (inside the <code>/_extensions</code> folder), but it is always good to take a look at the original repository to see if they have incorporated any interesting improvements.</p>
+</section>
+<section id="bibliography.bib-file" class="level2">
+<h2 data-anchor-id="bibliography.bib-file"><code>bibliography.bib</code> file</h2>
+<p>This file will contain the metadata of the bibliographic references that we will cite in our main file. It is not necessary to create it manually, that will be taken care of by the Zotero-rbbt tools, as detailed <a href="https://luislaum.github.io/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html">in our respective post</a>.</p>
+</section>
+<section id="ices-journal-of-marine-science.csl-file" class="level2">
+<h2 data-anchor-id="ices-journal-of-marine-science.csl-file"><code>ices-journal-of-marine-science.csl</code> file</h2>
+<p>A <strong>CSL</strong> (Citation Style Language) file defines how citations and references should be formatted in a document, allowing bibliographic management programs (such as Zotero) to automate this process. These files are essential in writing scientific articles because they ensure that citations and references conform precisely to the style standards required by a journal or institution, such as APA, MLA or Vancouver. By using a CSL file, authors can easily switch between styles without having to manually rewrite their references, which saves time, reduces errors, and ensures consistency in citation formatting throughout the paper.</p>
+<p>Usually, each journal tells authors which style to follow when writing their citations, for which in many cases they share the respective <code>.csl</code> file; however, if we cannot find the correct file, there are <a href="https://github.com/citation-style-language/styles">repositories such as this one</a> where hundreds of <code>.csl</code> files for different journals are stored and maintained. Look for the one that best fits the journal to which you will submit your manuscript.</p>
+</section>
+<section id="custom-reference-doc.docx-file" class="level2">
+<h2 data-anchor-id="custom-reference-doc.docx-file"><code>custom-reference-doc.docx</code> file</h2>
+<p>Usually, a manuscript file does not need to have an ornate or sophisticated format, but it is possible that some journals, our advisor or reviewers may request some formatting details in our MS Word output file. This is where Quarto makes use of a simple but powerful solution: the use of a reference file-format.</p>
+<p>The <code>custom-reference-doc.docx</code> file is nothing more than a Word file that explicitly shows how each element will be displayed according to the style we have chosen. Anything we edit in this file will be used by Quarto to format our final document. To explain at length how to edit this file would take a whole post and right now there are many sources where this process is already explained, <a href="https://andrewpwheeler.com/2024/06/21/my-word-template-for-quarto/">this post for example</a>. What is important to keep in mind is that every change we make must be done at the level of MS Word’s Format and Style options. While it might seem very annoying to have to work in Word, the good news is that it is not something we will do continuously, but only a couple of times during our project (if someone requests some special formatting in our manuscript). Personally, the shared file has been enough for my advisors, the reviewers and editors of 2 different journals (ICES JMS and Fisheries Research of Elsevier).</p>
+</section>
+<section id="the-main-file-article_v1.qmd" class="level2">
+<h2 data-anchor-id="the-main-file-article_v1.qmd">The main file: <code>article_v1.qmd</code></h2>
+<p>The initial part of the script of this template consists of a <code>header</code> (in YAML format) where the general options of our document will be shown:</p>
+<ul>
+<li><code>title</code>, between double quotes <code>" "</code>.</li>
+<li><code>authors</code>, where we will be able to include data such as names, surnames and affiliation (which is the most important information), as well as ORCID code, reference URL, etc.</li>
+<li><code>affiliations</code>, this is where we will indicate an identifier (which we will use as a reference for the authors) and the full name of the affiliation, as we want it to appear in the document.</li>
+<li><code>filters</code>, where we will list the *Fourth extensions<code>that we want to be loaded at the beginning of the document (and that will be looked for in the</code>/_extensions` folder).</li>
+<li><code>link-citations</code>, where we can define (true/false) if we want the bibliographic citations in the final document to link to the corresponding reference in the final Bibliography section.</li>
+<li><code>bibliography</code>, where we will indicate the file where our bibliographic references are in BibTeX format.</li>
+<li><code>csl</code>, where we indicate the file that Quarto will use to establish the citation format for bibliographic references.</li>
+<li><code>format</code>, where specific parameters of the output file will be specified. For this example, everything is set to get a MS Word file (<code>.docx</code>) that will use our <code>custom-reference-doc.docx</code> style reference file. The <code>toc</code> parameter (which refers to <em>Table Of Contents</em>) allows to display or not the table of contents at the beginning of the document. The <code>numer-sections</code> parameter allows to enable/disable the use of numbering in the sections of our manuscript.</li>
+</ul>
+<section id="setup-chunk" class="level3">
+<h3 data-anchor-id="setup-chunk"><em>Setup chunk</em></h3>
+<p>The chunk shown at the beginning of the <code>qmd</code> file contains some parameters that should be set, so that you do not have to do it independently in each subsequent chunk. <strong>Hey</strong>, this is a SUGGESTED configuration, you can (and should) modify it as required by your project or the reviewers.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">verbose =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">message =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">warning =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">dev =</span> <span class="st">"ragg_png"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">out.width =</span> <span class="st">"100%"</span>, </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">dpi =</span> <span class="dv">1500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>echo = FALSE</code>: Causes the executed code NOT to be displayed verbatim in the document.</p></li>
+<li><p><code>verbose = FALSE</code>: Useful for suppressing detailed messages about progress, intermediate steps or partial results of code within chunks to keep outputs cleaner.</p></li>
+<li><p><code>message = FALSE</code>/<code>warning = FALSE</code>: used to suppress warning messages or information that functions may generate during code execution, preventing them from appearing in the document output. This helps to keep the output cleaner and focused on the essential results.</p></li>
+<li><p><code>dev = "ragg_png"</code>: specifies that the graphics device used to generate the images is <a href="https://ragg.r-lib.org/">ragg</a>, an efficient and modern engine that produces graphics in PNG format with high quality and performance.</p></li>
+<li><p><code>out.width = "100%"</code>: sets that the width of the generated images or graphics will occupy 100% of the width of the container (e.g., the page or column where it is displayed), automatically adjusting to the available size.</p></li>
+<li><p><code>dpi = 1500</code>: sets the resolution of the images generated in the document, specifically in dots per inch. A value of 1500 dpi indicates a very high resolution, which results in sharper and more detailed images, but also heavier, so it will be the user’s responsibility to determine the optimum value as specified by each magazine.</p></li>
+</ul>
+</section>
+<section id="writing-in-quarto" class="level3">
+<h3 data-anchor-id="writing-in-quarto">Writing in Quarto</h3>
+<p>What follows is basically to write our manuscript as if it were just another report in Quarto, taking advantage of the power of chunks to recreate the analyses needed to generate each figure, table or value. Here it is important to recommend that each value that comes from an analysis of our information (i.e.&nbsp;that does not come directly from a bibliographic citation) should be generated from explicit code in our document.</p>
+<p>For example, let us imagine that I am working with the <code>mtcars</code> table (from R) and I want to write the following text-result:</p>
+<blockquote class="blockquote">
+<p>The car models Toyota Corolla and Fiat 128 were those with the highest miles per gallon value.</p>
+</blockquote>
+<p>The text inside our qmd file should look like this:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>The car models `r rownames(mtcars)[order(mtcars$mpg, decreasing = TRUE)[1:2]] |&gt; paste(collapse = " and ")` were those with the highest miles per gallon value.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>As you can see, within the paragraph itself I am running a chunk with a data sorting and extraction operation. While this may seem more cumbersome, it allows that if at some point we were to modify some pre-processing process of the initial data, the results will be generated automatically, without the need for us to do these small calculations again.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Obviously, the texts related to the interpretation of the results should be reviewed whenever we know that we have made an important change in our initial data.</p>
+</div>
+</div>
+<p>There are multiple websites (blogs and forums) where we can learn how to format our results or presentation. Some examples are:</p>
+<ul>
+<li><p><a href="https://quarto.org/docs/authoring/markdown-basics.html">Markdown Basics</a></p></li>
+<li><p><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></p></li>
+<li><p><a href="https://rmarkdown.rstudio.com/index.html">R markdown</a></p></li>
+<li><p><a href="https://yihui.org/knitr/">knitr</a></p></li>
+<li><p><a href="https://bookdown.org/">Bookdown</a></p></li>
+<li><p><a href="https://quarto-tdg.org/overview.html">Hello Quarto</a></p></li>
+<li><p><a href="https://github.com/quarto-dev/quarto-cli/discussions/categories/q-a">Quarto Q&amp;A</a>. This site is particularly interesting because it is the Q&amp;A section of the Quarto repository itself, so it is always good to take a look at its search engine and check if someone else had similar difficulties as us. We can also leave a ticket with our query if we don’t find a match.</p></li>
+</ul>
+</section>
+</section>
+<section id="extra-file-letter_editor.rmd" class="level2">
+<h2 data-anchor-id="extra-file-letter_editor.rmd">Extra file: <code>letter_editor.Rmd</code></h2>
+<p>The letter to the editor is a key component when submitting a scientific article to a journal, as it serves as a first presentation of the work to the editors and helps to highlight its relevance, originality and contribution to the field. Its usefulness lies in quickly capturing the editor’s attention by summarizing the objectives, main findings and importance of the study, which facilitates the initial evaluation of the manuscript. In addition, it allows the author to briefly explain why the article is appropriate for the journal in question, showing alignment with its focus and audience. A well-written letter can positively influence the editor’s decision to send the article for review, thus expediting the evaluation process.</p>
+<p>Although in this template I do not share an example of writing this letter (only the R markdown format), it is possible to find multiple related posts in various forums or blogs. The use of this file is quite intuitive, just fill in the fields and render the document. By the way, it requires the prior installation of the <a href="https://cran.r-project.org/package=komaletter">komaletter package</a>.</p>
+<hr>
+</section>
+</section>
+<section id="es-escribiendo-un-artículo-solo-con-quarto-y-zotero-y-r" class="level1">
+<h1>[ES] Escribiendo un artículo solo con Quarto y Zotero (y R)</h1>
+<p>Este tutorial parte de una carpeta-plantilla en donde están los archivos necesarios para escribir el manuscrito completo para un artículo científico (aplicable a casi cualquier revista) usando únicamente herramientas de Quarto, RStudio, Zotero y R. En este ejemplo, el output será siempre un archivo en formato MS Word, que es ampliamente aceptado por diversas revistas científicas. A continuación, indicaré la lista de software requerido (que debn tener ya instalado) y luego iré explicando el uso y manejo de cada archivo contenido en la plantilla.</p>
+<p><img src="images/clipboard-1818852471.png" class="img-fluid"></p>
+<section id="requerimientos" class="level2">
+<h2 data-anchor-id="requerimientos">Requerimientos</h2>
+<ul>
+<li><p>Plantilla de referencia: <a href="https://github.com/LuisLauM/quarto-template-scientific-article/article-template.zip" class="uri">https://github.com/LuisLauM/quarto-template-scientific-article/article-template.zip</a>. Ahí se encuentran los archivos necesarios para ejecutar lo mostrado en este post, los cuales podrán ir variando conforme este post se actualice.</p></li>
+<li><p>R, RStudio y Zotero: <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a> / <a href="https://posit.co/downloads/" class="uri">https://posit.co/downloads/</a> / <a href="https://www.zotero.org/" class="uri">https://www.zotero.org/</a></p></li>
+<li><p>Quarto: En los últimos años, RStudio ya incluye una versión reciente de Quarto, pero si usted no cuenta con el software o desea probar versiones distintas a la que llega por defecto, puede descargarlas desde <a href="https://quarto.org/docs/download/index.html" class="uri">https://quarto.org/docs/download/index.html</a>.</p></li>
+<li><p>Integración Zotero-Quarto-RStudio: El manejo de citas se debe hacer a través de las herramientas explicadas en <a href="https://luislaum.github.io/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html">mi post anterior</a>, así que <strong>les recomiendo leerlo previamente e implementar lo explicado ahí</strong>.</p></li>
+<li><p>Experiencia en la escritura de documentos usando Quarto (o R markdown). La mejor manera de aprender a usar Quarto es usándolo e ir hallando lo necesario para obtener lo que necesitamos a partir de manuales en línea (e.g.&nbsp;desde la propia web de <a href="https://quarto.org/">Quarto</a>), <a href="https://youtu.be/_f3latmOhew?feature=shared">vídeos en YT</a> o preguntas en diversos foros (e.g.&nbsp;<a href="https://stackoverflow.com/questions/tagged/quarto">Stackoverflow</a>).</p></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Archivos, orden y modo de trabajo">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Archivos, orden y modo de trabajo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si bien cada investigador tiene una manera distinta de organizar los archivos de sus proyectos, es MUY recomendable trabajar cada uno dentro de una misma carpeta (en donde tengamos configurado un proyecto de RStudio), en donde haya carpetas diferenciadas para los datos de entrada en bruto (raw), los preprocesados, los de salida, las figuras, el código, los documentos externos (informes, permisos, etc.), las presentaciones, entre otros. Para nuestro ejemplo, se asumirá que estamos trabajando en el propio directorio raíz de nuestro proyecto, pero idealmente deberíamos tener una subcarpeta en dedicada a contener únicamente los archivos relacionados al artículo (o artículos) que salen de un proyecto. Esto será bastante útil posteriormente, cuando empiecen a llegar las revisiones y no terminar con decenas de archivos con nombre confusos y desperdigados por nuestro directorio.</p>
+<p><img src="images/clipboard-2838852447.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="carpeta-_extensions" class="level2">
+<h2 data-anchor-id="carpeta-_extensions">Carpeta <code>_extensions</code></h2>
+<p>Las extensiones de Quarto son básicamente scripts que añaden funcionalidades adicionales y que son desarrolladas y soportadas por la comunidad. Quarto maneja una filosofía de entornos independientes, por lo que, a diferencia de R, la instalación de las extensiones de hacerse de manera <strong>local</strong> en cada proyecto en que vayamos a ejecutar nuestro script de Quarto. Para efectos del presente post, vamos a utilizar una extensión llamada <a href="https://github.com/kapsner/authors-block"><strong>kapsner/authors-block</strong></a>, la cual <strong>ya viene incluidas</strong> en el repositorio de referencia (dentro de la carpeta <code>/_extensions</code>), pero siempre es bueno darse una vuelta por el repositorio original para saber si han incorporado alguna mejora interesante.</p>
+</section>
+<section id="archivo-bibliography.bib" class="level2">
+<h2 data-anchor-id="archivo-bibliography.bib">Archivo <code>bibliography.bib</code></h2>
+<p>Este archivo contendrá la metadata de las referencias bibliográficas que citaremos en nuestro archivo principal. No es necesario crearlo manualmente, de eso se encargará las herramientas de Zotero-rbbt, tal como se detalla <a href="https://luislaum.github.io/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html">en nuestro post respectivo</a>.</p>
+</section>
+<section id="archivo-ices-journal-of-marine-science.csl" class="level2">
+<h2 data-anchor-id="archivo-ices-journal-of-marine-science.csl">Archivo <code>ices-journal-of-marine-science.csl</code></h2>
+<p>Un archivo <strong>CSL</strong> (Citation Style Language) define cómo se deben formatear las citas y las referencias en un documento, permitiendo que programas de gestión bibliográfica (como Zotero) automaticen este proceso. Estos archivos son fundamentales en la escritura de artículos científicos porque garantizan que las citas y referencias se adapten de manera precisa a las normas de estilo exigidas por una revista o institución, como APA, MLA o Vancouver. Al utilizar un archivo CSL, los autores pueden cambiar fácilmente entre estilos sin necesidad de reescribir manualmente sus referencias, lo que ahorra tiempo, reduce errores y asegura la consistencia en el formato de citación a lo largo del documento.</p>
+<p>Usualmente, cada revista indica a los autores qué estilo deben seguir al momento de redactar sus citas, para lo cual en muchos casos comparten el respectivo archivo <code>.csl</code>; sin embargo, si no logramos hallar el archivo correcto, existen <a href="https://github.com/citation-style-language/styles">repositorios como este</a> en donde se almacenan y mantienen cientos de archivos <code>.csl</code> para diferentes revistas. Busca el que más se ajuste a la revista a la que someterás tu manuscrito.</p>
+</section>
+<section id="archivo-custom-reference-doc.docx" class="level2">
+<h2 data-anchor-id="archivo-custom-reference-doc.docx">Archivo <code>custom-reference-doc.docx</code></h2>
+<p>Usualmente, un archivo de manuscrito no requiere tener un formato ornamentado o sofisticado, pero es posible que algunas revistas, nuestro asesor o los revisores soliciten algunos detalles de formato en nuestro archivo de salida en MS Word. Aquí es donde Quarto hace uso de una solución sencilla, pero potente: el uso de un archivo-formato de referencia.</p>
+<p>El archivo <code>custom-reference-doc.docx</code> no es más que un archivo en Word en donde se muestra de forma explícita la manera en cómo se mostrará cada elemento según el estilo que hayamos elegido. Cualquier cosa que editemos en ese archivo será utilizada por Quarto para darle formato a nuestro documento final. Explicar en extenso cómo editar este archivo tomaría un post entero y ahora mismo existen muchas fuentes en donde ya se explica este proceso, <a href="https://andrewpwheeler.com/2024/06/21/my-word-template-for-quarto/">este post por ejemplo</a>. Lo que sí es importante tener en cuenta es que cada cambio que hagamos debe hacerse a nivel de las opciones de Formato y Estilo de MS Word. Si bien podría parecer muy molesto tener que trabajar en Word, la buena noticia es que no es algo que haremos continuamente, sino solo un par de veces durante nuestro proyecto (si es que alguien solicita algún formato especial en nuestro manuscrito). En lo personal, con el archivo compartido ha sido suficiente para mis asesores, los revisores y editores de 2 revistas distintas (ICES JMS y Fisheries Research de Elsevier).</p>
+</section>
+<section id="archivo-principal-article_v1.qmd" class="level2">
+<h2 data-anchor-id="archivo-principal-article_v1.qmd">Archivo principal <code>article_v1.qmd</code></h2>
+<p>La parte inicial del script de esta plantilla se compone un <code>header</code> (en formato YAML) en donde se mostrará las opciones generales de nuestro documento:</p>
+<ul>
+<li><code>title</code>, entre comillas dobles <code>" "</code>.</li>
+<li><code>authors</code>, en donde podremos incluir datos como nombres, apellidos y afiliación (que es la información más importante), así como código ORCID, URL de referencia, etc.</li>
+<li><code>affiliations</code>, aquí es donde indicaremos un identificador (que usaremos como referencia para los autores) y el nombre (<code>name</code>) completo de la afiliación, tal como querramos que aparezca en el documento.</li>
+<li><code>filters</code>, en donde listaremos las <em>Quarto extensions</em> que deseamos que se carguen al inicio del documento (y que se buscarán en la carpeta <code>/_extensions</code>).</li>
+<li><code>link-citations</code>, en donde podremos definir (true/false) si deseamos que las citas bibliográficas en el documento final se enlacen a la referencia correspondiente en la sección final de Bibliografía.</li>
+<li><code>bibliography</code>, en donde indicaremos el archivo en donde se hallan nuestras referencias bibliográficas en formato BibTeX.</li>
+<li><code>csl</code>, en donde indicaremos el archivo que utilizará Quarto para establecer el formato de citación de referencias bibliográficas.</li>
+<li><code>format</code>, en donde se indicará parámetros específicos del archivo de salida. Para este ejemplo, todo está configurado para obtener un archivo en MS Word (<code>.docx</code>) que utilizará nuestro archivo de referencia de estilo <code>custom-reference-doc.docx</code>. El parámetro <code>toc</code> (que hace referencia a <em>Table Of Contents</em>) permite mostrar o no la tabla de contenidos al inicio del documento. El parámetro <code>numer-sections</code> permite activar/desactivar el uso de numeración en las secciones de nuestro manuscrito.</li>
+</ul>
+<section id="setup-chunk-1" class="level3">
+<h3 data-anchor-id="setup-chunk-1"><em>Setup chunk</em></h3>
+<p>El chunk que se muestra al inicio del archivo <code>qmd</code> contiene algunos parámetros que conviene fijar, para no tener que hacerlo independientemente en cada chunk posterior. <strong>Ojo</strong>, esta es una configuración SUGERIDA, usted podrá (y deberá) modificarla según lo requiera su proyecto o los revisores.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">verbose =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">message =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">warning =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">dev =</span> <span class="st">"ragg_png"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">out.width =</span> <span class="st">"100%"</span>, </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">dpi =</span> <span class="dv">1500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>echo = FALSE</code>: Hace que el código ejecutado NO se muestre textualmente en el documento.</p></li>
+<li><p><code>verbose = FALSE</code>: Útil para suprimir mensajes detallados sobre el progreso, los pasos intermedios o los resultados parciales del código dentro de los chunks y mantener salidas más limpias.</p></li>
+<li><p><code>message = FALSE</code>/<code>warning = FALSE</code>: se utiliza para suprimir los mensajes de advertencia o información que las funciones pueden generar durante la ejecución del código, evitando que estos aparezcan en la salida del documento. Esto ayuda a mantener la salida más limpia y enfocada en los resultados esenciales.</p></li>
+<li><p><code>dev = "ragg_png"</code>: especifica que el dispositivo gráfico utilizado para generar las imágenes es <a href="https://ragg.r-lib.org/">ragg</a>, un motor eficiente y moderno que produce gráficos en formato PNG con alta calidad y rendimiento.</p></li>
+<li><p><code>out.width = "100%"</code>: establece que el ancho de las imágenes o gráficos generados ocupará el 100% del ancho del contenedor (por ejemplo, la página o columna donde se muestra), ajustándose automáticamente al tamaño disponible.</p></li>
+<li><p><code>dpi = 1500</code>: establece la resolución de las imágenes generadas en el documento, específicamente en puntos por pulgada (dots per inch). Un valor de 1500 dpi indica una resolución muy alta, lo que resulta en imágenes más nítidas y detalladas, pero también más pesadas, por lo que será responsabilidad del usuario determinar el valor óptimo junto a lo especificado por cada revista.</p></li>
+</ul>
+</section>
+<section id="redactar-en-quarto" class="level3">
+<h3 data-anchor-id="redactar-en-quarto">Redactar en Quarto</h3>
+<p>Lo que sigue es básicamente redactar nuestro manuscrito somo si se tratara de un reporte más en Quarto, aprovechando el poder de los chunks para recrear los análisis necesarios para generar cada figura, tabla o valor. Aquí es importante recomendar que cada valor que provenga de un análisis de nuestra información (i.e.&nbsp;que no provenga diractamente de una cita bibliográfica) debe ser generado a partir de código explícito en nuestro documento.</p>
+<p>Por ejemplo, imaginemos que estoy trabajando con la tabla <code>mtcars</code> (de R) y deseo redactar el siguiente texto-resultado:</p>
+<blockquote class="blockquote">
+<p>Los modelos Toyota Corolla y Fiat 128 fueron aquellos con mayor valor de millas por galón.</p>
+</blockquote>
+<p>El texto dentro de nuestro archivo qmd dbería lucir del siguiente modo:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Los modelos `r rownames(mtcars)[order(mtcars$mpg, decreasing = TRUE)[1:2]] |&gt; paste(collapse = " y ")` fueron los que mostraron los primeros según la variable de millas por galón.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Como se observa, dentro del propio párrafo estoy ejecutando un chunk con una operación de ordenamiento y extracción de datos. Si bien esto puede parecer más engorroso, permite que si en algún momento tuviéramos que modificar algún proceso de preprocesamiento de los datos iniciales, los resultados se generarán automáticamente, sin necesidad de que tengamos que volver a hacer estos pequeños cálculos nuevamente.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Evidentemente, los textos relacionados a la interpretación de los resultados deben ser revisados cada vez que sepamos que hemos realizado un cambio importante en nuestros datos iniciales.</p>
+</div>
+</div>
+<p>Existen múltiples sitios web (blogs y foros) en donde podemos aprender a darle el formato que nuestros resultados o presentación requieren. Algunos ejemplos son:</p>
+<ul>
+<li><p><a href="https://quarto.org/docs/authoring/markdown-basics.html">Markdown Basics</a></p></li>
+<li><p><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></p></li>
+<li><p><a href="https://rmarkdown.rstudio.com/index.html">R markdown</a></p></li>
+<li><p><a href="https://yihui.org/knitr/">knitr</a></p></li>
+<li><p><a href="https://bookdown.org/">Bookdown</a></p></li>
+<li><p><a href="https://quarto-tdg.org/overview.html">Hello Quarto</a></p></li>
+<li><p><a href="https://github.com/quarto-dev/quarto-cli/discussions/categories/q-a">Quarto Q&amp;A</a>. Este sitio es particularmente interesante porque se trata de la sección de Q&amp;A del propio repositorio de Quarto, por lo que siempre es bueno darnos una vuelta por su buscador y revisar si alguien más tuvo similares dificultades que nosotros. Así mismo, podemos dejar un ticket con nuestra consulta si es que no encontramos coincidencias.</p></li>
+</ul>
+</section>
+</section>
+<section id="archivo-adicional-letter_editor.rmd" class="level2">
+<h2 data-anchor-id="archivo-adicional-letter_editor.rmd">Archivo adicional <code>letter_editor.Rmd</code></h2>
+<p>La carta al editor es un componente clave al someter un artículo científico a una revista, ya que sirve como una primera presentación del trabajo a los editores y ayuda a destacar su relevancia, originalidad y contribución al campo. Su utilidad radica en captar rápidamente la atención del editor al resumir los objetivos, los principales hallazgos y la importancia del estudio, lo que facilita la evaluación inicial del manuscrito. Además, permite al autor explicar brevemente por qué el artículo es adecuado para la revista en cuestión, mostrando alineación con su enfoque y audiencia. Una carta bien redactada puede influir positivamente en la decisión del editor de enviar el artículo a revisión, agilizando así el proceso de evaluación.</p>
+<p>Si bien en esta plantilla no comparto un ejemplo de redacción de esta carta (solo el formato en R markdown), es posible hallar múltiples post relacionados en diversos foros o blogs. El uso de este archivo es bastante intuitivo, solo basta con rellenar los campos y renderizar el documento. Por cierto, se requiere la instalación previa del <a href="https://cran.r-project.org/package=komaletter">paquete komaletter</a>.</p>
+
+
+</section>
+</section>
+</main> 
+  </div>
+</div>
+ <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/luislaum\.github\.io\/home\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2024, Wencheng Lau-Medrano</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This website is built with <a href="https://github.com/LuisLauM/LuisLauM.github.io" target="_blank"><i class="fa-brands fa-github" title="GitHub octocat logo" aria-hidden="true"></i></a>, <a href="https://www.r-project.org/about.html" target="_blank"><i class="fa-brands fa-r-project" title="R Project" aria-hidden="true"></i></a> and <a href="https://quarto.org/" target="_blank">Quarto</a></p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
