@@ -92,7 +92,7 @@ Great, we're all set! It's time to test our changes.
 
 2.  Next, we will create an empty file where our bibliographic citations will be stored (for our example, we will name it **references.bib**). Then, in the header of our Quarto file (also called the YAML section), we will add a line where we will indicate the path to this created file:
 
-````{md}
+````{verbatim}
 ---
 title: "test_rbbt"
 format: html
@@ -102,8 +102,8 @@ bibliography: references.bib
 
 3.  Also, to ensure that **rbbt** does NOT attempt to include references to figures, tables, equations, or other non-bibliographic elements, we will include the following code within a chunk at the beginning of our document:
 
-````{md}
-#| echo: false
+````{r}
+#| eval: false
 
 # Get current filepath
 currentFilePath <- this.path::this.path()
@@ -140,6 +140,8 @@ It is highly recommended to enable the *Render on Save* option (located at the t
 ::: callout-note
 All the material needed to run this tutorial can be found in my repository, following this link [link](https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt.zip).
 :::
+
+---
 
 # \[ES\] Zotero + Quarto + RStudio y algo más
 
@@ -220,7 +222,7 @@ Añadir atajos de teclado en RStudio es muy sencillo, basta con ir al menú **To
 
 2.  Seguidamente, crearemos un archivo vacío en donde se guardarán nuestras citas bibliográficas (para nuestro ejemplo, le pondremos el nombre **references.bib**). Luego, en la cabecera de nuestro archivo de Quarto (llamada también la sección YAML), añadiremos una línea en donde indicaremos la ruta a este archivo creado:
 
-````{md}
+````{verbatim}
 ---
 title: "test_rbbt"
 format: html
@@ -230,8 +232,8 @@ bibliography: references.bib
 
 3.  Así mismo, para asegurarnos de que **rbbt** NO intente incluir las referencias a figuras, tablas, ecuaciones, u otros elementos no bibliográficos, incluiremos el siguiente código dentro de un chunk al inicio de nuestro documento:
 
-````{md}
-#| echo: false
+````{r}
+#| eval: false
 
 # Get current filepath
 currentFilePath <- this.path::this.path()
