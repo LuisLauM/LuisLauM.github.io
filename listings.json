@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/blog/timeline-with-googlevis/timeline-with-googlevis.html",
       "/blog/quarto-template-article/quarto-template-article.html",
       "/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html",
       "/blog/elnino-app/elnino-app.html",
