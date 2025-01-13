@@ -22,6 +22,12 @@ Quarto is becoming more and more a powerful alternative for the generation of va
 
 In this article, we will see how through an R package it is possible to add the possibility in RStudio to insert bibliographic citations from Zotero in Quarto files (and also in R markdown) in a very simple way (learning one or two keyboard shortcuts).
 
+::: callout-note
+All the material needed to run this tutorial can be found in my repository, following this link [link](https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt.zip). You must click on the `View raw` link or the `Download raw file` button.
+
+![](images/clipboard-8112645573.png)
+:::
+
 ## Required software
 
 As you can suppose, it is necessary to have installed: [R](https://cran.r-project.org/), [RStudio](https://posit.co/downloads/), [Zotero](https://www.zotero.org/) (preferably with a logged in account and with some references that we can use as an example) and [Quarto](https://quarto.org/docs/download/) (this last one comes with the installation of **the latest versions of RStudio**).
@@ -140,9 +146,6 @@ It is highly recommended to enable the *Render on Save* option (located at the t
 ![](images/clipboard-1949640663.png)
 :::
 
-::: callout-note
-All the material needed to run this tutorial can be found in my repository, following this link [link](https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt.zip).
-:::
 
 ---
 
@@ -151,6 +154,12 @@ All the material needed to run this tutorial can be found in my repository, foll
 Quarto se está volviendo cada vez más una poderosa alternativa para la generación de diversos tipos de documentos y reportes. Por su parte, Zotero es uno de los administradores de citas bibliográficas más extendido y utilizado, no solo por ser software libre, sino también porque la comunidad a su alrededor ha ido desarrollando muchos *plug-ins* que permiten incrementar sus capacidades fuera de lo ofrecido por sus propios desarrolladores. Finalmente, RStudio es uno de los IDE preferidos en la comunidad de programadores en R, R markdown y Quarto, por su simplicidad y potencia, pero también por permitir la incorporación de *addins* (la analogía de *plug-ings*) a través de paquetes de R.
 
 En el presente artículo, veremos cómo a través de un paquete de R es posible añadir la posibilidad en RStudio de insertar citas bibliográficas desde Zotero en archivos Quarto (y también en R markdown) de manera muy sencilla (aprendiendo uno o dos atajos de teclado).
+
+::: callout-note
+Todo el material necesario para ejecutar este tutorial se puede encontrar en mi repositorio, siguiendo este [link](https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt.zip). Deberás dar click al link de `View raw` o bien al botón de `Download raw file`.
+
+![](images/clipboard-8112645573.png)
+:::
 
 ## Software necesario
 
@@ -268,8 +277,4 @@ Las citas pueden hacerse de forma libre o entre paréntesis; sin embargo, para e
 Es muy recomendable habilitar la opción de *Render on Save* (situada arriba al costado del botón de Guardar) que, como su nombre lo indica, permite Redenrizar al Guardar, lo que permite que solo presiones *Ctrl + S* para visualizar nuestro trabajo en Quarto.
 
 ![](images/clipboard-1949640663.png)
-:::
-
-::: callout-note
-Todo el material necesario para ejecutar este tutorial se puede encontrar en mi repositorio, siguiendo este [link](https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt.zip).
 :::

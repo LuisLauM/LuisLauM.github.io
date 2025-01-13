@@ -24,7 +24,9 @@ This tutorial starts from a folder-template containing the files needed to write
 
 ## Pre-requisites
 
--   Reference template: <https://github.com/LuisLauM/quarto-template-scientific-article/article-template.zip>. There you will find the files needed to execute what is shown in this post, which may change as this post is updated.
+-   Reference template [link](https://github.com/LuisLauM/LuisLauM.github.io/blob/main/blog/quarto-template-article/article-template.zip): There you will find the files needed to execute what is shown in this post, which may change as this post is updated. You must click on the `View raw` link or the `Download raw file` button.
+
+  ![](images/clipboard-1198850886.png)
 
 -   R, RStudio y Zotero: <https://cran.r-project.org/> / <https://posit.co/downloads/> / <https://www.zotero.org/>
 
@@ -34,7 +36,7 @@ This tutorial starts from a folder-template containing the files needed to write
 
 -   Some experience in writing documents using Quarto (or R markdown). The best way to learn how to use Quarto is using it and find what you need to get what you need from online manuals (e.g. from [Quarto](https://quarto.org/)), [videos on YT](https://youtu.be/_f3latmOhew?feature=shared) or questions on several forums (e.g. [Stackoverflow](https://stackoverflow.com/questions/tagged/quarto)) and blogs.
 
-::: {.callout-tip title="Files and way of working"}
+::: {.callout-tip title="Files and order"}
 Although each researcher has a different way of organizing the files of their projects, it is HIGHLY recommended to work each one within the same folder (where we have configured an RStudio project), where there are separate folders for raw data, preprocessed data, output data, figures, code, external documents (reports, permissions, etc.), presentations, among others. For our example, it will be assumed that we are working in the root directory of our project itself, but ideally we should have a subfolder in dedicated to contain only the files related to the article (or articles) coming out of a project. This will be quite useful later on when revisions start coming in and not end up with dozens of confusingly named files scattered around our directory.
 
 ![](images/clipboard-2838852447.png)
@@ -159,7 +161,9 @@ Este tutorial parte de una carpeta-plantilla en donde están los archivos necesa
 
 ## Requerimientos
 
--   Plantilla de referencia: <https://github.com/LuisLauM/quarto-template-scientific-article/article-template.zip>. Ahí se encuentran los archivos necesarios para ejecutar lo mostrado en este post, los cuales podrán ir variando conforme este post se actualice.
+-   Plantilla de referencia [link](https://github.com/LuisLauM/LuisLauM.github.io/blob/main/blog/quarto-template-article/article-template.zip): Ahí se encuentran los archivos necesarios para ejecutar lo mostrado en este post, los cuales podrán ir variando conforme este post se actualice. Deberás dar click al link de `View raw` o bien al botón de `Download raw file`.
+  
+  ![](images/clipboard-1198850886.png)
 
 -   R, RStudio y Zotero: <https://cran.r-project.org/> / <https://posit.co/downloads/> / <https://www.zotero.org/>
 
