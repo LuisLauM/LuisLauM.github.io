@@ -14,7 +14,7 @@
 <title>Beneath the surface 🌊</title>
 <link>https://luislaum.github.io/home/blog.html</link>
 </image>
-<generator>quarto-1.6.39</generator>
+<generator>quarto-1.6.40</generator>
 <lastBuildDate>Thu, 19 Dec 2024 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Drawing timeline (Gantt) diagrams in R</title>
@@ -815,19 +815,22 @@ font-style: inherit;">plot</span>()</span>
 <section id="pre-requisites" class="level2">
 <h2 data-anchor-id="pre-requisites">Pre-requisites</h2>
 <ul>
-<li><p>Reference template: <a href="https://github.com/LuisLauM/quarto-template-scientific-article/article-template.zip" class="uri">https://github.com/LuisLauM/quarto-template-scientific-article/article-template.zip</a>. There you will find the files needed to execute what is shown in this post, which may change as this post is updated.</p></li>
+<li>Reference template <a href="https://github.com/LuisLauM/LuisLauM.github.io/blob/main/blog/quarto-template-article/article-template.zip">link</a>: There you will find the files needed to execute what is shown in this post, which may change as this post is updated. You must click on the <code>View raw</code> link or the <code>Download raw file</code> button.</li>
+</ul>
+<p><img src="https://luislaum.github.io/home/blog/quarto-template-article/images/clipboard-1198850886.png" class="img-fluid"></p>
+<ul>
 <li><p>R, RStudio y Zotero: <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a> / <a href="https://posit.co/downloads/" class="uri">https://posit.co/downloads/</a> / <a href="https://www.zotero.org/" class="uri">https://www.zotero.org/</a></p></li>
 <li><p>Quarto: In recent years, RStudio already includes a recent version of Quarto, but if you do not have the software or want to try versions other than the default, you can download them from <a href="https://quarto.org/docs/download/index.html" class="uri">https://quarto.org/docs/download/index.html</a>.</p></li>
 <li><p>Zotero-Quarto-RStudio integration: Citation management will make use of the tools explained in <a href="https://luislaum.github.io/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html">my previous post</a>, so <strong>I recommend you to read and do what is explained there</strong>.</p></li>
 <li><p>Some experience in writing documents using Quarto (or R markdown). The best way to learn how to use Quarto is using it and find what you need to get what you need from online manuals (e.g.&nbsp;from <a href="https://quarto.org/">Quarto</a>), <a href="https://youtu.be/_f3latmOhew?feature=shared">videos on YT</a> or questions on several forums (e.g.&nbsp;<a href="https://stackoverflow.com/questions/tagged/quarto">Stackoverflow</a>) and blogs.</p></li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled" title="Files and way of working">
+<div class="callout callout-style-default callout-tip callout-titled" title="Files and order">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Files and way of working
+Files and order
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -984,7 +987,10 @@ Important
 <section id="requerimientos" class="level2">
 <h2 data-anchor-id="requerimientos">Requerimientos</h2>
 <ul>
-<li><p>Plantilla de referencia: <a href="https://github.com/LuisLauM/quarto-template-scientific-article/article-template.zip" class="uri">https://github.com/LuisLauM/quarto-template-scientific-article/article-template.zip</a>. Ahí se encuentran los archivos necesarios para ejecutar lo mostrado en este post, los cuales podrán ir variando conforme este post se actualice.</p></li>
+<li>Plantilla de referencia <a href="https://github.com/LuisLauM/LuisLauM.github.io/blob/main/blog/quarto-template-article/article-template.zip">link</a>: Ahí se encuentran los archivos necesarios para ejecutar lo mostrado en este post, los cuales podrán ir variando conforme este post se actualice. Deberás dar click al link de <code>View raw</code> o bien al botón de <code>Download raw file</code>.</li>
+</ul>
+<p><img src="https://luislaum.github.io/home/blog/quarto-template-article/images/clipboard-1198850886.png" class="img-fluid"></p>
+<ul>
 <li><p>R, RStudio y Zotero: <a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a> / <a href="https://posit.co/downloads/" class="uri">https://posit.co/downloads/</a> / <a href="https://www.zotero.org/" class="uri">https://www.zotero.org/</a></p></li>
 <li><p>Quarto: En los últimos años, RStudio ya incluye una versión reciente de Quarto, pero si usted no cuenta con el software o desea probar versiones distintas a la que llega por defecto, puede descargarlas desde <a href="https://quarto.org/docs/download/index.html" class="uri">https://quarto.org/docs/download/index.html</a>.</p></li>
 <li><p>Integración Zotero-Quarto-RStudio: El manejo de citas se debe hacer a través de las herramientas explicadas en <a href="https://luislaum.github.io/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html">mi post anterior</a>, así que <strong>les recomiendo leerlo previamente e implementar lo explicado ahí</strong>.</p></li>
@@ -1166,6 +1172,20 @@ Important
 <h1>[EN] Zotero + Quarto + RStudio and extras</h1>
 <p>Quarto is becoming more and more a powerful alternative for the generation of various types of documents and reports. Zotero is one of the most widespread and widely used bibliographic citation managers, not only because it is free software, but also because the community around it has been developing many <em>plug-ins</em> that allow to increase its capabilities beyond what is offered by its own developers. Finally, RStudio is one of the preferred IDE in the community of programmers in R, R markdown and Quarto, for its simplicity and power, but also for allowing the incorporation of <em>addins</em> (the analogy of plug-ins) through R packages.</p>
 <p>In this article, we will see how through an R package it is possible to add the possibility in RStudio to insert bibliographic citations from Zotero in Quarto files (and also in R markdown) in a very simple way (learning one or two keyboard shortcuts).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All the material needed to run this tutorial can be found in my repository, following this link <a href="https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt.zip">link</a>. You must click on the <code>View raw</code> link or the <code>Download raw file</code> button.</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-8112645573.png" class="img-fluid"></p>
+</div>
+</div>
 <section id="required-software" class="level2">
 <h2 data-anchor-id="required-software">Required software</h2>
 <p>As you can suppose, it is necessary to have installed: <a href="https://cran.r-project.org/">R</a>, <a href="https://posit.co/downloads/">RStudio</a>, <a href="https://www.zotero.org/">Zotero</a> (preferably with a logged in account and with some references that we can use as an example) and <a href="https://quarto.org/docs/download/">Quarto</a> (this last one comes with the installation of <strong>the latest versions of RStudio</strong>).</p>
@@ -1351,6 +1371,13 @@ Render on Save
 <p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-1949640663.png" class="img-fluid"></p>
 </div>
 </div>
+<hr>
+</section>
+</section>
+<section id="es-zotero-quarto-rstudio-y-algo-más" class="level1">
+<h1>[ES] Zotero + Quarto + RStudio y algo más</h1>
+<p>Quarto se está volviendo cada vez más una poderosa alternativa para la generación de diversos tipos de documentos y reportes. Por su parte, Zotero es uno de los administradores de citas bibliográficas más extendido y utilizado, no solo por ser software libre, sino también porque la comunidad a su alrededor ha ido desarrollando muchos <em>plug-ins</em> que permiten incrementar sus capacidades fuera de lo ofrecido por sus propios desarrolladores. Finalmente, RStudio es uno de los IDE preferidos en la comunidad de programadores en R, R markdown y Quarto, por su simplicidad y potencia, pero también por permitir la incorporación de <em>addins</em> (la analogía de <em>plug-ings</em>) a través de paquetes de R.</p>
+<p>En el presente artículo, veremos cómo a través de un paquete de R es posible añadir la posibilidad en RStudio de insertar citas bibliográficas desde Zotero en archivos Quarto (y también en R markdown) de manera muy sencilla (aprendiendo uno o dos atajos de teclado).</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1361,16 +1388,10 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>All the material needed to run this tutorial can be found in my repository, following this link <a href="https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt.zip">link</a>.</p>
+<p>Todo el material necesario para ejecutar este tutorial se puede encontrar en mi repositorio, siguiendo este <a href="https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt.zip">link</a>. Deberás dar click al link de <code>View raw</code> o bien al botón de <code>Download raw file</code>.</p>
+<p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-8112645573.png" class="img-fluid"></p>
 </div>
 </div>
-<hr>
-</section>
-</section>
-<section id="es-zotero-quarto-rstudio-y-algo-más" class="level1">
-<h1>[ES] Zotero + Quarto + RStudio y algo más</h1>
-<p>Quarto se está volviendo cada vez más una poderosa alternativa para la generación de diversos tipos de documentos y reportes. Por su parte, Zotero es uno de los administradores de citas bibliográficas más extendido y utilizado, no solo por ser software libre, sino también porque la comunidad a su alrededor ha ido desarrollando muchos <em>plug-ins</em> que permiten incrementar sus capacidades fuera de lo ofrecido por sus propios desarrolladores. Finalmente, RStudio es uno de los IDE preferidos en la comunidad de programadores en R, R markdown y Quarto, por su simplicidad y potencia, pero también por permitir la incorporación de <em>addins</em> (la analogía de <em>plug-ings</em>) a través de paquetes de R.</p>
-<p>En el presente artículo, veremos cómo a través de un paquete de R es posible añadir la posibilidad en RStudio de insertar citas bibliográficas desde Zotero en archivos Quarto (y también en R markdown) de manera muy sencilla (aprendiendo uno o dos atajos de teclado).</p>
 <section id="software-necesario" class="level2">
 <h2 data-anchor-id="software-necesario">Software necesario</h2>
 <p>Como ya imaginarán, es necesario tener instalados: <a href="https://cran.r-project.org/">R</a>, <a href="https://posit.co/downloads/">RStudio</a>, <a href="https://www.zotero.org/">Zotero</a> (de preferencia, con una cuenta logueada y con algunas referencias que podamos usar como ejemplo) y <a href="https://quarto.org/docs/download/">Quarto</a> (este último viene junto a la instalación de <strong>las últimas versiones de RStudio</strong>).</p>
@@ -1554,19 +1575,6 @@ Render on Save
 <div class="callout-body-container callout-body">
 <p>Es muy recomendable habilitar la opción de <em>Render on Save</em> (situada arriba al costado del botón de Guardar) que, como su nombre lo indica, permite Redenrizar al Guardar, lo que permite que solo presiones <em>Ctrl + S</em> para visualizar nuestro trabajo en Quarto.</p>
 <p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-1949640663.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Todo el material necesario para ejecutar este tutorial se puede encontrar en mi repositorio, siguiendo este <a href="https://github.com/LuisLauM/LuisLauM.github.io/tree/main/blog/zotero-quarto-rstudio/test-rbbt.zip">link</a>.</p>
 </div>
 </div>
 
