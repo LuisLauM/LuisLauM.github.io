@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://luislaum.github.io/home/blog.html</loc>
-    <lastmod>2025-01-13T09:29:10.908Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/about.html</loc>
-    <lastmod>2025-01-13T09:29:10.888Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html</loc>
-    <lastmod>2025-01-13T09:29:10.976Z</lastmod>
+    <loc>https://luislaum.github.io/home/blog/elnino-app/elnino-app.html</loc>
+    <lastmod>2025-01-20T17:09:01.670Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/about-this-website/about-this-website.html</loc>
-    <lastmod>2025-01-13T09:29:10.908Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/blog/timeline-with-googlevis/timeline-with-googlevis.html</loc>
-    <lastmod>2025-01-13T09:29:10.928Z</lastmod>
+    <lastmod>2025-01-20T17:09:01.662Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/quarto-template-article/quarto-template-article.html</loc>
-    <lastmod>2025-01-13T09:29:10.924Z</lastmod>
+    <lastmod>2025-01-20T17:09:01.674Z</lastmod>
   </url>
   <url>
-    <loc>https://luislaum.github.io/home/blog/elnino-app/elnino-app.html</loc>
-    <lastmod>2025-01-13T09:29:10.916Z</lastmod>
+    <loc>https://luislaum.github.io/home/about.html</loc>
+    <lastmod>2025-01-20T17:09:01.642Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog.html</loc>
+    <lastmod>2025-01-20T17:09:01.662Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/index.html</loc>
-    <lastmod>2025-01-13T09:29:11.012Z</lastmod>
+    <lastmod>2025-01-20T17:09:01.759Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html</loc>
+    <lastmod>2025-01-20T17:09:01.725Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/timeline-with-googlevis/timeline-with-googlevis.html</loc>
+    <lastmod>2025-01-20T17:09:01.678Z</lastmod>
   </url>
 </urlset>
