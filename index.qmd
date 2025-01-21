@@ -15,6 +15,10 @@ about:
     - text: Email
       href: mailto:luis.lau-medrano@ird.fr
       icon: envelope
+format:
+  html:
+    include-before-body:
+      - file: google8d9385d702e4b737.html
 ---
 
 ::: {.callout-note}
