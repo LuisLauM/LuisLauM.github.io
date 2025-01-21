@@ -17,8 +17,9 @@ about:
       icon: envelope
 format:
   html:
-    include-in-header:
-      - file: google8d9385d702e4b737.html
+    include-before-body:
+      - text: |
+          <meta name="google-site-verification" content="3ra_35wmXi1HrCHj42bjKuJypwWmOnG72q7LY2Vs1F4" />
 ---
 
 ::: {.callout-note}
