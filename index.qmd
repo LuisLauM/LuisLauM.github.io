@@ -17,7 +17,7 @@ about:
       icon: envelope
 format:
   html:
-    include-before-body:
+    include-in-header:
       - file: google8d9385d702e4b737.html
 ---
 
