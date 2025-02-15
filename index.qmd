@@ -22,9 +22,7 @@ format:
           <meta name="google-site-verification" content="3ra_35wmXi1HrCHj42bjKuJypwWmOnG72q7LY2Vs1F4" />
 ---
 
-::: {.callout-note}
-**One surface, dos idiomas.** 
-
+::: {.callout-note title="One surface, dos idiomas."}
 Here you will find content in two languages: **English (EN) and Spanish (ES)**. Each piece of content will be available in both languages.
 
 En esta página encontrarás contenido en dos idiomas: **inglés (EN) y español (ES)**. Cada sección estará disponible en ambos idiomas.
