@@ -2,34 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://luislaum.github.io/home/blog.html</loc>
-    <lastmod>2025-02-22T08:47:26.373Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/blog/about-this-website/about-this-website.html</loc>
-    <lastmod>2025-02-22T08:47:26.373Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/blog/quarto-template-article/quarto-template-article.html</loc>
-    <lastmod>2025-02-22T08:47:26.385Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/index.html</loc>
-    <lastmod>2025-02-22T08:47:26.470Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/about.html</loc>
-    <lastmod>2025-02-22T08:47:26.353Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/blog/timeline-with-googlevis/timeline-with-googlevis.html</loc>
-    <lastmod>2025-02-22T08:47:26.393Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/blog/elnino-app/elnino-app.html</loc>
-    <lastmod>2025-02-22T08:47:26.381Z</lastmod>
+    <lastmod>2025-02-28T13:42:13.350Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html</loc>
-    <lastmod>2025-02-22T08:47:26.438Z</lastmod>
+    <lastmod>2025-02-28T13:42:13.414Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/elnino-app/elnino-app.html</loc>
+    <lastmod>2025-02-28T13:42:13.358Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/about.html</loc>
+    <lastmod>2025-02-28T13:42:13.330Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/index.html</loc>
+    <lastmod>2025-02-28T13:42:13.446Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/quarto-template-article/quarto-template-article.html</loc>
+    <lastmod>2025-02-28T13:42:13.362Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/timeline-with-googlevis/timeline-with-googlevis.html</loc>
+    <lastmod>2025-02-28T13:42:13.369Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/about-this-website/about-this-website.html</loc>
+    <lastmod>2025-02-28T13:42:13.350Z</lastmod>
   </url>
 </urlset>
