@@ -59,8 +59,8 @@ indexVals <- lapply(X = list(reg_34 = c(1, 3:10), reg_12 = c(1, 12:19)),
                          levels = paste0("reg_", c(34, 12)), 
                          labels = paste("Región", c("3+4", "1+2"))),
          event = factor(x = event,
-                        levels = unlist(lapply(eventBrkLabs, "[[", "brks")), 
-                        labels = unlist(lapply(eventBrkLabs, "[[", "labs"))),
+                        levels = rev(unlist(lapply(eventBrkLabs, "[[", "brks"))), 
+                        labels = rev(unlist(lapply(eventBrkLabs, "[[", "labs")))),
          probability = replace(x = probability, 
                                list = is.na(probability), 
                                values = 0))
@@ -254,7 +254,7 @@ xlim <- indexVals$date |>
   
   as.Date()
 
-xlim[2] <- seq(from = xlim[2], by = "month", length.out = 2)[2]
+xlim[2] <- seq(from = xlim[2], by = "month", length.out = 2)[2] + 15
 
 colBars <- unlist(cols) |> 
   
@@ -284,9 +284,9 @@ indexVals |>
   scale_fill_manual(aesthetics = "fill",
                     values = colBars, 
                     breaks = unlist(lapply(eventBrkLabs, "[[", "labs"))[4],
-                    labels = labBars[4],
+                    labels = NULL,
                     guide = guide_legend(title.position = "top", order = 2),
-                    name = NULL) +
+                    name = "Neutro") +
   
   new_scale_fill() +
   

@@ -15,11 +15,7 @@ about:
     - text: Email
       href: mailto:luis.lau-medrano@ird.fr
       icon: envelope
-format:
-  html:
-    include-before-body:
-      - text: |
-          <meta name="google-site-verification" content="3ra_35wmXi1HrCHj42bjKuJypwWmOnG72q7LY2Vs1F4" />
+format: html
 ---
 
 ::: {.callout-note title="One surface, dos idiomas."}
