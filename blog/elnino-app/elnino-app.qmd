@@ -356,7 +356,7 @@ El Índice Costero El Niño (ICEN) es un índice oficial utilizado por el ENFEN 
 #| warning: false
 #| padding: 0px
 
-read.table(file = "http://met.igp.gob.pe/datos/icen.txt", 
+read.table(file = "http://met.igp.gob.pe/datos/ICEN.txt", 
                        header = FALSE, skip = 17) |> 
   
   transmute(date = as.Date(sprintf("%s-%s-1", V1, V2)),
