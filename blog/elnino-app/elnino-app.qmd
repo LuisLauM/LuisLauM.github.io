@@ -9,6 +9,8 @@ draft: false
 keywords: ["enso", "peru", "el nino"]
 tags: ["enso", "peru", "el nino"]
 categories: ["enso", "peru", "el nino"]
+execute:
+  freeze: false
 ---
 
 ```{r}
