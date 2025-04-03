@@ -15,7 +15,321 @@
 <link>https://luislaum.github.io/home/blog.html</link>
 </image>
 <generator>quarto-1.6.42</generator>
-<lastBuildDate>Thu, 19 Dec 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 03 Apr 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>How to convert snippets from RStudio format to Positron format</title>
+  <link>https://luislaum.github.io/home/blog/convert-snippets/quarto-template-article.html</link>
+  <description><![CDATA[ 
+
+<p>Image credits: <a href="https://evbn.org/Types-of-Electrical-Plugs-Types-Uses-Features-and-Benefits-1677786008/">EVBN</a></p>
+<section id="en-converting-snippets-from-rstudio-to-positron" class="level2">
+<h2 data-anchor-id="en-converting-snippets-from-rstudio-to-positron">[EN] Converting snippets from RStudio to Positron</h2>
+</section>
+<section id="a-brief-introduction" class="level2">
+<h2 data-anchor-id="a-brief-introduction">A brief introduction</h2>
+<p>Positron is the latest IDE released by POSIT, the owner of the very famous RStudio IDE. While its developers are making great efforts to ease the transition for current RStudio users, there are some features that have not yet been implemented and one of them is the conversion of snippets.</p>
+<p>Snippets in RStudio are a very powerful tool as they allow users to define chunks of code that they commonly use and make them available from a nickname. For example, to generate an empty plot centered on <code>c(1, 1)</code> using graphics, the complete command would be as follows:</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"n"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axes =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, </span>
+<span id="cb1-2">     <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xlab =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ylab =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xlim =</span> xlim, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ylim =</span> ylim)</span></code></pre></div>
+<p>Of course, typing all those argument definitions can be a bit cumbersome, and that’s where the snippets show their potential, allowing me to associate all that command to a nickname (called <code>plo</code>, for example). Then, the next time I type the command <code>plo</code> and press Tab, RStudio prompts me to insert the <code>plo</code> snippet and, when I press Tab again, it generates the desired command.</p>
+<p><img src="https://luislaum.github.io/home/blog/convert-snippets/images/screenshot-1.gif" class="img-fluid"></p>
+<p>In RStudio, defining a snippet is very simple: just go to the menu Tools –&gt; Edit code snippets and follow the established format for its definition which consists of: the command <code>snippet</code>, a nickname and the desired code. For example, the command to define my previous code would be the following:</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">snippet plot</span>
+<span id="cb2-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"n"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axes =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xlab =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ylab =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xlim =</span> xlim, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ylim =</span> ylim)</span></code></pre></div>
+<p>However, Positron uses a different format and allows us to add some extra fields: the name of the snippet, <code>scope</code> (refers to the language or context of the snippet), <code>prefix</code> (which is the hint with which we will call the snippet), <code>body</code> (the command itself, it can consist of one line or more), and <code>description</code> (a brief description of what our command does). So, taken to this format, our previous snippet would look like this:</p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"plo":</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb3-2">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"scope"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"r"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb3-3">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"prefix"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"plo"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb3-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"body"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"plot(x = 1, y = 1, type = </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\"</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\"</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">, axes = FALSE, xlab = NA, ylab = NA, xlim = xlim, ylim = ylim)"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb3-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"description"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span></span>
+<span id="cb3-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">,</span></span></code></pre></div>
+</section>
+<section id="the-format-converter" class="level2">
+<h2 data-anchor-id="the-format-converter">The format converter</h2>
+<p>Well, to switch from one format to another, I have created a small Shinyapp where you just have to paste the full text of all our snippets in RStudio format, press the Convert button and get your version in jSON format. You can access the converter through <a href="https://luislaum.shinyapps.io/snippetConverter/">the following link</a>.</p>
+<p>Then, you will have to go to Positron, press the key combination <code>Ctrl+Shift+P</code>, type <em>Configure snippets</em> and then select this option.</p>
+<p><img src="https://luislaum.github.io/home/blog/convert-snippets/images/1.png" class="img-fluid"></p>
+<p>In the same panel will be displayed several languages and platforms where it is possible to configure snippets, look for one called <code>r.json</code> and press Enter.</p>
+<p><img src="https://luislaum.github.io/home/blog/convert-snippets/images/2.png" class="img-fluid"></p>
+<p>Then, in the Editor, a json format file will be opened where we will paste what was obtained by the Shinyapp converter.</p>
+<p>That’s it! From now on, when we need a snippet in Positron, just type the corresponding prefix, then press the Tab key, then navigate with the arrow keys to our desired snippet and press the Tab key to select it.</p>
+<p><img src="https://luislaum.github.io/home/blog/convert-snippets/images/screenshot-2.gif" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Multi-line snippets
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>So far, for multi-line snippets, Positron does not apply the proper indentation at the time of submission, so we will have to complete this process manually. Hopefully the POSIT team will be able to resolve this issue soon.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="es-convertir-snippets-de-rstudio-a-positron" class="level1">
+<h1>[ES] Convertir snippets de RStudio a Positron</h1>
+<section id="una-breve-introducción" class="level2">
+<h2 data-anchor-id="una-breve-introducción">Una breve introducción</h2>
+<p>Positron es el último IDE lanzado por POSIT, la dueña del tan famoso IDE RStudio. Si bien sus desarrolladores están haciendo grandes esfuerzos para facilitar la transición por parte de los actuales usuarios de RStudio, existen algunas funcionalidades que aún no ha sido implementadas y una de ellas es la de la conversión de los snippets.</p>
+<p>Los snippets en RStudio son una herramienta muy poderosa ya que permite a los usuarios definir trozos de código que suelen utilizar y hacerlos disponibles a partir de un nickname. Por ejemplo, para generar un plot vacío centrado en <code>c(1, 1)</code> usando graphics, el comando completo sería el siguiente:</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"n"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axes =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, </span>
+<span id="cb4-2">     <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xlab =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ylab =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xlim =</span> xlim, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ylim =</span> ylim)</span></code></pre></div>
+<p>Por supuesto, escribir todas esas definiciones de argumentos puede ser algo engorroso, y es ahí en donde los snippets demuestran su potencial, permitiendo que yo pueda asociar todo ese comando a un nickname (llamado <code>plo</code>, por ejemplo). Entonces, la próxima vez que escriba el comando <code>plo</code> y presione la tecla Tab, RStudio me sugiere insertar el snippet <code>plo</code> y, al volver a presionar Tab, genera el comando deseado.</p>
+<p><img src="https://luislaum.github.io/home/blog/convert-snippets/images/screenshot-1.gif" class="img-fluid"></p>
+<p>En RStudio, definir un snippet es muy sencillo: basta con ir al menú Tools –&gt; Edit code snippets y seguir el formato establecido para su definición que consiste en: el comando <code>snippet</code>, un nickname y el código deseado. Por ejemplo, el comando para definir mi anterior código sería el siguiente:</p>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">snippet plot</span>
+<span id="cb5-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">type =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"n"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axes =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xlab =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ylab =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xlim =</span> xlim, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ylim =</span> ylim)</span></code></pre></div>
+<p>Sin embargo, Positron utiliza un formato distinto y permite añadir algunos campos extra: el nombre del snippet, <code>scope</code> (hace referencia al lenguaje o contexto del snippet), <code>prefix</code> (que es la pista con la que llamaremos al snippet), <code>body</code> (el comando en sí, puede constar de una línea o más), y <code>description</code> (una breve descripción de lo que nuestro comando hace). Entonces, llevado a este formato, nuestro anterior snippet luciría así:</p>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"plo":</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb6-2">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"scope"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"r"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb6-3">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"prefix"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"plo"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb6-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"body"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"plot(x = 1, y = 1, type = </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\"</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\"</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">, axes = FALSE, xlab = NA, ylab = NA, xlim = xlim, ylim = ylim)"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb6-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"description"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span></span>
+<span id="cb6-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">,</span></span></code></pre></div>
+</section>
+<section id="el-convertidor-de-formatos" class="level2">
+<h2 data-anchor-id="el-convertidor-de-formatos">El convertidor de formatos</h2>
+<p>Pues bien, para pasar de un formato a otro, he creado un pequeño Shinyapp en donde basta con pegar el texto completo de todos nuestros snippets en formato RStudio, presionar el botón Convert y obtener lsu versión en formato jSON. Puedes acceder al convertidor a través del <a href="https://luislaum.shinyapps.io/snippetConverter/">siguiente link</a>.</p>
+<p>Luego, deberás ir a Positron, presionar la combinación de teclas <code>Ctrl+Shift+P</code>, escribir <em>Configure snippets</em> y luego seleccionar esta opción.</p>
+<p><img src="https://luislaum.github.io/home/blog/convert-snippets/images/1.png" class="img-fluid"></p>
+<p>En el mismo panel se mostrarán diversos lenguajes y plataformas en donde es posible configurar snippets, buscar uno llamado <code>r.json</code> y dar Enter.</p>
+<p><img src="https://luislaum.github.io/home/blog/convert-snippets/images/2.png" class="img-fluid"></p>
+<p>En seguida, en el Editor se abrirá un archivo de formato json en donde pegaremos lo obtenido por el convertidor Shinyapp.</p>
+<p>¡Listo! Desde ahora, cuando necesitemos un snippet en Positron, bastará con digitar el prefijo correspondiente, luego la tecla Tab, luego navegar con las teclas direccionales a nuestro snippet deseado y tecla Tab para seleccionarlo.</p>
+<p><img src="https://luislaum.github.io/home/blog/convert-snippets/images/screenshot-2.gif" class="img-fluid"></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Snippets de varias líneas
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Hasta el momento, para los snippets conformados por varias líneas, al momento de presentarse Positron no aplica la sangría adecuada, por lo que tendremos que completar este proceso manualmente. Esperemos que el equipo de POSIT pueda resolver este detalle pronto.</p>
+</div>
+</div>
+
+
+</section>
+</section>
+ ]]></description>
+  <category>RStudio</category>
+  <category>Positron</category>
+  <category>tips</category>
+  <category>ShinyApp</category>
+  <guid>https://luislaum.github.io/home/blog/convert-snippets/quarto-template-article.html</guid>
+  <pubDate>Thu, 03 Apr 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://luislaum.github.io/home/blog/convert-snippets/banner.png" medium="image" type="image/png" height="128" width="144"/>
+</item>
 <item>
   <title>Drawing timeline (Gantt) diagrams in R</title>
   <link>https://luislaum.github.io/home/blog/timeline-with-googlevis/timeline-with-googlevis.html</link>

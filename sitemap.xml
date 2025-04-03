@@ -2,34 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://luislaum.github.io/home/blog.html</loc>
-    <lastmod>2025-04-01T01:16:17.759Z</lastmod>
+    <lastmod>2025-04-03T14:13:55.275Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html</loc>
-    <lastmod>2025-04-01T01:16:17.812Z</lastmod>
+    <lastmod>2025-04-03T14:13:55.373Z</lastmod>
   </url>
   <url>
-    <loc>https://luislaum.github.io/home/blog/elnino-app/elnino-app.html</loc>
-    <lastmod>2025-04-01T01:16:17.767Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/about.html</loc>
-    <lastmod>2025-04-01T01:16:17.740Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/index.html</loc>
-    <lastmod>2025-04-01T01:16:17.843Z</lastmod>
+    <loc>https://luislaum.github.io/home/blog/convert-snippets/quarto-template-article.html</loc>
+    <lastmod>2025-04-03T14:13:55.327Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/quarto-template-article/quarto-template-article.html</loc>
-    <lastmod>2025-04-01T01:16:17.770Z</lastmod>
+    <lastmod>2025-04-03T14:13:55.331Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/index.html</loc>
+    <lastmod>2025-04-03T14:13:55.380Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/about.html</loc>
+    <lastmod>2025-04-03T14:13:55.256Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/elnino-app/elnino-app.html</loc>
+    <lastmod>2025-04-03T14:13:55.328Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/timeline-with-googlevis/timeline-with-googlevis.html</loc>
-    <lastmod>2025-04-01T01:16:17.777Z</lastmod>
+    <lastmod>2025-04-03T14:13:55.337Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/about-this-website/about-this-website.html</loc>
-    <lastmod>2025-04-01T01:16:17.760Z</lastmod>
+    <lastmod>2025-04-03T14:13:55.275Z</lastmod>
   </url>
 </urlset>
