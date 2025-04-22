@@ -1,0 +1,143 @@
+---
+title: "My favorite tools from MS PowerToys"
+description: |
+  A quick summary of my favorite tools at PowerToys and how I use them on a daily basis. | Un resumen rápido de mis herramientas favoritas en PowerToys y cómo las uso en el día a día.
+date: 2025-04-22
+image: banner.png
+about: 
+  template: marquee
+  image-shape: rectangle
+keywords: ["powertoys", "windows", "misc", "tools", "tips"]
+tags: ["powertoys", "windows", "misc", "tools", "tips"]
+categories: ["Windows", "misc", "tips"]
+draft: true
+engine: knitr
+---
+
+Image credits: [Winbuzzer](https://winbuzzer.com/wp-content/uploads/2019/05/powertoys-logo.jpg)
+
+## [EN] Converting snippets from RStudio to Positron
+
+
+---
+
+# [ES] Principales herramientas en MS PowerToys
+
+## ¿Qué son las PowerToys?
+
+PowerToys es una colección de utilidades desarrollada por Microsoft para usuarios avanzados de Windows, diseñada para mejorar la productividad y personalización del sistema operativo. Entre sus herramientas destacan FancyZones para gestionar ventanas de forma eficiente, PowerRename para renombrar archivos en lote, y PowerToys Run, un lanzador rápido de aplicaciones. Su interfaz es intuitiva, y al ser de código abierto, recibe mejoras constantes de la comunidad. En conjunto, PowerToys ofrece funcionalidades muy útiles que optimizan el flujo de trabajo sin complicar la experiencia del usuario.
+
+## ¿Cómo instalar MS PowerToys?
+
+* Ir al sitio web del [repositorio de PowerToys en Github](https://github.com/microsoft/PowerToys/).
+
+* Presionar el botón Install PowerToys y, en la columna de la derecha, en la sección "Releases", dar click al link mostrado (que corresponde a la última versión disponible).
+
+  ![](images/01.png)
+
+* Se abrirá el sitio web que aloja los instaladores, seleccionar el adecuado de acuerdo a la arquitectura de nuestro procesador (x86 o ARM).
+
+  ![](images/02.png)
+
+* Luego de descargar el instalador, ejecutarlo y seguir las instrucciones (es posible que se requieran permisos de Administrador).
+
+* Genial. Ahora, para abrirlo, bastará con buscarlo a través del menú inicio.
+
+  ![](images/03.png)
+
+
+## Herramientas favoritas
+
+PowerToys tiene un catálogo enorme de herramientas y por defecto habilitará todas luego de la primera instalación. Sin embargo, es posible mantener activas solo aquellas que vayamos a utilizar frecuentemente. Desde esta venta de control podemos configurar cada una de las herramientas (atajo de teclado y parámetros específicos).
+
+![](images/04.png)
+
+::: {.callout-note}
+PowerToys es un software que incluye herramientas de tipo EXPERIMENTAL, por lo que siempre es posible que sean editadas, borradas o, si demuestran una alta acogida por parte de los usuarios, incluidas en las versiones base de Windows.
+:::
+
+A continuación, mostraré las herramientas que yo más uso.
+
+### Advanced Paste
+
+Cuando copiamos un texto en Windows y lo pegamos en algún software que permite la edición de formato (e.g. Power Point, Word, o al redactar un correo electrónico), éste intentará mantener el formato del texto original, lo cual no siempre es lo deseado.  Advanced Paste permite pegar únicamente el texto SIN su formato original, permitiendo que pueda tomar el formato de destino.
+
+{{< video images/05.mp4 >}}
+
+### Color Picker
+
+Muchas veces queremos averiguar el color de algún elemento de algún archivo (e.g. pdf, figura, archivo en Power Point, etc.) o sitio web, para utilizarlo en un gráfico (en R) o en la preparación de una dispositiva. Esta herramienta permite extraer el código de color de cualquier elemento que estemos observando en nuestra pantalla y nos retorna los códigos correspondientes.
+
+* **Extraer colores con Color Picker y usarlos en R.** En este ejemplo, vemos la interfaz básica de Color Picker. Basta con activarlo a través del atajo de teclado (por defecto, {{< bi windows >}}`+ Shift + C`) y a partir de ahí al costado de nuestro cursor aparecerá el color que estemos señalando. Si damos click al color elegido, se abrirá una ventana pequeña mostrándonos el código en formato HEX que podemos copiar y pegar directamente en nuestro script anteponiendo el símbolo `#` (e.g.).
+
+{{< video images/06.mp4 >}}
+
+* **Extraer colores con Color Picker y usarlos en Power Point.** La dinámica es básicamente la misma, aunque en este caso se muestra una funcionalidad adicional: si mientras buscamos el color utilizamos la rueda de scroll de nuestro mouse, Color Picker hará un zoom alrededor de donde está nuestro cursor, permitiéndonos seleccionar el color con mayor precisión.
+
+{{< video images/07.mp4 >}}
+
+::: {.callout-note}
+Si por error activamos Color Picker, basta con presionar la tecla `Esc` para salir de su interfaz.
+:::
+ 
+### Keyboard Manager
+
+Los atajos de teclado ayudan a agilizar nuestro trabajo, sobre todo cuando utilizamos programas con múltiples opciones disponibles. Keyboard Manager permite establecer atajos de teclado personalizados: simple, pero muy útil. El atajo que más utilizo es el de menú contextual (i.e. el menú que se abre cuando presionamos click derecho), ya que [mi teclado](https://www.keychron.com/products/keychron-k3-wireless-mechanical-keyboard) no tiene una tecla dedicada para este propósito.
+
+Para asignar un atajo de teclado:
+
+* Ir la pestaña correspondiente dentro de las opciones de PowerToys, dar click en "Remap a shortcut".
+
+![](images/08.png)
+
+* En la interfaz que se mostrará, dar click en "Add shortcut remapping". Se añadirá un slot en donde podremos indicar el atajo que deseamos configurar.
+
+![](images/09.png)
+
+* Primero, daremos click en el ícono de lápiz a la izquierda. Se abrirá una pequeña ventana en donde nos pedirá que presionemos la combinación de teclas del nuevo atajo.
+
+![](images/10.png)
+
+* Luego, definiremos la acción. Nos mostrará 4 opciones: **Send Key/Shortcut** (que sirve para referenciar una acción de teclado o mouse), **Send text** (para que cuando el atajo sea presionado, se escriba un texto que nosotro querramos), **Run Program** (para ejecutar un programa o aplicación instalada en nuestra PC) y Open URI (para abrir un vínculo URL).
+
+![](images/11.png)
+
+* En mi caso, tengo definidos dos atajos de teclado: uno que me permite abrir el menú contextual (click derecho) en cualquier entorno y otro que me permite insertar el texto `%in%` (únicamente cuando estoy en RStudio).
+
+### Text Extractor
+
+Ah, ¿cuántas veces hemos necesitado extraer el texto de alguna imagen o de algún sitio web que no permite copiar texto? Bueno, **Text Extractor** hace justamente eso.
+
+Su uso es bastante sencillo, basta con presionar el atajo de teclado correspondiente (por defecto, {{< bi windows >}}`+ Shift + T`) y la pantalla se oscurecerá un poco para que con nuestro cursor arrastremos un recuadro alrededor del texto que deseamos extraer.
+
+Internamente, esta herramienta hace uso de OCR (Reconocimiento Óptico de Caracteres, hace referencia a herramientas de extracción de texto a partir de una imagen) y requiere que el usuario tenga instalado el paquete de idioma del texto que desea extraer. En otras palabras, si deseo extraer texto en inglés, español o francés, debo instalar previamente los paquetes de OCR para estos idiomas.
+
+Para instalar un paquete de idiomas tendremos que:
+
+* Abrir una ventana de PowerShell en modo Administrador y ejecutar el siguiente comando:
+
+```bash
+Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*' }
+```
+
+  Esto nos mostrará todos los paquetes OCR disponibles. Cuando hayamos encontrado el que nos interesa, debemos recordar su código (e.g. `fr-FR` para francés de Francia, `en-US` para inglés de Estados Unidos o `es-MX` para español de Latinoamérica).
+
+* El siguiente paso será ejecutar el siguiente comando:
+
+```bash
+[Windows.Media.Ocr.OcrEngine, Windows.Foundation, ContentType = WindowsRuntime]
+```
+
+* Seguidamente, ejecutar el siguiente comando que nos mostrará qué paquetes ya se encuentran instalados en nuestro PC:
+
+```bash
+[Windows.Media.Ocr.OcrEngine]::AvailableRecognizerLanguages
+```
+
+* Para instalar un paquete OCR nuevo, ejecutaremos el siguiente comando, modificando el código del idioma deseado:
+
+```bash
+$Capability = Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*en-US*' }
+```
+
+
