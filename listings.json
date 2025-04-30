@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/blog/powertoys-tools/powertoys-tools.html",
       "/blog/convert-snippets/convert-snippets.html",
       "/blog/timeline-with-googlevis/timeline-with-googlevis.html",
       "/blog/quarto-template-article/quarto-template-article.html",

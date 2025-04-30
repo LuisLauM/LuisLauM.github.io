@@ -14,12 +14,359 @@
 <title>Beneath the surface 🌊</title>
 <link>https://luislaum.github.io/home/blog.html</link>
 </image>
-<generator>quarto-1.6.43</generator>
-<lastBuildDate>Thu, 03 Apr 2025 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.7.29</generator>
+<lastBuildDate>Wed, 30 Apr 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>My favorite tools from MS PowerToys</title>
+  <link>https://luislaum.github.io/home/blog/powertoys-tools/powertoys-tools.html</link>
+  <description><![CDATA[ 
+
+
+<p>Image credits: <a href="https://winbuzzer.com/wp-content/uploads/2019/05/powertoys-logo.jpg">Winbuzzer</a></p>
+<section id="en-main-tools-of-ms-powertoys" class="level1">
+<h1>[EN] Main tools of MS PowerToys</h1>
+<section id="what-the-powertoys-are" class="level2">
+<h2 data-anchor-id="what-the-powertoys-are">What the PowerToys are?</h2>
+<p>PowerToys is a collection of utilities developed by Microsoft for advanced Windows users, designed to improve productivity and personalization of the operating system. Among its tools are FancyZones for efficient window management, PowerRename for batch file renaming, and PowerToys Run, a fast application launcher. Its interface is intuitive, and being open source, it receives constant improvements from the community. Overall, PowerToys offers very useful features that optimize workflow without complicating the user experience.</p>
+</section>
+<section id="how-to-install-the-powertoys" class="level2">
+<h2 data-anchor-id="how-to-install-the-powertoys">How to install the PowerToys?</h2>
+<ul>
+<li><p>Go to the <a href="https://github.com/microsoft/PowerToys/">official Github repo</a>.</p></li>
+<li><p>Click on the <strong>Install PowerToys</strong> button and, in the right column, in the “Releases section”, click on the link shown (which corresponds to the latest version available).</p>
+<p><img src="https://luislaum.github.io/home/blog/powertoys-tools/images/01.png" class="img-fluid"></p></li>
+<li><p>The web site that hosts the installers will open, select the appropriate one according to the architecture of our processor (x86 or ARM).</p>
+<p><img src="https://luislaum.github.io/home/blog/powertoys-tools/images/02.png" class="img-fluid"></p></li>
+<li><p>After downloading the installer, run it and follow the instructions (Administrator permissions may be required).</p></li>
+<li><p>Great. Now, to open it, just search for it through the start menu.</p>
+<p><img src="https://luislaum.github.io/home/blog/powertoys-tools/images/03.png" class="img-fluid"></p></li>
+</ul>
+</section>
+<section id="favorite-tools" class="level2">
+<h2 data-anchor-id="favorite-tools">Favorite Tools</h2>
+<p>PowerToys has a huge catalog of tools and by default it will enable all of them after the first installation. However, it is possible to keep active only those that we are going to use frequently. From this control window we can configure each of the tools (keyboard shortcuts and specific parameters).</p>
+<p><img src="https://luislaum.github.io/home/blog/powertoys-tools/images/04.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>PowerToys is a software that includes EXPERIMENTAL tools, so it is always possible that they can be edited, deleted or, if they prove to be well received by users, included in the base versions of Windows.</p>
+</div>
+</div>
+<p>In the following, I will show the tools I use the most.</p>
+<section id="advanced-paste" class="level3">
+<h3 data-anchor-id="advanced-paste">Advanced Paste</h3>
+<p>When we copy text in Windows and paste it into software that allows formatting editing (e.g.&nbsp;Power Point, Word, or when composing an e-mail), it will try to keep the formatting of the original text, which is not always desired. Advanced Paste allows you to paste only the text WITHOUT its original formatting, allowing it to take the target formatting.</p>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/05.mp4"></video></div>
+</section>
+<section id="color-picker" class="level3">
+<h3 data-anchor-id="color-picker">Color Picker</h3>
+<p>Sometimes we want to find out the color of some element of a file (e.g.&nbsp;pdf, figure, Power Point file, etc.) or web site, to use it in a graphic (in R) or in the preparation of a slide show. This tool allows us to extract the color code of any element that we are observing on our screen and returns the corresponding codes.</p>
+<ul>
+<li><strong>Extract colors with Color Picker and use them in R.</strong> In this example, we see the basic interface of Color Picker. It is enough to activate it through the keyboard shortcut (by default, <code>+ Shift + C</code>) and from there to the side of our cursor will appear the color that we are pointing out. If we click on the chosen color, a small window will open showing us the code in HEX format that we can copy and paste directly into our script by prefixing the symbol <code>#</code> (e.g.).</li>
+</ul>
+<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/06.mp4"></video></div>
+<ul>
+<li><strong>Extract colors with Color Picker and use them in PowerPoint.</strong> The dynamics is basically the same, although in this case an additional functionality is shown: if while we are looking for the color we use the scroll wheel of our mouse, Color Picker will zoom around where our cursor is, allowing us to select the color with greater precision.</li>
+</ul>
+<div class="quarto-video"><video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/07.mp4"></video></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If we activate Color Picker by mistake, just press the <code>Esc</code> key to exit its interface.</p>
+</div>
+</div>
+</section>
+<section id="keyboard-manager" class="level3">
+<h3 data-anchor-id="keyboard-manager">Keyboard Manager</h3>
+<p>Keyboard shortcuts help speed up our work, especially when using programs with multiple options available. Keyboard Manager allows you to set custom keyboard shortcuts: simple, but very useful. The shortcut I use the most is the context menu shortcut (i.e.&nbsp;the menu that opens when right-clicking), since <a href="https://www.keychron.com/products/keychron-k3-wireless-mechanical-keyboard">my keyboard</a> does not have a dedicated key for this purpose.</p>
+<p>To assign a keyboard shortcut:</p>
+<ul>
+<li>Go to the corresponding tab in the PowerToys options, click on “Remap a shortcut”.</li>
+</ul>
+<p><img src="https://luislaum.github.io/home/blog/powertoys-tools/images/08.png" class="img-fluid"></p>
+<ul>
+<li>In the interface that will appear, click on “Add shortcut remapping”. A slot will be added where we can indicate the shortcut we want to configure.</li>
+</ul>
+<p><img src="https://luislaum.github.io/home/blog/powertoys-tools/images/09.png" class="img-fluid"></p>
+<ul>
+<li>First, click on the pencil icon on the left. A small window will open asking us to press the key combination for the new shortcut.</li>
+</ul>
+<p><img src="https://luislaum.github.io/home/blog/powertoys-tools/images/10.png" class="img-fluid"></p>
+<ul>
+<li>Then, we will define the action. It will show us 4 options: <strong>Send Key/Shortcut</strong> (used to reference a keyboard or mouse action), <strong>Send text</strong> (so that when the shortcut is pressed, a text we want is typed), <strong>Run Program</strong> (to run a program or application installed on our PC) and <strong>Open URI</strong> (to open a URL link).</li>
+</ul>
+<p><img src="https://luislaum.github.io/home/blog/powertoys-tools/images/11.png" class="img-fluid"></p>
+<ul>
+<li>In my case, I have defined two keyboard shortcuts: one that allows me to open the context menu (right click) in any environment and another one that allows me to insert the text <code>%in%</code> (only when I am in RStudio).</li>
+</ul>
+</section>
+<section id="text-extractor" class="level3">
+<h3 data-anchor-id="text-extractor">Text Extractor</h3>
+<p>Ah, how many times have we needed to extract text from an image or from a website that doesn’t allow copying text? Well, <strong>Text Extractor</strong> does just that.</p>
+<p>Its use is quite simple, just press the corresponding keyboard shortcut (by default, <code>+ Shift + T</code>) and the screen will darken a bit so that with our cursor we can drag a box around the text we want to extract.</p>
+<p>Internally, this tool makes use of OCR (Optical Character Recognition, refers to tools for extracting text from an image) and requires the user to have the language pack of the text to be extracted installed. In other words, if I want to extract text in English, Spanish or French, I must first install the OCR packages for these languages.</p>
+<p>To install a language pack we will have to:</p>
+<ul>
+<li>Open a PowerShell window in Administrator mode and execute the following command:</li>
+</ul>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Get-WindowsCapability</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Online</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">|</span> <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Where-Object</span> { <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$_</span>.Name <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Like</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Language.OCR*'</span> }</span></code></pre></div>
+<p>This will show us all the available OCR packages. When we have found the one we are interested in, we must remember its code (e.g.&nbsp;<code>fr-FR</code> for French from France, <code>en-US</code> for English from the United States or <code>es-MX</code> for Spanish from Latin America).</p>
+<ul>
+<li>The next step is to execute the following command:</li>
+</ul>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">[Windows.Media.Ocr.OcrEngine,</span> Windows.Foundation, ContentType = WindowsRuntime]</span></code></pre></div>
+<ul>
+<li>Next, run the following command that will show you which packages are already installed on your PC:</li>
+</ul>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">[Windows.Media.Ocr.OcrEngine]::AvailableRecognizerLanguages</span></span></code></pre></div>
+<ul>
+<li>To install a new OCR package, run the following command, modifying the desired language code:</li>
+</ul>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$Capability</span> = Get-WindowsCapability <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Online</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">|</span> <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Where-Object</span> { <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$_</span>.Name <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Like</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Language.OCR*en-US*'</span> }</span></code></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Downloading and installing the OCR packages may take several minutes, so please be patient. Also, the installation of each OCR package must be done independently, i.e.&nbsp;one by one.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+</section>
+<section id="es-principales-herramientas-en-ms-powertoys" class="level1">
+<h1>[ES] Principales herramientas en MS PowerToys</h1>
+<section id="qué-son-las-powertoys" class="level2">
+<h2 data-anchor-id="qué-son-las-powertoys">¿Qué son las PowerToys?</h2>
+<p>PowerToys es una colección de utilidades desarrollada por Microsoft para usuarios avanzados de Windows, diseñada para mejorar la productividad y personalización del sistema operativo. Entre sus herramientas destacan FancyZones para gestionar ventanas de forma eficiente, PowerRename para renombrar archivos en lote, y PowerToys Run, un lanzador rápido de aplicaciones. Su interfaz es intuitiva, y al ser de código abierto, recibe mejoras constantes de la comunidad. En conjunto, PowerToys ofrece funcionalidades muy útiles que optimizan el flujo de trabajo sin complicar la experiencia del usuario.</p>
+</section>
+<section id="cómo-instalar-ms-powertoys" class="level2">
+<h2 data-anchor-id="cómo-instalar-ms-powertoys">¿Cómo instalar MS PowerToys?</h2>
+<ul>
+<li><p>Ir al sitio web del <a href="https://github.com/microsoft/PowerToys/">repositorio de PowerToys en Github</a>.</p></li>
+<li><p>Presionar el botón Install PowerToys y, en la columna de la derecha, en la sección “Releases”, dar click al link mostrado (que corresponde a la última versión disponible).</p>
+<p><img src="https://luislaum.github.io/home/blog/powertoys-tools/images/01.png" class="img-fluid"></p></li>
+<li><p>Se abrirá el sitio web que aloja los instaladores, seleccionar el adecuado de acuerdo a la arquitectura de nuestro procesador (x86 o ARM).</p>
+<p><img src="https://luislaum.github.io/home/blog/powertoys-tools/images/02.png" class="img-fluid"></p></li>
+<li><p>Luego de descargar el instalador, ejecutarlo y seguir las instrucciones (es posible que se requieran permisos de Administrador).</p></li>
+<li><p>Genial. Ahora, para abrirlo, bastará con buscarlo a través del menú inicio.</p>
+<p><img src="https://luislaum.github.io/home/blog/powertoys-tools/images/03.png" class="img-fluid"></p></li>
+</ul>
+</section>
+<section id="herramientas-favoritas" class="level2">
+<h2 data-anchor-id="herramientas-favoritas">Herramientas favoritas</h2>
+<p>PowerToys tiene un catálogo enorme de herramientas y por defecto habilitará todas luego de la primera instalación. Sin embargo, es posible mantener activas solo aquellas que vayamos a utilizar frecuentemente. Desde esta venta de control podemos configurar cada una de las herramientas (atajo de teclado y parámetros específicos).</p>
+<p><img src="https://luislaum.github.io/home/blog/powertoys-tools/images/04.png" class="img-fluid"></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>PowerToys es un software que incluye herramientas de tipo EXPERIMENTAL, por lo que siempre es posible que sean editadas, borradas o, si demuestran una alta acogida por parte de los usuarios, incluidas en las versiones base de Windows.</p>
+</div>
+</div>
+<p>A continuación, mostraré las herramientas que yo más uso.</p>
+<section id="advanced-paste-1" class="level3">
+<h3 data-anchor-id="advanced-paste-1">Advanced Paste</h3>
+<p>Cuando copiamos un texto en Windows y lo pegamos en algún software que permite la edición de formato (e.g.&nbsp;Power Point, Word, o al redactar un correo electrónico), éste intentará mantener el formato del texto original, lo cual no siempre es lo deseado. Advanced Paste permite pegar únicamente el texto SIN su formato original, permitiendo que pueda tomar el formato de destino.</p>
+<div class="quarto-video"><video id="video_shortcode_videojs_video4" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/05.mp4"></video></div>
+</section>
+<section id="color-picker-1" class="level3">
+<h3 data-anchor-id="color-picker-1">Color Picker</h3>
+<p>Muchas veces queremos averiguar el color de algún elemento de algún archivo (e.g.&nbsp;pdf, figura, archivo en Power Point, etc.) o sitio web, para utilizarlo en un gráfico (en R) o en la preparación de una dispositiva. Esta herramienta permite extraer el código de color de cualquier elemento que estemos observando en nuestra pantalla y nos retorna los códigos correspondientes.</p>
+<ul>
+<li><strong>Extraer colores con Color Picker y usarlos en R.</strong> En este ejemplo, vemos la interfaz básica de Color Picker. Basta con activarlo a través del atajo de teclado (por defecto, <code>+ Shift + C</code>) y a partir de ahí al costado de nuestro cursor aparecerá el color que estemos señalando. Si damos click al color elegido, se abrirá una ventana pequeña mostrándonos el código en formato HEX que podemos copiar y pegar directamente en nuestro script anteponiendo el símbolo <code>#</code> (e.g.).</li>
+</ul>
+<div class="quarto-video"><video id="video_shortcode_videojs_video5" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/06.mp4"></video></div>
+<ul>
+<li><strong>Extraer colores con Color Picker y usarlos en Power Point.</strong> La dinámica es básicamente la misma, aunque en este caso se muestra una funcionalidad adicional: si mientras buscamos el color utilizamos la rueda de scroll de nuestro mouse, Color Picker hará un zoom alrededor de donde está nuestro cursor, permitiéndonos seleccionar el color con mayor precisión.</li>
+</ul>
+<div class="quarto-video"><video id="video_shortcode_videojs_video6" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/07.mp4"></video></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si por error activamos Color Picker, basta con presionar la tecla <code>Esc</code> para salir de su interfaz.</p>
+</div>
+</div>
+</section>
+<section id="keyboard-manager-1" class="level3">
+<h3 data-anchor-id="keyboard-manager-1">Keyboard Manager</h3>
+<p>Los atajos de teclado ayudan a agilizar nuestro trabajo, sobre todo cuando utilizamos programas con múltiples opciones disponibles. Keyboard Manager permite establecer atajos de teclado personalizados: simple, pero muy útil. El atajo que más utilizo es el de menú contextual (i.e.&nbsp;el menú que se abre cuando presionamos click derecho), ya que <a href="https://www.keychron.com/products/keychron-k3-wireless-mechanical-keyboard">mi teclado</a> no tiene una tecla dedicada para este propósito.</p>
+<p>Para asignar un atajo de teclado:</p>
+<ul>
+<li>Ir la pestaña correspondiente dentro de las opciones de PowerToys, dar click en “Remap a shortcut”.</li>
+</ul>
+<p><img src="https://luislaum.github.io/home/blog/powertoys-tools/images/08.png" class="img-fluid"></p>
+<ul>
+<li>En la interfaz que se mostrará, dar click en “Add shortcut remapping”. Se añadirá un slot en donde podremos indicar el atajo que deseamos configurar.</li>
+</ul>
+<p><img src="https://luislaum.github.io/home/blog/powertoys-tools/images/09.png" class="img-fluid"></p>
+<ul>
+<li>Primero, daremos click en el ícono de lápiz a la izquierda. Se abrirá una pequeña ventana en donde nos pedirá que presionemos la combinación de teclas del nuevo atajo.</li>
+</ul>
+<p><img src="https://luislaum.github.io/home/blog/powertoys-tools/images/10.png" class="img-fluid"></p>
+<ul>
+<li>Luego, definiremos la acción. Nos mostrará 4 opciones: <strong>Send Key/Shortcut</strong> (que sirve para referenciar una acción de teclado o mouse), <strong>Send text</strong> (para que cuando el atajo sea presionado, se escriba un texto que nosotro querramos), <strong>Run Program</strong> (para ejecutar un programa o aplicación instalada en nuestra PC) y <strong>Open URI</strong> (para abrir un vínculo URL).</li>
+</ul>
+<p><img src="https://luislaum.github.io/home/blog/powertoys-tools/images/11.png" class="img-fluid"></p>
+<ul>
+<li>En mi caso, tengo definidos dos atajos de teclado: uno que me permite abrir el menú contextual (click derecho) en cualquier entorno y otro que me permite insertar el texto <code>%in%</code> (únicamente cuando estoy en RStudio).</li>
+</ul>
+</section>
+<section id="text-extractor-1" class="level3">
+<h3 data-anchor-id="text-extractor-1">Text Extractor</h3>
+<p>Ah, ¿cuántas veces hemos necesitado extraer el texto de alguna imagen o de algún sitio web que no permite copiar texto? Bueno, <strong>Text Extractor</strong> hace justamente eso.</p>
+<p>Su uso es bastante sencillo, basta con presionar el atajo de teclado correspondiente (por defecto, <code>+ Shift + T</code>) y la pantalla se oscurecerá un poco para que con nuestro cursor arrastremos un recuadro alrededor del texto que deseamos extraer.</p>
+<p>Internamente, esta herramienta hace uso de OCR (Reconocimiento Óptico de Caracteres, hace referencia a herramientas de extracción de texto a partir de una imagen) y requiere que el usuario tenga instalado el paquete de idioma del texto que desea extraer. En otras palabras, si deseo extraer texto en inglés, español o francés, debo instalar previamente los paquetes de OCR para estos idiomas.</p>
+<p>Para instalar un paquete de idiomas tendremos que:</p>
+<ul>
+<li>Abrir una ventana de PowerShell en modo Administrador y ejecutar el siguiente comando:</li>
+</ul>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Get-WindowsCapability</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Online</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">|</span> <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Where-Object</span> { <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$_</span>.Name <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Like</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Language.OCR*'</span> }</span></code></pre></div>
+<p>Esto nos mostrará todos los paquetes OCR disponibles. Cuando hayamos encontrado el que nos interesa, debemos recordar su código (e.g.&nbsp;<code>fr-FR</code> para francés de Francia, <code>en-US</code> para inglés de Estados Unidos o <code>es-MX</code> para español de Latinoamérica).</p>
+<ul>
+<li>El siguiente paso será ejecutar el siguiente comando:</li>
+</ul>
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">[Windows.Media.Ocr.OcrEngine,</span> Windows.Foundation, ContentType = WindowsRuntime]</span></code></pre></div>
+<ul>
+<li>Seguidamente, ejecutar el siguiente comando que nos mostrará qué paquetes ya se encuentran instalados en nuestro PC:</li>
+</ul>
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">[Windows.Media.Ocr.OcrEngine]::AvailableRecognizerLanguages</span></span></code></pre></div>
+<ul>
+<li>Para instalar un paquete OCR nuevo, ejecutaremos el siguiente comando, modificando el código del idioma deseado:</li>
+</ul>
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$Capability</span> = Get-WindowsCapability <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Online</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">|</span> <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Where-Object</span> { <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$_</span>.Name <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Like</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Language.OCR*en-US*'</span> }</span></code></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La descarga e instalación de los paquetes OCR puede tomar varios minutos, seamos pacientes. Así mismo, la instalación de cada paquete OCR debe hacerse de forma independiente, i.e.&nbsp;uno por uno.</p>
+</div>
+</div>
+
+
+</section>
+</section>
+</section>
+ ]]></description>
+  <category>Windows</category>
+  <category>misc</category>
+  <category>tips</category>
+  <guid>https://luislaum.github.io/home/blog/powertoys-tools/powertoys-tools.html</guid>
+  <pubDate>Wed, 30 Apr 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://luislaum.github.io/home/blog/powertoys-tools/banner.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>How to convert snippets from RStudio format to Positron format</title>
   <link>https://luislaum.github.io/home/blog/convert-snippets/convert-snippets.html</link>
   <description><![CDATA[ 
+
 
 <p>Image credits: <a href="https://evbn.org/Types-of-Electrical-Plugs-Types-Uses-Features-and-Benefits-1677786008/">EVBN</a></p>
 <section id="en-converting-snippets-from-rstudio-to-positron" class="level2">
@@ -334,6 +681,7 @@ Snippets de varias líneas
   <title>Drawing timeline (Gantt) diagrams in R</title>
   <link>https://luislaum.github.io/home/blog/timeline-with-googlevis/timeline-with-googlevis.html</link>
   <description><![CDATA[ 
+
 
 <p>Image credits: Jussara Romão at <a href="https://unsplash.com/photos/landscape-photography-of-orange-lights-3cM5Vw3UjaY?utm_content=creditShareLink&amp;utm_medium=referral&amp;utm_source=unsplash">Unplash</a></p>
 <section id="en-drawing-timeline-diagrams-in-r" class="level1">
@@ -1121,6 +1469,7 @@ font-style: inherit;">plot</span>()</span>
   <link>https://luislaum.github.io/home/blog/quarto-template-article/quarto-template-article.html</link>
   <description><![CDATA[ 
 
+
 <p>Image credits: Daria Glakteeva at <a href="https://unsplash.com/photos/a-person-typing-on-a-laptop-on-a-desk-2w0IdiEI-hg?utm_content=creditShareLink&amp;utm_medium=referral&amp;utm_source=unsplash">Unplash</a></p>
 <section id="en-writing-a-manuscript-just-with-quarto-and-zotero-and-r" class="level1">
 <h1>[EN] Writing a manuscript just with Quarto and Zotero (and R)</h1>
@@ -1480,6 +1829,7 @@ Important
   <title>How to insert bibliographic references from Zotero in Quarto files?</title>
   <link>https://luislaum.github.io/home/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html</link>
   <description><![CDATA[ 
+
 
 <p>Image credits: RetroSupply at <a href="https://unsplash.com/photos/vintage-teal-typewriter-beside-book-jLwVAUtLOAQ?utm_content=creditShareLink&amp;utm_medium=referral&amp;utm_source=unsplash">Unplash</a></p>
 <section id="en-zotero-quarto-rstudio-and-extras" class="level1">
@@ -1923,6 +2273,7 @@ Render on Save
   <title>Developing Beneath the surface</title>
   <link>https://luislaum.github.io/home/blog/about-this-website/about-this-website.html</link>
   <description><![CDATA[ 
+
 
 <section id="en-developing-beneath-the-surface" class="level1">
 <h1>[EN] Developing ‘Beneath the surface 🌊’</h1>
