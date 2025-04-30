@@ -2,21 +2,144 @@
 title: "My favorite tools from MS PowerToys"
 description: |
   A quick summary of my favorite tools at PowerToys and how I use them on a daily basis. | Un resumen rápido de mis herramientas favoritas en PowerToys y cómo las uso en el día a día.
-date: 2025-04-22
-image: banner.png
+date: 2025-04-30
+image: banner.jpg
 about: 
   template: marquee
   image-shape: rectangle
 keywords: ["powertoys", "windows", "misc", "tools", "tips"]
 tags: ["powertoys", "windows", "misc", "tools", "tips"]
 categories: ["Windows", "misc", "tips"]
-draft: true
+draft: false
 engine: knitr
 ---
 
 Image credits: [Winbuzzer](https://winbuzzer.com/wp-content/uploads/2019/05/powertoys-logo.jpg)
 
-## [EN] Converting snippets from RStudio to Positron
+# [EN] Main tools of MS PowerToys
+
+## What the PowerToys are?
+
+PowerToys is a collection of utilities developed by Microsoft for advanced Windows users, designed to improve productivity and personalization of the operating system. Among its tools are FancyZones for efficient window management, PowerRename for batch file renaming, and PowerToys Run, a fast application launcher. Its interface is intuitive, and being open source, it receives constant improvements from the community. Overall, PowerToys offers very useful features that optimize workflow without complicating the user experience.
+
+## How to install the PowerToys?
+
+* Go to the [official Github repo](https://github.com/microsoft/PowerToys/).
+
+* Click on the **Install PowerToys** button and, in the right column, in the "Releases section", click on the link shown (which corresponds to the latest version available).
+
+  ![](images/01.png)
+
+* The web site that hosts the installers will open, select the appropriate one according to the architecture of our processor (x86 or ARM).
+
+  ![](images/02.png)
+
+* After downloading the installer, run it and follow the instructions (Administrator permissions may be required).
+
+* Great. Now, to open it, just search for it through the start menu.
+
+  ![](images/03.png)
+
+
+## Favorite Tools
+
+PowerToys has a huge catalog of tools and by default it will enable all of them after the first installation. However, it is possible to keep active only those that we are going to use frequently. From this control window we can configure each of the tools (keyboard shortcuts and specific parameters).
+
+![](images/04.png)
+
+::: {.callout-warning}
+PowerToys is a software that includes EXPERIMENTAL tools, so it is always possible that they can be edited, deleted or, if they prove to be well received by users, included in the base versions of Windows.
+:::
+
+In the following, I will show the tools I use the most.
+
+### Advanced Paste
+
+When we copy text in Windows and paste it into software that allows formatting editing (e.g. Power Point, Word, or when composing an e-mail), it will try to keep the formatting of the original text, which is not always desired.  Advanced Paste allows you to paste only the text WITHOUT its original formatting, allowing it to take the target formatting.
+
+{{< video images/05.mp4 >}}
+
+### Color Picker
+
+Sometimes we want to find out the color of some element of a file (e.g. pdf, figure, Power Point file, etc.) or web site, to use it in a graphic (in R) or in the preparation of a slide show. This tool allows us to extract the color code of any element that we are observing on our screen and returns the corresponding codes.
+
+* **Extract colors with Color Picker and use them in R.** In this example, we see the basic interface of Color Picker. It is enough to activate it through the keyboard shortcut (by default, {{< bi windows >}}`+ Shift + C`) and from there to the side of our cursor will appear the color that we are pointing out. If we click on the chosen color, a small window will open showing us the code in HEX format that we can copy and paste directly into our script by prefixing the symbol `#` (e.g.).
+
+{{< video images/06.mp4 >}}
+
+* **Extract colors with Color Picker and use them in PowerPoint.** The dynamics is basically the same, although in this case an additional functionality is shown: if while we are looking for the color we use the scroll wheel of our mouse, Color Picker will zoom around where our cursor is, allowing us to select the color with greater precision.
+
+
+{{< video images/07.mp4 >}}
+
+::: {.callout-note}
+If we activate Color Picker by mistake, just press the `Esc` key to exit its interface.
+:::
+ 
+### Keyboard Manager
+
+Keyboard shortcuts help speed up our work, especially when using programs with multiple options available. Keyboard Manager allows you to set custom keyboard shortcuts: simple, but very useful. The shortcut I use the most is the context menu shortcut (i.e. the menu that opens when right-clicking), since [my keyboard](https://www.keychron.com/products/keychron-k3-wireless-mechanical-keyboard) does not have a dedicated key for this purpose.
+
+To assign a keyboard shortcut:
+
+* Go to the corresponding tab in the PowerToys options, click on “Remap a shortcut”.
+
+![](images/08.png)
+
+* In the interface that will appear, click on "Add shortcut remapping". A slot will be added where we can indicate the shortcut we want to configure.
+
+![](images/09.png)
+
+* First, click on the pencil icon on the left. A small window will open asking us to press the key combination for the new shortcut.
+
+![](images/10.png)
+
+* Then, we will define the action. It will show us 4 options: **Send Key/Shortcut** (used to reference a keyboard or mouse action), **Send text** (so that when the shortcut is pressed, a text we want is typed), **Run Program** (to run a program or application installed on our PC) and **Open URI** (to open a URL link).
+
+![](images/11.png)
+
+* In my case, I have defined two keyboard shortcuts: one that allows me to open the context menu (right click) in any environment and another one that allows me to insert the text `%in%` (only when I am in RStudio).
+
+
+### Text Extractor
+
+Ah, how many times have we needed to extract text from an image or from a website that doesn't allow copying text? Well, **Text Extractor** does just that.
+
+Its use is quite simple, just press the corresponding keyboard shortcut (by default, {{< bi windows >}}`+ Shift + T`) and the screen will darken a bit so that with our cursor we can drag a box around the text we want to extract.
+
+Internally, this tool makes use of OCR (Optical Character Recognition, refers to tools for extracting text from an image) and requires the user to have the language pack of the text to be extracted installed. In other words, if I want to extract text in English, Spanish or French, I must first install the OCR packages for these languages.
+
+To install a language pack we will have to:
+
+* Open a PowerShell window in Administrator mode and execute the following command:
+
+```bash
+Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*' }
+```
+
+  This will show us all the available OCR packages. When we have found the one we are interested in, we must remember its code (e.g. `fr-FR` for French from France, `en-US` for English from the United States or `es-MX` for Spanish from Latin America).
+
+* The next step is to execute the following command:
+
+```bash
+[Windows.Media.Ocr.OcrEngine, Windows.Foundation, ContentType = WindowsRuntime]
+```
+
+* Next, run the following command that will show you which packages are already installed on your PC:
+
+```bash
+[Windows.Media.Ocr.OcrEngine]::AvailableRecognizerLanguages
+```
+
+* To install a new OCR package, run the following command, modifying the desired language code:
+
+```bash
+$Capability = Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*en-US*' }
+```
+
+::: {.callout-note}
+Downloading and installing the OCR packages may take several minutes, so please be patient. Also, the installation of each OCR package must be done independently, i.e. one by one.
+:::
 
 
 ---
@@ -52,7 +175,7 @@ PowerToys tiene un catálogo enorme de herramientas y por defecto habilitará to
 
 ![](images/04.png)
 
-::: {.callout-note}
+::: {.callout-warning}
 PowerToys es un software que incluye herramientas de tipo EXPERIMENTAL, por lo que siempre es posible que sean editadas, borradas o, si demuestran una alta acogida por parte de los usuarios, incluidas en las versiones base de Windows.
 :::
 
@@ -98,7 +221,7 @@ Para asignar un atajo de teclado:
 
 ![](images/10.png)
 
-* Luego, definiremos la acción. Nos mostrará 4 opciones: **Send Key/Shortcut** (que sirve para referenciar una acción de teclado o mouse), **Send text** (para que cuando el atajo sea presionado, se escriba un texto que nosotro querramos), **Run Program** (para ejecutar un programa o aplicación instalada en nuestra PC) y Open URI (para abrir un vínculo URL).
+* Luego, definiremos la acción. Nos mostrará 4 opciones: **Send Key/Shortcut** (que sirve para referenciar una acción de teclado o mouse), **Send text** (para que cuando el atajo sea presionado, se escriba un texto que nosotro querramos), **Run Program** (para ejecutar un programa o aplicación instalada en nuestra PC) y **Open URI** (para abrir un vínculo URL).
 
 ![](images/11.png)
 
@@ -140,4 +263,6 @@ Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*' }
 $Capability = Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*en-US*' }
 ```
 
-
+::: {.callout-note}
+La descarga e instalación de los paquetes OCR puede tomar varios minutos, seamos pacientes. Así mismo, la instalación de cada paquete OCR debe hacerse de forma independiente, i.e. uno por uno.
+:::
