@@ -1,0 +1,94 @@
+---
+title: "Garage sale"
+description: |
+  Sale of some things that I will not be able to take with me in my move
+date: 2025-05-22
+about: 
+  template: marquee
+  image-shape: rectangle
+draft: false
+engine: knitr
+---
+
+## 2 QHD monitors (Price: 250 € ambos)
+
+* Brand-Model: Dell-S2722DC
+* Type: LED-backlit LCD monitor / TFT active matrix
+* Diagonal Size: 27"
+* Native Resolution: QHD 2560 x 1440 at 75 Hz
+* Response Time: 4 ms
+* Interfaces: 2xHDMI, USB-C upstream/DisplayPort with Power Delivery, USB 3.2 Gen 1 downstream with Battery Charging 1.2, USB 3.2 Gen 1 downstream, Audio line-out
+* Audio: speakers - stereo
+* Rotation: -90°/+90°
+* Allows adjustment in height and front tilt.
+* Website: <https://www.dell.com/en-us/shop/dell-27-plus-qhd-usb-c-monitor-s2722dc/apd/210-bbqs/monitors-monitor-accessories#techspecs_section>
+
+The price (€250) is for both monitors TOGETHER, **I am NOT selling them separately**.
+
+* Both displays
+
+![](images/displays.jpeg)
+
+* Monitor 1
+
+![](images/display1-01.jpeg)
+
+![](images/display1-02.jpeg)
+
+![](images/display1-03.jpeg)
+
+* Monitor 2
+
+![](images/display2-01.jpeg)
+
+![](images/display2-02.jpeg)
+
+![](images/display2-03.jpeg)
+
+## Soundbar Sony (50 €)
+
+* Brand-Model: Sony HT-SF200
+* Power output: 80 W
+* Audio Formats: HDMI (Dolby® Digital,Dolby® Dual mono,LPCM 2ch), USB (WAV,MP3,WMA), Optical input (Dolby® Digital,Dolby® Dual mono,LPCM 2ch), Bluetooth (SBC).
+* Interfaces: HDMI Arc, Optical-audio, USB type-A, Bluetooth 4.2 
+* Size: 58 x 6.4 x 9.5 cm
+* Weight: 2.3 kg
+* Includes remote control and original power supply.
+* Website: <https://www.sony.co.uk/electronics/sound-bars/ht-sf200>
+
+![](images/soundbar-01.jpeg)
+
+![](images/soundbar-02.jpeg)
+
+![](images/soundbar-03.jpeg)
+
+![](images/soundbar-04.jpeg)
+
+![](images/soundbar-05.jpeg)
+
+## Silent Fan (15 €)
+
+* 4 speeds
+* Automatic rotation in 180°
+* LED light
+* USB-C charging
+* Website: <https://www.amazon.fr/-/en/dp/B08PTWJYJ3?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_1>
+
+![](images/fan-01.jpeg)
+
+![](images/fan-02.jpeg)
+
+![](images/fan-03.jpeg)
+
+## Herb blender (10 €)
+
+* 1 speed
+* Fully functional
+* ~1 year of very occasional use
+* Includes container and blades
+
+![](images/mixer-01.jpeg)
+
+![](images/mixer-02.jpeg)
+
+![](images/mixer-03.jpeg)
