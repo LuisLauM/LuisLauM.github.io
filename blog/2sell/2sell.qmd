@@ -10,7 +10,7 @@ draft: false
 engine: knitr
 ---
 
-## 2 QHD monitors (Price: 250 € ambos)
+## 2 QHD monitors (Price: 250 € both)
 
 * Brand-Model: Dell-S2722DC
 * Type: LED-backlit LCD monitor / TFT active matrix
