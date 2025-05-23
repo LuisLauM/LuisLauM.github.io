@@ -33,7 +33,14 @@ The price (2500 €) is for the entire CPU, **I am NOT selling parts separately*
 
 ![](images/pc-04.png)
 
-{{< video https://youtube.com/shorts/sXGMBHrAwYM >}}
+```{=html}
+<div style="text-align:center;">
+  <iframe width="315" height="560"
+  src="https://www.youtube.com/embed/sXGMBHrAwYM"
+  frameborder="0"
+  allowfullscreen></iframe>
+</div>
+```
 
 
 
