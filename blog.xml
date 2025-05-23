@@ -41,7 +41,9 @@
 <p><img src="https://luislaum.github.io/home/blog/2sell/images/pc-02.png" class="img-fluid"></p>
 <p><img src="https://luislaum.github.io/home/blog/2sell/images/pc-03.png" class="img-fluid"></p>
 <p><img src="https://luislaum.github.io/home/blog/2sell/images/pc-04.png" class="img-fluid"></p>
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="https://youtube.com/shorts/sXGMBHrAwYM"></video></div>
+<div style="text-align:center;">
+  <iframe width="315" height="560" src="https://www.youtube.com/embed/sXGMBHrAwYM" frameborder="0" allowfullscreen=""></iframe>
+</div>
 </section>
 <section id="qhd-monitors-price-250-both" class="level2">
 <h2 data-anchor-id="qhd-monitors-price-250-both">2 QHD monitors (Price: 250 € both)</h2>
