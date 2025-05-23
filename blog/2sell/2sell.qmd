@@ -10,6 +10,33 @@ draft: false
 engine: knitr
 ---
 
+## 1 Gamer PC (2500 €)
+
+* CPU: [AMD Ryzen 9 7900](https://www.amd.com/en/products/processors/desktops/ryzen/7000-series/amd-ryzen-9-7900.html)
+* GPU: [GIGABYTE GeForce RTX 4070 WINDFORCE OC 12GB DDRX6 21 Gbps](https://www.gigabyte.com/Graphics-Card/GV-N4070WF3OC-12GD-rev-10)
+* RAM: [Corsair VENGEANCE 64GB (2x32GB) DDR5 DRAM 6000MT/s CL30 AMD EXPO](https://www.corsair.com/fr/fr/p/memory/cmk64gx5m2b6000z30/vengeance-64gb-2x32gb-ddr5-dram-6000mt-s-cl30-amd-expo-memory-kit-cmk64gx5m2b6000z30)
+* SSD: [Samsung 990 Pro 1 TB NVMe M.2](https://www.samsung.com/us/computing/memory-storage/solid-state-drives/990-pro-pcie--4-0-nvme--ssd-1tb-mz-v9p1t0b-am/)
+* Motherboard: [ASUS ROG Strix B650E-E](https://rog.asus.com/motherboards/rog-strix/rog-strix-b650e-e-gaming-wifi-model/)
+* Frontal fans: 2 x [Be Quiet! Silent Wings 4 140 mm](https://www.bequiet.com/en/casefans/3704)
+* Back fan: 1 x [Be Quiet! Silent Wings 4 120 mm](https://www.bequiet.com/en/casefans/3700)
+* Watercooling: [Arctic Liquid Freezer III 240](https://www.arctic.de/en/Liquid-Freezer-III-240/ACFRE00134A)
+* Power supply: [ASUS Prime 750 W Gold](https://www.asus.com/motherboards-components/power-supply-units/prime/ap-750g/)
+* Case: [Fractal Design Meshify 2 Compact](https://www.fractal-design.com/products/cases/meshify/meshify-2-compact/black-tg-dark-tint/)
+
+The price (2500 €) is for the entire CPU, **I am NOT selling parts separately**. If you live/work in a city around Sète (e.g. Montpellier), I can bring the PC and leave it installed in your home/office.
+
+![](images/pc-01.png)
+
+![](images/pc-02.png)
+
+![](images/pc-03.png)
+
+![](images/pc-04.png)
+
+{{< video https://youtube.com/shorts/sXGMBHrAwYM >}}
+
+
+
 ## 2 QHD monitors (Price: 250 € both)
 
 * Brand-Model: Dell-S2722DC
@@ -65,6 +92,21 @@ The price (€250) is for both monitors TOGETHER, **I am NOT selling them separa
 ![](images/soundbar-04.jpeg)
 
 ![](images/soundbar-05.jpeg)
+
+## Powerbank Sony 10000 mAh (10 €)
+
+* Brand-Model: Sony CP-V10B
+* Battery capacity: 3.8 V 10 000 mAh
+* Output interfaces: 1xUSB-A, 1xUSB-C
+* Website: <https://www.sony.com.sg/electronics/support/accessories-portable-batteries/cp-v10b/specifications>
+
+![](images/pb-01.png)
+
+![](images/pb-02.png)
+
+![](images/pb-03.png)
+
+![](images/pb-04.png)
 
 ## Silent Fan (15 €)
 
