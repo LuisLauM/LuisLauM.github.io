@@ -137,6 +137,12 @@ Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*' }
 $Capability = Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*en-US*' }
 ```
 
+* Finally, run the following command to start the download and installation of the selected language.
+
+```bash
+$Capability | Add-WindowsCapability -Online
+```
+
 ::: {.callout-note}
 Downloading and installing the OCR packages may take several minutes, so please be patient. Also, the installation of each OCR package must be done independently, i.e. one by one.
 :::
@@ -261,6 +267,12 @@ Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*' }
 
 ```bash
 $Capability = Get-WindowsCapability -Online | Where-Object { $_.Name -Like 'Language.OCR*en-US*' }
+```
+
+* Finalmente, ejecutaremos el siguiente comando para iniciar la descarga e instalación del idioma seleccionado.
+
+```bash
+$Capability | Add-WindowsCapability -Online
 ```
 
 ::: {.callout-note}
