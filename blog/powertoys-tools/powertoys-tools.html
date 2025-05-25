@@ -506,6 +506,10 @@ Note
 <li>To install a new OCR package, run the following command, modifying the desired language code:</li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">$Capability</span> = Get-WindowsCapability <span class="at">-Online</span> <span class="kw">|</span> <span class="ex">Where-Object</span> { <span class="va">$_</span>.Name <span class="at">-Like</span> <span class="st">'Language.OCR*en-US*'</span> }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Finally, run the following command to start the download and installation of the selected language.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">$Capability</span> <span class="kw">|</span> <span class="ex">Add-WindowsCapability</span> <span class="at">-Online</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -623,20 +627,24 @@ Note
 <ul>
 <li>Abrir una ventana de PowerShell en modo Administrador y ejecutar el siguiente comando:</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Get-WindowsCapability</span> <span class="at">-Online</span> <span class="kw">|</span> <span class="ex">Where-Object</span> { <span class="va">$_</span>.Name <span class="at">-Like</span> <span class="st">'Language.OCR*'</span> }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Get-WindowsCapability</span> <span class="at">-Online</span> <span class="kw">|</span> <span class="ex">Where-Object</span> { <span class="va">$_</span>.Name <span class="at">-Like</span> <span class="st">'Language.OCR*'</span> }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Esto nos mostrará todos los paquetes OCR disponibles. Cuando hayamos encontrado el que nos interesa, debemos recordar su código (e.g.&nbsp;<code>fr-FR</code> para francés de Francia, <code>en-US</code> para inglés de Estados Unidos o <code>es-MX</code> para español de Latinoamérica).</p>
 <ul>
 <li>El siguiente paso será ejecutar el siguiente comando:</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[Windows.Media.Ocr.OcrEngine,</span> Windows.Foundation, ContentType = WindowsRuntime]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[Windows.Media.Ocr.OcrEngine,</span> Windows.Foundation, ContentType = WindowsRuntime]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Seguidamente, ejecutar el siguiente comando que nos mostrará qué paquetes ya se encuentran instalados en nuestro PC:</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[Windows.Media.Ocr.OcrEngine]::AvailableRecognizerLanguages</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[Windows.Media.Ocr.OcrEngine]::AvailableRecognizerLanguages</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li>Para instalar un paquete OCR nuevo, ejecutaremos el siguiente comando, modificando el código del idioma deseado:</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="va">$Capability</span> = Get-WindowsCapability <span class="at">-Online</span> <span class="kw">|</span> <span class="ex">Where-Object</span> { <span class="va">$_</span>.Name <span class="at">-Like</span> <span class="st">'Language.OCR*en-US*'</span> }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="va">$Capability</span> = Get-WindowsCapability <span class="at">-Online</span> <span class="kw">|</span> <span class="ex">Where-Object</span> { <span class="va">$_</span>.Name <span class="at">-Like</span> <span class="st">'Language.OCR*en-US*'</span> }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Finalmente, ejecutaremos el siguiente comando para iniciar la descarga e instalación del idioma seleccionado.</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="va">$Capability</span> <span class="kw">|</span> <span class="ex">Add-WindowsCapability</span> <span class="at">-Online</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

@@ -308,6 +308,19 @@ background-color: null;
 font-style: inherit;">-Like</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'Language.OCR*en-US*'</span> }</span></code></pre></div>
+<ul>
+<li>Finally, run the following command to start the download and installation of the selected language.</li>
+</ul>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$Capability</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">|</span> <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Add-WindowsCapability</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Online</span></span></code></pre></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -425,7 +438,7 @@ Note
 <ul>
 <li>Abrir una ventana de PowerShell en modo Administrador y ejecutar el siguiente comando:</li>
 </ul>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">Get-WindowsCapability</span> <span class="at" style="color: #657422;
 background-color: null;
@@ -445,19 +458,19 @@ font-style: inherit;">'Language.OCR*'</span> }</span></code></pre></div>
 <ul>
 <li>El siguiente paso será ejecutar el siguiente comando:</li>
 </ul>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[Windows.Media.Ocr.OcrEngine,</span> Windows.Foundation, ContentType = WindowsRuntime]</span></code></pre></div>
 <ul>
 <li>Seguidamente, ejecutar el siguiente comando que nos mostrará qué paquetes ya se encuentran instalados en nuestro PC:</li>
 </ul>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">[Windows.Media.Ocr.OcrEngine]::AvailableRecognizerLanguages</span></span></code></pre></div>
 <ul>
 <li>Para instalar un paquete OCR nuevo, ejecutaremos el siguiente comando, modificando el código del idioma deseado:</li>
 </ul>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="va" style="color: #111111;
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">$Capability</span> = Get-WindowsCapability <span class="at" style="color: #657422;
 background-color: null;
@@ -473,6 +486,19 @@ background-color: null;
 font-style: inherit;">-Like</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'Language.OCR*en-US*'</span> }</span></code></pre></div>
+<ul>
+<li>Finalmente, ejecutaremos el siguiente comando para iniciar la descarga e instalación del idioma seleccionado.</li>
+</ul>
+<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">$Capability</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">|</span> <span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">Add-WindowsCapability</span> <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">-Online</span></span></code></pre></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
