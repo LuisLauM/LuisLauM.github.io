@@ -14,7 +14,7 @@
 <title>Beneath the surface 🌊</title>
 <link>https://luislaum.github.io/home/blog.html</link>
 </image>
-<generator>quarto-1.7.34</generator>
+<generator>quarto-1.8.24</generator>
 <lastBuildDate>Wed, 30 Apr 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>My favorite tools from MS PowerToys</title>
@@ -123,7 +123,7 @@ Note
 <ul>
 <li>Open a PowerShell window in Administrator mode and execute the following command:</li>
 </ul>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">Get-WindowsCapability</span> <span class="at" style="color: #657422;
 background-color: null;
@@ -138,24 +138,24 @@ font-style: inherit;">$_</span>.Name <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-Like</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'Language.OCR*'</span> }</span></code></pre></div>
+font-style: inherit;">'Language.OCR*'</span> }</span></code></pre></div></div>
 <p>This will show us all the available OCR packages. When we have found the one we are interested in, we must remember its code (e.g.&nbsp;<code>fr-FR</code> for French from France, <code>en-US</code> for English from the United States or <code>es-MX</code> for Spanish from Latin America).</p>
 <ul>
 <li>The next step is to execute the following command:</li>
 </ul>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">[Windows.Media.Ocr.OcrEngine,</span> Windows.Foundation, ContentType = WindowsRuntime]</span></code></pre></div>
+font-style: inherit;">[Windows.Media.Ocr.OcrEngine,</span> Windows.Foundation, ContentType = WindowsRuntime]</span></code></pre></div></div>
 <ul>
 <li>Next, run the following command that will show you which packages are already installed on your PC:</li>
 </ul>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">[Windows.Media.Ocr.OcrEngine]::AvailableRecognizerLanguages</span></span></code></pre></div>
+font-style: inherit;">[Windows.Media.Ocr.OcrEngine]::AvailableRecognizerLanguages</span></span></code></pre></div></div>
 <ul>
 <li>To install a new OCR package, run the following command, modifying the desired language code:</li>
 </ul>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">$Capability</span> = Get-WindowsCapability <span class="at" style="color: #657422;
 background-color: null;
@@ -170,11 +170,11 @@ font-style: inherit;">$_</span>.Name <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-Like</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'Language.OCR*en-US*'</span> }</span></code></pre></div>
+font-style: inherit;">'Language.OCR*en-US*'</span> }</span></code></pre></div></div>
 <ul>
 <li>Finally, run the following command to start the download and installation of the selected language.</li>
 </ul>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">$Capability</span> <span class="kw" style="color: #003B4F;
 background-color: null;
@@ -183,7 +183,7 @@ font-style: inherit;">|</span> <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">Add-WindowsCapability</span> <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">-Online</span></span></code></pre></div>
+font-style: inherit;">-Online</span></span></code></pre></div></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -301,7 +301,7 @@ Note
 <ul>
 <li>Abrir una ventana de PowerShell en modo Administrador y ejecutar el siguiente comando:</li>
 </ul>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">Get-WindowsCapability</span> <span class="at" style="color: #657422;
 background-color: null;
@@ -316,24 +316,24 @@ font-style: inherit;">$_</span>.Name <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-Like</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'Language.OCR*'</span> }</span></code></pre></div>
+font-style: inherit;">'Language.OCR*'</span> }</span></code></pre></div></div>
 <p>Esto nos mostrará todos los paquetes OCR disponibles. Cuando hayamos encontrado el que nos interesa, debemos recordar su código (e.g.&nbsp;<code>fr-FR</code> para francés de Francia, <code>en-US</code> para inglés de Estados Unidos o <code>es-MX</code> para español de Latinoamérica).</p>
 <ul>
 <li>El siguiente paso será ejecutar el siguiente comando:</li>
 </ul>
-<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">[Windows.Media.Ocr.OcrEngine,</span> Windows.Foundation, ContentType = WindowsRuntime]</span></code></pre></div>
+font-style: inherit;">[Windows.Media.Ocr.OcrEngine,</span> Windows.Foundation, ContentType = WindowsRuntime]</span></code></pre></div></div>
 <ul>
 <li>Seguidamente, ejecutar el siguiente comando que nos mostrará qué paquetes ya se encuentran instalados en nuestro PC:</li>
 </ul>
-<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><span class="ex" style="color: null;
 background-color: null;
-font-style: inherit;">[Windows.Media.Ocr.OcrEngine]::AvailableRecognizerLanguages</span></span></code></pre></div>
+font-style: inherit;">[Windows.Media.Ocr.OcrEngine]::AvailableRecognizerLanguages</span></span></code></pre></div></div>
 <ul>
 <li>Para instalar un paquete OCR nuevo, ejecutaremos el siguiente comando, modificando el código del idioma deseado:</li>
 </ul>
-<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">$Capability</span> = Get-WindowsCapability <span class="at" style="color: #657422;
 background-color: null;
@@ -348,11 +348,11 @@ font-style: inherit;">$_</span>.Name <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-Like</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'Language.OCR*en-US*'</span> }</span></code></pre></div>
+font-style: inherit;">'Language.OCR*en-US*'</span> }</span></code></pre></div></div>
 <ul>
 <li>Finalmente, ejecutaremos el siguiente comando para iniciar la descarga e instalación del idioma seleccionado.</li>
 </ul>
-<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="va" style="color: #111111;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">$Capability</span> <span class="kw" style="color: #003B4F;
 background-color: null;
@@ -361,7 +361,7 @@ font-style: inherit;">|</span> <span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">Add-WindowsCapability</span> <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">-Online</span></span></code></pre></div>
+font-style: inherit;">-Online</span></span></code></pre></div></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -402,7 +402,7 @@ Note
 <h2 data-anchor-id="a-brief-introduction">A brief introduction</h2>
 <p>Positron is the latest IDE released by POSIT, the owner of the very famous RStudio IDE. While its developers are making great efforts to ease the transition for current RStudio users, there are some features that have not yet been implemented and one of them is the conversion of snippets.</p>
 <p>Snippets in RStudio are a very powerful tool as they allow users to define chunks of code that they commonly use and make them available from a nickname. For example, to generate an empty plot centered on <code>c(1, 1)</code> using graphics, the complete command would be as follows:</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -433,11 +433,11 @@ font-style: inherit;">NA</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">xlim =</span> xlim, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">ylim =</span> ylim)</span></code></pre></div>
+font-style: inherit;">ylim =</span> ylim)</span></code></pre></div></div>
 <p>Of course, typing all those argument definitions can be a bit cumbersome, and that’s where the snippets show their potential, allowing me to associate all that command to a nickname (called <code>plo</code>, for example). Then, the next time I type the command <code>plo</code> and press Tab, RStudio prompts me to insert the <code>plo</code> snippet and, when I press Tab again, it generates the desired command.</p>
 <p><img src="https://luislaum.github.io/home/blog/convert-snippets/images/screenshot-1.gif" class="img-fluid"></p>
 <p>In RStudio, defining a snippet is very simple: just go to the menu Tools –&gt; Edit code snippets and follow the established format for its definition which consists of: the command <code>snippet</code>, a nickname and the desired code. For example, the command to define my previous code would be the following:</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">snippet plot</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">snippet plot</span>
 <span id="cb2-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot</span>(<span class="dv" style="color: #AD0000;
@@ -464,9 +464,9 @@ font-style: inherit;">NA</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">xlim =</span> xlim, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">ylim =</span> ylim)</span></code></pre></div>
+font-style: inherit;">ylim =</span> ylim)</span></code></pre></div></div>
 <p>However, Positron uses a different format and allows us to add some extra fields: the name of the snippet, <code>scope</code> (refers to the language or context of the snippet), <code>prefix</code> (which is the hint with which we will call the snippet), <code>body</code> (the command itself, it can consist of one line or more), and <code>description</code> (a brief description of what our command does). So, taken to this format, our previous snippet would look like this:</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><span class="er" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><span class="er" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">"plo":</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -517,7 +517,7 @@ font-style: inherit;">""</span></span>
 background-color: null;
 font-style: inherit;">}</span><span class="er" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">,</span></span></code></pre></div>
+font-style: inherit;">,</span></span></code></pre></div></div>
 </section>
 <section id="the-format-converter" class="level2">
 <h2 data-anchor-id="the-format-converter">The format converter</h2>
@@ -535,7 +535,7 @@ font-style: inherit;">,</span></span></code></pre></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Multi-line snippets
+<span class="screen-reader-only">Note</span>Multi-line snippets
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -550,7 +550,7 @@ Multi-line snippets
 <h2 data-anchor-id="una-breve-introducción">Una breve introducción</h2>
 <p>Positron es el último IDE lanzado por POSIT, la dueña del tan famoso IDE RStudio. Si bien sus desarrolladores están haciendo grandes esfuerzos para facilitar la transición por parte de los actuales usuarios de RStudio, existen algunas funcionalidades que aún no ha sido implementadas y una de ellas es la de la conversión de los snippets.</p>
 <p>Los snippets en RStudio son una herramienta muy poderosa ya que permite a los usuarios definir trozos de código que suelen utilizar y hacerlos disponibles a partir de un nickname. Por ejemplo, para generar un plot vacío centrado en <code>c(1, 1)</code> usando graphics, el comando completo sería el siguiente:</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -581,11 +581,11 @@ font-style: inherit;">NA</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">xlim =</span> xlim, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">ylim =</span> ylim)</span></code></pre></div>
+font-style: inherit;">ylim =</span> ylim)</span></code></pre></div></div>
 <p>Por supuesto, escribir todas esas definiciones de argumentos puede ser algo engorroso, y es ahí en donde los snippets demuestran su potencial, permitiendo que yo pueda asociar todo ese comando a un nickname (llamado <code>plo</code>, por ejemplo). Entonces, la próxima vez que escriba el comando <code>plo</code> y presione la tecla Tab, RStudio me sugiere insertar el snippet <code>plo</code> y, al volver a presionar Tab, genera el comando deseado.</p>
 <p><img src="https://luislaum.github.io/home/blog/convert-snippets/images/screenshot-1.gif" class="img-fluid"></p>
 <p>En RStudio, definir un snippet es muy sencillo: basta con ir al menú Tools –&gt; Edit code snippets y seguir el formato establecido para su definición que consiste en: el comando <code>snippet</code>, un nickname y el código deseado. Por ejemplo, el comando para definir mi anterior código sería el siguiente:</p>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">snippet plot</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">snippet plot</span>
 <span id="cb5-2">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot</span>(<span class="dv" style="color: #AD0000;
@@ -612,9 +612,9 @@ font-style: inherit;">NA</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">xlim =</span> xlim, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">ylim =</span> ylim)</span></code></pre></div>
+font-style: inherit;">ylim =</span> ylim)</span></code></pre></div></div>
 <p>Sin embargo, Positron utiliza un formato distinto y permite añadir algunos campos extra: el nombre del snippet, <code>scope</code> (hace referencia al lenguaje o contexto del snippet), <code>prefix</code> (que es la pista con la que llamaremos al snippet), <code>body</code> (el comando en sí, puede constar de una línea o más), y <code>description</code> (una breve descripción de lo que nuestro comando hace). Entonces, llevado a este formato, nuestro anterior snippet luciría así:</p>
-<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><span class="er" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><span class="er" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">"plo":</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -665,7 +665,7 @@ font-style: inherit;">""</span></span>
 background-color: null;
 font-style: inherit;">}</span><span class="er" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">,</span></span></code></pre></div>
+font-style: inherit;">,</span></span></code></pre></div></div>
 </section>
 <section id="el-convertidor-de-formatos" class="level2">
 <h2 data-anchor-id="el-convertidor-de-formatos">El convertidor de formatos</h2>
@@ -683,7 +683,7 @@ font-style: inherit;">,</span></span></code></pre></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Snippets de varias líneas
+<span class="screen-reader-only">Note</span>Snippets de varias líneas
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -721,7 +721,7 @@ Snippets de varias líneas
 <li><p>Now we will move on to the script, where the first thing we will do is to make sure we have installed the <a href="https://cran.r-project.org/package=googleVis">googleVis</a>, <a href="https://cran.r-project.org/package=readxl">readxl</a> and <a href="https://cran.r-project.org/package=dplyr">dplyr</a> packages:</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Loading the packages</span></span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;
@@ -1088,7 +1088,7 @@ font-style: inherit;"># Plot (show) the time line</span></span>
 <span id="cb1-85">    <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot</span>()</span>
-<span id="cb1-86">}</span></code></pre></div>
+<span id="cb1-86">}</span></code></pre></div></div>
 </div>
 <p><strong>GoogleVis</strong> generates files in HTML format that will open immediately in our default browser (each sheet of our input file will generate an HTML that will open in a separate tab). From there we can take screenshots (or snippets) to save them as image files or paste them directly into the document we are working on.</p>
 <p>For our example, two tabs were generated with the expected diagrams:</p>
@@ -1107,7 +1107,7 @@ font-style: inherit;">plot</span>()</span>
 <li><p>Ahora pasaremos al script, en donde lo primero que haremos será asegurarnos de tener instalados los paquetes <a href="https://cran.r-project.org/package=googleVis">googleVis</a>, <a href="https://cran.r-project.org/package=readxl">readxl</a> y <a href="https://cran.r-project.org/package=dplyr">dplyr</a>:</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Loading the packages</span></span>
 <span id="cb2-2"><span class="fu" style="color: #4758AB;
@@ -1474,7 +1474,7 @@ font-style: inherit;"># Plot (show) the time line</span></span>
 <span id="cb2-85">    <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">plot</span>()</span>
-<span id="cb2-86">}</span></code></pre></div>
+<span id="cb2-86">}</span></code></pre></div></div>
 </div>
 <p><strong>googleVis</strong> genera archivos en formato HTML que se abrirán inmediatamente en nuestro navegador predeterminado (cada hoja de nuestro archivo de entrada generará un HTML que se abrirá en una pestaña independiente). A partir de ahí podremos realizar capturas (o recortes) de pantalla para guardarlos como archivos de imagen o pegarlos directamente sobre el documento en el que estemos trabajando.</p>
 <p>Para nuestro ejemplo, se generaron dos pestañas con los diagramas esperados:</p>
@@ -1519,7 +1519,7 @@ font-style: inherit;">plot</span>()</span>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Files and order
+<span class="screen-reader-only">Tip</span>Files and order
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1576,7 +1576,7 @@ Tip
 <h3 data-anchor-id="setup-chunk"><em>Setup chunk</em></h3>
 <p>The chunk shown at the beginning of the <code>qmd</code> file contains some parameters that should be set, so that you do not have to do it independently in each subsequent chunk. <strong>Hey</strong>, this is a SUGGESTED configuration, you can (and should) modify it as required by your project or the reviewers.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">knitr<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span>opts_chunk<span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -1616,7 +1616,7 @@ font-style: inherit;">"100%"</span>, </span>
 background-color: null;
 font-style: inherit;">dpi =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">1500</span>)</span></code></pre></div>
+font-style: inherit;">1500</span>)</span></code></pre></div></div>
 </div>
 <ul>
 <li><p><code>echo = FALSE</code>: Causes the executed code NOT to be displayed verbatim in the document.</p></li>
@@ -1635,7 +1635,7 @@ font-style: inherit;">1500</span>)</span></code></pre></div>
 <p>The car models Toyota Corolla and Fiat 128 were those with the highest miles per gallon value.</p>
 </blockquote>
 <p>The text inside our qmd file should look like this:</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1">The car models `r rownames(mtcars)[order(mtcars$mpg, decreasing = TRUE)[1:2]] |&gt; paste(collapse = " and ")` were those with the highest miles per gallon value.</span></code></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1">The car models `r rownames(mtcars)[order(mtcars$mpg, decreasing = TRUE)[1:2]] |&gt; paste(collapse = " and ")` were those with the highest miles per gallon value.</span></code></pre></div></div>
 <p>As you can see, within the paragraph itself I am running a chunk with a data sorting and extraction operation. While this may seem more cumbersome, it allows that if at some point we were to modify some pre-processing process of the initial data, the results will be generated automatically, without the need for us to do these small calculations again.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1691,7 +1691,7 @@ Important
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Archivos, orden y modo de trabajo
+<span class="screen-reader-only">Tip</span>Archivos, orden y modo de trabajo
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1748,7 +1748,7 @@ Tip
 <h3 data-anchor-id="setup-chunk-1"><em>Setup chunk</em></h3>
 <p>El chunk que se muestra al inicio del archivo <code>qmd</code> contiene algunos parámetros que conviene fijar, para no tener que hacerlo independientemente en cada chunk posterior. <strong>Ojo</strong>, esta es una configuración SUGERIDA, usted podrá (y deberá) modificarla según lo requiera su proyecto o los revisores.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">knitr<span class="sc" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">knitr<span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">::</span>opts_chunk<span class="sc" style="color: #5E5E5E;
 background-color: null;
@@ -1788,7 +1788,7 @@ font-style: inherit;">"100%"</span>, </span>
 background-color: null;
 font-style: inherit;">dpi =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">1500</span>)</span></code></pre></div>
+font-style: inherit;">1500</span>)</span></code></pre></div></div>
 </div>
 <ul>
 <li><p><code>echo = FALSE</code>: Hace que el código ejecutado NO se muestre textualmente en el documento.</p></li>
@@ -1807,7 +1807,7 @@ font-style: inherit;">1500</span>)</span></code></pre></div>
 <p>Los modelos Toyota Corolla y Fiat 128 fueron aquellos con mayor valor de millas por galón.</p>
 </blockquote>
 <p>El texto dentro de nuestro archivo qmd dbería lucir del siguiente modo:</p>
-<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb4-1">Los modelos `r rownames(mtcars)[order(mtcars$mpg, decreasing = TRUE)[1:2]] |&gt; paste(collapse = " y ")` fueron los que mostraron los primeros según la variable de millas por galón.</span></code></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb4-1">Los modelos `r rownames(mtcars)[order(mtcars$mpg, decreasing = TRUE)[1:2]] |&gt; paste(collapse = " y ")` fueron los que mostraron los primeros según la variable de millas por galón.</span></code></pre></div></div>
 <p>Como se observa, dentro del propio párrafo estoy ejecutando un chunk con una operación de ordenamiento y extracción de datos. Si bien esto puede parecer más engorroso, permite que si en algún momento tuviéramos que modificar algún proceso de preprocesamiento de los datos iniciales, los resultados se generarán automáticamente, sin necesidad de que tengamos que volver a hacer estos pequeños cálculos nuevamente.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1904,7 +1904,7 @@ Note
 <p>Now, you may decide to download and use the official version of the package; however, as of this writing, I have taken the official version of <strong>rbbt</strong> and created my own version where I have corrected certain problems and added certain features (e.g., the ability to quote R packages). This tutorial shows how to install and use the (<em>forked</em>) version <a href="https://github.com/LuisLauM/rbbt">available on my Github profile</a>, but this is open source, so you decide (you can even create your own version and add more interesting features).</p>
 <p>To install the package, just run the following line in R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># To run this, you must first install the 'remotes' package</span></span>
 <span id="cb1-2">remotes<span class="sc" style="color: #5E5E5E;
@@ -1915,7 +1915,7 @@ font-style: inherit;">install_github</span>(<span class="at" style="color: #6574
 background-color: null;
 font-style: inherit;">repo =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"LuisLauM/rbbt"</span>)</span></code></pre></div>
+font-style: inherit;">"LuisLauM/rbbt"</span>)</span></code></pre></div></div>
 </div>
 <p>Once the installation is complete, we can check that it has been correctly added to our Addins menu, which is located right at the end of the RStudio shortcut bar:</p>
 <p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-4171540842.png" class="img-fluid"></p>
@@ -1936,16 +1936,16 @@ font-style: inherit;">"LuisLauM/rbbt"</span>)</span></code></pre></div>
 <p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-1949640663.png" class="img-fluid"></p></li>
 <li><p>Next, we will create an empty file where our bibliographic citations will be stored (for our example, we will name it <strong>references.bib</strong>). Then, in the header of our Quarto file (also called the YAML section), we will add a line where we will indicate the path to this created file:</p></li>
 </ol>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1">---</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb2-1">---</span>
 <span id="cb2-2">title: "test_rbbt"</span>
 <span id="cb2-3">format: html</span>
 <span id="cb2-4">bibliography: references.bib</span>
-<span id="cb2-5">---</span></code></pre></div>
+<span id="cb2-5">---</span></code></pre></div></div>
 <ol start="3" type="1">
 <li>Also, to ensure that <strong>rbbt</strong> does NOT attempt to include references to figures, tables, equations, or other non-bibliographic elements, we will include the following code within a chunk at the beginning of our document:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Get current filepath</span></span>
 <span id="cb3-2">currentFilePath <span class="ot" style="color: #003B4F;
@@ -2024,7 +2024,7 @@ font-style: inherit;">ignore =</span> keys[index2rm], <span class="at" style="co
 background-color: null;
 font-style: inherit;">quiet =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">TRUE</span>)</span></code></pre></div>
+font-style: inherit;">TRUE</span>)</span></code></pre></div></div>
 </div>
 <ol start="4" type="1">
 <li><p>Next, we will type some text and then press the key combination assigned to the insert quote command (remember the <em>Ctrl + K</em> shorcut?). What will happen is that a very thin window will open that will serve as an interface to Zotero. We will be able to type all the quotes we want to include in our text. The navigation between the suggested quotations is done with the arrow keys and the Enter key. It is also possible to add multiple quotes in each call of this small but powerful interface:</p>
@@ -2053,7 +2053,7 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Render on Save
+<span class="screen-reader-only">Note</span>Render on Save
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2110,7 +2110,7 @@ Note
 <p>Ahora bien, usted puede decidir descargar y utilizar la versión oficial del paquete; sin embargo, al día en que escribo este artículo, yo he tomado la versión oficial de <strong>rbbt</strong> y he creado la mía propia en donde corrijo ciertos problemas y añado ciertas funcionalidades (e.g., el poder citar paquetes de R). El presente tutorial muestra cómo instalar y usar la versión (<em>forked</em>) <a href="https://github.com/LuisLauM/rbbt">disponible en mi perfil de Github</a>, pero esto es código libre, por lo que usted decide (hasta incluso puede crear su propia versión y añadir funcionalidades más interesantes).</p>
 <p>Para instalar el paquete, bastará con ejecutar las siguiente línea en R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Para esto, debe instalar previamente el paquete 'remotes'</span></span>
 <span id="cb4-2">remotes<span class="sc" style="color: #5E5E5E;
@@ -2121,7 +2121,7 @@ font-style: inherit;">install_github</span>(<span class="at" style="color: #6574
 background-color: null;
 font-style: inherit;">repo =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"LuisLauM/rbbt"</span>)</span></code></pre></div>
+font-style: inherit;">"LuisLauM/rbbt"</span>)</span></code></pre></div></div>
 </div>
 <p>Una vez que haya culminado la instalación, podremos revisar que se haya añadido correctamente a nuestro menú de Addins, que se encuentra justo al final de la barra de accesos rápidos de RStudio:</p>
 <p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-4171540842.png" class="img-fluid"></p>
@@ -2142,16 +2142,16 @@ font-style: inherit;">"LuisLauM/rbbt"</span>)</span></code></pre></div>
 <p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-1949640663.png" class="img-fluid"></p></li>
 <li><p>Seguidamente, crearemos un archivo vacío en donde se guardarán nuestras citas bibliográficas (para nuestro ejemplo, le pondremos el nombre <strong>references.bib</strong>). Luego, en la cabecera de nuestro archivo de Quarto (llamada también la sección YAML), añadiremos una línea en donde indicaremos la ruta a este archivo creado:</p></li>
 </ol>
-<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb5-1">---</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode default code-with-copy"><code class="sourceCode default"><span id="cb5-1">---</span>
 <span id="cb5-2">title: "test_rbbt"</span>
 <span id="cb5-3">format: html</span>
 <span id="cb5-4">bibliography: references.bib</span>
-<span id="cb5-5">---</span></code></pre></div>
+<span id="cb5-5">---</span></code></pre></div></div>
 <ol start="3" type="1">
 <li>Así mismo, para asegurarnos de que <strong>rbbt</strong> NO intente incluir las referencias a figuras, tablas, ecuaciones, u otros elementos no bibliográficos, incluiremos el siguiente código dentro de un chunk al inicio de nuestro documento:</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Get current filepath</span></span>
 <span id="cb6-2">currentFilePath <span class="ot" style="color: #003B4F;
@@ -2230,7 +2230,7 @@ font-style: inherit;">ignore =</span> keys[index2rm], <span class="at" style="co
 background-color: null;
 font-style: inherit;">quiet =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">TRUE</span>)</span></code></pre></div>
+font-style: inherit;">TRUE</span>)</span></code></pre></div></div>
 </div>
 <ol start="4" type="1">
 <li><p>A continuación, digitaremos algo de texto y seguidamente presionaremos la combinación de teclas asignada al comando de insertar cita (en este ejemplo, <em>Ctrl + K</em>). Lo que ocurrirá es que se abrirá una ventana muy delgada que nos servirá como interface con Zotero. En ella, podremos escribir todas las citas que deseamos incluir en nuestro texto. La navegación entre las citas sugeridas la haremos con las teclas direccionales y la tecla Enter. Así mismo, es posible añadir múltiples citas en cada llamada de esta pequeña pero poderosa interfaz:</p>
@@ -2259,7 +2259,7 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Render on Save
+<span class="screen-reader-only">Note</span>Render on Save
 </div>
 </div>
 <div class="callout-body-container callout-body">

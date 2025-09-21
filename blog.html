@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -35,17 +35,18 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0cf930f9f1c62ec9edbad7b77a763bb7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-3824aa816de5134366ccfe78104cf7a8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-0cf930f9f1c62ec9edbad7b77a763bb7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-1a9ec17c3750237cc335a9373320045c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-746b12677a866d60fe2edb41c4d5323b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-1a9ec17c3750237cc335a9373320045c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -119,7 +120,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -307,6 +308,8 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Beneath the surface 🌊</span>
     </a>
@@ -365,7 +368,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="V2luZG93cyUyQ21pc2MlMkN0aXBz" data-listing-date-sort="1745971200000" data-listing-file-modified-sort="1757552895908" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2220">
+<div class="g-col-1" data-index="0" data-categories="V2luZG93cyUyQ21pc2MlMkN0aXBz" data-listing-date-sort="1745971200000" data-listing-file-modified-sort="1758417235403" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2220">
 <a href="./blog/powertoys-tools/powertoys-tools.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -388,7 +391,7 @@ Apr 30, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="UlN0dWRpbyUyQ1Bvc2l0cm9uJTJDdGlwcyUyQ1NoaW55QXBw" data-listing-date-sort="1743638400000" data-listing-file-modified-sort="1757552895873" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1168">
+<div class="g-col-1" data-index="1" data-categories="UlN0dWRpbyUyQ1Bvc2l0cm9uJTJDdGlwcyUyQ1NoaW55QXBw" data-listing-date-sort="1743638400000" data-listing-file-modified-sort="1758417235367" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1168">
 <a href="./blog/convert-snippets/convert-snippets.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -411,7 +414,7 @@ Apr 3, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="UiUyQ3R1dG9yaWFs" data-listing-date-sort="1734566400000" data-listing-file-modified-sort="1757552895917" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2679">
+<div class="g-col-1" data-index="2" data-categories="UiUyQ3R1dG9yaWFs" data-listing-date-sort="1734566400000" data-listing-file-modified-sort="1758417235412" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2679">
 <a href="./blog/timeline-with-googlevis/timeline-with-googlevis.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -434,7 +437,7 @@ Dec 19, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="cXVhcnRvJTJDdGVtcGxhdGUlMkN3cml0aW5nJTIwdGlwcyUyQ3BsYW50aWxsYQ==" data-listing-date-sort="1734393600000" data-listing-file-modified-sort="1757552895911" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4364">
+<div class="g-col-1" data-index="3" data-categories="cXVhcnRvJTJDdGVtcGxhdGUlMkN3cml0aW5nJTIwdGlwcyUyQ3BsYW50aWxsYQ==" data-listing-date-sort="1734393600000" data-listing-file-modified-sort="1758417235405" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4364">
 <a href="./blog/quarto-template-article/quarto-template-article.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -457,7 +460,7 @@ Dec 17, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="cXVhcnRvJTJDem90ZXJvJTJDcnN0dWRpbyUyQ2NpdGF0aW9ucyUyQ2JpYmxpb2dyYXBoeSUyQ3JlZmVyZW5jZXMlMkNjaXRhY2lvbiUyQ2JpYmxpb2dyYWZpYQ==" data-listing-date-sort="1734307200000" data-listing-file-modified-sort="1757552895954" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2515">
+<div class="g-col-1" data-index="4" data-categories="cXVhcnRvJTJDem90ZXJvJTJDcnN0dWRpbyUyQ2NpdGF0aW9ucyUyQ2JpYmxpb2dyYXBoeSUyQ3JlZmVyZW5jZXMlMkNjaXRhY2lvbiUyQ2JpYmxpb2dyYWZpYQ==" data-listing-date-sort="1734307200000" data-listing-file-modified-sort="1758417235448" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2515">
 <a href="./blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -480,7 +483,7 @@ Dec 16, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="ZW5zbyUyQ3BlcnUlMkNlbCUyMG5pbm8=" data-listing-date-sort="1713571200000" data-listing-file-modified-sort="1757552895877" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2935">
+<div class="g-col-1" data-index="5" data-categories="ZW5zbyUyQ3BlcnUlMkNlbCUyMG5pbm8=" data-listing-date-sort="1713571200000" data-listing-file-modified-sort="1758417235371" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2935">
 <a href="./blog/elnino-app/elnino-app.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -503,7 +506,7 @@ Apr 20, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="cXVhcnRvJTJDZ2l0aHViJTIwcGFnZXMlMkNibG9nJTJDd3JpdGluZw==" data-listing-date-sort="1713484800000" data-listing-file-modified-sort="1757552895824" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1932">
+<div class="g-col-1" data-index="6" data-categories="cXVhcnRvJTJDZ2l0aHViJTIwcGFnZXMlMkNibG9nJTJDd3JpdGluZw==" data-listing-date-sort="1713484800000" data-listing-file-modified-sort="1758417235318" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1932">
 <a href="./blog/about-this-website/about-this-website.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -589,13 +592,14 @@ Apr 19, 2024
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
