@@ -40,10 +40,12 @@ eventBrkLabs <- list(nina = list(brks = paste0("nina_",
                                                 "fuerte",
                                                 "extraordinario"), sep = "\n")))
 
-refICEN <- list(breaks = c(-Inf, -1.4, -1.2, -1, 0.4, 1, 1.7, 3, Inf),
+# Breakpoints tomados el 2026-02-11 desde:
+# https://siofen.imarpe.gob.pe/nivel2/indice-costero-el-nino-icen
+refICEN <- list(breaks = c(-Inf, -1.3, -1.1, -.7, 0.5, 1.3, 2.1, 3.5, Inf),
                 labels = c(paste("La Ni\u00f1a", c("Fuerte", "Moderada", "Débil")), 
                            "Neutro", 
-                           paste("El Ni\u00f1o", c("Débil", "Moderado", "Fuerte", "Muy fuerte"))))
+                           paste("El Ni\u00f1o", c("Débil", "Moderado", "Fuerte", "Extraordinario"))))
 
 indexVals <- read_excel(path = "prob_vals.xlsx", sheet = 1, 
                         skip = 1, .name_repair = "minimal")
