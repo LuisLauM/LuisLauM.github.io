@@ -352,7 +352,7 @@ Fuentes: [ENFEN-Imarpe](https://enfen.imarpe.gob.pe/), [SENAMHI](https://www.gob
 
 ### ¿Qué es el ICEN?
 
-El Índice Costero El Niño (ICEN) es un índice oficial utilizado por el ENFEN para monitorear El Niño y La Niña frente a la costa del Perú. Se calcula como la media corrida de tres meses de la anomalía de la temperatura superficial del mar en la región Niño 1+2. Este índice se diferencia de otros usados internacionalmente en que refleja mejor las condiciones de la costa peruana.
+El Índice Costero El Niño (ICEN) es un índice oficial utilizado por el ENFEN para monitorear El Niño y La Niña frente a la costa del Perú. Se calcula como la media corrida de tres meses de la anomalía de la temperatura superficial del mar en la región Niño 1+2. Este índice se diferencia de otros usados internacionalmente en que refleja mejor las condiciones de la costa peruana. Los puntos de corte para la categorización de la intensidad fueron tomados desde la web del [SIOFEN-IMARPE](https://siofen.imarpe.gob.pe/nivel2/indice-costero-el-nino-icen).
 
 ```{r}
 #| echo: false
