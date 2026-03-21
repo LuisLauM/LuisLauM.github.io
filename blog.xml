@@ -14,7 +14,7 @@
 <title>Beneath the surface 🌊</title>
 <link>https://luislaum.github.io/home/blog.html</link>
 </image>
-<generator>quarto-1.8.27</generator>
+<generator>quarto-1.9.36</generator>
 <lastBuildDate>Wed, 30 Apr 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>My favorite tools from MS PowerToys</title>
@@ -63,7 +63,7 @@ Warning
 <section id="advanced-paste" class="level3">
 <h3 data-anchor-id="advanced-paste">Advanced Paste</h3>
 <p>When we copy text in Windows and paste it into software that allows formatting editing (e.g.&nbsp;Power Point, Word, or when composing an e-mail), it will try to keep the formatting of the original text, which is not always desired. Advanced Paste allows you to paste only the text WITHOUT its original formatting, allowing it to take the target formatting.</p>
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/05.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/05.mp4"></video></div>
 </section>
 <section id="color-picker" class="level3">
 <h3 data-anchor-id="color-picker">Color Picker</h3>
@@ -71,11 +71,11 @@ Warning
 <ul>
 <li><strong>Extract colors with Color Picker and use them in R.</strong> In this example, we see the basic interface of Color Picker. It is enough to activate it through the keyboard shortcut (by default, <code>+ Shift + C</code>) and from there to the side of our cursor will appear the color that we are pointing out. If we click on the chosen color, a small window will open showing us the code in HEX format that we can copy and paste directly into our script by prefixing the symbol <code>#</code> (e.g.).</li>
 </ul>
-<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/06.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/06.mp4"></video></div>
 <ul>
 <li><strong>Extract colors with Color Picker and use them in PowerPoint.</strong> The dynamics is basically the same, although in this case an additional functionality is shown: if while we are looking for the color we use the scroll wheel of our mouse, Color Picker will zoom around where our cursor is, allowing us to select the color with greater precision.</li>
 </ul>
-<div class="quarto-video"><video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/07.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/07.mp4"></video></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -241,7 +241,7 @@ Warning
 <section id="advanced-paste-1" class="level3">
 <h3 data-anchor-id="advanced-paste-1">Advanced Paste</h3>
 <p>Cuando copiamos un texto en Windows y lo pegamos en algún software que permite la edición de formato (e.g.&nbsp;Power Point, Word, o al redactar un correo electrónico), éste intentará mantener el formato del texto original, lo cual no siempre es lo deseado. Advanced Paste permite pegar únicamente el texto SIN su formato original, permitiendo que pueda tomar el formato de destino.</p>
-<div class="quarto-video"><video id="video_shortcode_videojs_video4" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/05.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video4" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/05.mp4"></video></div>
 </section>
 <section id="color-picker-1" class="level3">
 <h3 data-anchor-id="color-picker-1">Color Picker</h3>
@@ -249,11 +249,11 @@ Warning
 <ul>
 <li><strong>Extraer colores con Color Picker y usarlos en R.</strong> En este ejemplo, vemos la interfaz básica de Color Picker. Basta con activarlo a través del atajo de teclado (por defecto, <code>+ Shift + C</code>) y a partir de ahí al costado de nuestro cursor aparecerá el color que estemos señalando. Si damos click al color elegido, se abrirá una ventana pequeña mostrándonos el código en formato HEX que podemos copiar y pegar directamente en nuestro script anteponiendo el símbolo <code>#</code> (e.g.).</li>
 </ul>
-<div class="quarto-video"><video id="video_shortcode_videojs_video5" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/06.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video5" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/06.mp4"></video></div>
 <ul>
 <li><strong>Extraer colores con Color Picker y usarlos en Power Point.</strong> La dinámica es básicamente la misma, aunque en este caso se muestra una funcionalidad adicional: si mientras buscamos el color utilizamos la rueda de scroll de nuestro mouse, Color Picker hará un zoom alrededor de donde está nuestro cursor, permitiéndonos seleccionar el color con mayor precisión.</li>
 </ul>
-<div class="quarto-video"><video id="video_shortcode_videojs_video6" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/07.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video6" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/07.mp4"></video></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -466,9 +466,11 @@ font-style: inherit;">xlim =</span> xlim, <span class="at" style="color: #657422
 background-color: null;
 font-style: inherit;">ylim =</span> ylim)</span></code></pre></div></div>
 <p>However, Positron uses a different format and allows us to add some extra fields: the name of the snippet, <code>scope</code> (refers to the language or context of the snippet), <code>prefix</code> (which is the hint with which we will call the snippet), <code>body</code> (the command itself, it can consist of one line or more), and <code>description</code> (a brief description of what our command does). So, taken to this format, our previous snippet would look like this:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><span class="er" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"plo":</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">"plo"</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">{</span></span>
 <span id="cb3-2">    <span class="dt" style="color: #AD0000;
@@ -614,9 +616,11 @@ font-style: inherit;">xlim =</span> xlim, <span class="at" style="color: #657422
 background-color: null;
 font-style: inherit;">ylim =</span> ylim)</span></code></pre></div></div>
 <p>Sin embargo, Positron utiliza un formato distinto y permite añadir algunos campos extra: el nombre del snippet, <code>scope</code> (hace referencia al lenguaje o contexto del snippet), <code>prefix</code> (que es la pista con la que llamaremos al snippet), <code>body</code> (el comando en sí, puede constar de una línea o más), y <code>description</code> (una breve descripción de lo que nuestro comando hace). Entonces, llevado a este formato, nuestro anterior snippet luciría así:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><span class="er" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"plo":</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">"plo"</span><span class="er" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">{</span></span>
 <span id="cb6-2">    <span class="dt" style="color: #AD0000;

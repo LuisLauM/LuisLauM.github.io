@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,6 +12,9 @@
 
 <title>My favorite tools from MS PowerToys – Beneath the surface 🌊</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -71,18 +74,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../favicon-wave.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-f418161beb48e0141c760e455f12af2c.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-b938e67c0c3a38245966223dfb5d7d7b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark-7b59f535f4be280c95e9d201c1713015.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-b938e67c0c3a38245966223dfb5d7d7b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-bb792df4d482b6f0d2ab598ba93a5add.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-6576ed406b7a02bc81cbf59141ea24d0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-bb792df4d482b6f0d2ab598ba93a5add.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
@@ -433,7 +435,7 @@ Warning
 <section id="advanced-paste" class="level3">
 <h3 data-anchor-id="advanced-paste">Advanced Paste</h3>
 <p>When we copy text in Windows and paste it into software that allows formatting editing (e.g.&nbsp;Power Point, Word, or when composing an e-mail), it will try to keep the formatting of the original text, which is not always desired. Advanced Paste allows you to paste only the text WITHOUT its original formatting, allowing it to take the target formatting.</p>
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/05.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/05.mp4"></video></div>
 </section>
 <section id="color-picker" class="level3">
 <h3 data-anchor-id="color-picker">Color Picker</h3>
@@ -441,11 +443,11 @@ Warning
 <ul>
 <li><strong>Extract colors with Color Picker and use them in R.</strong> In this example, we see the basic interface of Color Picker. It is enough to activate it through the keyboard shortcut (by default, <i class="bi-windows " style="" role="img" aria-hidden="true"></i><code>+ Shift + C</code>) and from there to the side of our cursor will appear the color that we are pointing out. If we click on the chosen color, a small window will open showing us the code in HEX format that we can copy and paste directly into our script by prefixing the symbol <code>#</code> (e.g.).</li>
 </ul>
-<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/06.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/06.mp4"></video></div>
 <ul>
 <li><strong>Extract colors with Color Picker and use them in PowerPoint.</strong> The dynamics is basically the same, although in this case an additional functionality is shown: if while we are looking for the color we use the scroll wheel of our mouse, Color Picker will zoom around where our cursor is, allowing us to select the color with greater precision.</li>
 </ul>
-<div class="quarto-video"><video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/07.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video3" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/07.mp4"></video></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -568,7 +570,7 @@ Warning
 <section id="advanced-paste-1" class="level3">
 <h3 data-anchor-id="advanced-paste-1">Advanced Paste</h3>
 <p>Cuando copiamos un texto en Windows y lo pegamos en algún software que permite la edición de formato (e.g.&nbsp;Power Point, Word, o al redactar un correo electrónico), éste intentará mantener el formato del texto original, lo cual no siempre es lo deseado. Advanced Paste permite pegar únicamente el texto SIN su formato original, permitiendo que pueda tomar el formato de destino.</p>
-<div class="quarto-video"><video id="video_shortcode_videojs_video4" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/05.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video4" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/05.mp4"></video></div>
 </section>
 <section id="color-picker-1" class="level3">
 <h3 data-anchor-id="color-picker-1">Color Picker</h3>
@@ -576,11 +578,11 @@ Warning
 <ul>
 <li><strong>Extraer colores con Color Picker y usarlos en R.</strong> En este ejemplo, vemos la interfaz básica de Color Picker. Basta con activarlo a través del atajo de teclado (por defecto, <i class="bi-windows " style="" role="img" aria-hidden="true"></i><code>+ Shift + C</code>) y a partir de ahí al costado de nuestro cursor aparecerá el color que estemos señalando. Si damos click al color elegido, se abrirá una ventana pequeña mostrándonos el código en formato HEX que podemos copiar y pegar directamente en nuestro script anteponiendo el símbolo <code>#</code> (e.g.).</li>
 </ul>
-<div class="quarto-video"><video id="video_shortcode_videojs_video5" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/06.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video5" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/06.mp4"></video></div>
 <ul>
 <li><strong>Extraer colores con Color Picker y usarlos en Power Point.</strong> La dinámica es básicamente la misma, aunque en este caso se muestra una funcionalidad adicional: si mientras buscamos el color utilizamos la rueda de scroll de nuestro mouse, Color Picker hará un zoom alrededor de donde está nuestro cursor, permitiéndonos seleccionar el color con mayor precisión.</li>
 </ul>
-<div class="quarto-video"><video id="video_shortcode_videojs_video6" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/07.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video6" class="video-js vjs-default-skin vjs-big-play-centered vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="images/07.mp4"></video></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
