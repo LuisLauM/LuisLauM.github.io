@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://luislaum.github.io/home/about.html</loc>
-    <lastmod>2026-03-21T01:41:01.909Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/blog/quarto-template-article/quarto-template-article.html</loc>
-    <lastmod>2026-03-21T01:41:02.013Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/blog/about-this-website/about-this-website.html</loc>
-    <lastmod>2026-03-21T01:41:01.927Z</lastmod>
+    <loc>https://luislaum.github.io/home/blog.html</loc>
+    <lastmod>2026-03-30T11:57:57.680Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html</loc>
-    <lastmod>2026-03-21T01:41:02.055Z</lastmod>
+    <lastmod>2026-03-30T11:57:57.798Z</lastmod>
   </url>
   <url>
-    <loc>https://luislaum.github.io/home/blog.html</loc>
-    <lastmod>2026-03-21T01:41:01.926Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/index.html</loc>
-    <lastmod>2026-03-21T01:41:02.061Z</lastmod>
+    <loc>https://luislaum.github.io/home/blog/about-this-website/about-this-website.html</loc>
+    <lastmod>2026-03-30T11:57:57.681Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/timeline-with-googlevis/timeline-with-googlevis.html</loc>
-    <lastmod>2026-03-21T01:41:02.020Z</lastmod>
+    <lastmod>2026-03-30T11:57:57.766Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/convert-snippets/convert-snippets.html</loc>
-    <lastmod>2026-03-21T01:41:01.974Z</lastmod>
+    <lastmod>2026-03-30T11:57:57.725Z</lastmod>
   </url>
   <url>
-    <loc>https://luislaum.github.io/home/blog/elnino-app/elnino-app.html</loc>
-    <lastmod>2026-03-21T01:41:01.979Z</lastmod>
+    <loc>https://luislaum.github.io/home/about.html</loc>
+    <lastmod>2026-03-30T11:57:57.664Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/powertoys-tools/powertoys-tools.html</loc>
-    <lastmod>2026-03-21T01:41:02.010Z</lastmod>
+    <lastmod>2026-03-30T11:57:57.757Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/elnino-app/elnino-app.html</loc>
+    <lastmod>2026-03-30T11:57:57.729Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/quarto-template-article/quarto-template-article.html</loc>
+    <lastmod>2026-03-30T11:57:57.759Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/index.html</loc>
+    <lastmod>2026-03-30T11:57:57.802Z</lastmod>
   </url>
 </urlset>
