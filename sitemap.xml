@@ -2,42 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://luislaum.github.io/home/index.html</loc>
-    <lastmod>2026-06-11T21:01:11.065Z</lastmod>
+    <lastmod>2026-06-19T15:05:06.778Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/about.html</loc>
-    <lastmod>2026-06-11T21:01:10.920Z</lastmod>
+    <lastmod>2026-06-19T15:05:06.627Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html</loc>
-    <lastmod>2026-06-11T21:01:11.061Z</lastmod>
+    <lastmod>2026-06-19T15:05:06.774Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/convert-snippets/convert-snippets.html</loc>
-    <lastmod>2026-06-11T21:01:10.984Z</lastmod>
+    <lastmod>2026-06-19T15:05:06.690Z</lastmod>
   </url>
   <url>
-    <loc>https://luislaum.github.io/home/blog/quarto-template-article/quarto-template-article.html</loc>
-    <lastmod>2026-06-11T21:01:11.020Z</lastmod>
+    <loc>https://luislaum.github.io/home/blog/pacific-envir-indices/pacific-envir-indices.html</loc>
+    <lastmod>2026-06-19T15:05:06.705Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/powertoys-tools/powertoys-tools.html</loc>
-    <lastmod>2026-06-11T21:01:11.017Z</lastmod>
+    <lastmod>2026-06-19T15:05:06.732Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/quarto-template-article/quarto-template-article.html</loc>
+    <lastmod>2026-06-19T15:05:06.735Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/about-this-website/about-this-website.html</loc>
-    <lastmod>2026-06-11T21:01:10.937Z</lastmod>
+    <lastmod>2026-06-19T15:05:06.645Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/elnino-app/elnino-app.html</loc>
-    <lastmod>2026-06-11T21:01:10.988Z</lastmod>
+    <lastmod>2026-06-19T15:05:06.694Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/timeline-with-googlevis/timeline-with-googlevis.html</loc>
-    <lastmod>2026-06-11T21:01:11.026Z</lastmod>
+    <lastmod>2026-06-19T15:05:06.741Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog.html</loc>
-    <lastmod>2026-06-11T21:01:10.936Z</lastmod>
+    <lastmod>2026-06-19T15:05:06.645Z</lastmod>
   </url>
 </urlset>
