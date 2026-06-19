@@ -1,0 +1,396 @@
+---
+title: "Main ENSO indices for Pacific Ocean"
+description: |
+  Updated visualization and extraction of the four main ENSO-related indices | Visualización actualizada y extracción de 4 principales índices relacionados al ENSO
+date: 2026-06-18
+image: banner.png
+about: 
+  template: marquee
+  image-shape: rectangle
+keywords: ["enso", "environmental", "indices", "R", "scripts", "tutorial", "PDO", "ICEN", "MEI", "TPI"]
+tags: ["enso", "environmental", "indices", "R", "scripts", "tutorial", "PDO", "ICEN", "MEI", "TPI"]
+categories: ["R", "tutorial"]
+draft: false
+engine: knitr
+---
+
+Image credits: MEI index at [NOAA](https://psl.noaa.gov/enso/mei/)
+
+```{r}
+#| echo: false
+#| message: false
+
+require(dplyr)
+require(tidyr)
+require(plotly)
+```
+
+
+Required R packages/Paquetes de R necesarios: 
+
+```{r}
+#| eval: false
+#| echo: true
+require(dplyr)
+require(tidyr)
+require(plotly)
+```
+
+
+# \[EN\] Main ENSO indices for Pacific Ocean
+
+## ICEN (Índice Costero El Niño/EL Niño Coastal Index)
+
+Reference: <https://siofen.imarpe.gob.pe/nivel2/indice-costero-el-nino-icen>
+
+::: {.callout-note collapse="true" title="Script for reading"}
+```{r}
+icen <- read.table(
+  file = "http://met.igp.gob.pe/datos/ICEN.txt", 
+  skip = 5,
+  header = FALSE
+) |> 
+  
+  as_tibble() |> 
+  
+  rename(año = V1, mes = V2, ICEN = V3) |> 
+  
+  mutate(
+    date = paste(año, mes, 1, sep = "-") |> as.Date(),
+    ICEN_c = cut(
+      x = ICEN,
+      breaks = c(-Inf, -1.3, -1.1, -.7, .5, 1.3, 2.1, 3.5, Inf),
+      labels = c(
+        "Niña Fuerte", "Niña Moderada", "Niña Débil", 
+        "Neutro",
+        "Niño Débil", "Niño Moderado", "Niño Fuerte", "Niño Extraordinario"
+      )
+    )
+  )
+```
+:::
+
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+cols <- setNames(
+  object = c(
+    "#2e75b5", "#9bc2e6", "#ddebf7",
+    "#ffffff",
+    "#ffe2dd", "#fdcece", "#ff5d5d", "#e60000"
+  ),
+  nm = c(
+    "Niña Fuerte", "Niña Moderada", "Niña Débil", 
+    "Neutro", 
+    "Niño Débil", "Niño Moderado", "Niño Fuerte", "Niño Extraordinario"
+  )
+)
+
+icen |> 
+  
+  rename(cat = ICEN_c, icen = ICEN) |> 
+  
+  plot_ly(
+    type = "scatter", mode = "lines",
+    colors = cols, 
+    marker = list(line = list(color = "gray60", width = 1))
+  ) |> 
+  
+  add_lines(
+    x = ~date, y = ~icen, name = "ICEN",
+    color = I("gray80"), width = 1, 
+    hovermode = FALSE
+  ) |> 
+  
+  add_markers(
+    x = ~date, y = ~icen, name = "ICEN", 
+    text = ~sprintf(
+      fmt = "%s\nICEN: %s\nCategor\u00eda: %s",
+      format(x = date, format = "%b %Y"),
+      icen, cat
+    ),
+    color = ~cat
+  ) |> 
+  
+  layout(
+    showlegend = FALSE, 
+    xaxis = list(
+      title = "",
+      range = c(min(icen$date), Sys.Date())
+    ),
+    yaxis = list(title = "ICEN", fixedrange = TRUE)
+  )
+```
+
+## PDO (Pacific Decadal Oscillation)
+
+Reference: <https://www.ncei.noaa.gov/access/monitoring/pdo/>
+
+::: {.callout-note collapse="true" title="Script for reading"}
+```{r}
+pdo <- read.table(
+  file = "https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/v6/index/ersst.v6.pdo.dat",
+  skip = 1, header = TRUE
+) |> 
+  
+  as_tibble() |> 
+  
+  pivot_longer(
+    cols = -Year,
+    names_to = "mes",
+    values_to = "PDO"
+  ) |> 
+  
+  rename(año = Year) |> 
+  
+  mutate(
+    mes = seq(12)[match(x = mes, month.abb)],
+    date = paste(año, mes, 1, sep = "-") |> as.Date(),
+    PDO_c = cut(
+      x = PDO,
+      breaks = c(-Inf, 0, Inf),
+      labels = c("Frío", "Cálido")
+    )
+  ) |> 
+  
+  filter(PDO < 99)
+```
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+cols <- setNames(
+  object = c("#2e75b5", "#e60000"),
+  nm = c("Frío", "Cálido")
+)
+
+ylim <- c(
+  min(pdo$PDO) |> floor(),
+  max(pdo$PDO) |> ceiling()
+)
+
+pdo |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = cols,
+    marker = list(line = list(color = "transparent", width = 0))
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~PDO, name = "PDO",
+    color = ~PDO_c,
+    text = ~sprintf(
+      fmt = "%s\nPDO: %s\nCategoría: %s",
+      format(x = date, format = "%b %Y"),
+      PDO, PDO_c
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    barmode = "relative",
+    bargap = 0.1,
+    xaxis = list(
+      title = "",
+      range = c(min(pdo$date), Sys.Date())
+    ),
+    yaxis = list(title = "PDO", fixedrange = TRUE, range = ylim)
+  )
+```
+
+## TPI (Tripole Index for the Interdecadal Pacific Oscillation)
+
+Reference: <https://psl.noaa.gov/data/timeseries/IPOTPI/>
+
+::: {.callout-note collapse="true" title="Script for reading"}
+```{r}
+tpiURL <- "https://psl.noaa.gov/data/timeseries/IPOTPI/tpi.timeseries.ersstv5.data"
+
+yrsRange <- read.table(
+  file = tpiURL,
+  header = FALSE, nrow = 1
+) |> as.numeric()
+
+tpi <- read.table(
+  file = tpiURL, 
+  skip = 1, 
+  header = FALSE, 
+  nrow = diff(yrsRange) + 1
+) |> 
+  
+  as_tibble() |> 
+  
+  pivot_longer(
+    cols = -V1,
+    names_to = "mes",
+    values_to = "TPI"
+  ) |> 
+  
+  rename(año = V1) |> 
+  
+  mutate(
+    mes = gsub(x = mes, pattern = "V", replacement = "") |> as.numeric(),
+    mes = mes - 1,
+    date = paste(año, mes, 1, sep = "-") |> as.Date(),
+    TPI_c = cut(
+      x = TPI,
+      breaks = c(-Inf, -.5, .5, Inf),
+      labels = c("Cálido", "Neutro", "Frío")
+    )
+  ) |> 
+  
+  filter(TPI > -99)
+```
+:::
+
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+cols <- setNames(
+  object = c("#2e75b5", "#e60000"),
+  nm = c("Frío", "Cálido")
+)
+
+ylim <- c(
+  min(tpi$PDO) |> floor(),
+  max(tpi$PDO) |> ceiling()
+)
+
+tpi |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = cols,
+    marker = list(line = list(color = "transparent", width = 0))
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~TPI, name = "TPI",
+    color = ~TPI_c,
+    text = ~sprintf(
+      fmt = "%s\nTPI: %s\nCategoría: %s",
+      format(x = date, format = "%b %Y"),
+      TPI, TPI_c
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    barmode = "relative",
+    bargap = 0.1,
+    xaxis = list(
+      title = "",
+      range = c(min(tpi$date), Sys.Date())
+    ),
+    yaxis = list(title = "TPI", fixedrange = TRUE, range = ylim)
+  )
+```
+
+## MEI (Multivariate ENSO Index v2)
+
+Reference: <https://psl.noaa.gov/enso/mei/>
+
+::: {.callout-note collapse="true" title="Script for reading"}
+```{r}
+meiURL <- "https://psl.noaa.gov/enso/mei/data/meiv2.data" 
+  
+yrsRange <- read.table(file = meiURL, header = FALSE, nrow = 1) |> 
+  
+  as.numeric()
+
+mei <- read.table(
+  file = meiURL,
+  skip = 1, 
+  header = FALSE, 
+  nrow = diff(yrsRange) + 1
+) |> 
+  
+  as_tibble() |> 
+  
+  pivot_longer(
+    cols = -V1,
+    names_to = "mes",
+    values_to = "MEI"
+  ) |> 
+  
+  rename(año = V1) |> 
+  
+  mutate(
+    mes = gsub(x = mes, pattern = "V", replacement = "") |> as.numeric(),
+    mes = mes - 1,
+    date = paste(año, mes, 1, sep = "-") |> as.Date(),
+    MEI_c = cut(
+      x = MEI,
+      breaks = c(-Inf, -.5, .5, Inf),
+      labels = c("Cálido", "Neutro", "Frío")
+    )
+  ) |> 
+  
+  filter(MEI > -999)
+```
+:::
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+cols <- setNames(
+  object = c("#2e75b5", "#e60000"),
+  nm = c("Frío", "Cálido")
+)
+
+ylim <- c(
+  min(mei$PDO) |> floor(),
+  max(mei$PDO) |> ceiling()
+)
+
+mei |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = cols,
+    marker = list(line = list(color = "transparent", width = 0))
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~MEI, name = "TPI",
+    color = ~MEI_c,
+    text = ~sprintf(
+      fmt = "%s\nMEI: %s\nCategoría: %s",
+      format(x = date, format = "%b %Y"),
+      MEI, MEI_c
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    barmode = "relative",
+    bargap = 0.1,
+    xaxis = list(
+      title = "",
+      range = c(min(mei$date), Sys.Date())
+    ),
+    yaxis = list(title = "MEI", fixedrange = TRUE, range = ylim)
+  )
+```
