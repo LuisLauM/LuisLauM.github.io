@@ -276,8 +276,8 @@ tpi <- read.table(
     date = paste(año, mes, 1, sep = "-") |> as.Date(),
     TPI_c = cut(
       x = TPI,
-      breaks = c(-Inf, -.5, .5, Inf),
-      labels = c("Cálido", "Neutro", "Frío")
+      breaks = c(-Inf, 0, Inf),
+      labels = c("Frío", "Cálido")
     )
   ) |> 
   
@@ -383,8 +383,8 @@ mei <- read.table(
     date = paste(año, mes, 1, sep = "-") |> as.Date(),
     MEI_c = cut(
       x = MEI,
-      breaks = c(-Inf, -.5, .5, Inf),
-      labels = c("Cálido", "Neutro", "Frío")
+      breaks = c(-Inf, 0, Inf),
+      labels = c("Frío", "Cálido")
     )
   ) |> 
   
@@ -420,8 +420,8 @@ cols <- setNames(
 )
 
 ylim <- c(
-  min(mei$PDO) |> floor(),
-  max(mei$PDO) |> ceiling()
+  min(mei$MEI) |> floor(),
+  max(mei$MEI) |> ceiling()
 )
 
 mei |> 
