@@ -26,7 +26,8 @@ require(plotly)
 ```
 
 
-Required R packages/Paquetes de R necesarios: 
+Required R packages:
+Paquetes de R necesarios: 
 
 ```{r}
 #| eval: false
@@ -36,14 +37,11 @@ require(tidyr)
 require(plotly)
 ```
 
-
-# \[EN\] Main ENSO indices for Pacific Ocean
-
 ## ICEN (Índice Costero El Niño/EL Niño Coastal Index)
 
 Reference: <https://siofen.imarpe.gob.pe/nivel2/indice-costero-el-nino-icen>
 
-::: {.callout-note collapse="true" title="Script for reading"}
+::: {.callout-note collapse="true" title="R"}
 ```{r}
 icen <- read.table(
   file = "http://met.igp.gob.pe/datos/ICEN.txt", 
@@ -65,6 +63,22 @@ icen <- read.table(
         "Neutro",
         "Niño Débil", "Niño Moderado", "Niño Fuerte", "Niño Extraordinario"
       )
+    )
+  )
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+icen |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
     )
   )
 ```
@@ -131,7 +145,7 @@ icen |>
 
 Reference: <https://www.ncei.noaa.gov/access/monitoring/pdo/>
 
-::: {.callout-note collapse="true" title="Script for reading"}
+::: {.callout-note collapse="true" title="R"}
 ```{r}
 pdo <- read.table(
   file = "https://www.ncei.noaa.gov/pub/data/cmb/ersst/v5/v6/index/ersst.v6.pdo.dat",
@@ -159,6 +173,22 @@ pdo <- read.table(
   ) |> 
   
   filter(PDO < 99)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+pdo |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
 ```
 :::
 
@@ -214,7 +244,7 @@ pdo |>
 
 Reference: <https://psl.noaa.gov/data/timeseries/IPOTPI/>
 
-::: {.callout-note collapse="true" title="Script for reading"}
+::: {.callout-note collapse="true" title="R"}
 ```{r}
 tpiURL <- "https://psl.noaa.gov/data/timeseries/IPOTPI/tpi.timeseries.ersstv5.data"
 
@@ -255,7 +285,21 @@ tpi <- read.table(
 ```
 :::
 
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
 
+tpi |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
+```
+:::
 
 ```{r}
 #| echo: false
@@ -308,7 +352,7 @@ tpi |>
 
 Reference: <https://psl.noaa.gov/enso/mei/>
 
-::: {.callout-note collapse="true" title="Script for reading"}
+::: {.callout-note collapse="true" title="R"}
 ```{r}
 meiURL <- "https://psl.noaa.gov/enso/mei/data/meiv2.data" 
   
@@ -345,6 +389,22 @@ mei <- read.table(
   ) |> 
   
   filter(MEI > -999)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+mei |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
 ```
 :::
 
