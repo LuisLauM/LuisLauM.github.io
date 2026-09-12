@@ -2,7 +2,7 @@
 title: "Main ENSO indices for Pacific Ocean"
 description: |
   Updated visualization and extraction of the four main ENSO-related indices | Visualización actualizada y extracción de 4 principales índices relacionados al ENSO
-date: 2026-06-18
+date: 2026-09-12
 image: banner.png
 about: 
   template: marquee
@@ -140,6 +140,1282 @@ icen |>
     yaxis = list(title = "ICEN", fixedrange = TRUE)
   )
 ```
+
+## NOAA indices
+
+Reference: <https://psl.noaa.gov/data/timeseries/month/>
+
+[EN]: NOAA website keep a catalogue of several environmental indices, most of them up to 2026. Through `get_envir_data` function, it is possible to read and load any of them as a data table (`tibble` object).
+
+[ES]: En el sitio web de NOAA se hallan disponibles diversos índices actualizados (la mayoría) al 2026. A través de la función `get_envir_data` es posible leer los valores directamente a R a manera de una tabla (objeto `tibble`).
+
+::: {.callout-note collapse="true" title="`get_envir_data` function"}
+```{r}
+get_envir_data <- \(con, index_name = "index", metadata = TRUE, quiet = FALSE){
+  
+  if(isFALSE(quiet)) sprintf("%s", con) |> cli::cli_progress_step()
+  
+  sourceLines <- readLines(con = con)
+  
+  yrsRange <- strsplit(x = sourceLines[1], split = "[[:blank:]]+") |> 
+    
+    unlist() |> as.numeric() |> na.omit()
+  
+  rowIndex <- abs(diff(nchar(sourceLines))/nchar(sourceLines)[-length(sourceLines)])*100
+  rowIndex <- which(rowIndex > 80)[1:2] + c(1, 0)
+  
+  naVals <- sourceLines[rowIndex[2] + 1] |> as.numeric()
+  
+  # Reading data
+  envirIndex <- read.table(
+    file = con, 
+    header = FALSE, 
+    nrows = diff(rowIndex),
+    skip = rowIndex[1], 
+    colClasses = "character"
+  ) |> 
+    
+    as_tibble() |> 
+    
+    rename(year = V1) |> 
+    
+    rename_with(.cols = -year, .fn = gsub, pattern = "V", replacement = "") |> 
+    
+    pivot_longer(
+      cols = -year,
+      names_to = "month", 
+      names_transform = \(x) as.integer(x) - 1,
+      values_to = "index"
+    ) |> 
+    
+    mutate(
+      year = as.integer(year),
+      index = replace(
+        x = index,
+        list = index == naVals,
+        values = NA
+      ),
+      index = as.numeric(index)
+    ) |> 
+    
+    filter(!is.na(index)) |> 
+    
+    rename(!!index_name := index) 
+  
+  if(isTRUE(metadata)){
+    metadata <- sourceLines[-seq(from = rowIndex[1], to = rowIndex[2])] |> 
+        
+        gsub(pattern = "(^[[:blank:]]*)|([[:blank:]]*$)", replacement = "")
+
+    envirIndex <- list(data = envirIndex, metadata = metadata)
+  }
+  
+  envirIndex
+}
+```
+:::
+
+### Niño 1+2 (HadISST)
+
+::: {.callout-note collapse="true" title="R"}
+```{r}
+elnino_12_hadisst <- get_envir_data(
+  con = "https://psl.noaa.gov/data/timeseries/month/data/nino12.long.anom.data", 
+  index_name = "elnino_12_hadisst",
+  metadata = FALSE,
+  quiet = TRUE
+)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+elnino_12_hadisst |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
+```
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+elnino_12_hadisst |> 
+  
+  mutate(
+    date = paste(year, month, 1, sep = '-') |> as.Date(),
+    sign = if_else(condition = elnino_12_hadisst >= 0, true = "Pos", false = "Neg")
+  ) |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = c("Pos" = "firebrick3", "Neg" = "royalblue3")
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~elnino_12_hadisst, name = "Niño 1+2 (HadISST)",
+    color = ~sign,
+    text = ~sprintf(
+      fmt = "%s\nNiño 1+2 (HadISST): %s",
+      format(x = date, format = "%b %Y"),
+      elnino_12_hadisst
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    xaxis = list(
+      title = "",
+      range = elnino_12_hadisst |> 
+        
+        mutate(date = paste(year, month, 1, sep = '-') |> as.Date()) |> 
+        
+        pull(date) |> range()
+    ),
+    yaxis = list(title = "Niño 1+2 (HadISST)", fixedrange = TRUE),
+    bargap = 0
+  )
+```
+
+
+
+### Niño 1+2 (ERSSTv6)
+
+::: {.callout-note collapse="true" title="R"}
+```{r}
+elnino_12_ersstv6 <- get_envir_data(
+  con = "https://psl.noaa.gov/data/correlation/nina1.anom.data", 
+  index_name = "elnino_12_ersstv6",
+  metadata = FALSE,
+  quiet = TRUE
+)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+elnino_12_ersstv6 |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
+```
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+elnino_12_ersstv6 |> 
+  
+  mutate(
+    date = paste(year, month, 1, sep = '-') |> as.Date(),
+    sign = if_else(condition = elnino_12_ersstv6 >= 0, true = "Pos", false = "Neg")
+  ) |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = c("Pos" = "firebrick3", "Neg" = "royalblue3")
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~elnino_12_ersstv6, name = "Niño 1+2 (ERSSTv6)",
+    color = ~sign,
+    text = ~sprintf(
+      fmt = "%s\nNiño 1+2 (ERSSTv6): %s",
+      format(x = date, format = "%b %Y"),
+      elnino_12_ersstv6
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    xaxis = list(
+      title = "", 
+      range = elnino_12_ersstv6 |> 
+        
+        mutate(date = paste(year, month, 1, sep = '-') |> as.Date()) |> 
+        
+        pull(date) |> range()
+    ),
+    yaxis = list(title = "Niño 1+2 (ERSSTv6)", fixedrange = TRUE),
+    bargap = 0
+  )
+```
+
+
+### Niño 3 (HadISST)
+
+::: {.callout-note collapse="true" title="R"}
+```{r}
+elnino_3_hadisst11 <- get_envir_data(
+  con = "https://psl.noaa.gov/data/timeseries/month/data/nino3.long.anom.data", 
+  index_name = "elnino_3_hadisst11",
+  metadata = FALSE,
+  quiet = TRUE
+)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+elnino_3_hadisst11 |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
+```
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+elnino_3_hadisst11 |> 
+  mutate(
+    date = paste(year, month, 1, sep = '-') |> as.Date(),
+    sign = if_else(condition = elnino_3_hadisst11 >= 0, true = "Pos", false = "Neg")
+  ) |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = c("Pos" = "firebrick3", "Neg" = "royalblue3")
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~elnino_3_hadisst11, name = "Niño 3 (HadISST)",
+    color = ~sign,
+    text = ~sprintf(
+      fmt = "%s\nNiño 3 (HadISST): %s",
+      format(x = date, format = "%b %Y"),
+      elnino_3_hadisst11
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    xaxis = list(
+      title = "", 
+      range = elnino_3_hadisst11 |> 
+        
+        mutate(date = paste(year, month, 1, sep = '-') |> as.Date()) |> 
+        
+        pull(date) |> range()
+    ),
+    yaxis = list(title = "Niño 3 (HadISST)", fixedrange = TRUE),
+    bargap = 0
+  )
+```
+
+
+### Niño 3 (ERSSTv6)
+
+::: {.callout-note collapse="true" title="R"}
+```{r}
+elnino_3_ersstv6 <- get_envir_data(
+  con = "https://psl.noaa.gov/data/correlation/nina3.anom.data", 
+  index_name = "elnino_3_ersstv6",
+  metadata = FALSE,
+  quiet = TRUE
+)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+elnino_3_ersstv6 |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
+```
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+elnino_3_ersstv6 |>
+  
+  mutate(
+    date = paste(year, month, 1, sep = '-') |> as.Date(),
+    sign = if_else(condition = elnino_3_ersstv6 >= 0, true = "Pos", false = "Neg")
+  ) |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = c("Pos" = "firebrick3", "Neg" = "royalblue3")
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~elnino_3_ersstv6, name = "Niño 3 (ERSSTv6)",
+    color = ~sign,
+    text = ~sprintf(
+      fmt = "%s\nNiño 3 (ERSSTv6): %s",
+      format(x = date, format = "%b %Y"),
+      elnino_3_ersstv6
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    xaxis = list(
+      title = "", 
+      range = elnino_3_ersstv6 |> 
+        
+        mutate(date = paste(year, month, 1, sep = '-') |> as.Date()) |> 
+        
+        pull(date) |> range()
+    ),
+    yaxis = list(title = "Niño 3 (ERSSTv6)", fixedrange = TRUE),
+    bargap = 0
+  )
+```
+
+
+
+### Niño 3.4 (HadISST)
+
+::: {.callout-note collapse="true" title="R"}
+```{r}
+elnino_34_hadisst11 <- get_envir_data(
+  con = "https://psl.noaa.gov/data/timeseries/month/data/nino34.long.anom.data", 
+  index_name = "elnino_34_hadisst11",
+  metadata = FALSE,
+  quiet = TRUE
+)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+elnino_34_hadisst11 |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
+```
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+elnino_34_hadisst11 |> 
+  
+  mutate(
+    date = paste(year, month, 1, sep = '-') |> as.Date(),
+    sign = if_else(condition = elnino_34_hadisst11 >= 0, true = "Pos", false = "Neg")
+  ) |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = c("Pos" = "firebrick3", "Neg" = "royalblue3")
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~elnino_34_hadisst11, name = "Niño 3.4 (HadISST)",
+    color = ~sign,
+    text = ~sprintf(
+      fmt = "%s\nNiño 3.4 (HadISST): %s",
+      format(x = date, format = "%b %Y"),
+      elnino_34_hadisst11
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    xaxis = list(
+      title = "", 
+      range = elnino_34_hadisst11 |> 
+        
+        mutate(date = paste(year, month, 1, sep = '-') |> as.Date()) |> 
+        
+        pull(date) |> range()
+    ),
+    yaxis = list(title = "Niño 3.4 (HadISST)", fixedrange = TRUE),
+    bargap = 0
+  )
+```
+
+
+### Niño 3.4 (ERSSTv6)
+
+::: {.callout-note collapse="true" title="R"}
+```{r}
+elnino_34_ersstv6 <- get_envir_data(
+  con = "https://psl.noaa.gov/data/correlation/nina34.anom.data", 
+  index_name = "elnino_34_ersstv6",
+  metadata = FALSE,
+  quiet = TRUE
+)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+elnino_34_ersstv6 |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
+```
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+elnino_34_ersstv6 |> 
+  
+  mutate(
+    date = paste(year, month, 1, sep = '-') |> as.Date(),
+    sign = if_else(condition = elnino_34_ersstv6 >= 0, true = "Pos", false = "Neg")
+  ) |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = c("Pos" = "firebrick3", "Neg" = "royalblue3")
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~elnino_34_ersstv6, name = "Niño 3.4 (ERSSTv6)",
+    color = ~sign,
+    text = ~sprintf(
+      fmt = "%s\nNiño 3.4 (ERSSTv6): %s",
+      format(x = date, format = "%b %Y"),
+      elnino_34_ersstv6
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    xaxis = list(
+      title = "", 
+      range = elnino_34_ersstv6 |> 
+        
+        mutate(date = paste(year, month, 1, sep = '-') |> as.Date()) |> 
+        
+        pull(date) |> range()
+    ),
+    yaxis = list(title = "Niño 3.4 (ERSSTv6)", fixedrange = TRUE),
+    bargap = 0
+  )
+```
+
+
+### Niño 4 (HadISST)
+
+::: {.callout-note collapse="true" title="R"}
+```{r}
+elnino_4_hadisst11 <- get_envir_data(
+  con = "https://psl.noaa.gov/data/timeseries/month/data/nino4.long.anom.data", 
+  index_name = "elnino_4_hadisst11",
+  metadata = FALSE,
+  quiet = TRUE
+)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+elnino_4_hadisst11 |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
+```
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+elnino_4_hadisst11 |> 
+  
+  mutate(
+    date = paste(year, month, 1, sep = '-') |> as.Date(),
+    sign = if_else(condition = elnino_4_hadisst11 >= 0, true = "Pos", false = "Neg")
+  ) |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = c("Pos" = "firebrick3", "Neg" = "royalblue3")
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~elnino_4_hadisst11, name = "Niño 4 (HadISST)",
+    color = ~sign,
+    text = ~sprintf(
+      fmt = "%s\nNiño 4 (HadISST): %s",
+      format(x = date, format = "%b %Y"),
+      elnino_4_hadisst11
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    xaxis = list(
+      title = "", 
+      range = elnino_4_hadisst11 |> 
+        
+        mutate(date = paste(year, month, 1, sep = '-') |> as.Date()) |> 
+        
+        pull(date) |> range()
+    ),
+    yaxis = list(title = "Niño 4 (HadISST)", fixedrange = TRUE),
+    bargap = 0
+  )
+```
+
+
+### Niño 4 (ERSSTv6)
+
+::: {.callout-note collapse="true" title="R"}
+```{r}
+elnino_4_ersstv6 <- get_envir_data(
+  con = "https://psl.noaa.gov/data/correlation/nina4.anom.data", 
+  index_name = "elnino_4_ersstv6",
+  metadata = FALSE,
+  quiet = TRUE
+)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+elnino_4_ersstv6 |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
+```
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+elnino_4_ersstv6 |> 
+  
+  mutate(
+    date = paste(year, month, 1, sep = '-') |> as.Date(),
+    sign = if_else(condition = elnino_4_ersstv6 >= 0, true = "Pos", false = "Neg")
+  ) |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = c("Pos" = "firebrick3", "Neg" = "royalblue3")
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~elnino_4_ersstv6, name = "Niño 4 (ERSSTv6)",
+    color = ~sign,
+    text = ~sprintf(
+      fmt = "%s\nNiño 4 (ERSSTv6): %s",
+      format(x = date, format = "%b %Y"),
+      elnino_4_ersstv6
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    xaxis = list(
+      title = "", 
+      range = elnino_4_ersstv6 |> 
+        
+        mutate(date = paste(year, month, 1, sep = '-') |> as.Date()) |> 
+        
+        pull(date) |> range()
+    ),
+    yaxis = list(title = "Niño 4 (ERSSTv6)", fixedrange = TRUE),
+    bargap = 0
+  )
+```
+
+
+### Multivariate ENSO Index (MEI Extended)
+
+::: {.callout-note collapse="true" title="R"}
+```{r}
+mei_ext <- get_envir_data(
+  con = "https://psl.noaa.gov/data/timeseries/month/data/mei.ext.long.data", 
+  index_name = "mei_ext",
+  metadata = FALSE,
+  quiet = TRUE
+)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+mei_ext |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
+```
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+mei_ext |> 
+  
+  mutate(
+    date = paste(year, month, 1, sep = '-') |> as.Date(),
+    sign = if_else(condition = mei_ext >= 0, true = "Pos", false = "Neg")
+  ) |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = c("Pos" = "firebrick3", "Neg" = "royalblue3")
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~mei_ext, name = "MEI Ext",
+    color = ~sign,
+    text = ~sprintf(
+      fmt = "%s\nMEI Ext: %s",
+      format(x = date, format = "%b %Y"),
+      mei_ext
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    xaxis = list(
+      title = "", 
+      range = mei_ext |> 
+        
+        mutate(date = paste(year, month, 1, sep = '-') |> as.Date()) |> 
+        
+        pull(date) |> range()
+    ),
+    yaxis = list(title = "MEI Ext", fixedrange = TRUE),
+    bargap = 0
+  )
+```
+
+
+### Oceanic Niño Index (ONI)
+
+::: {.callout-note collapse="true" title="R"}
+```{r}
+oni <- get_envir_data(
+  con = "https://psl.noaa.gov/data/correlation/oni.data", 
+  index_name = "oni",
+  metadata = FALSE,
+  quiet = TRUE
+)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+oni |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
+```
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+oni |> 
+  
+  mutate(
+    date = paste(year, month, 1, sep = '-') |> as.Date(),
+    sign = if_else(condition = oni >= 0, true = "Pos", false = "Neg")
+  ) |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = c("Pos" = "firebrick3", "Neg" = "royalblue3")
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~oni, name = "ONI",
+    color = ~sign,
+    text = ~sprintf(
+      fmt = "%s\nONI: %s",
+      format(x = date, format = "%b %Y"),
+      oni
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    xaxis = list(
+      title = "", 
+      range = oni |> 
+        
+        mutate(date = paste(year, month, 1, sep = '-') |> as.Date()) |> 
+        
+        pull(date) |> range()
+    ),
+    yaxis = list(title = "ONI", fixedrange = TRUE),
+    bargap = 0
+  )
+```
+
+
+### Relative Oceanic Niño Index (RONI)
+
+::: {.callout-note collapse="true" title="R"}
+```{r}
+roni <- get_envir_data(
+  con = "https://psl.noaa.gov/data/timeseries/month/data/roni.data", 
+  index_name = "roni",
+  metadata = FALSE,
+  quiet = TRUE
+)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+roni |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
+```
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+roni |> 
+  
+  mutate(
+    date = paste(year, month, 1, sep = '-') |> as.Date(),
+    sign = if_else(condition = roni >= 0, true = "Pos", false = "Neg")
+  ) |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = c("Pos" = "firebrick3", "Neg" = "royalblue3")
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~roni, name = "RONI",
+    color = ~sign,
+    text = ~sprintf(
+      fmt = "%s\nRONI: %s",
+      format(x = date, format = "%b %Y"),
+      roni
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    xaxis = list(
+      title = "", 
+      range = roni |> 
+        
+        mutate(date = paste(year, month, 1, sep = '-') |> as.Date()) |> 
+        
+        pull(date) |> range()
+    ),
+    yaxis = list(title = "RONI", fixedrange = TRUE),
+    bargap = 0
+  )
+```
+
+
+### Central Tropical Pacific OLR Index
+
+::: {.callout-note collapse="true" title="R"}
+```{r}
+olr <- get_envir_data(
+  con = "https://psl.noaa.gov/data/correlation/olr.data", 
+  index_name = "olr",
+  metadata = FALSE,
+  quiet = TRUE
+)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+olr |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
+```
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+olr |> 
+  
+  mutate(
+    date = paste(year, month, 1, sep = '-') |> as.Date(),
+    sign = if_else(condition = olr >= 0, true = "Pos", false = "Neg")
+  ) |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = c("Pos" = "firebrick3", "Neg" = "royalblue3")
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~olr, name = "OLR",
+    color = ~sign,
+    text = ~sprintf(
+      fmt = "%s\nOLR: %s",
+      format(x = date, format = "%b %Y"),
+      olr
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    xaxis = list(
+      title = "", 
+      range = olr |> 
+        
+        mutate(date = paste(year, month, 1, sep = '-') |> as.Date()) |> 
+        
+        pull(date) |> range()
+    ),
+    yaxis = list(title = "OLR", fixedrange = TRUE),
+    bargap = 0
+  )
+```
+
+
+### Pacific Warm Pool
+
+::: {.callout-note collapse="true" title="R"}
+```{r}
+pac_warmpool <- get_envir_data(
+  con = "https://psl.noaa.gov/data/timeseries/month/data/pacwarmpool.ersst.data", 
+  index_name = "pac_warmpool",
+  metadata = FALSE,
+  quiet = TRUE
+)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+pac_warmpool |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
+```
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+pac_warmpool |> 
+  
+  mutate(
+    date = paste(year, month, 1, sep = '-') |> as.Date(),
+    sign = if_else(condition = pac_warmpool >= 0, true = "Pos", false = "Neg")
+  ) |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = c("Pos" = "firebrick3", "Neg" = "royalblue3")
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~pac_warmpool, name = "Pacific Warm Pool",
+    color = ~sign,
+    text = ~sprintf(
+      fmt = "%s\nPacific Warm Pool: %s",
+      format(x = date, format = "%b %Y"),
+      pac_warmpool
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    xaxis = list(
+      title = "", 
+      range = pac_warmpool |> 
+        
+        mutate(date = paste(year, month, 1, sep = '-') |> as.Date()) |> 
+        
+        pull(date) |> range()
+    ),
+    yaxis = list(title = "Pacific Warm Pool", fixedrange = TRUE),
+    bargap = 0
+  )
+```
+
+
+### Trans-Niño Index (TNI)
+
+::: {.callout-note collapse="true" title="R"}
+```{r}
+tni <- get_envir_data(
+  con = "https://psl.noaa.gov/data/timeseries/month/data/tni.long.data", 
+  index_name = "tni",
+  metadata = FALSE,
+  quiet = TRUE
+)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+tni |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
+```
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+tni |> 
+  
+  mutate(
+    date = paste(year, month, 1, sep = '-') |> as.Date(),
+    sign = if_else(condition = tni >= 0, true = "Pos", false = "Neg")
+  ) |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = c("Pos" = "firebrick3", "Neg" = "royalblue3")
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~tni, name = "TNI",
+    color = ~sign,
+    text = ~sprintf(
+      fmt = "%s\nTNI: %s",
+      format(x = date, format = "%b %Y"),
+      tni
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    xaxis = list(
+      title = "", 
+      range = tni |> 
+        
+        mutate(date = paste(year, month, 1, sep = '-') |> as.Date()) |> 
+        
+        pull(date) |> range()
+    ),
+    yaxis = list(title = "TNI", fixedrange = TRUE),
+    bargap = 0
+  )
+```
+
+
+### Equatorial Central Pacific Heat Content: 160E-80W
+
+::: {.callout-note collapse="true" title="R"}
+```{r}
+central_pac_heat_cont <- get_envir_data(
+  con = "https://psl.noaa.gov/data/correlation/heatcentra.data", 
+  index_name = "central_pac_heat_cont",
+  metadata = FALSE,
+  quiet = TRUE
+)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+central_pac_heat_cont |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
+```
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+central_pac_heat_cont |> 
+  
+  mutate(
+    date = paste(year, month, 1, sep = '-') |> as.Date(),
+    sign = if_else(condition = central_pac_heat_cont >= 0, true = "Pos", false = "Neg")
+  ) |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = c("Pos" = "firebrick3", "Neg" = "royalblue3")
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~central_pac_heat_cont, name = "Central Pacific Heat Content",
+    color = ~sign,
+    text = ~sprintf(
+      fmt = "%s\nCentral Pacific Heat Content: %s",
+      format(x = date, format = "%b %Y"),
+      central_pac_heat_cont
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    xaxis = list(
+      title = "", 
+      range = central_pac_heat_cont |> 
+        
+        mutate(date = paste(year, month, 1, sep = '-') |> as.Date()) |> 
+        
+        pull(date) |> range()
+    ),
+    yaxis = list(title = "Central Pacific Heat Content", fixedrange = TRUE),
+    bargap = 0
+  )
+```
+
+
+### Bivariate ENSO Time-series (BEST)
+
+::: {.callout-note collapse="true" title="R"}
+```{r}
+best <- get_envir_data(
+  con = "https://psl.noaa.gov/data/correlation/censo.data", 
+  index_name = "best",
+  metadata = FALSE,
+  quiet = TRUE
+)
+```
+:::
+
+::: {.callout-note collapse="true" title="Data"}
+```{r}
+#| echo: false
+
+best |> 
+  
+  DT::datatable(
+    extensions = 'Buttons',
+    options = list(
+      dom = "Bfrtip",
+      buttons = c("copy", "csv", "excel", "pdf", "print")
+    )
+  )
+```
+:::
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| padding: 0px
+
+best |> 
+  
+  mutate(
+    date = paste(year, month, 1, sep = '-') |> as.Date(),
+    sign = if_else(condition = best >= 0, true = "Pos", false = "Neg")
+  ) |> 
+  
+  plot_ly(
+    type = "bar",
+    colors = c("Pos" = "firebrick3", "Neg" = "royalblue3")
+  ) |> 
+  
+  add_bars(
+    x = ~date, y = ~best, name = "BEST",
+    color = ~sign,
+    text = ~sprintf(
+      fmt = "%s\nBEST: %s",
+      format(x = date, format = "%b %Y"),
+      best
+    ),
+    hoverinfo = "text"
+  ) |> 
+  
+  layout(
+    showlegend = FALSE,
+    xaxis = list(
+      title = "", 
+      range = best |> 
+        
+        mutate(date = paste(year, month, 1, sep = '-') |> as.Date()) |> 
+        
+        pull(date) |> range()
+    ),
+    yaxis = list(title = "BEST", fixedrange = TRUE),
+    bargap = 0
+  )
+```
+
+
 
 ## PDO (Pacific Decadal Oscillation)
 
@@ -345,112 +1621,5 @@ tpi |>
       range = c(min(tpi$date), Sys.Date())
     ),
     yaxis = list(title = "TPI", fixedrange = TRUE, range = ylim)
-  )
-```
-
-## MEI (Multivariate ENSO Index v2)
-
-Reference: <https://psl.noaa.gov/enso/mei/>
-
-::: {.callout-note collapse="true" title="R"}
-```{r}
-meiURL <- "https://psl.noaa.gov/enso/mei/data/meiv2.data" 
-  
-yrsRange <- read.table(file = meiURL, header = FALSE, nrow = 1) |> 
-  
-  as.numeric()
-
-mei <- read.table(
-  file = meiURL,
-  skip = 1, 
-  header = FALSE, 
-  nrow = diff(yrsRange) + 1
-) |> 
-  
-  as_tibble() |> 
-  
-  pivot_longer(
-    cols = -V1,
-    names_to = "mes",
-    values_to = "MEI"
-  ) |> 
-  
-  rename(año = V1) |> 
-  
-  mutate(
-    mes = gsub(x = mes, pattern = "V", replacement = "") |> as.numeric(),
-    mes = mes - 1,
-    date = paste(año, mes, 1, sep = "-") |> as.Date(),
-    MEI_c = cut(
-      x = MEI,
-      breaks = c(-Inf, 0, Inf),
-      labels = c("Frío", "Cálido")
-    )
-  ) |> 
-  
-  filter(MEI > -999)
-```
-:::
-
-::: {.callout-note collapse="true" title="Data"}
-```{r}
-#| echo: false
-
-mei |> 
-  
-  DT::datatable(
-    extensions = 'Buttons',
-    options = list(
-      dom = "Bfrtip",
-      buttons = c("copy", "csv", "excel", "pdf", "print")
-    )
-  )
-```
-:::
-
-```{r}
-#| echo: false
-#| message: false
-#| warning: false
-#| padding: 0px
-
-cols <- setNames(
-  object = c("#2e75b5", "#e60000"),
-  nm = c("Frío", "Cálido")
-)
-
-ylim <- c(
-  min(mei$MEI) |> floor(),
-  max(mei$MEI) |> ceiling()
-)
-
-mei |> 
-  
-  plot_ly(
-    type = "bar",
-    colors = cols,
-    marker = list(line = list(color = "transparent", width = 0))
-  ) |> 
-  
-  add_bars(
-    x = ~date, y = ~MEI, name = "TPI",
-    color = ~MEI_c,
-    text = ~sprintf(
-      fmt = "%s\nMEI: %s\nCategoría: %s",
-      format(x = date, format = "%b %Y"),
-      MEI, MEI_c
-    ),
-    hoverinfo = "text"
-  ) |> 
-  
-  layout(
-    showlegend = FALSE,
-    barmode = "relative",
-    bargap = 0.1,
-    xaxis = list(
-      title = "",
-      range = c(min(mei$date), Sys.Date())
-    ),
-    yaxis = list(title = "MEI", fixedrange = TRUE, range = ylim)
   )
 ```
