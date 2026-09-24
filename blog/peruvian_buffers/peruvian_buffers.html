@@ -6,11 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-04-19">
-<meta name="keywords" content="quarto, github pages, blog, writing">
-<meta name="description" content="Cómo fui desarrollando esta página">
+<meta name="dcterms.date" content="2026-09-23">
+<meta name="keywords" content="parallel coastlines, R, sf, Shiny, tutorial">
+<meta name="description" content="How to draw parallel coast lines off Peruvian coast using R | Cómo dibujar líneas paralelas a la costa peruana con R">
 
-<title>Developing Beneath the surface – Beneath the surface 🌊</title>
+<title>Drawing parallel coast lines off Peru – Beneath the surface 🌊</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -28,6 +28,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -294,19 +329,23 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
   <ul>
-  <li><a href="#en-developing-beneath-the-surface" id="toc-en-developing-beneath-the-surface" class="nav-link active" data-scroll-target="#en-developing-beneath-the-surface">[EN] Developing ‘Beneath the surface 🌊’</a>
+  <li><a href="#en-generating-lines-parallel-to-the-peruvian-coast" id="toc-en-generating-lines-parallel-to-the-peruvian-coast" class="nav-link active" data-scroll-target="#en-generating-lines-parallel-to-the-peruvian-coast">[EN] Generating Lines Parallel to the Peruvian Coast</a>
   <ul class="collapse">
-  <li><a href="#the-idea" id="toc-the-idea" class="nav-link" data-scroll-target="#the-idea">The idea</a></li>
-  <li><a href="#github-pages" id="toc-github-pages" class="nav-link" data-scroll-target="#github-pages">Github pages</a></li>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
-  <li><a href="#the-content" id="toc-the-content" class="nav-link" data-scroll-target="#the-content">The content</a></li>
+  <li><a href="#method-1-shiny-app" id="toc-method-1-shiny-app" class="nav-link" data-scroll-target="#method-1-shiny-app">Method 1: Shiny App</a>
+  <ul class="collapse">
+  <li><a href="#how-to-use" id="toc-how-to-use" class="nav-link" data-scroll-target="#how-to-use">How to Use</a></li>
+  <li><a href="#what-to-do-next" id="toc-what-to-do-next" class="nav-link" data-scroll-target="#what-to-do-next">What to Do Next?</a></li>
   </ul></li>
-  <li><a href="#es-desarrollando-beneath-the-surface" id="toc-es-desarrollando-beneath-the-surface" class="nav-link" data-scroll-target="#es-desarrollando-beneath-the-surface">[ES] Desarrollando ‘Beneath the surface 🌊’</a>
+  <li><a href="#method-2" id="toc-method-2" class="nav-link" data-scroll-target="#method-2">Method 2</a></li>
+  </ul></li>
+  <li><a href="#es-generar-líneas-paralelas-a-la-costa-peruana" id="toc-es-generar-líneas-paralelas-a-la-costa-peruana" class="nav-link" data-scroll-target="#es-generar-líneas-paralelas-a-la-costa-peruana">[ES] Generar líneas paralelas a la costa peruana</a>
   <ul class="collapse">
-  <li><a href="#la-idea" id="toc-la-idea" class="nav-link" data-scroll-target="#la-idea">La idea</a></li>
-  <li><a href="#github-pages-1" id="toc-github-pages-1" class="nav-link" data-scroll-target="#github-pages-1">Github pages</a></li>
-  <li><a href="#quarto-1" id="toc-quarto-1" class="nav-link" data-scroll-target="#quarto-1">Quarto</a></li>
-  <li><a href="#el-contenido" id="toc-el-contenido" class="nav-link" data-scroll-target="#el-contenido">El contenido</a></li>
+  <li><a href="#método-1-app-de-shiny" id="toc-método-1-app-de-shiny" class="nav-link" data-scroll-target="#método-1-app-de-shiny">Método 1: app de Shiny</a>
+  <ul class="collapse">
+  <li><a href="#modo-de-uso" id="toc-modo-de-uso" class="nav-link" data-scroll-target="#modo-de-uso">Modo de uso</a></li>
+  <li><a href="#qué-hacer-luego" id="toc-qué-hacer-luego" class="nav-link" data-scroll-target="#qué-hacer-luego">¿Qué hacer luego?</a></li>
+  </ul></li>
+  <li><a href="#método-2" id="toc-método-2" class="nav-link" data-scroll-target="#método-2">Método 2</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -320,125 +359,260 @@ ul.task-list li input[type="checkbox"] {
   <div class="about-contents">
     <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Developing Beneath the surface</h1>
+<h1 class="title">Drawing parallel coast lines off Peru</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">quarto</div>
-    <div class="quarto-category">github pages</div>
-    <div class="quarto-category">blog</div>
-    <div class="quarto-category">writing</div>
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">tutorial</div>
   </div>
   </div>
 <div>
   <div class="description">
-    <p>Cómo fui desarrollando esta página</p>
+    How to draw parallel coast lines off Peruvian coast using R | Cómo dibujar líneas paralelas a la costa peruana con R
   </div>
 </div>
 <div class="quarto-title-meta">
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 19, 2024</p>
+      <p class="date">September 23, 2026</p>
     </div>
   </div>
   </div>
 <div>
   <div class="keywords">
     <div class="block-title">Keywords</div>
-    <p>quarto, github pages, blog, writing</p>
+    <p>parallel coastlines, R, sf, Shiny, tutorial</p>
   </div>
 </div>
 </header> <main class="content" id="quarto-document-content">
 
 
-<section id="en-developing-beneath-the-surface" class="level1">
-<h1>[EN] Developing ‘Beneath the surface 🌊’</h1>
-<section id="the-idea" class="level2">
-<h2 data-anchor-id="the-idea">The idea</h2>
-<p>The first thing that came to mind was “how can I develop a page that I can leave as a reference for those who want to contact me in a professional setting?” and “through what medium can I share those ideas, small works or personal experiences that I believe could be useful for other professionals in my field?”. Well, there are many options around (social media, podcasts, TikTok, etc.). This first decision was not difficult, as I am not particularly characterized by my charisma on social networks, so I decided to opt for writing a blog. However, here the decision-making process did get a bit complicated, as there are many platforms available: <a href="https://wordpress.com/">Wordpress</a>, <a href="https://www.netlify.com/">Netlify</a>, <a href="https://docs.gitlab.com/ee/user/project/pages/">Gitlab pages</a>, <a href="https://medium.com/">Medium</a>, among <a href="https://stackshare.io/github-pages/alternatives">others</a>. Each one offers different advantages and potential, but my decision was based above all on the familiarity of use of the Github and Quarto platforms. I decided on Github pages.</p>
-</section>
-<section id="github-pages" class="level2">
-<h2 data-anchor-id="github-pages">Github pages</h2>
-<p>Github Pages is a free static website hosting service that allows you to publish HTML content directly from a GitHub repository. This platform offers multiple advantages:</p>
+<p>Image credits: <a href="https://data.marine.copernicus.eu/-/qcecrekxcb">Global Ocean Physics Analysis and Forecast</a>. E.U. Copernicus Marine Service Information (CMEMS). Marine Data Store (MDS). DOI: <a href="https://doi.org/10.48670/moi-00016" class="uri">https://doi.org/10.48670/moi-00016</a> (Accessed on 31 08 2026)</p>
+<section id="en-generating-lines-parallel-to-the-peruvian-coast" class="level1">
+<h1>[EN] Generating Lines Parallel to the Peruvian Coast</h1>
+<section id="method-1-shiny-app" class="level2">
+<h2 data-anchor-id="method-1-shiny-app">Method 1: Shiny App</h2>
+<p>If we only need parallel lines at specific integer nautical mile distances, we can use a Shiny app I developed, which is available at:</p>
+<p><a href="https://01a0b12b-4a16-f145-4617-420ede0a160b.share.connect.posit.cloud/" class="uri">https://01a0b12b-4a16-f145-4617-420ede0a160b.share.connect.posit.cloud/</a></p>
+<p>This Shiny application allows users to interactively visualize different buffers or distance lines from the Peruvian coastline, for distances ranging from 1 to 300 nautical miles. Users can select multiple distances, view the results on OpenStreetMap, topographic, or satellite basemaps, and download the selected geometries in GeoPackage format for use in other geospatial analysis projects. The source code for this Shiny app is available in the repository <a href="https://github.com/LuisLauM/peruvian_buffers" class="uri">https://github.com/LuisLauM/peruvian_buffers</a>.</p>
+<section id="how-to-use" class="level3">
+<h3 data-anchor-id="how-to-use">How to Use</h3>
+<p>The controls are quite straightforward:</p>
 <ul>
-<li><p><strong>It’s free!</strong>: You don’t need to pay for a web hosting service, just have a (free) GitHub account.</p></li>
-<li><p><strong>Easy to use</strong>: Uploading your HTML, CSS, and JavaScript files to GitHub is very simple.</p></li>
-<li><p><strong>Direct integration with GitHub</strong>: This becomes VERY important if you already use GitHub (as was my case) for your code projects.</p></li>
-<li><p><strong>Versioning</strong>: GitHub Pages keeps a history of all the changes you make to your website, so if something goes wrong you can always go back to a previous version of your repository (page).</p></li>
-<li><p><strong>Secure</strong>: GitHub Pages uses HTTPS to protect your website.</p></li>
-<li><p><strong>Fast</strong>: For a few years now, Microsoft has bought GitHub and therefore its services use an extensive global network of servers to deliver your website to users around the world.</p></li>
-<li><p><strong>Scalable</strong>: GitHub Pages can handle any amount of traffic, so your website can grow smoothly. Although a personal/professional blog is not expected to have very high traffic peaks, it is always good to know that this support exists.</p></li>
-<li><p><strong>SEO optimized</strong>: GitHub Pages is optimized for search engines, which will help your website appear in the results of major web search engines.</p></li>
+<li><p>A text input field where users can enter any INTEGER values between 1 and 300, separated by commas. These values will be used to generate the corresponding parallel lines.</p></li>
+<li><p>A dropdown menu where users can choose from three basemap visualization options.</p></li>
+<li><p>A button to download the selected parallel lines as a GeoPackage file.</p></li>
 </ul>
-<p>In the end, Github pages was the hosting option that I found most attractive. However, there are multiple ways to upload content, from different development platforms that involve the use of programming languages (e.g.&nbsp;Javascript) or markup, such as markdown or Quarto. Once again, my historical experience weighed more and I decided to use Quarto.</p>
 </section>
-<section id="quarto" class="level2">
-<h2 data-anchor-id="quarto">Quarto</h2>
-<p>Quarto is an open-source scientific document publishing platform developed by the POSIT (formerly RStudio) team. It is based on the R Markdown format and extends it with new features and functionalities to create richer and more interactive documents. It implements a more powerful preprocessing system than R Markdown and supports additional programming languages such as Python and Julia, expanding the possibilities for analysis and visualization.</p>
-<p>For the past few years, I have been using Quarto not only for writing simple R reports, but also for the complete composition of scientific articles (one of them with a format submitted directly from the .docx output obtained in Quarto), as well as the development of interactive websites through the <a href="https://quarto.org/docs/interactive/shiny/">Quarto-Shiny</a> duo.</p>
+<section id="what-to-do-next" class="level3">
+<h3 data-anchor-id="what-to-do-next">What to Do Next?</h3>
+<p>The Shiny app allows users to download a file in GeoPackage format. This type of file can subsequently be read by multiple platforms, including ArcGIS, QGIS, Python, and, of course, R.</p>
+<p>Below, I provide an example of the commands required to read this type of file:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(sf)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>parallels <span class="ot">&lt;-</span> <span class="fu">st_read</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dsn =</span> <span class="st">"buffers_costa_50_100_150_200_300.gpkg"</span>, </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">layer =</span> <span class="st">"buffers_costa"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">quiet =</span> <span class="cn">TRUE</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>parallels</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 5 features and 2 fields
+Geometry type: MULTILINESTRING
+Dimension:     XY
+Bounding box:  xmin: -86.33183 ymin: -34.8773 xmax: -70.92157 ymax: 9.571371
+Geodetic CRS:  WGS 84
+  featurecla distancia_mn                           geom
+1       Land           50 MULTILINESTRING ((-82.15091...
+2       Land          100 MULTILINESTRING ((-82.98591...
+3       Land          150 MULTILINESTRING ((-83.82081...
+4       Land          200 MULTILINESTRING ((-84.6557 ...
+5       Land          300 MULTILINESTRING ((-86.30878...</code></pre>
+</div>
+</div>
+<p>To plot the lines from the loaded object, we can use:</p>
+<ul>
+<li>Base R graphics:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> parallels[,<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="peruvian_buffers_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>ggplot2 environment:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(ggplot2)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> <span class="fu">as.factor</span>(distancia_mn)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> parallels</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"Distance (mn)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="peruvian_buffers_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="the-content" class="level2">
-<h2 data-anchor-id="the-content">The content</h2>
-<p>I Didn’t Have to Start from Scratch. Fortunately, there are many resources available online, but I will briefly summarize the main links I used:</p>
-<ul>
-<li><em>Create the website hosted on Github pages, prepare it for content management with Quarto and to work from RStudio</em>: The first steps to follow are very well explained in the video by Melissa Van Bussel <a href="https://youtu.be/arzBRW5XIkg?feature=shared">(link)</a>. Highly recommended, although it assumes that we know how to handle Git-bash and that we have a token well configured for our PC. I will put these last details at the end of this article.</li>
-</ul>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/arzBRW5XIkg?feature=shared" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<ul>
-<li><p><em>Establish an outline of what we are going to publish</em>: Once we have successfully configured our website, it is time to take pen and paper and outline what content we want to share and what the logic will be for organizing that content into sections. While this part is very personal, since it will not be the same to diagram a page that only aims to serve as a professional reference (that is, an interactive resume) to that of a freelancer who wants to show their main projects and/or services offered, you don’t need to start from scratch either. You can review examples of pages from other creators (researchers, reporters, bloggers, graphic artists, etc.) and be inspired by their designs. Also, you can review examples of page structures that use Github pages <a href="https://jekyllthemes.io/free">(link)</a>. Remember, everything must ALWAYS start with the type of content you plan to place.</p></li>
-<li><p><em>Start writing</em>: OK, this is not a scientific article and there is much more freedom to fill in the different sections; however, always remember to take into account the basic writing criteria (from general to specific), be clear and careful when choosing the type of language (based on the type of audience you expect to read you) and, once again, review examples. Of course, these days AI text generation platforms can be of great help, but we should not delegate the entire burden (i.e.&nbsp;no copy-paste) to them without first reading and corroborating the information they return to us. At this point, the following articles were very useful to me:</p>
-<ul>
-<li><p>Create your website with Quarto: complete tutorial and template link: https://www.marvinschmitt.com/blog/website-tutorial-quarto/.</p></li>
-<li><p>Creating your personal website with Quarto link: https://ucsb-meds.github.io/creating-quarto-websites/.</p></li>
-<li><p>Creating a website link: https://quarto.org/docs/websites/.</p></li>
-</ul></li>
-<li><p><em>Establish an order</em>: Once we have finished and published a first article, everything will be simpler in technical terms since you will discover that there are multiple reference sources available.</p></li>
-</ul>
+</section>
+<section id="method-2" class="level2">
+<h2 data-anchor-id="method-2">Method 2</h2>
+<p>What if I need to generate parallel lines at an exact distance from the coastline (not necessarily an integer number of nautical miles)? One option is to use the buffer-generation script from the Shiny app, available in my repository, and modify the predefined values in the <code>bufferDistances_nm</code> vector: <a href="https://github.com/LuisLauM/peruvian_buffers/blob/1d532a12ece40cbf88a833b7a2873a8e46aecdd6/allBuffers_generator.R#L47">link</a>.</p>
+<p>Another option is to use the <code>peruvian_buffers</code> function, available in my <a href="https://github.com/LuisLauM/ruisu">ruisu</a> package. The simplest call only requires defining a numeric vector of distances:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install ruisu from Github (run just once)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github("LuisLauM/ruisu")</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(ruisu)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">peruvian_buffers</span>(<span class="at">distances =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">200</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">300</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>However, <code>peruvian_buffers</code> also allows users to modify the units (the <code>units</code> argument) and the reference coastline section used to generate the <em>buffers</em> (the <code>subset_limits</code> argument).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">peruvian_buffers</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">distances =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">300</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">units =</span> <span class="st">"km"</span>, </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">subset_limits =</span> <span class="fu">list</span>(</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">150</span>, <span class="sc">-</span><span class="dv">70</span>), </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">30</span>, <span class="dv">5</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The returned object is a list of <code>sf</code> objects.</p>
+<p>This function is very recent and is therefore likely to undergo further improvements or corrections. If you encounter any issues or have suggestions for improvement, please submit them through a GitHub <em>Issue</em>: <a href="https://github.com/LuisLauM/ruisu/issues/new">link</a></p>
 <hr>
 </section>
 </section>
-<section id="es-desarrollando-beneath-the-surface" class="level1">
-<h1>[ES] Desarrollando ‘Beneath the surface 🌊’</h1>
-<section id="la-idea" class="level2">
-<h2 data-anchor-id="la-idea">La idea</h2>
-<p>Lo primero que llegó a mi mente fue «¿de qué manera puedo desarrollar una página en que pueda dejar como referencia para aquellos que quisieran contactar conmigo en un ambiente profesional?» y «¿desde qué medio puedo compartir aquellas ideas, pequeños trabajos o experiencias personales que creo que podrían resultar de utilidad para otros profesionales en mi rubro?». Bueno, existen muchas opciones alrededor (redes sociales, podcast, TikTok, etc.). Esta primera decisión no fue difícil, pues no me caracterizo particularmente por mi carisma en redes, así que decidí optar por escribir un blog. Sin embargo, aquí la toma de decisiones sí se complicó un poco, pues existen muchas plataformas disponibles: <a href="https://wordpress.com/">Wordpress</a>, <a href="https://www.netlify.com/">Netlify</a>, <a href="https://docs.gitlab.com/ee/user/project/pages/">Gitlab pages</a>, <a href="https://medium.com/">Medium</a>, entre <a href="https://stackshare.io/github-pages/alternatives">others</a>. Cada una plantea ventajas y potencialidades distintas, pero mi decisión se basó sobre todo en la familiaridad de uso de las plataformas <a href="https://github.com/">Github</a> y <a href="https://quarto.org/">Quarto</a>. Me decidí por <a href="https://pages.github.com/">Github pages</a>.</p>
-</section>
-<section id="github-pages-1" class="level2">
-<h2 data-anchor-id="github-pages-1">Github pages</h2>
-<p>Github pages es un servicio gratuito de alojamiento de sitios web estáticos que permite publicar contenido HTML directamente desde un repositorio de GitHub. Esta plataforma ofrece múltiples ventajas:</p>
+<section id="es-generar-líneas-paralelas-a-la-costa-peruana" class="level1">
+<h1>[ES] Generar líneas paralelas a la costa peruana</h1>
+<section id="método-1-app-de-shiny" class="level2">
+<h2 data-anchor-id="método-1-app-de-shiny">Método 1: app de Shiny</h2>
+<p>Si solo necesitamos las líneas paralelas para cierto valor entero en millas náuticas, podemos utilizar un app Shiny que desarrollé y que está disponible en:</p>
+<p><a href="https://01a0b12b-4a16-f145-4617-420ede0a160b.share.connect.posit.cloud/" class="uri">https://01a0b12b-4a16-f145-4617-420ede0a160b.share.connect.posit.cloud/</a></p>
+<p>Esta aplicación Shiny permite visualizar de forma interactiva distintos buffers o líneas de distancia respecto a la costa del Perú, para valores entre 1 y 300 millas náuticas. El usuario puede seleccionar varias distancias, consultar los resultados sobre mapas base de OpenStreetMap, topográficos o satelitales, y descargar las geometrías elegidas en formato GeoPackage para utilizarlas en otros proyectos de análisis geoespacial. El código de este Shiny se halla disponible en el repositorio <a href="https://github.com/LuisLauM/peruvian_buffers" class="uri">https://github.com/LuisLauM/peruvian_buffers</a>.</p>
+<section id="modo-de-uso" class="level3">
+<h3 data-anchor-id="modo-de-uso">Modo de uso</h3>
+<p>Los controles son bastante simples:</p>
 <ul>
-<li><p><strong>Gratuito</strong>: No necesitas pagar por un servicio de alojamiento web, solo tener una cuenta de GitHub (gratuita).</p></li>
-<li><p><strong>Fácil de usar</strong>: Subir tus archivos HTML, CSS y JavaScript a GitHub es muy sencillo.</p></li>
-<li><p><strong>Integración directa con GitHub</strong>: Esto se hace MUY importante si ya usas GitHub (como fue mi caso) para tus proyectos de código.</p></li>
-<li><p><strong>Versionado</strong>: GitHub Pages guarda un historial de todos los cambios que realices en tu sitio web, por lo que si algo sale mal siempre puedes volver a una versión anterior de tu repositorio (página).</p></li>
-<li><p><strong>Seguro</strong>: GitHub Pages utiliza HTTPS para proteger tu sitio web.</p></li>
-<li><p><strong>Rápido</strong>: Desde hace unos años, Microsoft compró GitHub y por tanto sus servicios utilizan una extensa red global de servidores para entregar tu sitio web a los usuarios de todo el mundo.</p></li>
-<li><p><strong>Escalable</strong>: GitHub Pages puede manejar cualquier cantidad de tráfico, por lo que tu sitio web puede crecer sin problemas. Aunque de un blog personal/profesional no se espera tener picos de tráfico muy altos, siempre es bueno saber que existe este respaldo.</p></li>
-<li><p><strong>Optimizado para SEO</strong>: GitHub Pages está optimizado para los motores de búsqueda, lo que ayudará a que nuestro sitio web aparezca en los resultados de los principales buscadores web.</p></li>
+<li><p>Un campo de texto en donde el usuario puede colocar cualquier valor ENTERO entre 1 y 300 separado por comas. Estos valores serán utilizados para dibujar las líneas paralelas correspondiente.</p></li>
+<li><p>Un campo desplegable en donde el usuario puede elegir entre tres opciones de visualización para el mapa de fondo.</p></li>
+<li><p>Un botón para descargar las paralelas elegidas a modo de un archivo en formato GeoPackage.</p></li>
 </ul>
-<p>Al final, Github pages fue la opción de alojamiento que me resultó más atractiva. Sin embargo, existen múltiples maneras de subir contenido, desde diferentes plataformas de desarrollo que involucran el uso de lenguajes de programación (e.g.&nbsp;Javascript) o de marcado, como markdown o Quarto. Una vez más, mi experiencia histórica pesó más y me decanté por el uso de Quarto.</p>
 </section>
-<section id="quarto-1" class="level2">
-<h2 data-anchor-id="quarto-1">Quarto</h2>
-<p>Quarto es una plataforma de publicación de documentos científicos de código abierto desarrollada por el equipo de POSIT (ex RStudio). Se basa en el formato R Markdown y lo amplía con nuevas características y funcionalidades para crear documentos más ricos e interactivos. Implementa un sistema de preprocesamiento más potente que R Markdown y soporta lenguajes de programación adicionales como Python y Julia, ampliando las posibilidades de análisis y visualización.</p>
-<p>Desde hace unos pocos años, he venido utilizando Quarto no solo para la redacción de reportes sencillos en R, sino inclusive para la composición completa de artículos científicos (uno de ellos con formato sometido directamente desde la salida en .docx obtenida en Quarto), así como el desarrollo de webs interactivas a través de la dupla <a href="https://quarto.org/docs/interactive/shiny/">Quarto-Shiny</a>.</p>
+<section id="qué-hacer-luego" class="level3">
+<h3 data-anchor-id="qué-hacer-luego">¿Qué hacer luego?</h3>
+<p>El app de Shiny permite descargar un archivo en formato GeoPackage. Este tipo de archivos puede ser leído posteriormente en múltiples plataformas: ArcGis, QGIS, Python y, por supuesto, en R.</p>
+<p>A continuación, presento un ejemplo de los comandos necesarios para leer un archivo de este tipo:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(sf)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>paralelas <span class="ot">&lt;-</span> <span class="fu">st_read</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dsn =</span> <span class="st">"buffers_costa_50_100_150_200_300.gpkg"</span>, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">layer =</span> <span class="st">"buffers_costa"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">quiet =</span> <span class="cn">TRUE</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>paralelas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 5 features and 2 fields
+Geometry type: MULTILINESTRING
+Dimension:     XY
+Bounding box:  xmin: -86.33183 ymin: -34.8773 xmax: -70.92157 ymax: 9.571371
+Geodetic CRS:  WGS 84
+  featurecla distancia_mn                           geom
+1       Land           50 MULTILINESTRING ((-82.15091...
+2       Land          100 MULTILINESTRING ((-82.98591...
+3       Land          150 MULTILINESTRING ((-83.82081...
+4       Land          200 MULTILINESTRING ((-84.6557 ...
+5       Land          300 MULTILINESTRING ((-86.30878...</code></pre>
+</div>
+</div>
+<p>Para graficar las líneas del objeto cargado, podemos hacerlo a través de:</p>
+<ul>
+<li>Entorno graphics:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> paralelas[,<span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="peruvian_buffers_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Entorno ggplot2:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(ggplot2)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> <span class="fu">as.factor</span>(distancia_mn)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">data =</span> paralelas</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"Distancia (mn)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="peruvian_buffers_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="el-contenido" class="level2">
-<h2 data-anchor-id="el-contenido">El contenido</h2>
-<p>No tuve que empezar desde cero. Afortunadamente, hay mucho material allá afuera, pero resumiré brevemente los principales links que utilicé:</p>
-<ul>
-<li>Crear la website alojada en Github pages, preparaela para el manejo de contenido con Quarto y para trabajar desde RStudio: Los primeros pasos a seguir están muy bien explicados en el vídeo de Melissa Van Bussel <a href="https://youtu.be/arzBRW5XIkg?feature=shared">(link)</a>. Muy recomendable, aunque parte bajo el supuesto de que conocemos cómo manejar Git-bash y de que tenemos bien configurado un token para nuestra PC. Estos últimos detalles los colocaré al final de este artículo.</li>
-</ul>
-<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/arzBRW5XIkg?feature=shared" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
-<ul>
-<li><p>Establecer un esquema de lo que vamos a publicar. Una vez que hayamos logrado configurar correctamente nuestra web, sigue el turno de tomar lápiz y papel y esquematizar qué contenido deseamos compartir y cuál será la lógica para ordenar dicho contenido en secciones. Si bien esta parte es muy personal, ya que no será lo mismo diagramar una página que solo tiene como objetivo servir de referencia profesional (es decir, un CV interactivo) a la de un <strong>freelancer</strong> que desea mostrar sus principales proyectos y/o servicios ofrecidos, no necesitas ir desde cero tampoco. Puedes revisar ejemplos de páginas de otros creadores (investigadores, reporteros, bloggers, artistas gráficos, etc.) e inspirarte en sus diseños. Así también, puedes revisar ejemplos de estructuras de páginas que usan Github pages <a href="https://jekyllthemes.io/free">(link)</a>. Recuerda, todo debe partir SIEMPRE del tipo de contenido que planeas colocar.</p></li>
-<li><p>Empezar a escribir. OK, esto no es un artículo científico y hay mucha más libertad para rellenar las distintas secciones; no obstante, recuerda siempre tener en cuenta los criterios básicos de redacción (de lo general a lo específico), ser claro y cuidadoso al elegir el tipo de lenguaje (con base en el tipo de público que esperas que te lea) y, una vez más, revisar ejemplos. Por supuesto, en estos días las plataformas de IA para generación de texto pueden resultar de gran ayuda, pero no debemos delegarles toda la carga (i.e.&nbsp;nada de copiar-pegar) sin antes leer corroborar la información que nos devuelven. En este punto, me fueron de mucha utilidad los siguientes artículos:</p>
-<ul>
-<li><p>Crear tu website con Quarto: tutorial completo y plantilla <a href="https://www.marvinschmitt.com/blog/website-tutorial-quarto/">link</a>.</p></li>
-<li><p>Creando tu website personal con Quarto <a href="https://ucsb-meds.github.io/creating-quarto-websites/">link</a>.</p></li>
-<li><p>Creando un website <a href="https://quarto.org/docs/websites/">link</a>.</p></li>
-</ul></li>
-<li><p>Establecer un orden. Una vez que hayamos culminado y publicado un primer artículo, todo irá siendo más simple en términos técnicos ya que descubrirás que existen múltiples fuentes de referencia disponibles.</p></li>
-</ul>
+</section>
+<section id="método-2" class="level2">
+<h2 data-anchor-id="método-2">Método 2</h2>
+<p>¿Y qué puedo hacer si necesito dibujar paralelas con un valor de distancia a la costa exacto (no entero en millas náuticas). Una opción puede ser utilizar el script generador de buffers del app Shiny, disponible en mi repositorio, y cambiar los valores predefinidos en el vector <code>bufferDistances_nm</code>: <a href="https://github.com/LuisLauM/peruvian_buffers/blob/1d532a12ece40cbf88a833b7a2873a8e46aecdd6/allBuffers_generator.R#L47">link</a>.</p>
+<p>Otra opción también es utilizar la funcíon <code>peruvian_buffers</code>, disponible dentro de mi paquete <a href="https://github.com/LuisLauM/ruisu">ruisu</a>. El comando más sencilo requiere solo definir un vector numérico para las distancias:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar ruisu desde Github (ejecutar solo una vez)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># remotes::install_github("LuisLauM/ruisu")</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(ruisu)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">peruvian_buffers</span>(<span class="at">distances =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">200</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">300</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Sin embargo, <code>peruvian_buffers</code> permite también modificar las unidades (argumento <code>units</code>) y la sección de línea de costa de referencia para dibujar los <em>buffers</em> (argumento <code>subset_limits</code>).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">peruvian_buffers</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">distances =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">150</span>, <span class="dv">150</span>, <span class="dv">200</span>, <span class="dv">300</span>),</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">units =</span> <span class="st">"km"</span>, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">subset_limits =</span> <span class="fu">list</span>(</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">150</span>, <span class="sc">-</span><span class="dv">70</span>), </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">30</span>, <span class="dv">5</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>El objeto retornado será una lista de objetos <code>sf</code>.</p>
+<p>Esta función es muy reciente, por lo que es muy susceptible a mejoras o correcciones. Para cualquiera de esos casos, por favor, hazlo a través de un <em>Issue</em> en Github: <a href="https://github.com/LuisLauM/ruisu/issues/new">link</a></p>
 
 
 </section>

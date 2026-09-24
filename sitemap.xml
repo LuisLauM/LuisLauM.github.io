@@ -2,50 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://luislaum.github.io/home/about.html</loc>
-    <lastmod>2026-09-17T21:52:45.907Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/blog/pacific-envir-indices/pacific-envir-indices.html</loc>
-    <lastmod>2026-09-17T21:52:46.034Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/blog/timeline-with-googlevis/timeline-with-googlevis.html</loc>
-    <lastmod>2026-09-17T21:52:46.071Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html</loc>
-    <lastmod>2026-09-17T21:52:46.102Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/blog/about-this-website/about-this-website.html</loc>
-    <lastmod>2026-09-17T21:52:45.921Z</lastmod>
+    <lastmod>2026-09-24T15:47:41.097Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/index.html</loc>
-    <lastmod>2026-09-17T21:52:46.106Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/blog.html</loc>
-    <lastmod>2026-09-17T21:52:45.920Z</lastmod>
+    <lastmod>2026-09-24T15:47:41.302Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/convert-snippets/convert-snippets.html</loc>
-    <lastmod>2026-09-17T21:52:45.965Z</lastmod>
+    <lastmod>2026-09-24T15:47:41.156Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/timeline-with-googlevis/timeline-with-googlevis.html</loc>
+    <lastmod>2026-09-24T15:47:41.265Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/quarto-template-article/quarto-template-article.html</loc>
-    <lastmod>2026-09-17T21:52:46.064Z</lastmod>
+    <lastmod>2026-09-24T15:47:41.259Z</lastmod>
   </url>
   <url>
-    <loc>https://luislaum.github.io/home/blog/download-envir-data/download-envir-data.html</loc>
-    <lastmod>2026-09-17T21:52:45.970Z</lastmod>
-  </url>
-  <url>
-    <loc>https://luislaum.github.io/home/blog/elnino-app/elnino-app.html</loc>
-    <lastmod>2026-09-17T21:52:46.014Z</lastmod>
+    <loc>https://luislaum.github.io/home/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html</loc>
+    <lastmod>2026-09-24T15:47:41.298Z</lastmod>
   </url>
   <url>
     <loc>https://luislaum.github.io/home/blog/powertoys-tools/powertoys-tools.html</loc>
-    <lastmod>2026-09-17T21:52:46.061Z</lastmod>
+    <lastmod>2026-09-24T15:47:41.256Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/about-this-website/about-this-website.html</loc>
+    <lastmod>2026-09-24T15:47:41.112Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/peruvian_buffers/peruvian_buffers.html</loc>
+    <lastmod>2026-09-24T15:47:41.228Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/download-envir-data/download-envir-data.html</loc>
+    <lastmod>2026-09-24T15:47:41.161Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/pacific-envir-indices/pacific-envir-indices.html</loc>
+    <lastmod>2026-09-24T15:47:41.226Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog/elnino-app/elnino-app.html</loc>
+    <lastmod>2026-09-24T15:47:41.206Z</lastmod>
+  </url>
+  <url>
+    <loc>https://luislaum.github.io/home/blog.html</loc>
+    <lastmod>2026-09-24T15:47:41.111Z</lastmod>
   </url>
 </urlset>

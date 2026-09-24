@@ -15,7 +15,494 @@
 <link>https://luislaum.github.io/home/blog.html</link>
 </image>
 <generator>quarto-1.10.18</generator>
-<lastBuildDate>Tue, 15 Sep 2026 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 23 Sep 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Drawing parallel coast lines off Peru</title>
+  <link>https://luislaum.github.io/home/blog/peruvian_buffers/peruvian_buffers.html</link>
+  <description><![CDATA[ 
+
+
+<p>Image credits: <a href="https://data.marine.copernicus.eu/-/qcecrekxcb">Global Ocean Physics Analysis and Forecast</a>. E.U. Copernicus Marine Service Information (CMEMS). Marine Data Store (MDS). DOI: <a href="https://doi.org/10.48670/moi-00016" class="uri">https://doi.org/10.48670/moi-00016</a> (Accessed on 31 08 2026)</p>
+<section id="en-generating-lines-parallel-to-the-peruvian-coast" class="level1">
+<h1>[EN] Generating Lines Parallel to the Peruvian Coast</h1>
+<section id="method-1-shiny-app" class="level2">
+<h2 data-anchor-id="method-1-shiny-app">Method 1: Shiny App</h2>
+<p>If we only need parallel lines at specific integer nautical mile distances, we can use a Shiny app I developed, which is available at:</p>
+<p><a href="https://01a0b12b-4a16-f145-4617-420ede0a160b.share.connect.posit.cloud/" class="uri">https://01a0b12b-4a16-f145-4617-420ede0a160b.share.connect.posit.cloud/</a></p>
+<p>This Shiny application allows users to interactively visualize different buffers or distance lines from the Peruvian coastline, for distances ranging from 1 to 300 nautical miles. Users can select multiple distances, view the results on OpenStreetMap, topographic, or satellite basemaps, and download the selected geometries in GeoPackage format for use in other geospatial analysis projects. The source code for this Shiny app is available in the repository <a href="https://github.com/LuisLauM/peruvian_buffers" class="uri">https://github.com/LuisLauM/peruvian_buffers</a>.</p>
+<section id="how-to-use" class="level3">
+<h3 data-anchor-id="how-to-use">How to Use</h3>
+<p>The controls are quite straightforward:</p>
+<ul>
+<li><p>A text input field where users can enter any INTEGER values between 1 and 300, separated by commas. These values will be used to generate the corresponding parallel lines.</p></li>
+<li><p>A dropdown menu where users can choose from three basemap visualization options.</p></li>
+<li><p>A button to download the selected parallel lines as a GeoPackage file.</p></li>
+</ul>
+</section>
+<section id="what-to-do-next" class="level3">
+<h3 data-anchor-id="what-to-do-next">What to Do Next?</h3>
+<p>The Shiny app allows users to download a file in GeoPackage format. This type of file can subsequently be read by multiple platforms, including ArcGIS, QGIS, Python, and, of course, R.</p>
+<p>Below, I provide an example of the commands required to read this type of file:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">require</span>(sf)</span>
+<span id="cb1-2"></span>
+<span id="cb1-3">parallels <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_read</span>(</span>
+<span id="cb1-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dsn =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"buffers_costa_50_100_150_200_300.gpkg"</span>, </span>
+<span id="cb1-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">layer =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"buffers_costa"</span>,</span>
+<span id="cb1-6">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quiet =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb1-7">)</span>
+<span id="cb1-8"></span>
+<span id="cb1-9">parallels</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 5 features and 2 fields
+Geometry type: MULTILINESTRING
+Dimension:     XY
+Bounding box:  xmin: -86.33183 ymin: -34.8773 xmax: -70.92157 ymax: 9.571371
+Geodetic CRS:  WGS 84
+  featurecla distancia_mn                           geom
+1       Land           50 MULTILINESTRING ((-82.15091...
+2       Land          100 MULTILINESTRING ((-82.98591...
+3       Land          150 MULTILINESTRING ((-83.82081...
+4       Land          200 MULTILINESTRING ((-84.6557 ...
+5       Land          300 MULTILINESTRING ((-86.30878...</code></pre>
+</div>
+</div>
+<p>To plot the lines from the loaded object, we can use:</p>
+<ul>
+<li>Base R graphics:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> parallels[,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>])</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://luislaum.github.io/home/blog/peruvian_buffers/peruvian_buffers_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>ggplot2 environment:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">require</span>(ggplot2)</span>
+<span id="cb4-2"></span>
+<span id="cb4-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-4">  </span>
+<span id="cb4-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf</span>(</span>
+<span id="cb4-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(</span>
+<span id="cb4-7">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.factor</span>(distancia_mn)</span>
+<span id="cb4-8">    ),</span>
+<span id="cb4-9">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> parallels</span>
+<span id="cb4-10">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-11">  </span>
+<span id="cb4-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-13">  </span>
+<span id="cb4-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Distance (mn)"</span>)</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://luislaum.github.io/home/blog/peruvian_buffers/peruvian_buffers_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="method-2" class="level2">
+<h2 data-anchor-id="method-2">Method 2</h2>
+<p>What if I need to generate parallel lines at an exact distance from the coastline (not necessarily an integer number of nautical miles)? One option is to use the buffer-generation script from the Shiny app, available in my repository, and modify the predefined values in the <code>bufferDistances_nm</code> vector: <a href="https://github.com/LuisLauM/peruvian_buffers/blob/1d532a12ece40cbf88a833b7a2873a8e46aecdd6/allBuffers_generator.R#L47">link</a>.</p>
+<p>Another option is to use the <code>peruvian_buffers</code> function, available in my <a href="https://github.com/LuisLauM/ruisu">ruisu</a> package. The simplest call only requires defining a numeric vector of distances:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Install ruisu from Github (run just once)</span></span>
+<span id="cb5-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># remotes::install_github("LuisLauM/ruisu")</span></span>
+<span id="cb5-3"></span>
+<span id="cb5-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">require</span>(ruisu)</span>
+<span id="cb5-5"></span>
+<span id="cb5-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">peruvian_buffers</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">distances =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">150</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">300</span>))</span></code></pre></div></div>
+</div>
+<p>However, <code>peruvian_buffers</code> also allows users to modify the units (the <code>units</code> argument) and the reference coastline section used to generate the <em>buffers</em> (the <code>subset_limits</code> argument).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">peruvian_buffers</span>(</span>
+<span id="cb6-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">distances =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">150</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">150</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">300</span>),</span>
+<span id="cb6-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">units =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"km"</span>, </span>
+<span id="cb6-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subset_limits =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb6-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">150</span>, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">70</span>), </span>
+<span id="cb6-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span>
+<span id="cb6-7">  )</span>
+<span id="cb6-8">)</span></code></pre></div></div>
+</div>
+<p>The returned object is a list of <code>sf</code> objects.</p>
+<p>This function is very recent and is therefore likely to undergo further improvements or corrections. If you encounter any issues or have suggestions for improvement, please submit them through a GitHub <em>Issue</em>: <a href="https://github.com/LuisLauM/ruisu/issues/new">link</a></p>
+<hr>
+</section>
+</section>
+<section id="es-generar-líneas-paralelas-a-la-costa-peruana" class="level1">
+<h1>[ES] Generar líneas paralelas a la costa peruana</h1>
+<section id="método-1-app-de-shiny" class="level2">
+<h2 data-anchor-id="método-1-app-de-shiny">Método 1: app de Shiny</h2>
+<p>Si solo necesitamos las líneas paralelas para cierto valor entero en millas náuticas, podemos utilizar un app Shiny que desarrollé y que está disponible en:</p>
+<p><a href="https://01a0b12b-4a16-f145-4617-420ede0a160b.share.connect.posit.cloud/" class="uri">https://01a0b12b-4a16-f145-4617-420ede0a160b.share.connect.posit.cloud/</a></p>
+<p>Esta aplicación Shiny permite visualizar de forma interactiva distintos buffers o líneas de distancia respecto a la costa del Perú, para valores entre 1 y 300 millas náuticas. El usuario puede seleccionar varias distancias, consultar los resultados sobre mapas base de OpenStreetMap, topográficos o satelitales, y descargar las geometrías elegidas en formato GeoPackage para utilizarlas en otros proyectos de análisis geoespacial. El código de este Shiny se halla disponible en el repositorio <a href="https://github.com/LuisLauM/peruvian_buffers" class="uri">https://github.com/LuisLauM/peruvian_buffers</a>.</p>
+<section id="modo-de-uso" class="level3">
+<h3 data-anchor-id="modo-de-uso">Modo de uso</h3>
+<p>Los controles son bastante simples:</p>
+<ul>
+<li><p>Un campo de texto en donde el usuario puede colocar cualquier valor ENTERO entre 1 y 300 separado por comas. Estos valores serán utilizados para dibujar las líneas paralelas correspondiente.</p></li>
+<li><p>Un campo desplegable en donde el usuario puede elegir entre tres opciones de visualización para el mapa de fondo.</p></li>
+<li><p>Un botón para descargar las paralelas elegidas a modo de un archivo en formato GeoPackage.</p></li>
+</ul>
+</section>
+<section id="qué-hacer-luego" class="level3">
+<h3 data-anchor-id="qué-hacer-luego">¿Qué hacer luego?</h3>
+<p>El app de Shiny permite descargar un archivo en formato GeoPackage. Este tipo de archivos puede ser leído posteriormente en múltiples plataformas: ArcGis, QGIS, Python y, por supuesto, en R.</p>
+<p>A continuación, presento un ejemplo de los comandos necesarios para leer un archivo de este tipo:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">require</span>(sf)</span>
+<span id="cb7-2"></span>
+<span id="cb7-3">paralelas <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">st_read</span>(</span>
+<span id="cb7-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">dsn =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"buffers_costa_50_100_150_200_300.gpkg"</span>, </span>
+<span id="cb7-5">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">layer =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"buffers_costa"</span>,</span>
+<span id="cb7-6">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">quiet =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb7-7">)</span>
+<span id="cb7-8"></span>
+<span id="cb7-9">paralelas</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 5 features and 2 fields
+Geometry type: MULTILINESTRING
+Dimension:     XY
+Bounding box:  xmin: -86.33183 ymin: -34.8773 xmax: -70.92157 ymax: 9.571371
+Geodetic CRS:  WGS 84
+  featurecla distancia_mn                           geom
+1       Land           50 MULTILINESTRING ((-82.15091...
+2       Land          100 MULTILINESTRING ((-82.98591...
+3       Land          150 MULTILINESTRING ((-83.82081...
+4       Land          200 MULTILINESTRING ((-84.6557 ...
+5       Land          300 MULTILINESTRING ((-86.30878...</code></pre>
+</div>
+</div>
+<p>Para graficar las líneas del objeto cargado, podemos hacerlo a través de:</p>
+<ul>
+<li>Entorno graphics:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">plot</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> paralelas[,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>])</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://luislaum.github.io/home/blog/peruvian_buffers/peruvian_buffers_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Entorno ggplot2:</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">require</span>(ggplot2)</span>
+<span id="cb10-2"></span>
+<span id="cb10-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-4">  </span>
+<span id="cb10-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_sf</span>(</span>
+<span id="cb10-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mapping =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(</span>
+<span id="cb10-7">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">as.factor</span>(distancia_mn)</span>
+<span id="cb10-8">    ),</span>
+<span id="cb10-9">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">data =</span> paralelas</span>
+<span id="cb10-10">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-11">  </span>
+<span id="cb10-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_minimal</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb10-13">  </span>
+<span id="cb10-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Distancia (mn)"</span>)</span></code></pre></div></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://luislaum.github.io/home/blog/peruvian_buffers/peruvian_buffers_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="2400"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="método-2" class="level2">
+<h2 data-anchor-id="método-2">Método 2</h2>
+<p>¿Y qué puedo hacer si necesito dibujar paralelas con un valor de distancia a la costa exacto (no entero en millas náuticas). Una opción puede ser utilizar el script generador de buffers del app Shiny, disponible en mi repositorio, y cambiar los valores predefinidos en el vector <code>bufferDistances_nm</code>: <a href="https://github.com/LuisLauM/peruvian_buffers/blob/1d532a12ece40cbf88a833b7a2873a8e46aecdd6/allBuffers_generator.R#L47">link</a>.</p>
+<p>Otra opción también es utilizar la funcíon <code>peruvian_buffers</code>, disponible dentro de mi paquete <a href="https://github.com/LuisLauM/ruisu">ruisu</a>. El comando más sencilo requiere solo definir un vector numérico para las distancias:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Instalar ruisu desde Github (ejecutar solo una vez)</span></span>
+<span id="cb11-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># remotes::install_github("LuisLauM/ruisu")</span></span>
+<span id="cb11-3"></span>
+<span id="cb11-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">require</span>(ruisu)</span>
+<span id="cb11-5"></span>
+<span id="cb11-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">peruvian_buffers</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">distances =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">150</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">300</span>))</span></code></pre></div></div>
+</div>
+<p>Sin embargo, <code>peruvian_buffers</code> permite también modificar las unidades (argumento <code>units</code>) y la sección de línea de costa de referencia para dibujar los <em>buffers</em> (argumento <code>subset_limits</code>).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">peruvian_buffers</span>(</span>
+<span id="cb12-2">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">distances =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">150</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">150</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">300</span>),</span>
+<span id="cb12-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">units =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"km"</span>, </span>
+<span id="cb12-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subset_limits =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">list</span>(</span>
+<span id="cb12-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">150</span>, <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">70</span>), </span>
+<span id="cb12-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span>
+<span id="cb12-7">  )</span>
+<span id="cb12-8">)</span></code></pre></div></div>
+</div>
+<p>El objeto retornado será una lista de objetos <code>sf</code>.</p>
+<p>Esta función es muy reciente, por lo que es muy susceptible a mejoras o correcciones. Para cualquiera de esos casos, por favor, hazlo a través de un <em>Issue</em> en Github: <a href="https://github.com/LuisLauM/ruisu/issues/new">link</a></p>
+
+
+</section>
+</section>
+ ]]></description>
+  <category>R</category>
+  <category>tutorial</category>
+  <guid>https://luislaum.github.io/home/blog/peruvian_buffers/peruvian_buffers.html</guid>
+  <pubDate>Wed, 23 Sep 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://luislaum.github.io/home/blog/peruvian_buffers/banner.png" medium="image" type="image/png" height="63" width="144"/>
+</item>
 <item>
   <title>Downloading Copernicus Marine data from R</title>
   <link>https://luislaum.github.io/home/blog/download-envir-data/download-envir-data.html</link>
