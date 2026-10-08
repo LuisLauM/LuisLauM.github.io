@@ -17,6 +17,11 @@ about:
       icon: envelope
 ---
 
+::: {.cv-links}
+[{{< fa file-lines size=4x >}} [CV-en]{.cv-label}](files/CV.pdf){target="_blank" title="Download CV (English)"}
+[{{< fa file-lines size=4x >}} [CV-es]{.cv-label}](files/CV-es.pdf){target="_blank" title="Descargar CV (Español)"}
+:::
+
 ### EN
 
 My full name is Luis Wencheng Lau-Medrano, **I am** Peruvian by birth and a passionate (geek) about technology, marine biology, data analysis, Legos and travel. Since I was a child, I have been fascinated by the digital world and biology, so when I became an adult, I decided to combine both passions to solve problems and improve people's lives (and my own, which I am working on).
