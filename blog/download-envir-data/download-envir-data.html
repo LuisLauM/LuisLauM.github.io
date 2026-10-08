@@ -424,54 +424,31 @@ Figure&nbsp;2: Example of the list of datasets available from an ERDDAP data sou
 </figcaption>
 </figure>
 </div>
-<p><a href="#fig-erddap-dataset-list" class="quarto-xref">Figure&nbsp;4</a> shows what the dataset list of an ERDDAP data source looks like. We will use the dataset called <em>Sea-Surface Temperature, NOAA ACSPO Daily Global 0.02° Gridded Super-collated SST and Thermal Fronts Reanalysis, 2012-present, Daily (L3S-LEO Kelvin)</em>, whose Dataset ID is <strong>noaacwLEOACSPOSSTL3SKDaily</strong>.</p>
+<p><a href="#fig-erddap-dataset-list" class="quarto-xref">Figure&nbsp;4</a> shows what the dataset list of an ERDDAP data source looks like. We will use the dataset called <em>Chlorophyll, NOAA NOAA-20 VIIRS, Near Real-Time, Global 4km, Level 3, 2017-present, Weekly</em>, whose Dataset ID is <strong>noaacwN20VIIRSchlaWeekly</strong>.</p>
 <p>Using this ID, we can use the functions provided by <strong>rerddap</strong> to find out the available domain for downloading data:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(rerddap)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Cargando paquete requerido: rerddap</code></pre>
+<pre><code>Loading required package: rerddap</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sourceInfo <span class="ot">&lt;-</span> <span class="fu">info</span>(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">datasetid =</span> <span class="st">"noaacwLEOACSPOSSTL3SKDaily"</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">datasetid =</span> <span class="st">"noaacwN20VIIRSchlaWeekly"</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://coastwatch.noaa.gov/erddap/"</span> </span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>sourceInfo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;ERDDAP(TM) info&gt; noaacwLEOACSPOSSTL3SKDaily 
+<pre><code>&lt;ERDDAP(TM) info&gt; noaacwN20VIIRSchlaWeekly 
  Base URL: https://coastwatch.noaa.gov/erddap 
  Dataset Type: griddap 
  Dimensions (range):  
-     time: (2000-02-24T12:00:00Z, 2026-07-09T12:00:00Z) 
-     latitude: (-89.99, 89.99) 
-     longitude: (-179.99, 179.99) 
+     time: (2021-08-21T12:00:00Z, 2026-09-26T12:00:00Z) 
+     altitude: (0.0, 0.0) 
+     latitude: (-89.75625000000002, 89.75625000000001) 
+     longitude: (-180.01875, 180.01874999999998) 
  Variables:  
-     dt_analysis: 
-         Units: kelvin 
-     l2p_flags: 
-     l3s_flags: 
-     measurement_dtime: 
-         Units: seconds 
-     quality_level: 
-     satellite_zenith_angle: 
-         Units: degrees 
-     sea_ice_fraction: 
-         Units: 1 
-     sea_surface_temperature: 
-         Units: kelvin 
-     sses_bias: 
-         Units: kelvin 
-     sses_standard_deviation: 
-         Units: kelvin 
-     sst_count: 
-     sst_dtime: 
-         Units: seconds 
-     sst_front_position: 
-     sst_gradient_magnitude: 
-         Units: kelvin/km 
-     sst_source: 
-     wind_speed: 
-         Units: m s-1 </code></pre>
+     chlor_a: 
+         Units: mg m^-3 </code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled" title="Más fuentes ERDDAP">
@@ -664,52 +641,29 @@ Figure&nbsp;4: Ejemplo del listado de datasets disponibles en una fuente de ERDD
 </figcaption>
 </figure>
 </div>
-<p>En la <a href="#fig-erddap-dataset-list" class="quarto-xref">Figure&nbsp;4</a> se muestra cómo luce el listado de una fuente cualquiera en ERDDAP. Vamos a tomar la fuente llamada <em>Sea-Surface Temperature, NOAA ACSPO Daily Global 0.02° Gridded Super-collated SST and Thermal Fronts Reanalysis, 2012-present, Daily (L3S-LEO Kelvin)</em>, cuyo Dataset ID es <strong>noaacwLEOACSPOSSTL3SKDaily</strong>.</p>
+<p>En la <a href="#fig-erddap-dataset-list" class="quarto-xref">Figure&nbsp;4</a> se muestra cómo luce el listado de una fuente cualquiera en ERDDAP. Vamos a tomar la fuente llamada <em>Chlorophyll, NOAA NOAA-20 VIIRS, Near Real-Time, Global 4km, Level 3, 2017-present, Weekly</em>, cuyo Dataset ID es <strong>noaacwN20VIIRSchlaWeekly</strong>.</p>
 <p>A partir de este ID, podremos utilizar las funciones de rerddap para averiguar cuál es el dominio disponible para la descarga de datos:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(rerddap)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>sourceInfo <span class="ot">&lt;-</span> <span class="fu">info</span>(</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">datasetid =</span> <span class="st">"noaacwLEOACSPOSSTL3SKDaily"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">datasetid =</span> <span class="st">"noaacwN20VIIRSchlaWeekly"</span>,</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">"https://coastwatch.noaa.gov/erddap/"</span> </span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>sourceInfo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&lt;ERDDAP(TM) info&gt; noaacwLEOACSPOSSTL3SKDaily 
+<pre><code>&lt;ERDDAP(TM) info&gt; noaacwN20VIIRSchlaWeekly 
  Base URL: https://coastwatch.noaa.gov/erddap 
  Dataset Type: griddap 
  Dimensions (range):  
-     time: (2000-02-24T12:00:00Z, 2026-07-09T12:00:00Z) 
-     latitude: (-89.99, 89.99) 
-     longitude: (-179.99, 179.99) 
+     time: (2021-08-21T12:00:00Z, 2026-09-26T12:00:00Z) 
+     altitude: (0.0, 0.0) 
+     latitude: (-89.75625000000002, 89.75625000000001) 
+     longitude: (-180.01875, 180.01874999999998) 
  Variables:  
-     dt_analysis: 
-         Units: kelvin 
-     l2p_flags: 
-     l3s_flags: 
-     measurement_dtime: 
-         Units: seconds 
-     quality_level: 
-     satellite_zenith_angle: 
-         Units: degrees 
-     sea_ice_fraction: 
-         Units: 1 
-     sea_surface_temperature: 
-         Units: kelvin 
-     sses_bias: 
-         Units: kelvin 
-     sses_standard_deviation: 
-         Units: kelvin 
-     sst_count: 
-     sst_dtime: 
-         Units: seconds 
-     sst_front_position: 
-     sst_gradient_magnitude: 
-         Units: kelvin/km 
-     sst_source: 
-     wind_speed: 
-         Units: m s-1 </code></pre>
+     chlor_a: 
+         Units: mg m^-3 </code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled" title="Más fuentes ERDDAP">
