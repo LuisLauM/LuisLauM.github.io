@@ -166,12 +166,21 @@ get_envir_data <- \(con, index_name = "index", metadata = TRUE, quiet = FALSE){
   
   naVals <- sourceLines[rowIndex[2] + 1] |> as.numeric() |> as.character()
   
+  tempFile <- tempfile()
+  
+  gsub(
+    x = sourceLines[seq(rowIndex[1] + 1, diff(rowIndex) + rowIndex[1])], 
+    pattern = "[[:alpha:]]*", 
+    replacement = "", 
+    ignore.case = TRUE
+  ) |> 
+    
+    writeLines(con = tempFile, sep = "\n")
+  
   # Reading data
   envirIndex <- read.table(
-    file = con, 
+    file = tempFile, 
     header = FALSE, 
-    nrows = diff(rowIndex),
-    skip = rowIndex[1], 
     colClasses = "character"
   ) |> 
     

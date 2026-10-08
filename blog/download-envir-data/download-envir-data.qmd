@@ -36,7 +36,7 @@ For ERDDAP, there is already an [R package on CRAN](https://cran.r-project.org/p
 
 ![Example of the list of datasets available from an ERDDAP data source.](images/clipboard-518701815.png){#fig-erddap-dataset-list}
 
-@fig-erddap-dataset-list shows what the dataset list of an ERDDAP data source looks like. We will use the dataset called *Sea-Surface Temperature, NOAA ACSPO Daily Global 0.02° Gridded Super-collated SST and Thermal Fronts Reanalysis, 2012-present, Daily (L3S-LEO Kelvin)*, whose Dataset ID is **noaacwLEOACSPOSSTL3SKDaily**.
+@fig-erddap-dataset-list shows what the dataset list of an ERDDAP data source looks like. We will use the dataset called *Chlorophyll, NOAA NOAA-20 VIIRS, Near Real-Time, Global 4km, Level 3, 2017-present, Weekly*, whose Dataset ID is **noaacwN20VIIRSchlaWeekly**.
 
 Using this ID, we can use the functions provided by **rerddap** to find out the available domain for downloading data:
 
@@ -44,7 +44,7 @@ Using this ID, we can use the functions provided by **rerddap** to find out the 
 require(rerddap)
 
 sourceInfo <- info(
-  datasetid = "noaacwLEOACSPOSSTL3SKDaily",
+  datasetid = "noaacwN20VIIRSchlaWeekly",
   url = "https://coastwatch.noaa.gov/erddap/" 
 )
 
@@ -230,7 +230,7 @@ Para ERDDAP, existe ya desarrollado un [paquete en CRAN](https://cran.r-project.
 
 ![Ejemplo del listado de datasets disponibles en una fuente de ERDDAP.](images/clipboard-518701815.png){#fig-erddap-dataset-list}
 
-En la @fig-erddap-dataset-list se muestra cómo luce el listado de una fuente cualquiera en ERDDAP. Vamos a tomar la fuente llamada *Sea-Surface Temperature, NOAA ACSPO Daily Global 0.02° Gridded Super-collated SST and Thermal Fronts Reanalysis, 2012-present, Daily (L3S-LEO Kelvin)*, cuyo Dataset ID es **noaacwLEOACSPOSSTL3SKDaily**.
+En la @fig-erddap-dataset-list se muestra cómo luce el listado de una fuente cualquiera en ERDDAP. Vamos a tomar la fuente llamada *Chlorophyll, NOAA NOAA-20 VIIRS, Near Real-Time, Global 4km, Level 3, 2017-present, Weekly*, cuyo Dataset ID es **noaacwN20VIIRSchlaWeekly**.
 
 A partir de este ID, podremos utilizar las funciones de rerddap para averiguar cuál es el dominio disponible para la descarga de datos:
 
@@ -238,7 +238,7 @@ A partir de este ID, podremos utilizar las funciones de rerddap para averiguar c
 require(rerddap)
 
 sourceInfo <- info(
-  datasetid = "noaacwLEOACSPOSSTL3SKDaily",
+  datasetid = "noaacwN20VIIRSchlaWeekly",
   url = "https://coastwatch.noaa.gov/erddap/" 
 )
 
