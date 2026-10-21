@@ -38,6 +38,8 @@ The controls are quite straightforward:
 
 * A text input field where users can enter any INTEGER values between 1 and 300, separated by commas. These values will be used to generate the corresponding parallel lines.
 
+* A selector that lets you choose whether to display lines or polygons.
+
 * A dropdown menu where users can choose from three basemap visualization options.
 
 * A button to download the selected parallel lines as a GeoPackage file.
@@ -152,6 +154,8 @@ Esta aplicación Shiny permite visualizar de forma interactiva distintos buffers
 Los controles son bastante simples: 
 
 * Un campo de texto en donde el usuario puede colocar cualquier valor ENTERO entre 1 y 300 separado por comas. Estos valores serán utilizados para dibujar las líneas paralelas correspondiente.
+
+* Un selector que permite definir si desea obtener Líneas o Polígonos.
 
 * Un campo desplegable en donde el usuario puede elegir entre tres opciones de visualización para el mapa de fondo.
 
