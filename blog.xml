@@ -13,8 +13,10 @@
 <url>https://luislaum.github.io/home/blog-photo.jpg</url>
 <title>Beneath the surface 🌊</title>
 <link>https://luislaum.github.io/home/blog.html</link>
+<height>96</height>
+<width>144</width>
 </image>
-<generator>quarto-1.10.20</generator>
+<generator>quarto-1.11.9</generator>
 <lastBuildDate>Wed, 23 Sep 2026 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Drawing parallel coast lines off Peru</title>
@@ -588,7 +590,7 @@ font-style: inherit;">"https://coastwatch.noaa.gov/erddap/"</span> </span>
          Units: mg m^-3 </code></pre>
 </div>
 </div>
-<div class="callout callout-style-default callout-caution callout-titled" title="Más fuentes ERDDAP">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1099,7 +1101,7 @@ font-style: inherit;">"https://coastwatch.noaa.gov/erddap/"</span> </span>
          Units: mg m^-3 </code></pre>
 </div>
 </div>
-<div class="callout callout-style-default callout-caution callout-titled" title="Más fuentes ERDDAP">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1567,7 +1569,7 @@ font-style: inherit;">require</span>(plotly)</span></code></pre></div></div>
 <section id="icen-índice-costero-el-niñoel-niño-coastal-index" class="level2">
 <h2 data-anchor-id="icen-índice-costero-el-niñoel-niño-coastal-index">ICEN (Índice Costero El Niño/EL Niño Coastal Index)</h2>
 <p>Reference: <a href="https://siofen.imarpe.gob.pe/nivel2/indice-costero-el-nino-icen" class="uri">https://siofen.imarpe.gob.pe/nivel2/indice-costero-el-nino-icen</a></p>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1710,7 +1712,7 @@ font-style: inherit;">"Niño Extraordinario"</span></span>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1743,7 +1745,7 @@ font-style: inherit;">"Niño Extraordinario"</span></span>
 <p>Reference: <a href="https://psl.noaa.gov/data/timeseries/month/" class="uri">https://psl.noaa.gov/data/timeseries/month/</a></p>
 <p>[EN]: NOAA website keep a catalogue of several environmental indices, most of them up to 2026. Through <code>get_envir_data</code> function, it is possible to read and load any of them as a data table (<code>tibble</code> object).</p>
 <p>[ES]: En el sitio web de NOAA se hallan disponibles diversos índices actualizados (la mayoría) al 2026. A través de la función <code>get_envir_data</code> es posible leer los valores directamente a R a manera de una tabla (objeto <code>tibble</code>).</p>
-<div class="callout callout-style-default callout-note callout-titled" title="`get_envir_data` function">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2155,7 +2157,7 @@ font-style: inherit;">metadata =</span> metadata)</span>
 </div>
 <section id="niño-12-hadisst" class="level3">
 <h3 data-anchor-id="niño-12-hadisst">Niño 1+2 (HadISST)</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2198,7 +2200,7 @@ font-style: inherit;">TRUE</span></span>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2228,7 +2230,7 @@ font-style: inherit;">TRUE</span></span>
 </section>
 <section id="niño-12-ersstv6" class="level3">
 <h3 data-anchor-id="niño-12-ersstv6">Niño 1+2 (ERSSTv6)</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2271,7 +2273,7 @@ font-style: inherit;">TRUE</span></span>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2301,7 +2303,7 @@ font-style: inherit;">TRUE</span></span>
 </section>
 <section id="niño-3-hadisst" class="level3">
 <h3 data-anchor-id="niño-3-hadisst">Niño 3 (HadISST)</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2344,7 +2346,7 @@ font-style: inherit;">TRUE</span></span>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2374,7 +2376,7 @@ font-style: inherit;">TRUE</span></span>
 </section>
 <section id="niño-3-ersstv6" class="level3">
 <h3 data-anchor-id="niño-3-ersstv6">Niño 3 (ERSSTv6)</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2417,7 +2419,7 @@ font-style: inherit;">TRUE</span></span>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2447,7 +2449,7 @@ font-style: inherit;">TRUE</span></span>
 </section>
 <section id="niño-3.4-hadisst" class="level3">
 <h3 data-anchor-id="niño-3.4-hadisst">Niño 3.4 (HadISST)</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2490,7 +2492,7 @@ font-style: inherit;">TRUE</span></span>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2520,7 +2522,7 @@ font-style: inherit;">TRUE</span></span>
 </section>
 <section id="niño-3.4-ersstv6" class="level3">
 <h3 data-anchor-id="niño-3.4-ersstv6">Niño 3.4 (ERSSTv6)</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2563,7 +2565,7 @@ font-style: inherit;">TRUE</span></span>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2593,7 +2595,7 @@ font-style: inherit;">TRUE</span></span>
 </section>
 <section id="niño-4-hadisst" class="level3">
 <h3 data-anchor-id="niño-4-hadisst">Niño 4 (HadISST)</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2636,7 +2638,7 @@ font-style: inherit;">TRUE</span></span>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2666,7 +2668,7 @@ font-style: inherit;">TRUE</span></span>
 </section>
 <section id="niño-4-ersstv6" class="level3">
 <h3 data-anchor-id="niño-4-ersstv6">Niño 4 (ERSSTv6)</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2709,7 +2711,7 @@ font-style: inherit;">TRUE</span></span>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2739,7 +2741,7 @@ font-style: inherit;">TRUE</span></span>
 </section>
 <section id="multivariate-enso-index-mei-extended" class="level3">
 <h3 data-anchor-id="multivariate-enso-index-mei-extended">Multivariate ENSO Index (MEI Extended)</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2782,7 +2784,7 @@ font-style: inherit;">TRUE</span></span>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2812,7 +2814,7 @@ font-style: inherit;">TRUE</span></span>
 </section>
 <section id="oceanic-niño-index-oni" class="level3">
 <h3 data-anchor-id="oceanic-niño-index-oni">Oceanic Niño Index (ONI)</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2855,7 +2857,7 @@ font-style: inherit;">TRUE</span></span>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2885,7 +2887,7 @@ font-style: inherit;">TRUE</span></span>
 </section>
 <section id="relative-oceanic-niño-index-roni" class="level3">
 <h3 data-anchor-id="relative-oceanic-niño-index-roni">Relative Oceanic Niño Index (RONI)</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2928,7 +2930,7 @@ font-style: inherit;">TRUE</span></span>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2958,7 +2960,7 @@ font-style: inherit;">TRUE</span></span>
 </section>
 <section id="central-tropical-pacific-olr-index" class="level3">
 <h3 data-anchor-id="central-tropical-pacific-olr-index">Central Tropical Pacific OLR Index</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3001,7 +3003,7 @@ font-style: inherit;">TRUE</span></span>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3031,7 +3033,7 @@ font-style: inherit;">TRUE</span></span>
 </section>
 <section id="pacific-warm-pool" class="level3">
 <h3 data-anchor-id="pacific-warm-pool">Pacific Warm Pool</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3074,7 +3076,7 @@ font-style: inherit;">TRUE</span></span>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3104,7 +3106,7 @@ font-style: inherit;">TRUE</span></span>
 </section>
 <section id="trans-niño-index-tni" class="level3">
 <h3 data-anchor-id="trans-niño-index-tni">Trans-Niño Index (TNI)</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3147,7 +3149,7 @@ font-style: inherit;">TRUE</span></span>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3177,7 +3179,7 @@ font-style: inherit;">TRUE</span></span>
 </section>
 <section id="equatorial-central-pacific-heat-content-160e-80w" class="level3">
 <h3 data-anchor-id="equatorial-central-pacific-heat-content-160e-80w">Equatorial Central Pacific Heat Content: 160E-80W</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3220,7 +3222,7 @@ font-style: inherit;">TRUE</span></span>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3250,7 +3252,7 @@ font-style: inherit;">TRUE</span></span>
 </section>
 <section id="bivariate-enso-time-series-best" class="level3">
 <h3 data-anchor-id="bivariate-enso-time-series-best">Bivariate ENSO Time-series (BEST)</h3>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3297,7 +3299,7 @@ font-style: inherit;">TRUE</span></span>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3329,7 +3331,7 @@ font-style: inherit;">TRUE</span></span>
 <section id="pdo-pacific-decadal-oscillation" class="level2">
 <h2 data-anchor-id="pdo-pacific-decadal-oscillation">PDO (Pacific Decadal Oscillation)</h2>
 <p>Reference: <a href="https://www.ncei.noaa.gov/access/monitoring/pdo/" class="uri">https://www.ncei.noaa.gov/access/monitoring/pdo/</a></p>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3476,7 +3478,7 @@ font-style: inherit;">99</span>)</span></code></pre></div></div>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3507,7 +3509,7 @@ font-style: inherit;">99</span>)</span></code></pre></div></div>
 <section id="tpi-tripole-index-for-the-interdecadal-pacific-oscillation" class="level2">
 <h2 data-anchor-id="tpi-tripole-index-for-the-interdecadal-pacific-oscillation">TPI (Tripole Index for the Interdecadal Pacific Oscillation)</h2>
 <p>Reference: <a href="https://psl.noaa.gov/data/timeseries/IPOTPI/" class="uri">https://psl.noaa.gov/data/timeseries/IPOTPI/</a></p>
-<div class="callout callout-style-default callout-note callout-titled" title="R">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3708,7 +3710,7 @@ font-style: inherit;">99</span>)</span></code></pre></div></div>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Data">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -4115,7 +4117,7 @@ Note
   <category>tips</category>
   <guid>https://luislaum.github.io/home/blog/powertoys-tools/powertoys-tools.html</guid>
   <pubDate>Wed, 30 Apr 2025 00:00:00 GMT</pubDate>
-  <media:content url="https://luislaum.github.io/home/blog/powertoys-tools/banner.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://luislaum.github.io/home/blog/powertoys-tools/banner.jpg" medium="image" type="image/jpeg" height="83" width="144"/>
 </item>
 <item>
   <title>How to convert snippets from RStudio format to Positron format</title>
@@ -5221,7 +5223,7 @@ font-style: inherit;">plot</span>()</span>
   <category>tutorial</category>
   <guid>https://luislaum.github.io/home/blog/timeline-with-googlevis/timeline-with-googlevis.html</guid>
   <pubDate>Thu, 19 Dec 2024 00:00:00 GMT</pubDate>
-  <media:content url="https://luislaum.github.io/home/blog/timeline-with-googlevis/banner.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://luislaum.github.io/home/blog/timeline-with-googlevis/banner.jpg" medium="image" type="image/jpeg" height="89" width="144"/>
 </item>
 <item>
   <title>Quarto template for a scientific article draft</title>
@@ -5246,7 +5248,7 @@ font-style: inherit;">plot</span>()</span>
 <li><p>Zotero-Quarto-RStudio integration: Citation management will make use of the tools explained in <a href="https://luislaum.github.io/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html">my previous post</a>, so <strong>I recommend you to read and do what is explained there</strong>.</p></li>
 <li><p>Some experience in writing documents using Quarto (or R markdown). The best way to learn how to use Quarto is using it and find what you need to get what you need from online manuals (e.g.&nbsp;from <a href="https://quarto.org/">Quarto</a>), <a href="https://youtu.be/_f3latmOhew?feature=shared">videos on YT</a> or questions on several forums (e.g.&nbsp;<a href="https://stackoverflow.com/questions/tagged/quarto">Stackoverflow</a>) and blogs.</p></li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled" title="Files and order">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -5418,7 +5420,7 @@ Important
 <li><p>Integración Zotero-Quarto-RStudio: El manejo de citas se debe hacer a través de las herramientas explicadas en <a href="https://luislaum.github.io/blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html">mi post anterior</a>, así que <strong>les recomiendo leerlo previamente e implementar lo explicado ahí</strong>.</p></li>
 <li><p>Experiencia en la escritura de documentos usando Quarto (o R markdown). La mejor manera de aprender a usar Quarto es usándolo e ir hallando lo necesario para obtener lo que necesitamos a partir de manuales en línea (e.g.&nbsp;desde la propia web de <a href="https://quarto.org/">Quarto</a>), <a href="https://youtu.be/_f3latmOhew?feature=shared">vídeos en YT</a> o preguntas en diversos foros (e.g.&nbsp;<a href="https://stackoverflow.com/questions/tagged/quarto">Stackoverflow</a>).</p></li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled" title="Archivos, orden y modo de trabajo">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -5780,7 +5782,7 @@ Note
 <li>Now yes, we render the document and we should get:</li>
 </ol>
 <p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-3442020781.png" class="img-fluid"></p>
-<div class="callout callout-style-default callout-note callout-titled" title="Render on Save">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -5986,7 +5988,7 @@ Note
 <li>Ahora sí, renderizamos el documento y deberíamos obtener:</li>
 </ol>
 <p><img src="https://luislaum.github.io/home/blog/zotero-quarto-rstudio/images/clipboard-3442020781.png" class="img-fluid"></p>
-<div class="callout callout-style-default callout-note callout-titled" title="Render on Save">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.20">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,17 +41,18 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0ae969d3293726db143f6e9eb89af930.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6cc80a8bb02a5ed8c3abdf9c81a93395.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-a3da2e641472fc8f3514a534a633a6c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-6cc80a8bb02a5ed8c3abdf9c81a93395.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5cdf50f363e3f12cc74eb21df7acfbc4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-e1f7b594c1cf0f7ca9c37b0ad165d25b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-5cdf50f363e3f12cc74eb21df7acfbc4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -103,12 +104,6 @@ ul.task-list li input[type="checkbox"] {
       window['quarto-listing-loaded']();
     }
   });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
   </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
@@ -144,7 +139,7 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 <link rel="alternate" type="application/rss+xml" title="Beneath the surface 🌊" href="blog.xml" data-external="1"></head>
 
-<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -167,6 +162,7 @@ window.Quarto = {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -196,13 +192,19 @@ window.Quarto = {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -296,6 +298,7 @@ window.Quarto = {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -310,15 +313,14 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Beneath the surface 🌊</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -338,8 +340,9 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
+            <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -362,7 +365,7 @@ window.Quarto = {
 </div>
 <div class="quarto-title-meta">
   </div>
-</header> <main class="content" id="quarto-document-content">
+</header> <main class="content" id="quarto-document-content" tabindex="-1">
 
 <p><strong>EN:</strong> Here I will be depositing several articles of very diverse topics.</p>
 <p><strong>ES:</strong> Aquí iré depositando contenido sobre temas muy diversos.</p>
@@ -371,8 +374,8 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="UiUyQ3R1dG9yaWFs" data-listing-date-sort="1790121600000" data-listing-file-modified-sort="1793505396801" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1041">
-<a href="./blog/peruvian_buffers/peruvian_buffers.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="0" data-categories="UiUyQ3R1dG9yaWFs" data-listing-date-sort="1790121600000" data-listing-file-modified-sort="1793639113091" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1041">
+<a href="./blog/peruvian_buffers/peruvian_buffers.html" class="quarto-grid-link no-external-icon">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="./blog/peruvian_buffers/banner.png" class="thumbnail-image card-img" style="height: 150px;">
@@ -381,7 +384,7 @@ window.Quarto = {
 <h5 class="no-anchor card-title listing-title">
 Drawing parallel coast lines off Peru
 </h5>
-<div class="card-text listing-description delink">
+<div class="card-text listing-description">
 <p>How to draw parallel coast lines off Peruvian coast using R | Cómo dibujar líneas paralelas a la costa peruana con R</p>
 </div>
 <div class="card-attribution card-text-small justify">
@@ -394,8 +397,8 @@ Sep 23, 2026
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="UiUyQ3B5dGhvbiUyQ3R1dG9yaWFs" data-listing-date-sort="1789430400000" data-listing-file-modified-sort="1793505396744" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2986">
-<a href="./blog/download-envir-data/download-envir-data.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="1" data-categories="UiUyQ3B5dGhvbiUyQ3R1dG9yaWFs" data-listing-date-sort="1789430400000" data-listing-file-modified-sort="1793639113034" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2986">
+<a href="./blog/download-envir-data/download-envir-data.html" class="quarto-grid-link no-external-icon">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="./blog/download-envir-data/banner.png" class="thumbnail-image card-img" style="height: 150px;">
@@ -404,7 +407,7 @@ Sep 23, 2026
 <h5 class="no-anchor card-title listing-title">
 Downloading Copernicus Marine data from R
 </h5>
-<div class="card-text listing-description delink">
+<div class="card-text listing-description">
 <p>How to subset and download oceanographic data from R | Cómo usar R para extraer y descargar datos oceanográficos</p>
 </div>
 <div class="card-attribution card-text-small justify">
@@ -417,8 +420,8 @@ Sep 15, 2026
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="UiUyQ3R1dG9yaWFs" data-listing-date-sort="1789171200000" data-listing-file-modified-sort="1793505396797" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="35" data-listing-word-count-sort="6966">
-<a href="./blog/pacific-envir-indices/pacific-envir-indices.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="2" data-categories="UiUyQ3R1dG9yaWFs" data-listing-date-sort="1789171200000" data-listing-file-modified-sort="1793639113088" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="35" data-listing-word-count-sort="6966">
+<a href="./blog/pacific-envir-indices/pacific-envir-indices.html" class="quarto-grid-link no-external-icon">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="./blog/pacific-envir-indices/banner.png" class="thumbnail-image card-img" style="height: 150px;">
@@ -427,7 +430,7 @@ Sep 15, 2026
 <h5 class="no-anchor card-title listing-title">
 Main ENSO indices for Pacific Ocean
 </h5>
-<div class="card-text listing-description delink">
+<div class="card-text listing-description">
 <p>Updated visualization and extraction of the four main ENSO-related indices | Visualización actualizada y extracción de 4 principales índices relacionados al ENSO</p>
 </div>
 <div class="card-attribution card-text-small justify">
@@ -440,8 +443,8 @@ Sep 12, 2026
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="V2luZG93cyUyQ21pc2MlMkN0aXBz" data-listing-date-sort="1745971200000" data-listing-file-modified-sort="1793505396826" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2220">
-<a href="./blog/powertoys-tools/powertoys-tools.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="3" data-categories="V2luZG93cyUyQ21pc2MlMkN0aXBz" data-listing-date-sort="1745971200000" data-listing-file-modified-sort="1793639113112" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2220">
+<a href="./blog/powertoys-tools/powertoys-tools.html" class="quarto-grid-link no-external-icon">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="./blog/powertoys-tools/banner.jpg" class="thumbnail-image card-img" style="height: 150px;">
@@ -450,7 +453,7 @@ Sep 12, 2026
 <h5 class="no-anchor card-title listing-title">
 My favorite tools from MS PowerToys
 </h5>
-<div class="card-text listing-description delink">
+<div class="card-text listing-description">
 <p>A quick summary of my favorite tools at PowerToys and how I use them on a daily basis. | Un resumen rápido de mis herramientas favoritas en PowerToys y cómo las uso en el…</p>
 </div>
 <div class="card-attribution card-text-small justify">
@@ -463,8 +466,8 @@ Apr 30, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="UlN0dWRpbyUyQ1Bvc2l0cm9uJTJDdGlwcyUyQ1NoaW55QXBw" data-listing-date-sort="1743638400000" data-listing-file-modified-sort="1793505396739" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1168">
-<a href="./blog/convert-snippets/convert-snippets.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="4" data-categories="UlN0dWRpbyUyQ1Bvc2l0cm9uJTJDdGlwcyUyQ1NoaW55QXBw" data-listing-date-sort="1743638400000" data-listing-file-modified-sort="1793639113030" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1168">
+<a href="./blog/convert-snippets/convert-snippets.html" class="quarto-grid-link no-external-icon">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="./blog/convert-snippets/banner.png" class="thumbnail-image card-img" style="height: 150px;">
@@ -473,7 +476,7 @@ Apr 30, 2025
 <h5 class="no-anchor card-title listing-title">
 How to convert snippets from RStudio format to Positron format
 </h5>
-<div class="card-text listing-description delink">
+<div class="card-text listing-description">
 <p>A simple Shiny app to convert snippets RStudio format to Positron format (jSON). | Un convertidor sencillo para pasar tus snippets del formato RStudio a Positron</p>
 </div>
 <div class="card-attribution card-text-small justify">
@@ -486,8 +489,8 @@ Apr 3, 2025
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="UiUyQ3R1dG9yaWFs" data-listing-date-sort="1734566400000" data-listing-file-modified-sort="1793505396834" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2679">
-<a href="./blog/timeline-with-googlevis/timeline-with-googlevis.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="5" data-categories="UiUyQ3R1dG9yaWFs" data-listing-date-sort="1734566400000" data-listing-file-modified-sort="1793639113120" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="14" data-listing-word-count-sort="2679">
+<a href="./blog/timeline-with-googlevis/timeline-with-googlevis.html" class="quarto-grid-link no-external-icon">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="./blog/timeline-with-googlevis/banner.jpg" class="thumbnail-image card-img" style="height: 150px;">
@@ -496,7 +499,7 @@ Apr 3, 2025
 <h5 class="no-anchor card-title listing-title">
 Drawing timeline (Gantt) diagrams in R
 </h5>
-<div class="card-text listing-description delink">
+<div class="card-text listing-description">
 <p>A quick tutorial to draw time line diagrams using R and googleVis | Un tutorial rápido para crear diagramas de líneas de tiempo usando R y googleVis</p>
 </div>
 <div class="card-attribution card-text-small justify">
@@ -509,8 +512,8 @@ Dec 19, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="cXVhcnRvJTJDdGVtcGxhdGUlMkN3cml0aW5nJTIwdGlwcyUyQ3BsYW50aWxsYQ==" data-listing-date-sort="1734393600000" data-listing-file-modified-sort="1793505396828" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4364">
-<a href="./blog/quarto-template-article/quarto-template-article.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="6" data-categories="cXVhcnRvJTJDdGVtcGxhdGUlMkN3cml0aW5nJTIwdGlwcyUyQ3BsYW50aWxsYQ==" data-listing-date-sort="1734393600000" data-listing-file-modified-sort="1793639113115" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="22" data-listing-word-count-sort="4364">
+<a href="./blog/quarto-template-article/quarto-template-article.html" class="quarto-grid-link no-external-icon">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="./blog/quarto-template-article/banner.png" class="thumbnail-image card-img" style="height: 150px;">
@@ -519,7 +522,7 @@ Dec 19, 2024
 <h5 class="no-anchor card-title listing-title">
 Quarto template for a scientific article draft
 </h5>
-<div class="card-text listing-description delink">
+<div class="card-text listing-description">
 <p>A simple template in Quarto for writing a scientific article. | Una plantilla simple en Quarto para redactar un artículo científico.</p>
 </div>
 <div class="card-attribution card-text-small justify">
@@ -532,8 +535,8 @@ Dec 17, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="cXVhcnRvJTJDem90ZXJvJTJDcnN0dWRpbyUyQ2NpdGF0aW9ucyUyQ2JpYmxpb2dyYXBoeSUyQ3JlZmVyZW5jZXMlMkNjaXRhY2lvbiUyQ2JpYmxpb2dyYWZpYQ==" data-listing-date-sort="1734307200000" data-listing-file-modified-sort="1793505396867" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2515">
-<a href="./blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="7" data-categories="cXVhcnRvJTJDem90ZXJvJTJDcnN0dWRpbyUyQ2NpdGF0aW9ucyUyQ2JpYmxpb2dyYXBoeSUyQ3JlZmVyZW5jZXMlMkNjaXRhY2lvbiUyQ2JpYmxpb2dyYWZpYQ==" data-listing-date-sort="1734307200000" data-listing-file-modified-sort="1793639113146" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2515">
+<a href="./blog/zotero-quarto-rstudio/zotero-quarto-rstudio.html" class="quarto-grid-link no-external-icon">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="./blog/zotero-quarto-rstudio/banner.png" class="thumbnail-image card-img" style="height: 150px;">
@@ -542,7 +545,7 @@ Dec 17, 2024
 <h5 class="no-anchor card-title listing-title">
 How to insert bibliographic references from Zotero in Quarto files?
 </h5>
-<div class="card-text listing-description delink">
+<div class="card-text listing-description">
 <p>Automatically insert bibliographic citations from Zotero into Quarto files through RStudio. | Insertar citas bibliográficas automáticamente desde Zotero en archivos Quarto a…</p>
 </div>
 <div class="card-attribution card-text-small justify">
@@ -555,8 +558,8 @@ Dec 16, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="8" data-categories="ZW5zbyUyQ3BlcnUlMkNlbCUyMG5pbm8=" data-listing-date-sort="1713571200000" data-listing-file-modified-sort="1793505396785" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2957">
-<a href="./blog/elnino-app/elnino-app.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="8" data-categories="ZW5zbyUyQ3BlcnUlMkNlbCUyMG5pbm8=" data-listing-date-sort="1713571200000" data-listing-file-modified-sort="1793639113079" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2957">
+<a href="./blog/elnino-app/elnino-app.html" class="quarto-grid-link no-external-icon">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="./blog/elnino-app/elnino-explain1.png" class="thumbnail-image card-img" style="height: 150px;">
@@ -565,7 +568,7 @@ Dec 16, 2024
 <h5 class="no-anchor card-title listing-title">
 El Niño
 </h5>
-<div class="card-text listing-description delink">
+<div class="card-text listing-description">
 <p>Current conditions for the Peruvian coast. | Condiciones actuales para la costa peruana.</p>
 </div>
 <div class="card-attribution card-text-small justify">
@@ -578,8 +581,8 @@ Apr 20, 2024
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="9" data-categories="cXVhcnRvJTJDZ2l0aHViJTIwcGFnZXMlMkNibG9nJTJDd3JpdGluZw==" data-listing-date-sort="1713484800000" data-listing-file-modified-sort="1793505396695" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1932">
-<a href="./blog/about-this-website/about-this-website.html" class="quarto-grid-link">
+<div class="g-col-1" data-index="9" data-categories="cXVhcnRvJTJDZ2l0aHViJTIwcGFnZXMlMkNibG9nJTJDd3JpdGluZw==" data-listing-date-sort="1713484800000" data-listing-file-modified-sort="1793639112993" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1932">
+<a href="./blog/about-this-website/about-this-website.html" class="quarto-grid-link no-external-icon">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
 <img loading="lazy" src="./blog/about-this-website/banner.png" class="thumbnail-image card-img" style="height: 150px;">
@@ -588,7 +591,7 @@ Apr 20, 2024
 <h5 class="no-anchor card-title listing-title">
 Developing Beneath the surface
 </h5>
-<div class="card-text listing-description delink">
+<div class="card-text listing-description">
 <p>Cómo fui desarrollando esta página</p>
 </div>
 <div class="card-attribution card-text-small justify">
@@ -611,15 +614,50 @@ Apr 19, 2024
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const isCodeAnnotation = (el) => {
@@ -691,7 +729,8 @@ Apr 19, 2024
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -700,8 +739,69 @@ Apr 19, 2024
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -715,6 +815,7 @@ Apr 19, 2024
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -877,44 +978,54 @@ Apr 19, 2024
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1012,6 +1123,9 @@ Apr 19, 2024
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 <footer class="footer">
